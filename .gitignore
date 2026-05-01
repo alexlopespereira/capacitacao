@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Env / secrets locais (NUNCA commitar)
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Dados brutos baixados localmente para teste (gigabytes)
+dados/
+*.tar.gz
+*.csv
+!docs/contagem_mensal.csv
+!scripts/cursos_alvo.csv
