@@ -82,6 +82,20 @@ jobs:
           total_mes = int(df[df["ano_mes"] == ultimo]["count"].sum())
           total_acum = int(df["count"].sum())
           n_meses = df["ano_mes"].nunique()
+
+          # Pessoas unicas
+          try:
+              p = pd.read_csv("docs/pessoas_por_mes.csv", dtype={"codigo_pessoa": str})
+              pessoas_unicas = int(p["codigo_pessoa"].nunique())
+              novas_no_mes = int(
+                  p[p["ano_mes"] == ultimo]
+                  .loc[~p["codigo_pessoa"].isin(p[p["ano_mes"] < ultimo]["codigo_pessoa"]), "codigo_pessoa"]
+                  .nunique()
+              )
+          except FileNotFoundError:
+              pessoas_unicas = 0
+              novas_no_mes = 0
+
           # Top 5 cursos
           top = (
               df.groupby("tx_nome_curso")["count"].sum()
@@ -93,6 +107,8 @@ jobs:
           print(f"primeiro_mes={primeiro}")
           print(f"total_mes={total_mes:,}")
           print(f"total_acum={total_acum:,}")
+          print(f"pessoas_unicas={pessoas_unicas:,}")
+          print(f"novas_no_mes={novas_no_mes:,}")
           print(f"n_meses={n_meses}")
           print("top5<<EOF")
           print(top_str)
@@ -136,7 +152,8 @@ jobs:
             Janela coberta: ${{ steps.metricas.outputs.primeiro_mes }} a ${{ steps.metricas.outputs.ultimo_mes }} (${{ steps.metricas.outputs.n_meses }} meses)
 
             ► Total acumulado da meta: ${{ steps.metricas.outputs.total_acum }} matrículas concluídas (servidores federais)
-            ► Total no mês mais recente (${{ steps.metricas.outputs.ultimo_mes }}): ${{ steps.metricas.outputs.total_mes }}
+            ► Servidores federais únicos no acumulado (≥1 curso da meta): ${{ steps.metricas.outputs.pessoas_unicas }}
+            ► Total no mês mais recente (${{ steps.metricas.outputs.ultimo_mes }}): ${{ steps.metricas.outputs.total_mes }} matrículas / ${{ steps.metricas.outputs.novas_no_mes }} pessoas novas no mês
 
             Top 5 cursos no acumulado:
             ${{ steps.metricas.outputs.top5 }}

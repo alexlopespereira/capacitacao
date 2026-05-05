@@ -43,8 +43,9 @@ Filtros aplicados ao dataset bruto:
 │   ├── cursos_alvo.csv                      # 35 cursos (id_curso, tx_nome_curso)
 │   └── requirements.txt                     # pandas
 ├── docs/                                    # GitHub Pages (raiz pública)
-│   ├── index.html                           # tabela pivot
-│   └── contagem_mensal.csv                  # histórico (fonte de verdade)
+│   ├── index.html                           # tabela pivot + curva de pessoas
+│   ├── contagem_mensal.csv                  # matrículas por mês × curso
+│   └── pessoas_por_mes.csv                  # (ano_mes, codigo_pessoa) — long format
 └── README.md
 ```
 

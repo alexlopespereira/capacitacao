@@ -36,6 +36,7 @@ INICIO_HISTORICO = "2024-08"
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DOCS_DIR = REPO_ROOT / "docs"
 HISTORICO_CSV = DOCS_DIR / "contagem_mensal.csv"
+PESSOAS_CSV = DOCS_DIR / "pessoas_por_mes.csv"
 INDEX_HTML = DOCS_DIR / "index.html"
 CURSOS_ALVO = Path(__file__).parent / "cursos_alvo.csv"
 
@@ -144,11 +145,17 @@ def extrair_ano_mes(nome_logico: str) -> str | None:
 
 def processar_csv(
     stream: io.TextIOBase, mapa_alvos: dict[str, tuple[int, str]]
-) -> dict[tuple[str, int, str], int]:
-    """Conta matriculas Concluidas (esfera Federal) por (ano_mes, id_curso, nome)."""
+) -> tuple[dict[tuple[str, int, str], int], set[tuple[str, str]]]:
+    """Conta matriculas e coleta pessoas distintas (Concluida + Federal + 35 cursos).
+
+    Retorna:
+    - contagem: {(ano_mes, id_curso, nome): n_matriculas}
+    - pessoas: set[(ano_mes, codigo_pessoa)]
+    """
     csv.field_size_limit(sys.maxsize)
     reader = csv.DictReader(stream, delimiter="|")
     contagem: dict[tuple[str, int, str], int] = {}
+    pessoas: set[tuple[str, str]] = set()
     for row in reader:
         if (row.get("sit_matricula") or "").strip() != "Concluida":
             continue
@@ -164,16 +171,24 @@ def processar_csv(
             continue
         chave = (dt, alvo[0], alvo[1])
         contagem[chave] = contagem.get(chave, 0) + 1
-    return contagem
+        cp = (row.get("codigo_pessoa") or "").strip()
+        if cp:
+            pessoas.add((dt, cp))
+    return contagem, pessoas
 
 
 def consolidar(
     source: str | Path,
     janela_max: str,
     mapa_alvos: dict[str, tuple[int, str]],
-) -> pd.DataFrame:
-    """Retorna DF com colunas: ano_mes, id_curso, tx_nome_curso, count."""
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Retorna (df_contagem, df_pessoas).
+
+    - df_contagem: ano_mes, id_curso, tx_nome_curso, count
+    - df_pessoas:  ano_mes, codigo_pessoa  (long format, deduplicado)
+    """
     contagem_total: dict[tuple[str, int, str], int] = {}
+    pessoas_total: set[tuple[str, str]] = set()
     for nome_logico, stream in iter_csvs(source):
         ym_arquivo = extrair_ano_mes(nome_logico)
         if ym_arquivo is not None and (
@@ -183,27 +198,31 @@ def consolidar(
             stream.close()
             continue
         print(f"Processando {nome_logico}", flush=True)
-        parcial = processar_csv(stream, mapa_alvos)
-        for k, v in parcial.items():
+        parcial_c, parcial_p = processar_csv(stream, mapa_alvos)
+        for k, v in parcial_c.items():
             contagem_total[k] = contagem_total.get(k, 0) + v
+        pessoas_total.update(parcial_p)
         stream.close()
 
     rows = [
-        {
-            "ano_mes": ym,
-            "id_curso": cid,
-            "tx_nome_curso": nome,
-            "count": n,
-        }
+        {"ano_mes": ym, "id_curso": cid, "tx_nome_curso": nome, "count": n}
         for (ym, cid, nome), n in contagem_total.items()
     ]
-    df = pd.DataFrame(rows, columns=["ano_mes", "id_curso", "tx_nome_curso", "count"])
-    if df.empty:
-        return df
-    df = df[
-        (df["ano_mes"] >= INICIO_HISTORICO) & (df["ano_mes"] <= janela_max)
-    ].copy()
-    return df.sort_values(["ano_mes", "id_curso"]).reset_index(drop=True)
+    df_c = pd.DataFrame(rows, columns=["ano_mes", "id_curso", "tx_nome_curso", "count"])
+    df_p = pd.DataFrame(
+        sorted(pessoas_total), columns=["ano_mes", "codigo_pessoa"]
+    )
+    if not df_c.empty:
+        df_c = df_c[
+            (df_c["ano_mes"] >= INICIO_HISTORICO) & (df_c["ano_mes"] <= janela_max)
+        ].copy()
+        df_c = df_c.sort_values(["ano_mes", "id_curso"]).reset_index(drop=True)
+    if not df_p.empty:
+        df_p = df_p[
+            (df_p["ano_mes"] >= INICIO_HISTORICO) & (df_p["ano_mes"] <= janela_max)
+        ].copy()
+        df_p = df_p.sort_values(["ano_mes", "codigo_pessoa"]).reset_index(drop=True)
+    return df_c, df_p
 
 
 def merge_historico(novo: pd.DataFrame) -> pd.DataFrame:
@@ -224,15 +243,63 @@ def merge_historico(novo: pd.DataFrame) -> pd.DataFrame:
     return final
 
 
-def gerar_html(historico: pd.DataFrame) -> str:
+def merge_pessoas(novo: pd.DataFrame) -> pd.DataFrame:
+    """Merge idempotente do long-format de pessoas.
+
+    Para cada ano_mes presente em `novo`, substitui as linhas correspondentes
+    no historico (preserva pessoas dos meses fora da janela do download).
+    """
+    if PESSOAS_CSV.exists():
+        antigo = pd.read_csv(PESSOAS_CSV, dtype={"codigo_pessoa": str})
+    else:
+        antigo = pd.DataFrame(columns=["ano_mes", "codigo_pessoa"])
+
+    if novo.empty:
+        return antigo.sort_values(["ano_mes", "codigo_pessoa"]).reset_index(drop=True)
+
+    meses_novos = set(novo["ano_mes"].unique())
+    antigo_filtrado = antigo[~antigo["ano_mes"].isin(meses_novos)]
+    final = pd.concat([antigo_filtrado, novo], ignore_index=True)
+    final = final.drop_duplicates(["ano_mes", "codigo_pessoa"]).reset_index(drop=True)
+    return final.sort_values(["ano_mes", "codigo_pessoa"]).reset_index(drop=True)
+
+
+def calcular_pessoas_acumulado(pessoas: pd.DataFrame) -> pd.DataFrame:
+    """A partir do long-format pessoas, computa por mes:
+    - novas_pessoas: codigo_pessoa que NAO apareceu em nenhum mes anterior
+    - acumulado: total de codigo_pessoa distintos ate o mes (inclusive)
+    """
+    if pessoas.empty:
+        return pd.DataFrame(columns=["ano_mes", "novas_pessoas", "acumulado"])
+    visto: set[str] = set()
+    rows = []
+    for ym in sorted(pessoas["ano_mes"].unique()):
+        do_mes = set(pessoas.loc[pessoas["ano_mes"] == ym, "codigo_pessoa"])
+        novas = do_mes - visto
+        visto.update(do_mes)
+        rows.append({"ano_mes": ym, "novas_pessoas": len(novas), "acumulado": len(visto)})
+    return pd.DataFrame(rows)
+
+
+def gerar_html(historico: pd.DataFrame, pessoas_acum: pd.DataFrame) -> str:
     if historico.empty:
         tabela_total = "<p>Sem dados ainda.</p>"
         tabela_pivot = ""
+        bloco_pessoas = ""
+        destaque_pessoas = ""
     else:
         total_mes = (
             historico.groupby("ano_mes")["count"].sum().reset_index()
-            .rename(columns={"count": "total"})
+            .rename(columns={"count": "matriculas"})
         )
+        if not pessoas_acum.empty:
+            total_mes = total_mes.merge(pessoas_acum, on="ano_mes", how="left")
+            total_mes[["novas_pessoas", "acumulado"]] = (
+                total_mes[["novas_pessoas", "acumulado"]].fillna(0).astype(int)
+            )
+            total_mes = total_mes.rename(
+                columns={"acumulado": "pessoas_unicas_acum"}
+            )
         tabela_total = _df_to_html(total_mes)
 
         pivot = (
@@ -249,6 +316,25 @@ def gerar_html(historico: pd.DataFrame) -> str:
         )
         pivot.columns.name = None
         tabela_pivot = _df_to_html(pivot)
+
+        if pessoas_acum.empty:
+            bloco_pessoas = ""
+            destaque_pessoas = ""
+        else:
+            total_unico = int(pessoas_acum["acumulado"].iloc[-1])
+            destaque_pessoas = (
+                f"<p><strong>Pessoas únicas (servidores federais distintos) que "
+                f"concluíram pelo menos um dos 35 cursos no período: "
+                f"{total_unico:,}</strong></p>"
+            ).replace(",", ".")
+            bloco_pessoas = (
+                "<h2>Curva acumulada de pessoas únicas</h2>"
+                "<p class=\"meta\">Cada linha é o total acumulado de servidores "
+                "federais distintos que concluíram pelo menos um curso da meta "
+                "até o fim daquele mês. <code>novas_pessoas</code> = quantas "
+                "apareceram pela primeira vez naquele mês.</p>"
+                f"<div class=\"scroll\">{_df_to_html(pessoas_acum.rename(columns={'acumulado':'pessoas_unicas_acum'}))}</div>"
+            )
 
     atualizado_em = pd.Timestamp.utcnow().strftime("%Y-%m-%d %H:%M UTC")
     return f"""<!doctype html>
@@ -273,12 +359,17 @@ def gerar_html(historico: pd.DataFrame) -> str:
 <h1>Matriculas concluidas — ENAP (servidores federais, 35 cursos alvo)</h1>
 <p class="meta">Fonte: <a href="https://dadosaberto.evg.gov.br/">dadosaberto.evg.gov.br</a> ·
 Atualizado em {atualizado_em} ·
-<a href="contagem_mensal.csv">Baixar CSV</a></p>
+<a href="contagem_mensal.csv">Baixar CSV (matrículas)</a> ·
+<a href="pessoas_por_mes.csv">Baixar CSV (pessoas)</a></p>
 
-<h2>Total mensal (somatorio dos 35 cursos)</h2>
+{destaque_pessoas}
+
+<h2>Total mensal (35 cursos)</h2>
 <div class="scroll">{tabela_total}</div>
 
-<h2>Detalhe por curso × mes</h2>
+{bloco_pessoas}
+
+<h2>Detalhe por curso × mes (matrículas)</h2>
 <div class="scroll">{tabela_pivot}</div>
 
 <p class="meta">Filtros aplicados: <code>sit_matricula = 'Concluida'</code> ·
@@ -323,19 +414,30 @@ def main() -> int:
     _, mapa_alvos = carregar_alvos()
     print(f"Cursos alvo: {len(mapa_alvos)}")
 
-    novo = consolidar(args.source, janela_max, mapa_alvos)
+    novo_c, novo_p = consolidar(args.source, janela_max, mapa_alvos)
     print(
-        f"Novos meses processados: {sorted(novo['ano_mes'].unique()) if not novo.empty else '[]'}"
+        f"Novos meses (matriculas): {sorted(novo_c['ano_mes'].unique()) if not novo_c.empty else '[]'}"
+    )
+    print(
+        f"Novos meses (pessoas): {sorted(novo_p['ano_mes'].unique()) if not novo_p.empty else '[]'}"
     )
 
-    final = merge_historico(novo)
-    DOCS_DIR.mkdir(parents=True, exist_ok=True)
-    final.to_csv(HISTORICO_CSV, index=False)
-    INDEX_HTML.write_text(gerar_html(final), encoding="utf-8")
+    final_c = merge_historico(novo_c)
+    final_p = merge_pessoas(novo_p)
+    pessoas_acum = calcular_pessoas_acumulado(final_p)
 
-    print(f"\nLinhas no historico: {len(final)}")
-    print(f"Meses cobertos: {sorted(final['ano_mes'].unique()) if not final.empty else '[]'}")
-    print(f"Arquivos: {HISTORICO_CSV}, {INDEX_HTML}")
+    DOCS_DIR.mkdir(parents=True, exist_ok=True)
+    final_c.to_csv(HISTORICO_CSV, index=False)
+    final_p.to_csv(PESSOAS_CSV, index=False)
+    INDEX_HTML.write_text(gerar_html(final_c, pessoas_acum), encoding="utf-8")
+
+    total_pessoas = int(pessoas_acum["acumulado"].iloc[-1]) if not pessoas_acum.empty else 0
+    print(f"\nLinhas no historico (matriculas): {len(final_c)}")
+    print(f"Linhas no historico (pessoas): {len(final_p)}")
+    print(f"Meses cobertos: {sorted(final_c['ano_mes'].unique()) if not final_c.empty else '[]'}")
+    print(f"Total acumulado de matriculas: {final_c['count'].sum() if not final_c.empty else 0}")
+    print(f"Pessoas unicas no acumulado: {total_pessoas}")
+    print(f"Arquivos: {HISTORICO_CSV}, {PESSOAS_CSV}, {INDEX_HTML}")
     return 0
 
 
