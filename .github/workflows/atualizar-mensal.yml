@@ -111,7 +111,9 @@ jobs:
           fi
 
       - name: Enviar e-mail
-        if: steps.commit.outputs.mudou == 'true' || inputs.forcar_envio == 'true' || inputs.test_email != ''
+        # Envio em producao desabilitado ate estabilizar a versao.
+        # Para enviar: dispare manualmente com forcar_envio=true ou test_email preenchido.
+        if: github.event_name == 'workflow_dispatch' && (inputs.forcar_envio == 'true' || inputs.test_email != '')
         uses: dawidd6/action-send-mail@v6
         with:
           server_address: smtp.gmail.com
