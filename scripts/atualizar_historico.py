@@ -318,7 +318,6 @@ def gerar_html(historico: pd.DataFrame, pessoas_acum: pd.DataFrame) -> str:
         tabela_pivot = _df_to_html(pivot)
 
         if pessoas_acum.empty:
-            bloco_pessoas = ""
             destaque_pessoas = ""
         else:
             total_unico = int(pessoas_acum["acumulado"].iloc[-1])
@@ -327,14 +326,6 @@ def gerar_html(historico: pd.DataFrame, pessoas_acum: pd.DataFrame) -> str:
                 f"concluíram pelo menos um dos 35 cursos no período: "
                 f"{total_unico:,}</strong></p>"
             ).replace(",", ".")
-            bloco_pessoas = (
-                "<h2>Curva acumulada de pessoas únicas</h2>"
-                "<p class=\"meta\">Cada linha é o total acumulado de servidores "
-                "federais distintos que concluíram pelo menos um curso da meta "
-                "até o fim daquele mês. <code>novas_pessoas</code> = quantas "
-                "apareceram pela primeira vez naquele mês.</p>"
-                f"<div class=\"scroll\">{_df_to_html(pessoas_acum.rename(columns={'acumulado':'pessoas_unicas_acum'}))}</div>"
-            )
 
     atualizado_em = pd.Timestamp.utcnow().strftime("%Y-%m-%d %H:%M UTC")
     return f"""<!doctype html>
@@ -366,8 +357,6 @@ Atualizado em {atualizado_em} ·
 
 <h2>Total mensal (35 cursos)</h2>
 <div class="scroll">{tabela_total}</div>
-
-{bloco_pessoas}
 
 <h2>Detalhe por curso × mes (matrículas)</h2>
 <div class="scroll">{tabela_pivot}</div>
