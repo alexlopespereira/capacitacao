@@ -145,12 +145,14 @@ def extrair_ano_mes(nome_logico: str) -> str | None:
 def processar_csv(
     stream: io.TextIOBase, mapa_alvos: dict[str, tuple[int, str]]
 ) -> dict[tuple[str, int, str], int]:
-    """Conta matriculas Concluidas por (ano_mes, id_curso, nome_canonico)."""
+    """Conta matriculas Concluidas (esfera Federal) por (ano_mes, id_curso, nome)."""
     csv.field_size_limit(sys.maxsize)
     reader = csv.DictReader(stream, delimiter="|")
     contagem: dict[tuple[str, int, str], int] = {}
     for row in reader:
         if (row.get("sit_matricula") or "").strip() != "Concluida":
+            continue
+        if (row.get("esfera") or "").strip() != "Federal":
             continue
         nome = (row.get("nome_curso") or "").strip()
         nn = normalize(nome)
@@ -253,7 +255,7 @@ def gerar_html(historico: pd.DataFrame) -> str:
 <html lang="pt-br">
 <head>
 <meta charset="utf-8">
-<title>Matriculas concluidas — ENAP (cursos alvo)</title>
+<title>Matriculas concluidas — ENAP (servidores federais, 35 cursos alvo)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 1400px; margin: 2rem auto; padding: 0 1rem; color: #222; }}
@@ -268,7 +270,7 @@ def gerar_html(historico: pd.DataFrame) -> str:
 </style>
 </head>
 <body>
-<h1>Matriculas concluidas — ENAP (35 cursos alvo)</h1>
+<h1>Matriculas concluidas — ENAP (servidores federais, 35 cursos alvo)</h1>
 <p class="meta">Fonte: <a href="https://dadosaberto.evg.gov.br/">dadosaberto.evg.gov.br</a> ·
 Atualizado em {atualizado_em} ·
 <a href="contagem_mensal.csv">Baixar CSV</a></p>
@@ -279,9 +281,10 @@ Atualizado em {atualizado_em} ·
 <h2>Detalhe por curso × mes</h2>
 <div class="scroll">{tabela_pivot}</div>
 
-<p class="meta">Filtros: <code>sit_matricula = 'Concluida'</code>,
-<code>dt_matricula</code> em [2024-10, mes anterior ao corrente].
-Junção por <code>nome_curso</code> normalizado.</p>
+<p class="meta">Filtros aplicados: <code>sit_matricula = 'Concluida'</code> ·
+<code>esfera = 'Federal'</code> (descarta Estadual, Municipal e nao-servidores) ·
+<code>dt_matricula</code> em [2024-08, mes anterior ao corrente] ·
+junção por <code>nome_curso</code> normalizado.</p>
 </body>
 </html>
 """

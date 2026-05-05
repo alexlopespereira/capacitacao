@@ -2,8 +2,14 @@
 
 Pipeline automatizado que coleta o dump público da Escola Virtual.Gov da
 [ENAP](https://dadosaberto.evg.gov.br/), agrega o número mensal de
-**matrículas concluídas** para uma lista de **35 cursos da meta de
-capacitação** e publica o histórico como página estática.
+**matrículas concluídas por servidores públicos federais** para uma lista
+de **35 cursos da meta de capacitação** e publica o histórico como página
+estática.
+
+Filtros aplicados ao dataset bruto:
+- `sit_matricula = 'Concluida'`
+- `esfera = 'Federal'` (descarta Estadual, Municipal e registros sem
+  vínculo público — terceiros, sociedade civil, etc.)
 
 > Página pública: https://alexlopespereira.github.io/capacitacao/
 
@@ -17,7 +23,7 @@ capacitação** e publica o histórico como página estática.
             ┌────────────────────────────────────────────────────────┐
             │ 1. Baixa tar.gz de "últimos 12 meses" do portal ENAP   │
             │ 2. Extrai cada CSV mensal (separator '|')              │
-            │ 3. Filtra sit_matricula='Concluida'                    │
+            │ 3. Filtra sit_matricula='Concluida' AND esfera='Federal' │
             │ 4. Filtra os 35 cursos alvo (match por nome_curso)     │
             │ 5. Agrega por (ano_mes, id_curso) → count              │
             │ 6. Merge idempotente em docs/contagem_mensal.csv       │

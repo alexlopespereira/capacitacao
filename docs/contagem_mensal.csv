@@ -1,708 +1,708 @@
 ano_mes,id_curso,tx_nome_curso,count
-2024-08,107,Planejamento Estratégico para Organizações Públicas,266
-2024-08,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,1048
-2024-08,270,Governança de Dados,298
-2024-08,290,Proteção de Dados Pessoais no Setor Público,863
-2024-08,343,Planejamento da Contratação de Soluções de TIC,32
-2024-08,367,Novas Tecnologias para a Transformação Digital,149
-2024-08,373,Liderança e Gestão De Equipes,1461
-2024-08,377,Inteligência Artificial no Contexto do Serviço Público,427
-2024-08,406,Análise de dados como suporte à tomada de decisão,339
-2024-08,419,Transformação Digital no Serviço Público,291
-2024-08,529,"Como implementar a LGPD: bases, mecanismos e processos",510
-2024-08,534,Internet das coisas (IoT) aplicada para resolução de desafios,133
-2024-08,536,Governança de Dados na Transformação Digital,124
-2024-08,629,Aprendendo com Python,335
-2024-08,724,Gestão de Riscos em Projetos de Transformação Digital,37
-2024-08,787,Gestão de projetos,451
-2024-08,797,Automação de Processos através da RPA para Transformação Digital,81
-2024-08,802,Visualização de Dados Aplicada à Transformação Digital,115
-2024-08,815,Storytelling com Dados para Comunicação Profissional de Sucesso,318
-2024-08,861,Inteligência Artificial para simplificar o dia a dia,583
-2024-08,956,Inovando na Gestão de Projetos,442
-2024-08,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,310
-2024-08,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,229
-2024-08,1088,A História da IA,499
-2024-08,1090,Ética em IA,503
-2024-08,1091,Inteligência Artificial Generativa,652
-2024-08,1139,Colaboração com o Microsoft 365,99
-2024-08,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,308
-2024-08,1167,IA Generativo da Microsoft - Copilot,969
-2024-09,107,Planejamento Estratégico para Organizações Públicas,345
-2024-09,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,872
-2024-09,270,Governança de Dados,251
-2024-09,290,Proteção de Dados Pessoais no Setor Público,684
-2024-09,343,Planejamento da Contratação de Soluções de TIC,19
-2024-09,367,Novas Tecnologias para a Transformação Digital,101
-2024-09,373,Liderança e Gestão De Equipes,1441
-2024-09,377,Inteligência Artificial no Contexto do Serviço Público,427
-2024-09,406,Análise de dados como suporte à tomada de decisão,328
-2024-09,419,Transformação Digital no Serviço Público,186
-2024-09,529,"Como implementar a LGPD: bases, mecanismos e processos",445
-2024-09,534,Internet das coisas (IoT) aplicada para resolução de desafios,86
-2024-09,536,Governança de Dados na Transformação Digital,128
-2024-09,629,Aprendendo com Python,228
-2024-09,724,Gestão de Riscos em Projetos de Transformação Digital,47
-2024-09,787,Gestão de projetos,336
-2024-09,797,Automação de Processos através da RPA para Transformação Digital,101
-2024-09,802,Visualização de Dados Aplicada à Transformação Digital,93
-2024-09,815,Storytelling com Dados para Comunicação Profissional de Sucesso,297
-2024-09,861,Inteligência Artificial para simplificar o dia a dia,759
-2024-09,956,Inovando na Gestão de Projetos,435
-2024-09,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,225
-2024-09,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,191
-2024-09,1088,A História da IA,419
-2024-09,1090,Ética em IA,488
-2024-09,1091,Inteligência Artificial Generativa,554
-2024-09,1139,Colaboração com o Microsoft 365,132
-2024-09,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,237
-2024-09,1167,IA Generativo da Microsoft - Copilot,694
-2024-10,107,Planejamento Estratégico para Organizações Públicas,300
-2024-10,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,1136
-2024-10,270,Governança de Dados,252
-2024-10,290,Proteção de Dados Pessoais no Setor Público,1685
-2024-10,343,Planejamento da Contratação de Soluções de TIC,32
-2024-10,367,Novas Tecnologias para a Transformação Digital,252
-2024-10,373,Liderança e Gestão De Equipes,1588
-2024-10,377,Inteligência Artificial no Contexto do Serviço Público,474
-2024-10,406,Análise de dados como suporte à tomada de decisão,378
-2024-10,419,Transformação Digital no Serviço Público,249
-2024-10,529,"Como implementar a LGPD: bases, mecanismos e processos",560
-2024-10,534,Internet das coisas (IoT) aplicada para resolução de desafios,154
-2024-10,536,Governança de Dados na Transformação Digital,141
-2024-10,629,Aprendendo com Python,288
-2024-10,724,Gestão de Riscos em Projetos de Transformação Digital,83
-2024-10,787,Gestão de projetos,376
-2024-10,797,Automação de Processos através da RPA para Transformação Digital,80
-2024-10,802,Visualização de Dados Aplicada à Transformação Digital,147
-2024-10,810,Desvendando a Inteligência Artificial na Administração Pública,1388
-2024-10,815,Storytelling com Dados para Comunicação Profissional de Sucesso,393
-2024-10,861,Inteligência Artificial para simplificar o dia a dia,685
-2024-10,956,Inovando na Gestão de Projetos,460
-2024-10,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,200
-2024-10,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,205
-2024-10,1088,A História da IA,463
-2024-10,1090,Ética em IA,649
-2024-10,1091,Inteligência Artificial Generativa,766
-2024-10,1139,Colaboração com o Microsoft 365,153
-2024-10,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,254
-2024-10,1167,IA Generativo da Microsoft - Copilot,571
-2024-10,1263,Governo Data-Driven: transformação orientada por dados em governos,173
-2024-11,107,Planejamento Estratégico para Organizações Públicas,263
-2024-11,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,831
-2024-11,270,Governança de Dados,291
-2024-11,290,Proteção de Dados Pessoais no Setor Público,1367
-2024-11,343,Planejamento da Contratação de Soluções de TIC,23
-2024-11,367,Novas Tecnologias para a Transformação Digital,271
-2024-11,373,Liderança e Gestão De Equipes,1292
-2024-11,377,Inteligência Artificial no Contexto do Serviço Público,668
-2024-11,406,Análise de dados como suporte à tomada de decisão,294
-2024-11,419,Transformação Digital no Serviço Público,517
-2024-11,529,"Como implementar a LGPD: bases, mecanismos e processos",497
-2024-11,534,Internet das coisas (IoT) aplicada para resolução de desafios,212
-2024-11,536,Governança de Dados na Transformação Digital,124
-2024-11,629,Aprendendo com Python,221
-2024-11,724,Gestão de Riscos em Projetos de Transformação Digital,106
-2024-11,787,Gestão de projetos,252
-2024-11,797,Automação de Processos através da RPA para Transformação Digital,117
-2024-11,802,Visualização de Dados Aplicada à Transformação Digital,99
-2024-11,810,Desvendando a Inteligência Artificial na Administração Pública,1528
-2024-11,815,Storytelling com Dados para Comunicação Profissional de Sucesso,334
-2024-11,861,Inteligência Artificial para simplificar o dia a dia,933
-2024-11,956,Inovando na Gestão de Projetos,462
-2024-11,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,223
-2024-11,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,182
-2024-11,1088,A História da IA,485
-2024-11,1090,Ética em IA,671
-2024-11,1091,Inteligência Artificial Generativa,924
-2024-11,1139,Colaboração com o Microsoft 365,245
-2024-11,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,201
-2024-11,1167,IA Generativo da Microsoft - Copilot,627
-2024-11,1263,Governo Data-Driven: transformação orientada por dados em governos,104
-2024-12,107,Planejamento Estratégico para Organizações Públicas,287
-2024-12,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,656
-2024-12,270,Governança de Dados,175
-2024-12,290,Proteção de Dados Pessoais no Setor Público,988
-2024-12,343,Planejamento da Contratação de Soluções de TIC,15
-2024-12,367,Novas Tecnologias para a Transformação Digital,288
-2024-12,373,Liderança e Gestão De Equipes,1169
-2024-12,377,Inteligência Artificial no Contexto do Serviço Público,538
-2024-12,406,Análise de dados como suporte à tomada de decisão,253
-2024-12,419,Transformação Digital no Serviço Público,236
-2024-12,529,"Como implementar a LGPD: bases, mecanismos e processos",417
-2024-12,534,Internet das coisas (IoT) aplicada para resolução de desafios,159
-2024-12,536,Governança de Dados na Transformação Digital,95
-2024-12,629,Aprendendo com Python,204
-2024-12,724,Gestão de Riscos em Projetos de Transformação Digital,76
-2024-12,787,Gestão de projetos,282
-2024-12,797,Automação de Processos através da RPA para Transformação Digital,99
-2024-12,802,Visualização de Dados Aplicada à Transformação Digital,104
-2024-12,810,Desvendando a Inteligência Artificial na Administração Pública,1183
-2024-12,815,Storytelling com Dados para Comunicação Profissional de Sucesso,581
-2024-12,861,Inteligência Artificial para simplificar o dia a dia,945
-2024-12,956,Inovando na Gestão de Projetos,404
-2024-12,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,188
-2024-12,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,121
-2024-12,1088,A História da IA,417
-2024-12,1090,Ética em IA,525
-2024-12,1091,Inteligência Artificial Generativa,625
-2024-12,1139,Colaboração com o Microsoft 365,449
-2024-12,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,162
-2024-12,1167,IA Generativo da Microsoft - Copilot,459
-2024-12,1263,Governo Data-Driven: transformação orientada por dados em governos,90
-2024-12,1304,Visão Geral da IA no Azure,49
-2024-12,1305,Fundamentos da Visão Computacional - IA do Azure,118
-2025-01,107,Planejamento Estratégico para Organizações Públicas,468
-2025-01,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,744
-2025-01,270,Governança de Dados,299
-2025-01,290,Proteção de Dados Pessoais no Setor Público,806
-2025-01,343,Planejamento da Contratação de Soluções de TIC,31
-2025-01,367,Novas Tecnologias para a Transformação Digital,334
-2025-01,373,Liderança e Gestão De Equipes,1710
-2025-01,377,Inteligência Artificial no Contexto do Serviço Público,821
-2025-01,406,Análise de dados como suporte à tomada de decisão,397
-2025-01,419,Transformação Digital no Serviço Público,136
-2025-01,529,"Como implementar a LGPD: bases, mecanismos e processos",486
-2025-01,534,Internet das coisas (IoT) aplicada para resolução de desafios,226
-2025-01,536,Governança de Dados na Transformação Digital,148
-2025-01,629,Aprendendo com Python,360
-2025-01,724,Gestão de Riscos em Projetos de Transformação Digital,120
-2025-01,787,Gestão de projetos,329
-2025-01,797,Automação de Processos através da RPA para Transformação Digital,98
-2025-01,802,Visualização de Dados Aplicada à Transformação Digital,112
-2025-01,810,Desvendando a Inteligência Artificial na Administração Pública,1301
-2025-01,815,Storytelling com Dados para Comunicação Profissional de Sucesso,404
-2025-01,861,Inteligência Artificial para simplificar o dia a dia,917
-2025-01,956,Inovando na Gestão de Projetos,523
-2025-01,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,247
-2025-01,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,210
-2025-01,1088,A História da IA,551
-2025-01,1090,Ética em IA,570
-2025-01,1091,Inteligência Artificial Generativa,1093
-2025-01,1139,Colaboração com o Microsoft 365,116
-2025-01,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,238
-2025-01,1167,IA Generativo da Microsoft - Copilot,680
-2025-01,1263,Governo Data-Driven: transformação orientada por dados em governos,59
-2025-01,1304,Visão Geral da IA no Azure,182
-2025-01,1305,Fundamentos da Visão Computacional - IA do Azure,409
-2025-01,1328,Processamento de Linguagem Natural,408
-2025-02,107,Planejamento Estratégico para Organizações Públicas,347
-2025-02,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,632
-2025-02,270,Governança de Dados,193
-2025-02,290,Proteção de Dados Pessoais no Setor Público,704
-2025-02,343,Planejamento da Contratação de Soluções de TIC,24
-2025-02,367,Novas Tecnologias para a Transformação Digital,397
-2025-02,373,Liderança e Gestão De Equipes,1483
-2025-02,377,Inteligência Artificial no Contexto do Serviço Público,798
-2025-02,406,Análise de dados como suporte à tomada de decisão,284
-2025-02,419,Transformação Digital no Serviço Público,190
-2025-02,529,"Como implementar a LGPD: bases, mecanismos e processos",445
-2025-02,534,Internet das coisas (IoT) aplicada para resolução de desafios,299
-2025-02,536,Governança de Dados na Transformação Digital,132
-2025-02,629,Aprendendo com Python,297
-2025-02,724,Gestão de Riscos em Projetos de Transformação Digital,130
-2025-02,787,Gestão de projetos,298
-2025-02,797,Automação de Processos através da RPA para Transformação Digital,94
-2025-02,802,Visualização de Dados Aplicada à Transformação Digital,101
-2025-02,810,Desvendando a Inteligência Artificial na Administração Pública,1065
-2025-02,815,Storytelling com Dados para Comunicação Profissional de Sucesso,363
-2025-02,861,Inteligência Artificial para simplificar o dia a dia,810
-2025-02,956,Inovando na Gestão de Projetos,362
-2025-02,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,193
-2025-02,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,174
-2025-02,1088,A História da IA,548
-2025-02,1090,Ética em IA,610
-2025-02,1091,Inteligência Artificial Generativa,842
-2025-02,1139,Colaboração com o Microsoft 365,105
-2025-02,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,205
-2025-02,1167,IA Generativo da Microsoft - Copilot,578
-2025-02,1263,Governo Data-Driven: transformação orientada por dados em governos,32
-2025-02,1304,Visão Geral da IA no Azure,135
-2025-02,1305,Fundamentos da Visão Computacional - IA do Azure,236
-2025-02,1328,Processamento de Linguagem Natural,340
-2025-03,107,Planejamento Estratégico para Organizações Públicas,365
-2025-03,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,700
-2025-03,270,Governança de Dados,195
-2025-03,290,Proteção de Dados Pessoais no Setor Público,418
-2025-03,343,Planejamento da Contratação de Soluções de TIC,32
-2025-03,367,Novas Tecnologias para a Transformação Digital,357
-2025-03,373,Liderança e Gestão De Equipes,1503
-2025-03,377,Inteligência Artificial no Contexto do Serviço Público,792
-2025-03,406,Análise de dados como suporte à tomada de decisão,405
-2025-03,419,Transformação Digital no Serviço Público,250
-2025-03,529,"Como implementar a LGPD: bases, mecanismos e processos",441
-2025-03,534,Internet das coisas (IoT) aplicada para resolução de desafios,405
-2025-03,536,Governança de Dados na Transformação Digital,138
-2025-03,629,Aprendendo com Python,334
-2025-03,724,Gestão de Riscos em Projetos de Transformação Digital,117
-2025-03,787,Gestão de projetos,288
-2025-03,797,Automação de Processos através da RPA para Transformação Digital,118
-2025-03,802,Visualização de Dados Aplicada à Transformação Digital,142
-2025-03,810,Desvendando a Inteligência Artificial na Administração Pública,938
-2025-03,815,Storytelling com Dados para Comunicação Profissional de Sucesso,460
-2025-03,861,Inteligência Artificial para simplificar o dia a dia,877
-2025-03,956,Inovando na Gestão de Projetos,406
-2025-03,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,177
-2025-03,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,174
-2025-03,1088,A História da IA,527
-2025-03,1090,Ética em IA,626
-2025-03,1091,Inteligência Artificial Generativa,987
-2025-03,1139,Colaboração com o Microsoft 365,259
-2025-03,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,165
-2025-03,1167,IA Generativo da Microsoft - Copilot,555
-2025-03,1263,Governo Data-Driven: transformação orientada por dados em governos,113
-2025-03,1304,Visão Geral da IA no Azure,131
-2025-03,1305,Fundamentos da Visão Computacional - IA do Azure,182
-2025-03,1328,Processamento de Linguagem Natural,243
-2025-04,107,Planejamento Estratégico para Organizações Públicas,377
-2025-04,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,657
-2025-04,270,Governança de Dados,212
-2025-04,290,Proteção de Dados Pessoais no Setor Público,462
-2025-04,343,Planejamento da Contratação de Soluções de TIC,26
-2025-04,367,Novas Tecnologias para a Transformação Digital,265
-2025-04,373,Liderança e Gestão De Equipes,1596
-2025-04,377,Inteligência Artificial no Contexto do Serviço Público,922
-2025-04,406,Análise de dados como suporte à tomada de decisão,392
-2025-04,419,Transformação Digital no Serviço Público,116
-2025-04,529,"Como implementar a LGPD: bases, mecanismos e processos",494
-2025-04,534,Internet das coisas (IoT) aplicada para resolução de desafios,256
-2025-04,536,Governança de Dados na Transformação Digital,131
-2025-04,629,Aprendendo com Python,294
-2025-04,724,Gestão de Riscos em Projetos de Transformação Digital,126
-2025-04,787,Gestão de projetos,334
-2025-04,797,Automação de Processos através da RPA para Transformação Digital,102
-2025-04,802,Visualização de Dados Aplicada à Transformação Digital,101
-2025-04,810,Desvendando a Inteligência Artificial na Administração Pública,1018
-2025-04,815,Storytelling com Dados para Comunicação Profissional de Sucesso,410
-2025-04,861,Inteligência Artificial para simplificar o dia a dia,1143
-2025-04,956,Inovando na Gestão de Projetos,366
-2025-04,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,174
-2025-04,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,200
-2025-04,1088,A História da IA,522
-2025-04,1090,Ética em IA,633
-2025-04,1091,Inteligência Artificial Generativa,1048
-2025-04,1139,Colaboração com o Microsoft 365,186
-2025-04,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,168
-2025-04,1167,IA Generativo da Microsoft - Copilot,545
-2025-04,1263,Governo Data-Driven: transformação orientada por dados em governos,115
-2025-04,1304,Visão Geral da IA no Azure,94
-2025-04,1305,Fundamentos da Visão Computacional - IA do Azure,153
-2025-04,1328,Processamento de Linguagem Natural,178
-2025-05,107,Planejamento Estratégico para Organizações Públicas,312
-2025-05,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,1083
-2025-05,270,Governança de Dados,235
-2025-05,290,Proteção de Dados Pessoais no Setor Público,601
-2025-05,343,Planejamento da Contratação de Soluções de TIC,36
-2025-05,367,Novas Tecnologias para a Transformação Digital,233
-2025-05,373,Liderança e Gestão De Equipes,1590
-2025-05,377,Inteligência Artificial no Contexto do Serviço Público,1078
-2025-05,406,Análise de dados como suporte à tomada de decisão,629
-2025-05,419,Transformação Digital no Serviço Público,203
-2025-05,529,"Como implementar a LGPD: bases, mecanismos e processos",518
-2025-05,534,Internet das coisas (IoT) aplicada para resolução de desafios,200
-2025-05,536,Governança de Dados na Transformação Digital,127
-2025-05,629,Aprendendo com Python,374
-2025-05,724,Gestão de Riscos em Projetos de Transformação Digital,109
-2025-05,787,Gestão de projetos,287
-2025-05,797,Automação de Processos através da RPA para Transformação Digital,4262
-2025-05,802,Visualização de Dados Aplicada à Transformação Digital,136
-2025-05,810,Desvendando a Inteligência Artificial na Administração Pública,1169
-2025-05,815,Storytelling com Dados para Comunicação Profissional de Sucesso,449
-2025-05,861,Inteligência Artificial para simplificar o dia a dia,1065
-2025-05,956,Inovando na Gestão de Projetos,405
-2025-05,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,187
-2025-05,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,206
-2025-05,1088,A História da IA,623
-2025-05,1090,Ética em IA,1004
-2025-05,1091,Inteligência Artificial Generativa,1219
-2025-05,1139,Colaboração com o Microsoft 365,200
-2025-05,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,195
-2025-05,1167,IA Generativo da Microsoft - Copilot,698
-2025-05,1263,Governo Data-Driven: transformação orientada por dados em governos,256
-2025-05,1304,Visão Geral da IA no Azure,93
-2025-05,1305,Fundamentos da Visão Computacional - IA do Azure,126
-2025-05,1328,Processamento de Linguagem Natural,183
-2025-06,107,Planejamento Estratégico para Organizações Públicas,451
-2025-06,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,1595
-2025-06,270,Governança de Dados,208
-2025-06,290,Proteção de Dados Pessoais no Setor Público,1691
-2025-06,343,Planejamento da Contratação de Soluções de TIC,42
-2025-06,367,Novas Tecnologias para a Transformação Digital,262
-2025-06,373,Liderança e Gestão De Equipes,1497
-2025-06,377,Inteligência Artificial no Contexto do Serviço Público,993
-2025-06,406,Análise de dados como suporte à tomada de decisão,426
-2025-06,419,Transformação Digital no Serviço Público,152
-2025-06,529,"Como implementar a LGPD: bases, mecanismos e processos",586
-2025-06,534,Internet das coisas (IoT) aplicada para resolução de desafios,188
-2025-06,536,Governança de Dados na Transformação Digital,100
-2025-06,629,Aprendendo com Python,377
-2025-06,724,Gestão de Riscos em Projetos de Transformação Digital,109
-2025-06,787,Gestão de projetos,280
-2025-06,797,Automação de Processos através da RPA para Transformação Digital,3564
-2025-06,802,Visualização de Dados Aplicada à Transformação Digital,121
-2025-06,810,Desvendando a Inteligência Artificial na Administração Pública,868
-2025-06,815,Storytelling com Dados para Comunicação Profissional de Sucesso,390
-2025-06,861,Inteligência Artificial para simplificar o dia a dia,939
-2025-06,956,Inovando na Gestão de Projetos,364
-2025-06,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,236
-2025-06,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,201
-2025-06,1088,A História da IA,684
-2025-06,1090,Ética em IA,759
-2025-06,1091,Inteligência Artificial Generativa,954
-2025-06,1139,Colaboração com o Microsoft 365,210
-2025-06,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,217
-2025-06,1167,IA Generativo da Microsoft - Copilot,669
-2025-06,1263,Governo Data-Driven: transformação orientada por dados em governos,135
-2025-06,1304,Visão Geral da IA no Azure,99
-2025-06,1305,Fundamentos da Visão Computacional - IA do Azure,150
-2025-06,1328,Processamento de Linguagem Natural,144
-2025-07,107,Planejamento Estratégico para Organizações Públicas,382
-2025-07,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,1721
-2025-07,270,Governança de Dados,181
-2025-07,290,Proteção de Dados Pessoais no Setor Público,3882
-2025-07,343,Planejamento da Contratação de Soluções de TIC,47
-2025-07,367,Novas Tecnologias para a Transformação Digital,248
-2025-07,373,Liderança e Gestão De Equipes,1450
-2025-07,377,Inteligência Artificial no Contexto do Serviço Público,1258
-2025-07,406,Análise de dados como suporte à tomada de decisão,429
-2025-07,419,Transformação Digital no Serviço Público,112
-2025-07,529,"Como implementar a LGPD: bases, mecanismos e processos",599
-2025-07,534,Internet das coisas (IoT) aplicada para resolução de desafios,199
-2025-07,536,Governança de Dados na Transformação Digital,111
-2025-07,629,Aprendendo com Python,338
-2025-07,724,Gestão de Riscos em Projetos de Transformação Digital,102
-2025-07,787,Gestão de projetos,324
-2025-07,797,Automação de Processos através da RPA para Transformação Digital,1263
-2025-07,802,Visualização de Dados Aplicada à Transformação Digital,133
-2025-07,810,Desvendando a Inteligência Artificial na Administração Pública,965
-2025-07,815,Storytelling com Dados para Comunicação Profissional de Sucesso,425
-2025-07,861,Inteligência Artificial para simplificar o dia a dia,880
-2025-07,956,Inovando na Gestão de Projetos,368
-2025-07,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,380
-2025-07,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,211
-2025-07,1088,A História da IA,728
-2025-07,1090,Ética em IA,933
-2025-07,1091,Inteligência Artificial Generativa,1110
-2025-07,1139,Colaboração com o Microsoft 365,136
-2025-07,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,239
-2025-07,1167,IA Generativo da Microsoft - Copilot,662
-2025-07,1263,Governo Data-Driven: transformação orientada por dados em governos,221
-2025-07,1304,Visão Geral da IA no Azure,84
-2025-07,1305,Fundamentos da Visão Computacional - IA do Azure,119
-2025-07,1328,Processamento de Linguagem Natural,145
-2025-07,1395,IA - Aplicações no Governo Federal,1069
-2025-08,107,Planejamento Estratégico para Organizações Públicas,479
-2025-08,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,1914
-2025-08,270,Governança de Dados,225
-2025-08,290,Proteção de Dados Pessoais no Setor Público,1462
-2025-08,343,Planejamento da Contratação de Soluções de TIC,58
-2025-08,367,Novas Tecnologias para a Transformação Digital,272
-2025-08,373,Liderança e Gestão De Equipes,1577
-2025-08,377,Inteligência Artificial no Contexto do Serviço Público,1176
-2025-08,406,Análise de dados como suporte à tomada de decisão,475
-2025-08,419,Transformação Digital no Serviço Público,192
-2025-08,529,"Como implementar a LGPD: bases, mecanismos e processos",688
-2025-08,534,Internet das coisas (IoT) aplicada para resolução de desafios,210
-2025-08,536,Governança de Dados na Transformação Digital,131
-2025-08,629,Aprendendo com Python,308
-2025-08,724,Gestão de Riscos em Projetos de Transformação Digital,93
-2025-08,787,Gestão de projetos,277
-2025-08,797,Automação de Processos através da RPA para Transformação Digital,562
-2025-08,802,Visualização de Dados Aplicada à Transformação Digital,142
-2025-08,810,Desvendando a Inteligência Artificial na Administração Pública,930
-2025-08,815,Storytelling com Dados para Comunicação Profissional de Sucesso,427
-2025-08,861,Inteligência Artificial para simplificar o dia a dia,967
-2025-08,956,Inovando na Gestão de Projetos,404
-2025-08,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,351
-2025-08,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,159
-2025-08,1088,A História da IA,577
-2025-08,1090,Ética em IA,993
-2025-08,1091,Inteligência Artificial Generativa,1117
-2025-08,1139,Colaboração com o Microsoft 365,125
-2025-08,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,180
-2025-08,1167,IA Generativo da Microsoft - Copilot,569
-2025-08,1263,Governo Data-Driven: transformação orientada por dados em governos,129
-2025-08,1304,Visão Geral da IA no Azure,77
-2025-08,1305,Fundamentos da Visão Computacional - IA do Azure,117
-2025-08,1328,Processamento de Linguagem Natural,114
-2025-08,1395,IA - Aplicações no Governo Federal,1408
-2025-09,107,Planejamento Estratégico para Organizações Públicas,281
-2025-09,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,1290
-2025-09,270,Governança de Dados,215
-2025-09,290,Proteção de Dados Pessoais no Setor Público,3723
-2025-09,343,Planejamento da Contratação de Soluções de TIC,32
-2025-09,367,Novas Tecnologias para a Transformação Digital,249
-2025-09,373,Liderança e Gestão De Equipes,1572
-2025-09,377,Inteligência Artificial no Contexto do Serviço Público,1212
-2025-09,406,Análise de dados como suporte à tomada de decisão,343
-2025-09,419,Transformação Digital no Serviço Público,125
-2025-09,529,"Como implementar a LGPD: bases, mecanismos e processos",542
-2025-09,534,Internet das coisas (IoT) aplicada para resolução de desafios,181
-2025-09,536,Governança de Dados na Transformação Digital,150
-2025-09,629,Aprendendo com Python,299
-2025-09,724,Gestão de Riscos em Projetos de Transformação Digital,99
-2025-09,787,Gestão de projetos,355
-2025-09,797,Automação de Processos através da RPA para Transformação Digital,337
-2025-09,802,Visualização de Dados Aplicada à Transformação Digital,123
-2025-09,810,Desvendando a Inteligência Artificial na Administração Pública,982
-2025-09,815,Storytelling com Dados para Comunicação Profissional de Sucesso,442
-2025-09,861,Inteligência Artificial para simplificar o dia a dia,964
-2025-09,956,Inovando na Gestão de Projetos,350
-2025-09,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,309
-2025-09,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,162
-2025-09,1088,A História da IA,575
-2025-09,1090,Ética em IA,973
-2025-09,1091,Inteligência Artificial Generativa,911
-2025-09,1139,Colaboração com o Microsoft 365,157
-2025-09,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,168
-2025-09,1167,IA Generativo da Microsoft - Copilot,901
-2025-09,1263,Governo Data-Driven: transformação orientada por dados em governos,89
-2025-09,1304,Visão Geral da IA no Azure,54
-2025-09,1305,Fundamentos da Visão Computacional - IA do Azure,90
-2025-09,1328,Processamento de Linguagem Natural,79
-2025-09,1395,IA - Aplicações no Governo Federal,585
-2025-10,107,Planejamento Estratégico para Organizações Públicas,303
-2025-10,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,7539
-2025-10,270,Governança de Dados,224
-2025-10,290,Proteção de Dados Pessoais no Setor Público,7523
-2025-10,343,Planejamento da Contratação de Soluções de TIC,49
-2025-10,367,Novas Tecnologias para a Transformação Digital,303
-2025-10,373,Liderança e Gestão De Equipes,1746
-2025-10,377,Inteligência Artificial no Contexto do Serviço Público,1005
-2025-10,406,Análise de dados como suporte à tomada de decisão,362
-2025-10,419,Transformação Digital no Serviço Público,196
-2025-10,529,"Como implementar a LGPD: bases, mecanismos e processos",600
-2025-10,534,Internet das coisas (IoT) aplicada para resolução de desafios,295
-2025-10,536,Governança de Dados na Transformação Digital,147
-2025-10,629,Aprendendo com Python,376
-2025-10,724,Gestão de Riscos em Projetos de Transformação Digital,119
-2025-10,787,Gestão de projetos,326
-2025-10,797,Automação de Processos através da RPA para Transformação Digital,309
-2025-10,802,Visualização de Dados Aplicada à Transformação Digital,118
-2025-10,810,Desvendando a Inteligência Artificial na Administração Pública,829
-2025-10,815,Storytelling com Dados para Comunicação Profissional de Sucesso,360
-2025-10,861,Inteligência Artificial para simplificar o dia a dia,951
-2025-10,956,Inovando na Gestão de Projetos,379
-2025-10,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,387
-2025-10,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,218
-2025-10,1088,A História da IA,825
-2025-10,1090,Ética em IA,626
-2025-10,1091,Inteligência Artificial Generativa,868
-2025-10,1139,Colaboração com o Microsoft 365,173
-2025-10,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,206
-2025-10,1167,IA Generativo da Microsoft - Copilot,796
-2025-10,1263,Governo Data-Driven: transformação orientada por dados em governos,77
-2025-10,1304,Visão Geral da IA no Azure,60
-2025-10,1305,Fundamentos da Visão Computacional - IA do Azure,72
-2025-10,1328,Processamento de Linguagem Natural,86
-2025-10,1395,IA - Aplicações no Governo Federal,504
-2025-11,107,Planejamento Estratégico para Organizações Públicas,238
-2025-11,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,12325
-2025-11,270,Governança de Dados,193
-2025-11,290,Proteção de Dados Pessoais no Setor Público,11594
-2025-11,343,Planejamento da Contratação de Soluções de TIC,54
-2025-11,367,Novas Tecnologias para a Transformação Digital,269
-2025-11,373,Liderança e Gestão De Equipes,1716
-2025-11,377,Inteligência Artificial no Contexto do Serviço Público,1117
-2025-11,406,Análise de dados como suporte à tomada de decisão,382
-2025-11,419,Transformação Digital no Serviço Público,212
-2025-11,529,"Como implementar a LGPD: bases, mecanismos e processos",627
-2025-11,534,Internet das coisas (IoT) aplicada para resolução de desafios,174
-2025-11,536,Governança de Dados na Transformação Digital,192
-2025-11,629,Aprendendo com Python,388
-2025-11,724,Gestão de Riscos em Projetos de Transformação Digital,120
-2025-11,787,Gestão de projetos,280
-2025-11,797,Automação de Processos através da RPA para Transformação Digital,289
-2025-11,802,Visualização de Dados Aplicada à Transformação Digital,144
-2025-11,810,Desvendando a Inteligência Artificial na Administração Pública,730
-2025-11,815,Storytelling com Dados para Comunicação Profissional de Sucesso,308
-2025-11,861,Inteligência Artificial para simplificar o dia a dia,863
-2025-11,956,Inovando na Gestão de Projetos,342
-2025-11,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,364
-2025-11,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,222
-2025-11,1088,A História da IA,669
-2025-11,1090,Ética em IA,900
-2025-11,1091,Inteligência Artificial Generativa,753
-2025-11,1139,Colaboração com o Microsoft 365,205
-2025-11,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,253
-2025-11,1167,IA Generativo da Microsoft - Copilot,612
-2025-11,1263,Governo Data-Driven: transformação orientada por dados em governos,85
-2025-11,1304,Visão Geral da IA no Azure,58
-2025-11,1305,Fundamentos da Visão Computacional - IA do Azure,63
-2025-11,1328,Processamento de Linguagem Natural,67
-2025-11,1395,IA - Aplicações no Governo Federal,493
-2025-12,107,Planejamento Estratégico para Organizações Públicas,213
-2025-12,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,12845
-2025-12,270,Governança de Dados,184
-2025-12,290,Proteção de Dados Pessoais no Setor Público,12831
-2025-12,343,Planejamento da Contratação de Soluções de TIC,39
-2025-12,367,Novas Tecnologias para a Transformação Digital,225
-2025-12,373,Liderança e Gestão De Equipes,1332
-2025-12,377,Inteligência Artificial no Contexto do Serviço Público,1035
-2025-12,406,Análise de dados como suporte à tomada de decisão,317
-2025-12,419,Transformação Digital no Serviço Público,272
-2025-12,529,"Como implementar a LGPD: bases, mecanismos e processos",416
-2025-12,534,Internet das coisas (IoT) aplicada para resolução de desafios,145
-2025-12,536,Governança de Dados na Transformação Digital,139
-2025-12,629,Aprendendo com Python,277
-2025-12,724,Gestão de Riscos em Projetos de Transformação Digital,110
-2025-12,787,Gestão de projetos,345
-2025-12,797,Automação de Processos através da RPA para Transformação Digital,236
-2025-12,802,Visualização de Dados Aplicada à Transformação Digital,133
-2025-12,810,Desvendando a Inteligência Artificial na Administração Pública,676
-2025-12,815,Storytelling com Dados para Comunicação Profissional de Sucesso,275
-2025-12,861,Inteligência Artificial para simplificar o dia a dia,757
-2025-12,956,Inovando na Gestão de Projetos,378
-2025-12,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,375
-2025-12,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,167
-2025-12,1088,A História da IA,381
-2025-12,1090,Ética em IA,553
-2025-12,1091,Inteligência Artificial Generativa,655
-2025-12,1139,Colaboração com o Microsoft 365,172
-2025-12,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,168
-2025-12,1167,IA Generativo da Microsoft - Copilot,373
-2025-12,1263,Governo Data-Driven: transformação orientada por dados em governos,89
-2025-12,1304,Visão Geral da IA no Azure,53
-2025-12,1305,Fundamentos da Visão Computacional - IA do Azure,75
-2025-12,1328,Processamento de Linguagem Natural,64
-2025-12,1395,IA - Aplicações no Governo Federal,394
-2026-01,107,Planejamento Estratégico para Organizações Públicas,334
-2026-01,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,1439
-2026-01,270,Governança de Dados,262
-2026-01,290,Proteção de Dados Pessoais no Setor Público,1188
-2026-01,343,Planejamento da Contratação de Soluções de TIC,54
-2026-01,367,Novas Tecnologias para a Transformação Digital,336
-2026-01,373,Liderança e Gestão De Equipes,2109
-2026-01,377,Inteligência Artificial no Contexto do Serviço Público,1031
-2026-01,406,Análise de dados como suporte à tomada de decisão,437
-2026-01,419,Transformação Digital no Serviço Público,136
-2026-01,529,"Como implementar a LGPD: bases, mecanismos e processos",728
-2026-01,534,Internet das coisas (IoT) aplicada para resolução de desafios,184
-2026-01,536,Governança de Dados na Transformação Digital,149
-2026-01,629,Aprendendo com Python,382
-2026-01,724,Gestão de Riscos em Projetos de Transformação Digital,135
-2026-01,787,Gestão de projetos,389
-2026-01,797,Automação de Processos através da RPA para Transformação Digital,340
-2026-01,802,Visualização de Dados Aplicada à Transformação Digital,158
-2026-01,810,Desvendando a Inteligência Artificial na Administração Pública,1001
-2026-01,815,Storytelling com Dados para Comunicação Profissional de Sucesso,418
-2026-01,861,Inteligência Artificial para simplificar o dia a dia,1046
-2026-01,956,Inovando na Gestão de Projetos,469
-2026-01,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,533
-2026-01,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,228
-2026-01,1088,A História da IA,470
-2026-01,1090,Ética em IA,670
-2026-01,1091,Inteligência Artificial Generativa,1187
-2026-01,1139,Colaboração com o Microsoft 365,339
-2026-01,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,213
-2026-01,1167,IA Generativo da Microsoft - Copilot,483
-2026-01,1263,Governo Data-Driven: transformação orientada por dados em governos,81
-2026-01,1304,Visão Geral da IA no Azure,52
-2026-01,1305,Fundamentos da Visão Computacional - IA do Azure,70
-2026-01,1328,Processamento de Linguagem Natural,61
-2026-01,1395,IA - Aplicações no Governo Federal,526
-2026-02,107,Planejamento Estratégico para Organizações Públicas,324
-2026-02,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,1238
-2026-02,270,Governança de Dados,269
-2026-02,290,Proteção de Dados Pessoais no Setor Público,799
-2026-02,343,Planejamento da Contratação de Soluções de TIC,55
-2026-02,367,Novas Tecnologias para a Transformação Digital,222
-2026-02,373,Liderança e Gestão De Equipes,1732
-2026-02,377,Inteligência Artificial no Contexto do Serviço Público,788
-2026-02,406,Análise de dados como suporte à tomada de decisão,350
-2026-02,419,Transformação Digital no Serviço Público,123
-2026-02,529,"Como implementar a LGPD: bases, mecanismos e processos",551
-2026-02,534,Internet das coisas (IoT) aplicada para resolução de desafios,166
-2026-02,536,Governança de Dados na Transformação Digital,130
-2026-02,629,Aprendendo com Python,432
-2026-02,724,Gestão de Riscos em Projetos de Transformação Digital,112
-2026-02,787,Gestão de projetos,318
-2026-02,797,Automação de Processos através da RPA para Transformação Digital,364
-2026-02,802,Visualização de Dados Aplicada à Transformação Digital,120
-2026-02,810,Desvendando a Inteligência Artificial na Administração Pública,750
-2026-02,815,Storytelling com Dados para Comunicação Profissional de Sucesso,322
-2026-02,861,Inteligência Artificial para simplificar o dia a dia,763
-2026-02,956,Inovando na Gestão de Projetos,295
-2026-02,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,598
-2026-02,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,189
-2026-02,1088,A História da IA,358
-2026-02,1090,Ética em IA,673
-2026-02,1091,Inteligência Artificial Generativa,1068
-2026-02,1139,Colaboração com o Microsoft 365,173
-2026-02,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,206
-2026-02,1167,IA Generativo da Microsoft - Copilot,423
-2026-02,1263,Governo Data-Driven: transformação orientada por dados em governos,77
-2026-02,1304,Visão Geral da IA no Azure,39
-2026-02,1305,Fundamentos da Visão Computacional - IA do Azure,56
-2026-02,1328,Processamento de Linguagem Natural,49
-2026-02,1395,IA - Aplicações no Governo Federal,433
-2026-03,107,Planejamento Estratégico para Organizações Públicas,292
-2026-03,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,1339
-2026-03,270,Governança de Dados,306
-2026-03,290,Proteção de Dados Pessoais no Setor Público,951
-2026-03,343,Planejamento da Contratação de Soluções de TIC,75
-2026-03,367,Novas Tecnologias para a Transformação Digital,249
-2026-03,373,Liderança e Gestão De Equipes,1855
-2026-03,377,Inteligência Artificial no Contexto do Serviço Público,826
-2026-03,406,Análise de dados como suporte à tomada de decisão,397
-2026-03,419,Transformação Digital no Serviço Público,207
-2026-03,529,"Como implementar a LGPD: bases, mecanismos e processos",712
-2026-03,534,Internet das coisas (IoT) aplicada para resolução de desafios,172
-2026-03,536,Governança de Dados na Transformação Digital,156
-2026-03,629,Aprendendo com Python,364
-2026-03,724,Gestão de Riscos em Projetos de Transformação Digital,128
-2026-03,787,Gestão de projetos,439
-2026-03,797,Automação de Processos através da RPA para Transformação Digital,374
-2026-03,802,Visualização de Dados Aplicada à Transformação Digital,131
-2026-03,810,Desvendando a Inteligência Artificial na Administração Pública,798
-2026-03,815,Storytelling com Dados para Comunicação Profissional de Sucesso,398
-2026-03,861,Inteligência Artificial para simplificar o dia a dia,798
-2026-03,956,Inovando na Gestão de Projetos,334
-2026-03,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,597
-2026-03,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,186
-2026-03,1088,A História da IA,460
-2026-03,1090,Ética em IA,755
-2026-03,1091,Inteligência Artificial Generativa,1015
-2026-03,1139,Colaboração com o Microsoft 365,176
-2026-03,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,230
-2026-03,1167,IA Generativo da Microsoft - Copilot,556
-2026-03,1263,Governo Data-Driven: transformação orientada por dados em governos,90
-2026-03,1304,Visão Geral da IA no Azure,52
-2026-03,1305,Fundamentos da Visão Computacional - IA do Azure,69
-2026-03,1328,Processamento de Linguagem Natural,55
-2026-03,1395,IA - Aplicações no Governo Federal,482
-2026-04,107,Planejamento Estratégico para Organizações Públicas,236
-2026-04,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,1051
-2026-04,270,Governança de Dados,149
-2026-04,290,Proteção de Dados Pessoais no Setor Público,645
-2026-04,343,Planejamento da Contratação de Soluções de TIC,25
-2026-04,367,Novas Tecnologias para a Transformação Digital,160
-2026-04,373,Liderança e Gestão De Equipes,953
-2026-04,377,Inteligência Artificial no Contexto do Serviço Público,491
-2026-04,406,Análise de dados como suporte à tomada de decisão,246
-2026-04,419,Transformação Digital no Serviço Público,124
-2026-04,529,"Como implementar a LGPD: bases, mecanismos e processos",522
-2026-04,534,Internet das coisas (IoT) aplicada para resolução de desafios,307
-2026-04,536,Governança de Dados na Transformação Digital,86
-2026-04,629,Aprendendo com Python,205
-2026-04,724,Gestão de Riscos em Projetos de Transformação Digital,75
-2026-04,787,Gestão de projetos,277
-2026-04,797,Automação de Processos através da RPA para Transformação Digital,255
-2026-04,802,Visualização de Dados Aplicada à Transformação Digital,77
-2026-04,810,Desvendando a Inteligência Artificial na Administração Pública,458
-2026-04,815,Storytelling com Dados para Comunicação Profissional de Sucesso,258
-2026-04,861,Inteligência Artificial para simplificar o dia a dia,515
-2026-04,956,Inovando na Gestão de Projetos,196
-2026-04,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,320
-2026-04,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,103
-2026-04,1088,A História da IA,266
-2026-04,1090,Ética em IA,500
-2026-04,1091,Inteligência Artificial Generativa,610
-2026-04,1139,Colaboração com o Microsoft 365,106
-2026-04,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,190
-2026-04,1167,IA Generativo da Microsoft - Copilot,233
-2026-04,1263,Governo Data-Driven: transformação orientada por dados em governos,75
-2026-04,1304,Visão Geral da IA no Azure,34
-2026-04,1305,Fundamentos da Visão Computacional - IA do Azure,36
-2026-04,1328,Processamento de Linguagem Natural,47
-2026-04,1395,IA - Aplicações no Governo Federal,266
+2024-08,107,Planejamento Estratégico para Organizações Públicas,108
+2024-08,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,165
+2024-08,270,Governança de Dados,101
+2024-08,290,Proteção de Dados Pessoais no Setor Público,234
+2024-08,343,Planejamento da Contratação de Soluções de TIC,17
+2024-08,367,Novas Tecnologias para a Transformação Digital,33
+2024-08,373,Liderança e Gestão De Equipes,386
+2024-08,377,Inteligência Artificial no Contexto do Serviço Público,178
+2024-08,406,Análise de dados como suporte à tomada de decisão,125
+2024-08,419,Transformação Digital no Serviço Público,51
+2024-08,529,"Como implementar a LGPD: bases, mecanismos e processos",110
+2024-08,534,Internet das coisas (IoT) aplicada para resolução de desafios,31
+2024-08,536,Governança de Dados na Transformação Digital,64
+2024-08,629,Aprendendo com Python,50
+2024-08,724,Gestão de Riscos em Projetos de Transformação Digital,14
+2024-08,787,Gestão de projetos,123
+2024-08,797,Automação de Processos através da RPA para Transformação Digital,18
+2024-08,802,Visualização de Dados Aplicada à Transformação Digital,30
+2024-08,815,Storytelling com Dados para Comunicação Profissional de Sucesso,71
+2024-08,861,Inteligência Artificial para simplificar o dia a dia,134
+2024-08,956,Inovando na Gestão de Projetos,103
+2024-08,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,102
+2024-08,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,68
+2024-08,1088,A História da IA,176
+2024-08,1090,Ética em IA,134
+2024-08,1091,Inteligência Artificial Generativa,171
+2024-08,1139,Colaboração com o Microsoft 365,47
+2024-08,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,78
+2024-08,1167,IA Generativo da Microsoft - Copilot,195
+2024-09,107,Planejamento Estratégico para Organizações Públicas,139
+2024-09,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,147
+2024-09,270,Governança de Dados,81
+2024-09,290,Proteção de Dados Pessoais no Setor Público,147
+2024-09,343,Planejamento da Contratação de Soluções de TIC,15
+2024-09,367,Novas Tecnologias para a Transformação Digital,32
+2024-09,373,Liderança e Gestão De Equipes,418
+2024-09,377,Inteligência Artificial no Contexto do Serviço Público,186
+2024-09,406,Análise de dados como suporte à tomada de decisão,116
+2024-09,419,Transformação Digital no Serviço Público,48
+2024-09,529,"Como implementar a LGPD: bases, mecanismos e processos",87
+2024-09,534,Internet das coisas (IoT) aplicada para resolução de desafios,19
+2024-09,536,Governança de Dados na Transformação Digital,51
+2024-09,629,Aprendendo com Python,46
+2024-09,724,Gestão de Riscos em Projetos de Transformação Digital,11
+2024-09,787,Gestão de projetos,92
+2024-09,797,Automação de Processos através da RPA para Transformação Digital,21
+2024-09,802,Visualização de Dados Aplicada à Transformação Digital,36
+2024-09,815,Storytelling com Dados para Comunicação Profissional de Sucesso,71
+2024-09,861,Inteligência Artificial para simplificar o dia a dia,135
+2024-09,956,Inovando na Gestão de Projetos,89
+2024-09,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,58
+2024-09,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,56
+2024-09,1088,A História da IA,139
+2024-09,1090,Ética em IA,103
+2024-09,1091,Inteligência Artificial Generativa,141
+2024-09,1139,Colaboração com o Microsoft 365,58
+2024-09,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,73
+2024-09,1167,IA Generativo da Microsoft - Copilot,164
+2024-10,107,Planejamento Estratégico para Organizações Públicas,86
+2024-10,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,188
+2024-10,270,Governança de Dados,87
+2024-10,290,Proteção de Dados Pessoais no Setor Público,185
+2024-10,343,Planejamento da Contratação de Soluções de TIC,17
+2024-10,367,Novas Tecnologias para a Transformação Digital,42
+2024-10,373,Liderança e Gestão De Equipes,394
+2024-10,377,Inteligência Artificial no Contexto do Serviço Público,217
+2024-10,406,Análise de dados como suporte à tomada de decisão,110
+2024-10,419,Transformação Digital no Serviço Público,55
+2024-10,529,"Como implementar a LGPD: bases, mecanismos e processos",113
+2024-10,534,Internet das coisas (IoT) aplicada para resolução de desafios,44
+2024-10,536,Governança de Dados na Transformação Digital,63
+2024-10,629,Aprendendo com Python,56
+2024-10,724,Gestão de Riscos em Projetos de Transformação Digital,20
+2024-10,787,Gestão de projetos,97
+2024-10,797,Automação de Processos através da RPA para Transformação Digital,17
+2024-10,802,Visualização de Dados Aplicada à Transformação Digital,32
+2024-10,810,Desvendando a Inteligência Artificial na Administração Pública,397
+2024-10,815,Storytelling com Dados para Comunicação Profissional de Sucesso,86
+2024-10,861,Inteligência Artificial para simplificar o dia a dia,211
+2024-10,956,Inovando na Gestão de Projetos,89
+2024-10,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,58
+2024-10,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,45
+2024-10,1088,A História da IA,183
+2024-10,1090,Ética em IA,182
+2024-10,1091,Inteligência Artificial Generativa,269
+2024-10,1139,Colaboração com o Microsoft 365,58
+2024-10,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,61
+2024-10,1167,IA Generativo da Microsoft - Copilot,180
+2024-10,1263,Governo Data-Driven: transformação orientada por dados em governos,35
+2024-11,107,Planejamento Estratégico para Organizações Públicas,71
+2024-11,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,132
+2024-11,270,Governança de Dados,59
+2024-11,290,Proteção de Dados Pessoais no Setor Público,181
+2024-11,343,Planejamento da Contratação de Soluções de TIC,10
+2024-11,367,Novas Tecnologias para a Transformação Digital,115
+2024-11,373,Liderança e Gestão De Equipes,291
+2024-11,377,Inteligência Artificial no Contexto do Serviço Público,278
+2024-11,406,Análise de dados como suporte à tomada de decisão,82
+2024-11,419,Transformação Digital no Serviço Público,42
+2024-11,529,"Como implementar a LGPD: bases, mecanismos e processos",105
+2024-11,534,Internet das coisas (IoT) aplicada para resolução de desafios,84
+2024-11,536,Governança de Dados na Transformação Digital,43
+2024-11,629,Aprendendo com Python,46
+2024-11,724,Gestão de Riscos em Projetos de Transformação Digital,22
+2024-11,787,Gestão de projetos,65
+2024-11,797,Automação de Processos através da RPA para Transformação Digital,34
+2024-11,802,Visualização de Dados Aplicada à Transformação Digital,19
+2024-11,810,Desvendando a Inteligência Artificial na Administração Pública,363
+2024-11,815,Storytelling com Dados para Comunicação Profissional de Sucesso,76
+2024-11,861,Inteligência Artificial para simplificar o dia a dia,225
+2024-11,956,Inovando na Gestão de Projetos,96
+2024-11,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,63
+2024-11,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,47
+2024-11,1088,A História da IA,174
+2024-11,1090,Ética em IA,198
+2024-11,1091,Inteligência Artificial Generativa,309
+2024-11,1139,Colaboração com o Microsoft 365,35
+2024-11,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,50
+2024-11,1167,IA Generativo da Microsoft - Copilot,211
+2024-11,1263,Governo Data-Driven: transformação orientada por dados em governos,12
+2024-12,107,Planejamento Estratégico para Organizações Públicas,81
+2024-12,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,112
+2024-12,270,Governança de Dados,58
+2024-12,290,Proteção de Dados Pessoais no Setor Público,107
+2024-12,343,Planejamento da Contratação de Soluções de TIC,9
+2024-12,367,Novas Tecnologias para a Transformação Digital,147
+2024-12,373,Liderança e Gestão De Equipes,275
+2024-12,377,Inteligência Artificial no Contexto do Serviço Público,227
+2024-12,406,Análise de dados como suporte à tomada de decisão,75
+2024-12,419,Transformação Digital no Serviço Público,50
+2024-12,529,"Como implementar a LGPD: bases, mecanismos e processos",83
+2024-12,534,Internet das coisas (IoT) aplicada para resolução de desafios,68
+2024-12,536,Governança de Dados na Transformação Digital,36
+2024-12,629,Aprendendo com Python,38
+2024-12,724,Gestão de Riscos em Projetos de Transformação Digital,14
+2024-12,787,Gestão de projetos,70
+2024-12,797,Automação de Processos através da RPA para Transformação Digital,25
+2024-12,802,Visualização de Dados Aplicada à Transformação Digital,30
+2024-12,810,Desvendando a Inteligência Artificial na Administração Pública,357
+2024-12,815,Storytelling com Dados para Comunicação Profissional de Sucesso,63
+2024-12,861,Inteligência Artificial para simplificar o dia a dia,211
+2024-12,956,Inovando na Gestão de Projetos,89
+2024-12,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,47
+2024-12,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,37
+2024-12,1088,A História da IA,155
+2024-12,1090,Ética em IA,194
+2024-12,1091,Inteligência Artificial Generativa,203
+2024-12,1139,Colaboração com o Microsoft 365,40
+2024-12,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,56
+2024-12,1167,IA Generativo da Microsoft - Copilot,158
+2024-12,1263,Governo Data-Driven: transformação orientada por dados em governos,23
+2024-12,1304,Visão Geral da IA no Azure,8
+2024-12,1305,Fundamentos da Visão Computacional - IA do Azure,11
+2025-01,107,Planejamento Estratégico para Organizações Públicas,119
+2025-01,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,163
+2025-01,270,Governança de Dados,98
+2025-01,290,Proteção de Dados Pessoais no Setor Público,166
+2025-01,343,Planejamento da Contratação de Soluções de TIC,16
+2025-01,367,Novas Tecnologias para a Transformação Digital,201
+2025-01,373,Liderança e Gestão De Equipes,392
+2025-01,377,Inteligência Artificial no Contexto do Serviço Público,411
+2025-01,406,Análise de dados como suporte à tomada de decisão,125
+2025-01,419,Transformação Digital no Serviço Público,51
+2025-01,529,"Como implementar a LGPD: bases, mecanismos e processos",135
+2025-01,534,Internet das coisas (IoT) aplicada para resolução de desafios,107
+2025-01,536,Governança de Dados na Transformação Digital,45
+2025-01,629,Aprendendo com Python,66
+2025-01,724,Gestão de Riscos em Projetos de Transformação Digital,39
+2025-01,787,Gestão de projetos,70
+2025-01,797,Automação de Processos através da RPA para Transformação Digital,30
+2025-01,802,Visualização de Dados Aplicada à Transformação Digital,31
+2025-01,810,Desvendando a Inteligência Artificial na Administração Pública,570
+2025-01,815,Storytelling com Dados para Comunicação Profissional de Sucesso,108
+2025-01,861,Inteligência Artificial para simplificar o dia a dia,283
+2025-01,956,Inovando na Gestão de Projetos,135
+2025-01,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,57
+2025-01,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,77
+2025-01,1088,A História da IA,224
+2025-01,1090,Ética em IA,211
+2025-01,1091,Inteligência Artificial Generativa,393
+2025-01,1139,Colaboração com o Microsoft 365,37
+2025-01,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,80
+2025-01,1167,IA Generativo da Microsoft - Copilot,272
+2025-01,1263,Governo Data-Driven: transformação orientada por dados em governos,12
+2025-01,1304,Visão Geral da IA no Azure,36
+2025-01,1305,Fundamentos da Visão Computacional - IA do Azure,72
+2025-01,1328,Processamento de Linguagem Natural,49
+2025-02,107,Planejamento Estratégico para Organizações Públicas,109
+2025-02,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,148
+2025-02,270,Governança de Dados,57
+2025-02,290,Proteção de Dados Pessoais no Setor Público,174
+2025-02,343,Planejamento da Contratação de Soluções de TIC,11
+2025-02,367,Novas Tecnologias para a Transformação Digital,205
+2025-02,373,Liderança e Gestão De Equipes,337
+2025-02,377,Inteligência Artificial no Contexto do Serviço Público,404
+2025-02,406,Análise de dados como suporte à tomada de decisão,83
+2025-02,419,Transformação Digital no Serviço Público,121
+2025-02,529,"Como implementar a LGPD: bases, mecanismos e processos",96
+2025-02,534,Internet das coisas (IoT) aplicada para resolução de desafios,89
+2025-02,536,Governança de Dados na Transformação Digital,49
+2025-02,629,Aprendendo com Python,40
+2025-02,724,Gestão de Riscos em Projetos de Transformação Digital,43
+2025-02,787,Gestão de projetos,49
+2025-02,797,Automação de Processos através da RPA para Transformação Digital,28
+2025-02,802,Visualização de Dados Aplicada à Transformação Digital,43
+2025-02,810,Desvendando a Inteligência Artificial na Administração Pública,492
+2025-02,815,Storytelling com Dados para Comunicação Profissional de Sucesso,98
+2025-02,861,Inteligência Artificial para simplificar o dia a dia,283
+2025-02,956,Inovando na Gestão de Projetos,94
+2025-02,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,48
+2025-02,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,47
+2025-02,1088,A História da IA,196
+2025-02,1090,Ética em IA,165
+2025-02,1091,Inteligência Artificial Generativa,264
+2025-02,1139,Colaboração com o Microsoft 365,42
+2025-02,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,66
+2025-02,1167,IA Generativo da Microsoft - Copilot,209
+2025-02,1263,Governo Data-Driven: transformação orientada por dados em governos,7
+2025-02,1304,Visão Geral da IA no Azure,24
+2025-02,1305,Fundamentos da Visão Computacional - IA do Azure,28
+2025-02,1328,Processamento de Linguagem Natural,50
+2025-03,107,Planejamento Estratégico para Organizações Públicas,110
+2025-03,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,178
+2025-03,270,Governança de Dados,50
+2025-03,290,Proteção de Dados Pessoais no Setor Público,118
+2025-03,343,Planejamento da Contratação de Soluções de TIC,14
+2025-03,367,Novas Tecnologias para a Transformação Digital,189
+2025-03,373,Liderança e Gestão De Equipes,339
+2025-03,377,Inteligência Artificial no Contexto do Serviço Público,401
+2025-03,406,Análise de dados como suporte à tomada de decisão,121
+2025-03,419,Transformação Digital no Serviço Público,85
+2025-03,529,"Como implementar a LGPD: bases, mecanismos e processos",100
+2025-03,534,Internet das coisas (IoT) aplicada para resolução de desafios,91
+2025-03,536,Governança de Dados na Transformação Digital,55
+2025-03,629,Aprendendo com Python,43
+2025-03,724,Gestão de Riscos em Projetos de Transformação Digital,39
+2025-03,787,Gestão de projetos,46
+2025-03,797,Automação de Processos através da RPA para Transformação Digital,29
+2025-03,802,Visualização de Dados Aplicada à Transformação Digital,46
+2025-03,810,Desvendando a Inteligência Artificial na Administração Pública,396
+2025-03,815,Storytelling com Dados para Comunicação Profissional de Sucesso,117
+2025-03,861,Inteligência Artificial para simplificar o dia a dia,319
+2025-03,956,Inovando na Gestão de Projetos,87
+2025-03,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,46
+2025-03,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,49
+2025-03,1088,A História da IA,234
+2025-03,1090,Ética em IA,226
+2025-03,1091,Inteligência Artificial Generativa,376
+2025-03,1139,Colaboração com o Microsoft 365,90
+2025-03,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,41
+2025-03,1167,IA Generativo da Microsoft - Copilot,217
+2025-03,1263,Governo Data-Driven: transformação orientada por dados em governos,41
+2025-03,1304,Visão Geral da IA no Azure,20
+2025-03,1305,Fundamentos da Visão Computacional - IA do Azure,26
+2025-03,1328,Processamento de Linguagem Natural,40
+2025-04,107,Planejamento Estratégico para Organizações Públicas,114
+2025-04,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,159
+2025-04,270,Governança de Dados,74
+2025-04,290,Proteção de Dados Pessoais no Setor Público,115
+2025-04,343,Planejamento da Contratação de Soluções de TIC,9
+2025-04,367,Novas Tecnologias para a Transformação Digital,143
+2025-04,373,Liderança e Gestão De Equipes,426
+2025-04,377,Inteligência Artificial no Contexto do Serviço Público,411
+2025-04,406,Análise de dados como suporte à tomada de decisão,101
+2025-04,419,Transformação Digital no Serviço Público,50
+2025-04,529,"Como implementar a LGPD: bases, mecanismos e processos",98
+2025-04,534,Internet das coisas (IoT) aplicada para resolução de desafios,104
+2025-04,536,Governança de Dados na Transformação Digital,49
+2025-04,629,Aprendendo com Python,40
+2025-04,724,Gestão de Riscos em Projetos de Transformação Digital,45
+2025-04,787,Gestão de projetos,54
+2025-04,797,Automação de Processos através da RPA para Transformação Digital,24
+2025-04,802,Visualização de Dados Aplicada à Transformação Digital,33
+2025-04,810,Desvendando a Inteligência Artificial na Administração Pública,374
+2025-04,815,Storytelling com Dados para Comunicação Profissional de Sucesso,107
+2025-04,861,Inteligência Artificial para simplificar o dia a dia,338
+2025-04,956,Inovando na Gestão de Projetos,77
+2025-04,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,41
+2025-04,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,44
+2025-04,1088,A História da IA,226
+2025-04,1090,Ética em IA,213
+2025-04,1091,Inteligência Artificial Generativa,358
+2025-04,1139,Colaboração com o Microsoft 365,72
+2025-04,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,35
+2025-04,1167,IA Generativo da Microsoft - Copilot,213
+2025-04,1263,Governo Data-Driven: transformação orientada por dados em governos,40
+2025-04,1304,Visão Geral da IA no Azure,11
+2025-04,1305,Fundamentos da Visão Computacional - IA do Azure,13
+2025-04,1328,Processamento de Linguagem Natural,23
+2025-05,107,Planejamento Estratégico para Organizações Públicas,107
+2025-05,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,371
+2025-05,270,Governança de Dados,71
+2025-05,290,Proteção de Dados Pessoais no Setor Público,215
+2025-05,343,Planejamento da Contratação de Soluções de TIC,16
+2025-05,367,Novas Tecnologias para a Transformação Digital,120
+2025-05,373,Liderança e Gestão De Equipes,401
+2025-05,377,Inteligência Artificial no Contexto do Serviço Público,521
+2025-05,406,Análise de dados como suporte à tomada de decisão,315
+2025-05,419,Transformação Digital no Serviço Público,122
+2025-05,529,"Como implementar a LGPD: bases, mecanismos e processos",106
+2025-05,534,Internet das coisas (IoT) aplicada para resolução de desafios,106
+2025-05,536,Governança de Dados na Transformação Digital,53
+2025-05,629,Aprendendo com Python,64
+2025-05,724,Gestão de Riscos em Projetos de Transformação Digital,42
+2025-05,787,Gestão de projetos,46
+2025-05,797,Automação de Processos através da RPA para Transformação Digital,4115
+2025-05,802,Visualização de Dados Aplicada à Transformação Digital,41
+2025-05,810,Desvendando a Inteligência Artificial na Administração Pública,542
+2025-05,815,Storytelling com Dados para Comunicação Profissional de Sucesso,158
+2025-05,861,Inteligência Artificial para simplificar o dia a dia,315
+2025-05,956,Inovando na Gestão de Projetos,93
+2025-05,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,52
+2025-05,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,60
+2025-05,1088,A História da IA,248
+2025-05,1090,Ética em IA,381
+2025-05,1091,Inteligência Artificial Generativa,374
+2025-05,1139,Colaboração com o Microsoft 365,122
+2025-05,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,48
+2025-05,1167,IA Generativo da Microsoft - Copilot,293
+2025-05,1263,Governo Data-Driven: transformação orientada por dados em governos,133
+2025-05,1304,Visão Geral da IA no Azure,14
+2025-05,1305,Fundamentos da Visão Computacional - IA do Azure,17
+2025-05,1328,Processamento de Linguagem Natural,24
+2025-06,107,Planejamento Estratégico para Organizações Públicas,226
+2025-06,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,566
+2025-06,270,Governança de Dados,73
+2025-06,290,Proteção de Dados Pessoais no Setor Público,157
+2025-06,343,Planejamento da Contratação de Soluções de TIC,16
+2025-06,367,Novas Tecnologias para a Transformação Digital,137
+2025-06,373,Liderança e Gestão De Equipes,386
+2025-06,377,Inteligência Artificial no Contexto do Serviço Público,462
+2025-06,406,Análise de dados como suporte à tomada de decisão,167
+2025-06,419,Transformação Digital no Serviço Público,64
+2025-06,529,"Como implementar a LGPD: bases, mecanismos e processos",103
+2025-06,534,Internet das coisas (IoT) aplicada para resolução de desafios,113
+2025-06,536,Governança de Dados na Transformação Digital,44
+2025-06,629,Aprendendo com Python,64
+2025-06,724,Gestão de Riscos em Projetos de Transformação Digital,43
+2025-06,787,Gestão de projetos,51
+2025-06,797,Automação de Processos através da RPA para Transformação Digital,3424
+2025-06,802,Visualização de Dados Aplicada à Transformação Digital,43
+2025-06,810,Desvendando a Inteligência Artificial na Administração Pública,424
+2025-06,815,Storytelling com Dados para Comunicação Profissional de Sucesso,123
+2025-06,861,Inteligência Artificial para simplificar o dia a dia,290
+2025-06,956,Inovando na Gestão de Projetos,72
+2025-06,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,73
+2025-06,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,55
+2025-06,1088,A História da IA,351
+2025-06,1090,Ética em IA,291
+2025-06,1091,Inteligência Artificial Generativa,343
+2025-06,1139,Colaboração com o Microsoft 365,88
+2025-06,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,72
+2025-06,1167,IA Generativo da Microsoft - Copilot,273
+2025-06,1263,Governo Data-Driven: transformação orientada por dados em governos,76
+2025-06,1304,Visão Geral da IA no Azure,19
+2025-06,1305,Fundamentos da Visão Computacional - IA do Azure,29
+2025-06,1328,Processamento de Linguagem Natural,23
+2025-07,107,Planejamento Estratégico para Organizações Públicas,132
+2025-07,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,239
+2025-07,270,Governança de Dados,56
+2025-07,290,Proteção de Dados Pessoais no Setor Público,219
+2025-07,343,Planejamento da Contratação de Soluções de TIC,19
+2025-07,367,Novas Tecnologias para a Transformação Digital,139
+2025-07,373,Liderança e Gestão De Equipes,338
+2025-07,377,Inteligência Artificial no Contexto do Serviço Público,614
+2025-07,406,Análise de dados como suporte à tomada de decisão,144
+2025-07,419,Transformação Digital no Serviço Público,56
+2025-07,529,"Como implementar a LGPD: bases, mecanismos e processos",135
+2025-07,534,Internet das coisas (IoT) aplicada para resolução de desafios,115
+2025-07,536,Governança de Dados na Transformação Digital,40
+2025-07,629,Aprendendo com Python,63
+2025-07,724,Gestão de Riscos em Projetos de Transformação Digital,34
+2025-07,787,Gestão de projetos,71
+2025-07,797,Automação de Processos através da RPA para Transformação Digital,1167
+2025-07,802,Visualização de Dados Aplicada à Transformação Digital,36
+2025-07,810,Desvendando a Inteligência Artificial na Administração Pública,449
+2025-07,815,Storytelling com Dados para Comunicação Profissional de Sucesso,126
+2025-07,861,Inteligência Artificial para simplificar o dia a dia,268
+2025-07,956,Inovando na Gestão de Projetos,97
+2025-07,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,195
+2025-07,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,64
+2025-07,1088,A História da IA,371
+2025-07,1090,Ética em IA,434
+2025-07,1091,Inteligência Artificial Generativa,422
+2025-07,1139,Colaboração com o Microsoft 365,46
+2025-07,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,78
+2025-07,1167,IA Generativo da Microsoft - Copilot,264
+2025-07,1263,Governo Data-Driven: transformação orientada por dados em governos,160
+2025-07,1304,Visão Geral da IA no Azure,18
+2025-07,1305,Fundamentos da Visão Computacional - IA do Azure,30
+2025-07,1328,Processamento de Linguagem Natural,24
+2025-07,1395,IA - Aplicações no Governo Federal,393
+2025-08,107,Planejamento Estratégico para Organizações Públicas,240
+2025-08,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,307
+2025-08,270,Governança de Dados,69
+2025-08,290,Proteção de Dados Pessoais no Setor Público,156
+2025-08,343,Planejamento da Contratação de Soluções de TIC,27
+2025-08,367,Novas Tecnologias para a Transformação Digital,139
+2025-08,373,Liderança e Gestão De Equipes,396
+2025-08,377,Inteligência Artificial no Contexto do Serviço Público,507
+2025-08,406,Análise de dados como suporte à tomada de decisão,144
+2025-08,419,Transformação Digital no Serviço Público,69
+2025-08,529,"Como implementar a LGPD: bases, mecanismos e processos",127
+2025-08,534,Internet das coisas (IoT) aplicada para resolução de desafios,97
+2025-08,536,Governança de Dados na Transformação Digital,43
+2025-08,629,Aprendendo com Python,62
+2025-08,724,Gestão de Riscos em Projetos de Transformação Digital,35
+2025-08,787,Gestão de projetos,56
+2025-08,797,Automação de Processos através da RPA para Transformação Digital,479
+2025-08,802,Visualização de Dados Aplicada à Transformação Digital,49
+2025-08,810,Desvendando a Inteligência Artificial na Administração Pública,467
+2025-08,815,Storytelling com Dados para Comunicação Profissional de Sucesso,116
+2025-08,861,Inteligência Artificial para simplificar o dia a dia,267
+2025-08,956,Inovando na Gestão de Projetos,92
+2025-08,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,209
+2025-08,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,47
+2025-08,1088,A História da IA,272
+2025-08,1090,Ética em IA,392
+2025-08,1091,Inteligência Artificial Generativa,470
+2025-08,1139,Colaboração com o Microsoft 365,54
+2025-08,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,61
+2025-08,1167,IA Generativo da Microsoft - Copilot,263
+2025-08,1263,Governo Data-Driven: transformação orientada por dados em governos,72
+2025-08,1304,Visão Geral da IA no Azure,20
+2025-08,1305,Fundamentos da Visão Computacional - IA do Azure,26
+2025-08,1328,Processamento de Linguagem Natural,27
+2025-08,1395,IA - Aplicações no Governo Federal,537
+2025-09,107,Planejamento Estratégico para Organizações Públicas,95
+2025-09,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,419
+2025-09,270,Governança de Dados,62
+2025-09,290,Proteção de Dados Pessoais no Setor Público,823
+2025-09,343,Planejamento da Contratação de Soluções de TIC,15
+2025-09,367,Novas Tecnologias para a Transformação Digital,119
+2025-09,373,Liderança e Gestão De Equipes,528
+2025-09,377,Inteligência Artificial no Contexto do Serviço Público,446
+2025-09,406,Análise de dados como suporte à tomada de decisão,116
+2025-09,419,Transformação Digital no Serviço Público,48
+2025-09,529,"Como implementar a LGPD: bases, mecanismos e processos",134
+2025-09,534,Internet das coisas (IoT) aplicada para resolução de desafios,75
+2025-09,536,Governança de Dados na Transformação Digital,48
+2025-09,629,Aprendendo com Python,51
+2025-09,724,Gestão de Riscos em Projetos de Transformação Digital,27
+2025-09,787,Gestão de projetos,43
+2025-09,797,Automação de Processos através da RPA para Transformação Digital,245
+2025-09,802,Visualização de Dados Aplicada à Transformação Digital,48
+2025-09,810,Desvendando a Inteligência Artificial na Administração Pública,347
+2025-09,815,Storytelling com Dados para Comunicação Profissional de Sucesso,114
+2025-09,861,Inteligência Artificial para simplificar o dia a dia,237
+2025-09,956,Inovando na Gestão de Projetos,72
+2025-09,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,173
+2025-09,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,49
+2025-09,1088,A História da IA,331
+2025-09,1090,Ética em IA,374
+2025-09,1091,Inteligência Artificial Generativa,402
+2025-09,1139,Colaboração com o Microsoft 365,54
+2025-09,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,54
+2025-09,1167,IA Generativo da Microsoft - Copilot,236
+2025-09,1263,Governo Data-Driven: transformação orientada por dados em governos,59
+2025-09,1304,Visão Geral da IA no Azure,17
+2025-09,1305,Fundamentos da Visão Computacional - IA do Azure,25
+2025-09,1328,Processamento de Linguagem Natural,25
+2025-09,1395,IA - Aplicações no Governo Federal,303
+2025-10,107,Planejamento Estratégico para Organizações Públicas,112
+2025-10,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,521
+2025-10,270,Governança de Dados,58
+2025-10,290,Proteção de Dados Pessoais no Setor Público,1138
+2025-10,343,Planejamento da Contratação de Soluções de TIC,22
+2025-10,367,Novas Tecnologias para a Transformação Digital,115
+2025-10,373,Liderança e Gestão De Equipes,584
+2025-10,377,Inteligência Artificial no Contexto do Serviço Público,366
+2025-10,406,Análise de dados como suporte à tomada de decisão,120
+2025-10,419,Transformação Digital no Serviço Público,68
+2025-10,529,"Como implementar a LGPD: bases, mecanismos e processos",148
+2025-10,534,Internet das coisas (IoT) aplicada para resolução de desafios,107
+2025-10,536,Governança de Dados na Transformação Digital,47
+2025-10,629,Aprendendo com Python,71
+2025-10,724,Gestão de Riscos em Projetos de Transformação Digital,37
+2025-10,787,Gestão de projetos,66
+2025-10,797,Automação de Processos através da RPA para Transformação Digital,194
+2025-10,802,Visualização de Dados Aplicada à Transformação Digital,42
+2025-10,810,Desvendando a Inteligência Artificial na Administração Pública,371
+2025-10,815,Storytelling com Dados para Comunicação Profissional de Sucesso,92
+2025-10,861,Inteligência Artificial para simplificar o dia a dia,321
+2025-10,956,Inovando na Gestão de Projetos,90
+2025-10,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,201
+2025-10,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,55
+2025-10,1088,A História da IA,561
+2025-10,1090,Ética em IA,254
+2025-10,1091,Inteligência Artificial Generativa,417
+2025-10,1139,Colaboração com o Microsoft 365,80
+2025-10,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,71
+2025-10,1167,IA Generativo da Microsoft - Copilot,549
+2025-10,1263,Governo Data-Driven: transformação orientada por dados em governos,37
+2025-10,1304,Visão Geral da IA no Azure,18
+2025-10,1305,Fundamentos da Visão Computacional - IA do Azure,18
+2025-10,1328,Processamento de Linguagem Natural,23
+2025-10,1395,IA - Aplicações no Governo Federal,237
+2025-11,107,Planejamento Estratégico para Organizações Públicas,91
+2025-11,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,709
+2025-11,270,Governança de Dados,60
+2025-11,290,Proteção de Dados Pessoais no Setor Público,1006
+2025-11,343,Planejamento da Contratação de Soluções de TIC,27
+2025-11,367,Novas Tecnologias para a Transformação Digital,118
+2025-11,373,Liderança e Gestão De Equipes,491
+2025-11,377,Inteligência Artificial no Contexto do Serviço Público,375
+2025-11,406,Análise de dados como suporte à tomada de decisão,124
+2025-11,419,Transformação Digital no Serviço Público,66
+2025-11,529,"Como implementar a LGPD: bases, mecanismos e processos",170
+2025-11,534,Internet das coisas (IoT) aplicada para resolução de desafios,80
+2025-11,536,Governança de Dados na Transformação Digital,52
+2025-11,629,Aprendendo com Python,41
+2025-11,724,Gestão de Riscos em Projetos de Transformação Digital,40
+2025-11,787,Gestão de projetos,42
+2025-11,797,Automação de Processos através da RPA para Transformação Digital,136
+2025-11,802,Visualização de Dados Aplicada à Transformação Digital,29
+2025-11,810,Desvendando a Inteligência Artificial na Administração Pública,323
+2025-11,815,Storytelling com Dados para Comunicação Profissional de Sucesso,91
+2025-11,861,Inteligência Artificial para simplificar o dia a dia,326
+2025-11,956,Inovando na Gestão de Projetos,74
+2025-11,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,158
+2025-11,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,55
+2025-11,1088,A História da IA,416
+2025-11,1090,Ética em IA,270
+2025-11,1091,Inteligência Artificial Generativa,355
+2025-11,1139,Colaboração com o Microsoft 365,72
+2025-11,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,66
+2025-11,1167,IA Generativo da Microsoft - Copilot,381
+2025-11,1263,Governo Data-Driven: transformação orientada por dados em governos,28
+2025-11,1304,Visão Geral da IA no Azure,14
+2025-11,1305,Fundamentos da Visão Computacional - IA do Azure,10
+2025-11,1328,Processamento de Linguagem Natural,12
+2025-11,1395,IA - Aplicações no Governo Federal,251
+2025-12,107,Planejamento Estratégico para Organizações Públicas,90
+2025-12,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,390
+2025-12,270,Governança de Dados,57
+2025-12,290,Proteção de Dados Pessoais no Setor Público,582
+2025-12,343,Planejamento da Contratação de Soluções de TIC,15
+2025-12,367,Novas Tecnologias para a Transformação Digital,123
+2025-12,373,Liderança e Gestão De Equipes,457
+2025-12,377,Inteligência Artificial no Contexto do Serviço Público,342
+2025-12,406,Análise de dados como suporte à tomada de decisão,126
+2025-12,419,Transformação Digital no Serviço Público,67
+2025-12,529,"Como implementar a LGPD: bases, mecanismos e processos",123
+2025-12,534,Internet das coisas (IoT) aplicada para resolução de desafios,63
+2025-12,536,Governança de Dados na Transformação Digital,50
+2025-12,629,Aprendendo com Python,56
+2025-12,724,Gestão de Riscos em Projetos de Transformação Digital,40
+2025-12,787,Gestão de projetos,58
+2025-12,797,Automação de Processos através da RPA para Transformação Digital,134
+2025-12,802,Visualização de Dados Aplicada à Transformação Digital,40
+2025-12,810,Desvendando a Inteligência Artificial na Administração Pública,345
+2025-12,815,Storytelling com Dados para Comunicação Profissional de Sucesso,72
+2025-12,861,Inteligência Artificial para simplificar o dia a dia,311
+2025-12,956,Inovando na Gestão de Projetos,73
+2025-12,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,187
+2025-12,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,44
+2025-12,1088,A História da IA,195
+2025-12,1090,Ética em IA,248
+2025-12,1091,Inteligência Artificial Generativa,334
+2025-12,1139,Colaboração com o Microsoft 365,102
+2025-12,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,44
+2025-12,1167,IA Generativo da Microsoft - Copilot,202
+2025-12,1263,Governo Data-Driven: transformação orientada por dados em governos,32
+2025-12,1304,Visão Geral da IA no Azure,14
+2025-12,1305,Fundamentos da Visão Computacional - IA do Azure,22
+2025-12,1328,Processamento de Linguagem Natural,10
+2025-12,1395,IA - Aplicações no Governo Federal,247
+2026-01,107,Planejamento Estratégico para Organizações Públicas,135
+2026-01,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,409
+2026-01,270,Governança de Dados,103
+2026-01,290,Proteção de Dados Pessoais no Setor Público,375
+2026-01,343,Planejamento da Contratação de Soluções de TIC,26
+2026-01,367,Novas Tecnologias para a Transformação Digital,190
+2026-01,373,Liderança e Gestão De Equipes,923
+2026-01,377,Inteligência Artificial no Contexto do Serviço Público,528
+2026-01,406,Análise de dados como suporte à tomada de decisão,124
+2026-01,419,Transformação Digital no Serviço Público,66
+2026-01,529,"Como implementar a LGPD: bases, mecanismos e processos",228
+2026-01,534,Internet das coisas (IoT) aplicada para resolução de desafios,111
+2026-01,536,Governança de Dados na Transformação Digital,63
+2026-01,629,Aprendendo com Python,74
+2026-01,724,Gestão de Riscos em Projetos de Transformação Digital,61
+2026-01,787,Gestão de projetos,68
+2026-01,797,Automação de Processos através da RPA para Transformação Digital,223
+2026-01,802,Visualização de Dados Aplicada à Transformação Digital,51
+2026-01,810,Desvendando a Inteligência Artificial na Administração Pública,508
+2026-01,815,Storytelling com Dados para Comunicação Profissional de Sucesso,135
+2026-01,861,Inteligência Artificial para simplificar o dia a dia,381
+2026-01,956,Inovando na Gestão de Projetos,116
+2026-01,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,349
+2026-01,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,57
+2026-01,1088,A História da IA,223
+2026-01,1090,Ética em IA,317
+2026-01,1091,Inteligência Artificial Generativa,544
+2026-01,1139,Colaboração com o Microsoft 365,160
+2026-01,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,55
+2026-01,1167,IA Generativo da Microsoft - Copilot,234
+2026-01,1263,Governo Data-Driven: transformação orientada por dados em governos,40
+2026-01,1304,Visão Geral da IA no Azure,12
+2026-01,1305,Fundamentos da Visão Computacional - IA do Azure,13
+2026-01,1328,Processamento de Linguagem Natural,19
+2026-01,1395,IA - Aplicações no Governo Federal,344
+2026-02,107,Planejamento Estratégico para Organizações Públicas,108
+2026-02,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,326
+2026-02,270,Governança de Dados,108
+2026-02,290,Proteção de Dados Pessoais no Setor Público,259
+2026-02,343,Planejamento da Contratação de Soluções de TIC,33
+2026-02,367,Novas Tecnologias para a Transformação Digital,110
+2026-02,373,Liderança e Gestão De Equipes,571
+2026-02,377,Inteligência Artificial no Contexto do Serviço Público,340
+2026-02,406,Análise de dados como suporte à tomada de decisão,113
+2026-02,419,Transformação Digital no Serviço Público,54
+2026-02,529,"Como implementar a LGPD: bases, mecanismos e processos",164
+2026-02,534,Internet das coisas (IoT) aplicada para resolução de desafios,65
+2026-02,536,Governança de Dados na Transformação Digital,59
+2026-02,629,Aprendendo com Python,69
+2026-02,724,Gestão de Riscos em Projetos de Transformação Digital,42
+2026-02,787,Gestão de projetos,75
+2026-02,797,Automação de Processos através da RPA para Transformação Digital,280
+2026-02,802,Visualização de Dados Aplicada à Transformação Digital,45
+2026-02,810,Desvendando a Inteligência Artificial na Administração Pública,341
+2026-02,815,Storytelling com Dados para Comunicação Profissional de Sucesso,92
+2026-02,861,Inteligência Artificial para simplificar o dia a dia,277
+2026-02,956,Inovando na Gestão de Projetos,70
+2026-02,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,444
+2026-02,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,56
+2026-02,1088,A História da IA,142
+2026-02,1090,Ética em IA,227
+2026-02,1091,Inteligência Artificial Generativa,590
+2026-02,1139,Colaboração com o Microsoft 365,100
+2026-02,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,53
+2026-02,1167,IA Generativo da Microsoft - Copilot,158
+2026-02,1263,Governo Data-Driven: transformação orientada por dados em governos,36
+2026-02,1304,Visão Geral da IA no Azure,8
+2026-02,1305,Fundamentos da Visão Computacional - IA do Azure,9
+2026-02,1328,Processamento de Linguagem Natural,6
+2026-02,1395,IA - Aplicações no Governo Federal,259
+2026-03,107,Planejamento Estratégico para Organizações Públicas,101
+2026-03,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,404
+2026-03,270,Governança de Dados,106
+2026-03,290,Proteção de Dados Pessoais no Setor Público,297
+2026-03,343,Planejamento da Contratação de Soluções de TIC,27
+2026-03,367,Novas Tecnologias para a Transformação Digital,106
+2026-03,373,Liderança e Gestão De Equipes,448
+2026-03,377,Inteligência Artificial no Contexto do Serviço Público,367
+2026-03,406,Análise de dados como suporte à tomada de decisão,112
+2026-03,419,Transformação Digital no Serviço Público,60
+2026-03,529,"Como implementar a LGPD: bases, mecanismos e processos",203
+2026-03,534,Internet das coisas (IoT) aplicada para resolução de desafios,69
+2026-03,536,Governança de Dados na Transformação Digital,75
+2026-03,629,Aprendendo com Python,61
+2026-03,724,Gestão de Riscos em Projetos de Transformação Digital,41
+2026-03,787,Gestão de projetos,77
+2026-03,797,Automação de Processos através da RPA para Transformação Digital,279
+2026-03,802,Visualização de Dados Aplicada à Transformação Digital,38
+2026-03,810,Desvendando a Inteligência Artificial na Administração Pública,344
+2026-03,815,Storytelling com Dados para Comunicação Profissional de Sucesso,88
+2026-03,861,Inteligência Artificial para simplificar o dia a dia,289
+2026-03,956,Inovando na Gestão de Projetos,68
+2026-03,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,397
+2026-03,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,40
+2026-03,1088,A História da IA,247
+2026-03,1090,Ética em IA,289
+2026-03,1091,Inteligência Artificial Generativa,574
+2026-03,1139,Colaboração com o Microsoft 365,83
+2026-03,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,75
+2026-03,1167,IA Generativo da Microsoft - Copilot,203
+2026-03,1263,Governo Data-Driven: transformação orientada por dados em governos,43
+2026-03,1304,Visão Geral da IA no Azure,12
+2026-03,1305,Fundamentos da Visão Computacional - IA do Azure,15
+2026-03,1328,Processamento de Linguagem Natural,11
+2026-03,1395,IA - Aplicações no Governo Federal,277
+2026-04,107,Planejamento Estratégico para Organizações Públicas,20
+2026-04,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,173
+2026-04,270,Governança de Dados,13
+2026-04,290,Proteção de Dados Pessoais no Setor Público,83
+2026-04,343,Planejamento da Contratação de Soluções de TIC,2
+2026-04,367,Novas Tecnologias para a Transformação Digital,31
+2026-04,373,Liderança e Gestão De Equipes,99
+2026-04,377,Inteligência Artificial no Contexto do Serviço Público,84
+2026-04,406,Análise de dados como suporte à tomada de decisão,18
+2026-04,419,Transformação Digital no Serviço Público,35
+2026-04,529,"Como implementar a LGPD: bases, mecanismos e processos",41
+2026-04,534,Internet das coisas (IoT) aplicada para resolução de desafios,23
+2026-04,536,Governança de Dados na Transformação Digital,17
+2026-04,629,Aprendendo com Python,10
+2026-04,724,Gestão de Riscos em Projetos de Transformação Digital,8
+2026-04,787,Gestão de projetos,16
+2026-04,797,Automação de Processos através da RPA para Transformação Digital,90
+2026-04,802,Visualização de Dados Aplicada à Transformação Digital,6
+2026-04,810,Desvendando a Inteligência Artificial na Administração Pública,69
+2026-04,815,Storytelling com Dados para Comunicação Profissional de Sucesso,21
+2026-04,861,Inteligência Artificial para simplificar o dia a dia,99
+2026-04,956,Inovando na Gestão de Projetos,15
+2026-04,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,102
+2026-04,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,11
+2026-04,1088,A História da IA,74
+2026-04,1090,Ética em IA,100
+2026-04,1091,Inteligência Artificial Generativa,172
+2026-04,1139,Colaboração com o Microsoft 365,17
+2026-04,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,24
+2026-04,1167,IA Generativo da Microsoft - Copilot,46
+2026-04,1263,Governo Data-Driven: transformação orientada por dados em governos,17
+2026-04,1304,Visão Geral da IA no Azure,4
+2026-04,1305,Fundamentos da Visão Computacional - IA do Azure,4
+2026-04,1328,Processamento de Linguagem Natural,5
+2026-04,1395,IA - Aplicações no Governo Federal,70

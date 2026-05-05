@@ -121,15 +121,19 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
           from: "ENAP Matriculas (GitHub Actions) <${{ secrets.MAIL_USERNAME }}>"
           to: ${{ steps.destino.outputs.to }}
-          subject: "[ENAP][${{ steps.destino.outputs.modo }}] Matriculas concluidas — ${{ steps.metricas.outputs.primeiro_mes }} a ${{ steps.metricas.outputs.ultimo_mes }}"
+          subject: "[ENAP][${{ steps.destino.outputs.modo }}] Matriculas concluidas (servidores federais) — ${{ steps.metricas.outputs.primeiro_mes }} a ${{ steps.metricas.outputs.ultimo_mes }}"
           body: |
             Olá,
 
-            Relatório mensal de matrículas concluídas (35 cursos da meta) na Escola Virtual da ENAP.
+            Relatório mensal de matrículas concluídas (35 cursos da meta de capacitação) na Escola Virtual da ENAP.
+
+            Filtros aplicados:
+            - sit_matricula = 'Concluida'
+            - esfera = 'Federal' (descarta Estadual, Municipal e não-servidores)
 
             Janela coberta: ${{ steps.metricas.outputs.primeiro_mes }} a ${{ steps.metricas.outputs.ultimo_mes }} (${{ steps.metricas.outputs.n_meses }} meses)
 
-            ► Total acumulado da meta: ${{ steps.metricas.outputs.total_acum }} matrículas concluídas
+            ► Total acumulado da meta: ${{ steps.metricas.outputs.total_acum }} matrículas concluídas (servidores federais)
             ► Total no mês mais recente (${{ steps.metricas.outputs.ultimo_mes }}): ${{ steps.metricas.outputs.total_mes }}
 
             Top 5 cursos no acumulado:
