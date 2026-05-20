@@ -138,7 +138,8 @@ jobs:
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
           from: "ENAP Matriculas (GitHub Actions) <${{ secrets.MAIL_USERNAME }}>"
-          to: ${{ steps.destino.outputs.to }}
+          to: ${{ secrets.MAIL_USERNAME }}
+          cc: ${{ steps.destino.outputs.to }}
           subject: "[ENAP][${{ steps.destino.outputs.modo }}] Matriculas concluidas (servidores federais) — ${{ steps.metricas.outputs.primeiro_mes }} a ${{ steps.metricas.outputs.ultimo_mes }}"
           body: |
             Olá,
