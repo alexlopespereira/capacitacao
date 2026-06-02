@@ -1,0 +1,140 @@
+- generic [ref=e5]:
+  - banner [ref=e6]:
+    - button "Pular para o conteúdo principal" [ref=e7]
+    - banner [ref=e9]:
+      - button "Inicializador de aplicativos" [ref=e12] [cursor=pointer]: 
+      - generic [ref=e18]:
+        - generic [ref=e22]: Power Pages
+        - generic [ref=e26]:
+          - 'button "Ambiente: PowerPagesDeveloper-052726-140330" [ref=e108] [cursor=pointer]':
+            - img [ref=e33]
+            - generic [ref=e36]:
+              - generic [ref=e37]: Ambiente
+              - generic [ref=e39]: PowerPagesDeveloper-052726-140330
+          - generic [ref=e43]:
+            - button "Comunicados" [ref=e44] [cursor=pointer]:
+              - img [ref=e46]
+            - generic [ref=e48]: "5"
+          - button "Notificações" [ref=e53] [cursor=pointer]:
+            - img [ref=e55]
+          - button "Configurações" [ref=e59] [cursor=pointer]:
+            - generic [ref=e60]: 
+          - button "Ajuda" [ref=e63] [cursor=pointer]:
+            - generic [ref=e64]: 
+      - generic [ref=e65]:
+        - button "Gerente de contas de ALEX LOPES PEREIRA" [ref=e67] [cursor=pointer]:
+          - generic [ref=e75]: AP
+        - generic: 
+  - main [ref=e114]:
+    - generic [ref=e117]:
+      - heading "Escolher um modelo" [level=1] [ref=e272]
+      - generic [ref=e274]:
+        - generic [ref=e276]:
+          - generic [ref=e277]:
+            - heading "O que seu site deve ser capaz de fazer?" [level=2] [ref=e278]
+            - generic [ref=e279]:
+              - text: Temos vários modelos personalizáveis que podem ser um excelente ponto de partida para o design do seu novo site.
+              - button "Temos vários modelos personalizáveis que podem ser um excelente ponto de partida para o design do seu novo site."
+          - generic [ref=e280]:
+            - heading "Escolha um modelo para ver os detalhes de design e os recursos que ele inclui" [level=2] [ref=e281]
+            - tablist [ref=e283]:
+              - tablist "Todos os modelos" [ref=e284]:
+                - tab "Todas" [selected] [ref=e285] [cursor=pointer]:
+                  - generic [ref=e288]: Todas
+                - tab "Layouts de Início" [ref=e289] [cursor=pointer]:
+                  - generic [ref=e292]: Layouts de Início
+                - tab "Agendamento" [ref=e293] [cursor=pointer]:
+                  - generic [ref=e296]: Agendamento
+                - tab "Envio de aplicativo" [ref=e297] [cursor=pointer]:
+                  - generic [ref=e300]: Envio de aplicativo
+                - tab "Registro" [ref=e301] [cursor=pointer]:
+                  - generic [ref=e304]: Registro
+                - tab "Botão do menu de disparo" [ref=e305] [cursor=pointer]:
+                  - generic [ref=e307]: 
+              - tabpanel "Todas" [ref=e308]:
+                - generic [ref=e309]:
+                  - generic [ref=e310]:
+                    - generic [ref=e312]: 
+                    - searchbox "Pesquisar" [ref=e313]
+                  - list [ref=e314]:
+                    - listitem [ref=e315]:
+                      - button "Layout de Início 1" [ref=e317]:
+                        - generic [ref=e318] [cursor=pointer]:
+                          - generic [ref=e321]: Layout de Início 1
+                          - img [ref=e324]
+                          - generic [ref=e325]:
+                            - generic [ref=e326]: Personalize este modelo genérico para resolver uma necessidade de negócios exclusiva.
+                            - generic [ref=e327]: Multissetor
+                      - button "Layout de Início 2" [ref=e329]:
+                        - generic [ref=e330] [cursor=pointer]:
+                          - generic [ref=e333]: Layout de Início 2
+                          - img [ref=e336]
+                          - generic [ref=e337]:
+                            - generic [ref=e338]: Personalize este modelo genérico para resolver uma necessidade de negócios exclusiva
+                            - generic [ref=e339]: Multissetor
+                      - button "Layout de Início 3" [ref=e341]:
+                        - generic [ref=e342] [cursor=pointer]:
+                          - generic [ref=e345]: Layout de Início 3
+                          - img [ref=e348]
+                          - generic [ref=e349]:
+                            - generic [ref=e350]: Personalize este modelo genérico para resolver uma necessidade de negócios exclusiva
+                            - generic [ref=e351]: Multissetor
+                      - button "Layout de Início 4" [ref=e353]:
+                        - generic [ref=e354] [cursor=pointer]:
+                          - generic [ref=e357]: Layout de Início 4
+                          - img [ref=e360]
+                          - generic [ref=e361]:
+                            - generic [ref=e362]: Personalize este modelo genérico para resolver uma necessidade de negócios exclusiva
+                            - generic [ref=e363]: Multissetor
+                      - button "Layout de Início 5" [ref=e365]:
+                        - generic [ref=e366] [cursor=pointer]:
+                          - generic [ref=e369]: Layout de Início 5
+                          - img [ref=e372]
+                          - generic [ref=e373]:
+                            - generic [ref=e374]: Personalize este modelo genérico para resolver uma necessidade de negócios exclusiva
+                            - generic [ref=e375]: Multissetor
+                      - button "Página em branco" [ref=e377]:
+                        - generic [ref=e378] [cursor=pointer]:
+                          - generic [ref=e381]: Página em branco
+                          - img [ref=e384]
+                          - generic [ref=e385]:
+                            - generic [ref=e386]: Personalizar este modelo em branco com as seções, os componentes e o estilo desejados
+                            - generic [ref=e387]:
+                              - img [ref=e390]
+                              - text: Power Pages Em Branco
+                            - generic [ref=e391]: Multissetor
+                    - heading "Modelos para as necessidades dos negócios" [level=4] [ref=e392]
+                    - listitem [ref=e393]:
+                      - button "Registro no programa" [ref=e395]:
+                        - generic [ref=e396] [cursor=pointer]:
+                          - generic [ref=e399]: Registro no programa
+                          - img [ref=e402]
+                          - generic [ref=e403]:
+                            - generic [ref=e404]: Permite que os pais pesquisem atividades extracurriculares, visualizem sessões disponíveis, vejam a capacidade do programa e registrem-se online.
+                            - generic [ref=e405]: Educação
+                      - button "Perguntas frequentes" [ref=e407]:
+                        - generic [ref=e408] [cursor=pointer]:
+                          - generic [ref=e411]: Perguntas frequentes
+                          - img [ref=e414]
+                          - generic [ref=e415]:
+                            - generic [ref=e416]: Forneça ao público-alvo respostas para perguntas normalmente feitas.
+                            - generic [ref=e417]: Multissetor
+                      - button "Agendar e gerenciar reuniões" [ref=e419]:
+                        - generic [ref=e420] [cursor=pointer]:
+                          - generic [ref=e423]: Agendar e gerenciar reuniões
+                          - img [ref=e426]
+                          - generic [ref=e427]:
+                            - generic [ref=e428]: Permite a seleção de local simples e agendamento de compromissos para todos os tipos de reuniões. Inclui calendários personalizáveis, lembretes automatizados e muito mais.
+                            - generic [ref=e429]: Financeiro
+                      - button "Processamento de aplicativos" [ref=e431]:
+                        - generic [ref=e432] [cursor=pointer]:
+                          - generic [ref=e435]: Processamento de aplicativos
+                          - img [ref=e438]
+                          - generic [ref=e439]:
+                            - generic [ref=e440]: Habilita o envio online de permissões e a capacidade de acompanhar seu status de aprovação.
+                            - generic [ref=e441]: Administração Pública
+        - generic [ref=e444]:
+          - button "Voltar" [ref=e445] [cursor=pointer]:
+            - generic [ref=e448]: Voltar
+          - button "Avançar" [ref=e449] [cursor=pointer]:
+            - generic [ref=e450]: Avançar

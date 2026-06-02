@@ -1,0 +1,12 @@
+[    6499ms] [LOG] Initializing Client Telemetry @ https://content.powerapps.com/resource/powerappsportal/dist/client-telemetry.bundle-2d4a32f75c.js:29
+[    6505ms] [LOG] Initialized Client Telemetry @ https://content.powerapps.com/resource/powerappsportal/dist/client-telemetry.bundle-2d4a32f75c.js:130
+[    6528ms] [LOG] JQMIGRATE: Migrate is installed, version 3.4.0 @ https://content.powerapps.com/resource/powerappsportal/dist/preform.BootstrapV5.moment_2_29_4.bundle-1eaf0ef06f.js:2
+[    6597ms] [WARNING] Unsatisfied version 16.14.0 from @microsoft/powerpages-host of shared singleton module react-dom (required ^17.0.0) @ https://content.powerapps.com/resource/powerappsportal/controls/host/main.b1a931c657.chunk.js:4
+[    8615ms] [WARNING] Some icons were re-registered. Applications should only call registerIcons for any given icon once. Redefining what an icon is may have unintended consequences. Duplicates include: 
+GlobalNavButton, ChevronDown, ChevronUp, Edit, Add, Cancel, More, Settings, Mail, Filter (+ 5393 more) @ https://content.powerapps.com/resource/powerappsportal/controls/host/66.abb5fcbf8e.chunk.js:0
+[   13903ms] [LOG] Initializing Client Telemetry @ https://content.powerapps.com/resource/powerappsportal/dist/client-telemetry.bundle-2d4a32f75c.js:29
+[   13905ms] [LOG] Initialized Client Telemetry @ https://content.powerapps.com/resource/powerappsportal/dist/client-telemetry.bundle-2d4a32f75c.js:130
+[   13907ms] [LOG] JQMIGRATE: Migrate is installed, version 3.4.0 @ https://content.powerapps.com/resource/powerappsportal/dist/preform.BootstrapV5.moment_2_29_4.bundle-1eaf0ef06f.js:2
+[   13934ms] [WARNING] Unsatisfied version 16.14.0 from @microsoft/powerpages-host of shared singleton module react-dom (required ^17.0.0) @ https://content.powerapps.com/resource/powerappsportal/controls/host/main.b1a931c657.chunk.js:4
+[   15952ms] [WARNING] Some icons were re-registered. Applications should only call registerIcons for any given icon once. Redefining what an icon is may have unintended consequences. Duplicates include: 
+GlobalNavButton, ChevronDown, ChevronUp, Edit, Add, Cancel, More, Settings, Mail, Filter (+ 5393 more) @ https://content.powerapps.com/resource/powerappsportal/controls/host/66.abb5fcbf8e.chunk.js:0

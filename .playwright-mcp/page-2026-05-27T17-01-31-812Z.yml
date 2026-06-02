@@ -1,0 +1,26 @@
+- banner [ref=e6]:
+  - button "Pular para o conteúdo principal" [ref=e7]
+  - banner [ref=e9]:
+    - button "Inicializador de aplicativos" [ref=e12] [cursor=pointer]: 
+    - generic [ref=e18]:
+      - generic [ref=e22]: Power Pages
+      - generic [ref=e26]:
+        - 'button "Ambiente: ColaboraGOV" [ref=e31] [cursor=pointer]':
+          - img [ref=e33]
+          - generic [ref=e36]:
+            - generic [ref=e37]: Ambiente
+            - generic [ref=e39]: ColaboraGOV
+        - generic [ref=e43]:
+          - button "Comunicados" [ref=e44] [cursor=pointer]:
+            - img [ref=e46]
+          - generic [ref=e48]: "5"
+        - button "Notificações" [ref=e53] [cursor=pointer]:
+          - img [ref=e55]
+        - button "Configurações" [ref=e59] [cursor=pointer]:
+          - generic [ref=e60]: 
+        - button "Ajuda" [ref=e63] [cursor=pointer]:
+          - generic [ref=e64]: 
+    - generic [ref=e65]:
+      - button "Gerente de contas de ALEX LOPES PEREIRA" [ref=e67] [cursor=pointer]:
+        - generic [ref=e75]: AP
+      - generic: 

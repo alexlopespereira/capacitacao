@@ -1,0 +1,3 @@
+[      16ms] [LOG] starting flow... @ https://vscode.dev/msal?scopes=offline_access+User.Read&clientId=aebc6443-996d-45c2-90f0-388ff96faa56&authority=https%3A%2F%2Flogin.microsoftonline.com%2Forganizations:0
+[    2688ms] [LOG] finishing flow... @ https://vscode.dev/msal:0
+[    3141ms] [LOG] done @ https://vscode.dev/msal:0

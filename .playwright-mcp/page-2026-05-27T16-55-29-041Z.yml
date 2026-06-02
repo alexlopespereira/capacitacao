@@ -1,0 +1,316 @@
+- generic [active]:
+  - generic:
+    - generic:
+      - generic:
+        - banner [ref=e3]:
+          - button "Inicializador de aplicativos" [ref=e6] [cursor=pointer]: 
+          - generic [ref=e10]:
+            - button "Organizações" [ref=e11] [cursor=pointer]:
+              - img [ref=e13]
+            - button "Ajuda" [ref=e15] [cursor=pointer]:
+              - img [ref=e17]
+          - button "Gerente de conta do ALEX LOPES PEREIRA" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - generic [ref=e25]: Gerente de conta do ALEX LOPES PEREIRA
+              - generic [ref=e27]: AL
+        - generic:
+          - generic [ref=e32]:
+            - button "Fechar menu de navegação" [expanded] [ref=e34]:
+              - img [ref=e36]
+            - generic "Navegação principal" [ref=e39]:
+              - generic [ref=e42]:
+                - img "ALEX LOPES PEREIRA" [ref=e43]:
+                  - generic [ref=e44]: AP
+                - generic [ref=e45]: ALEX LOPES PEREIRA
+                - generic "alex.pereira@gestao.gov.br" [ref=e47]
+              - tree [ref=e48]:
+                - treeitem "My Account Item de menu de navegação" [level=1] [ref=e49] [cursor=pointer]:
+                  - img [ref=e51]
+                  - text: My Account
+                  - img [ref=e54]
+                - treeitem "Meus Aplicativos Item de menu de navegação" [ref=e56] [cursor=pointer]:
+                  - generic [ref=e57]:
+                    - img [ref=e58]
+                    - img [ref=e60]
+                  - text: Meus Aplicativos
+                - treeitem "Meus Grupos Item de menu de navegação" [level=1] [ref=e62] [cursor=pointer]:
+                  - img [ref=e64]
+                  - text: Meus Grupos
+                  - img [ref=e67]
+                - treeitem "Meus Acessos Item de menu de navegação" [level=1] [ref=e69] [cursor=pointer]:
+                  - img [ref=e71]
+                  - text: Meus Acessos
+                  - img [ref=e74]
+          - main [ref=e77]:
+            - generic [ref=e83]:
+              - heading "Painel de aplicativos" [level=1] [ref=e84]
+              - menubar [ref=e88]:
+                - menuitem "Adicionar aplicativos" [ref=e89] [cursor=pointer]:
+                  - generic [ref=e90]:
+                    - generic [ref=e91]: 
+                    - generic [ref=e93]: Adicionar aplicativos
+                - menuitem "Criar coleção" [ref=e94] [cursor=pointer]:
+                  - generic [ref=e95]:
+                    - generic [ref=e96]: 
+                    - generic [ref=e98]: Criar coleção
+                - menuitem "Personalizar o modo de exibição" [ref=e99] [cursor=pointer]:
+                  - generic [ref=e100]:
+                    - generic [ref=e101]: 
+                    - generic [ref=e103]: Personalizar o modo de exibição
+            - search [ref=e107]:
+              - generic [ref=e109]:
+                - generic [ref=e111]: 
+                - searchbox "Pesquisar aplicativos" [ref=e112]
+            - tablist [ref=e117]:
+              - tab "Apps" [selected] [ref=e118] [cursor=pointer]:
+                - generic [ref=e123]: Apps
+            - generic [ref=e127]:
+              - status
+              - generic [ref=e132]:
+                - generic [ref=e136]:
+                  - button "Apps" [expanded] [ref=e137] [cursor=pointer]:
+                    - generic [ref=e139]: 
+                  - generic [ref=e140]: Apps
+                  - toolbar "Apps" [ref=e141]:
+                    - button "Configurações" [ref=e142] [cursor=pointer]:
+                      - generic [ref=e143]:
+                        - generic [ref=e144]: 
+                        - generic [ref=e146]: Configurações
+                - region "Apps" [ref=e147]:
+                  - list [ref=e151]:
+                    - listitem [ref=e152]:
+                      - region [ref=e156] [cursor=pointer]:
+                        - button "Bookings" [ref=e157]:
+                          - img [ref=e158]
+                          - generic [ref=e159]: Bookings
+                        - button "Bookingsmenu de contexto do aplicativo" [ref=e160]:
+                          - generic [ref=e162]: 
+                    - listitem [ref=e163]:
+                      - region [ref=e167] [cursor=pointer]:
+                        - button "Calendário" [ref=e168]:
+                          - img [ref=e169]
+                          - generic [ref=e170]: Calendário
+                        - button "Calendáriomenu de contexto do aplicativo" [ref=e171]:
+                          - generic [ref=e173]: 
+                    - listitem [ref=e174]:
+                      - region [ref=e178] [cursor=pointer]:
+                        - button "Clipchamp" [ref=e179]:
+                          - img [ref=e180]
+                          - generic [ref=e181]: Clipchamp
+                        - button "Clipchampmenu de contexto do aplicativo" [ref=e182]:
+                          - generic [ref=e184]: 
+                    - listitem [ref=e185]:
+                      - region [ref=e189] [cursor=pointer]:
+                        - button "Connections" [ref=e190]:
+                          - img [ref=e191]
+                          - generic [ref=e192]: Connections
+                        - button "Connectionsmenu de contexto do aplicativo" [ref=e193]:
+                          - generic [ref=e195]: 
+                    - listitem [ref=e196]:
+                      - region [ref=e200] [cursor=pointer]:
+                        - button "Engage" [ref=e201]:
+                          - img [ref=e202]
+                          - generic [ref=e203]: Engage
+                        - button "Engagemenu de contexto do aplicativo" [ref=e204]:
+                          - generic [ref=e206]: 
+                    - listitem [ref=e207]:
+                      - region [ref=e211] [cursor=pointer]:
+                        - button "Excel" [ref=e212]:
+                          - img [ref=e213]
+                          - generic [ref=e214]: Excel
+                        - button "Excelmenu de contexto do aplicativo" [ref=e215]:
+                          - generic [ref=e217]: 
+                    - listitem [ref=e218]:
+                      - region [ref=e222] [cursor=pointer]:
+                        - button "Forms" [ref=e223]:
+                          - img [ref=e224]
+                          - generic [ref=e225]: Forms
+                        - button "Formsmenu de contexto do aplicativo" [ref=e226]:
+                          - generic [ref=e228]: 
+                    - listitem [ref=e229]:
+                      - region [ref=e233] [cursor=pointer]:
+                        - button "Insights" [ref=e234]:
+                          - img [ref=e235]
+                          - generic [ref=e236]: Insights
+                        - button "Insightsmenu de contexto do aplicativo" [ref=e237]:
+                          - generic [ref=e239]: 
+                    - listitem [ref=e240]:
+                      - region [ref=e244] [cursor=pointer]:
+                        - button "Kaizala" [ref=e245]:
+                          - img [ref=e246]
+                          - generic [ref=e247]: Kaizala
+                        - button "Kaizalamenu de contexto do aplicativo" [ref=e248]:
+                          - generic [ref=e250]: 
+                    - listitem [ref=e251]:
+                      - region [ref=e255] [cursor=pointer]:
+                        - button "Learning" [ref=e256]:
+                          - img [ref=e257]
+                          - generic [ref=e258]: Learning
+                        - button "Learningmenu de contexto do aplicativo" [ref=e259]:
+                          - generic [ref=e261]: 
+                    - listitem [ref=e262]:
+                      - region [ref=e266] [cursor=pointer]:
+                        - button "Learning Activities" [ref=e267]:
+                          - img [ref=e268]
+                          - generic [ref=e269]: Learning Activities
+                        - button "Learning Activitiesmenu de contexto do aplicativo" [ref=e270]:
+                          - generic [ref=e272]: 
+                    - listitem [ref=e273]:
+                      - region [ref=e277] [cursor=pointer]:
+                        - button "Lists" [ref=e278]:
+                          - img [ref=e279]
+                          - generic [ref=e280]: Lists
+                        - button "Listsmenu de contexto do aplicativo" [ref=e281]:
+                          - generic [ref=e283]: 
+                    - listitem [ref=e284]:
+                      - region [ref=e288] [cursor=pointer]:
+                        - button "Loop" [ref=e289]:
+                          - img [ref=e290]
+                          - generic [ref=e291]: Loop
+                        - button "Loopmenu de contexto do aplicativo" [ref=e292]:
+                          - generic [ref=e294]: 
+                    - listitem [ref=e295]:
+                      - region [ref=e299] [cursor=pointer]:
+                        - button "OneDrive" [ref=e300]:
+                          - img [ref=e301]
+                          - generic [ref=e302]: OneDrive
+                        - button "OneDrivemenu de contexto do aplicativo" [ref=e303]:
+                          - generic [ref=e305]: 
+                    - listitem [ref=e306]:
+                      - region [ref=e310] [cursor=pointer]:
+                        - button "OneNote" [ref=e311]:
+                          - img [ref=e312]
+                          - generic [ref=e313]: OneNote
+                        - button "OneNotemenu de contexto do aplicativo" [ref=e314]:
+                          - generic [ref=e316]: 
+                    - listitem [ref=e317]:
+                      - region [ref=e321] [cursor=pointer]:
+                        - button "Outlook" [ref=e322]:
+                          - img [ref=e323]
+                          - generic [ref=e324]: Outlook
+                        - button "Outlookmenu de contexto do aplicativo" [ref=e325]:
+                          - generic [ref=e327]: 
+                    - listitem [ref=e328]:
+                      - region [ref=e332] [cursor=pointer]:
+                        - button "Páginas Poderosas" [ref=e333]:
+                          - img [ref=e334]
+                          - generic [ref=e335]: Páginas Poderosas
+                        - button "Páginas Poderosasmenu de contexto do aplicativo" [ref=e336]:
+                          - generic [ref=e338]: 
+                    - listitem [ref=e339]:
+                      - region [ref=e343] [cursor=pointer]:
+                        - button "Pessoas" [ref=e344]:
+                          - img [ref=e345]
+                          - generic [ref=e346]: Pessoas
+                        - button "Pessoasmenu de contexto do aplicativo" [ref=e347]:
+                          - generic [ref=e349]: 
+                    - listitem [ref=e350]:
+                      - region [ref=e354] [cursor=pointer]:
+                        - button "Planner" [ref=e355]:
+                          - img [ref=e356]
+                          - generic [ref=e357]: Planner
+                        - button "Plannermenu de contexto do aplicativo" [ref=e358]:
+                          - generic [ref=e360]: 
+                    - listitem [ref=e361]:
+                      - region [ref=e365] [cursor=pointer]:
+                        - button "Power Apps" [ref=e366]:
+                          - img [ref=e367]
+                          - generic [ref=e368]: Power Apps
+                        - button "Power Appsmenu de contexto do aplicativo" [ref=e369]:
+                          - generic [ref=e371]: 
+                    - listitem [ref=e372]:
+                      - region [ref=e376] [cursor=pointer]:
+                        - button "Power Automate" [ref=e377]:
+                          - img [ref=e378]
+                          - generic [ref=e379]: Power Automate
+                        - button "Power Automatemenu de contexto do aplicativo" [ref=e380]:
+                          - generic [ref=e382]: 
+                    - listitem [ref=e383]:
+                      - region [ref=e387] [cursor=pointer]:
+                        - button "Power BI" [ref=e388]:
+                          - img [ref=e389]
+                          - generic [ref=e390]: Power BI
+                        - button "Power BImenu de contexto do aplicativo" [ref=e391]:
+                          - generic [ref=e393]: 
+                    - listitem [ref=e394]:
+                      - region [ref=e398] [cursor=pointer]:
+                        - button "PowerPoint" [ref=e399]:
+                          - img [ref=e400]
+                          - generic [ref=e401]: PowerPoint
+                        - button "PowerPointmenu de contexto do aplicativo" [ref=e402]:
+                          - generic [ref=e404]: 
+                    - listitem [ref=e405]:
+                      - region [ref=e409] [cursor=pointer]:
+                        - button "SharePoint" [ref=e410]:
+                          - img [ref=e411]
+                          - generic [ref=e412]: SharePoint
+                        - button "SharePointmenu de contexto do aplicativo" [ref=e413]:
+                          - generic [ref=e415]: 
+                    - listitem [ref=e416]:
+                      - region [ref=e420] [cursor=pointer]:
+                        - button "Suplementos" [ref=e421]:
+                          - img [ref=e422]
+                          - generic [ref=e423]: Suplementos
+                        - button "Suplementosmenu de contexto do aplicativo" [ref=e424]:
+                          - generic [ref=e426]: 
+                    - listitem [ref=e427]:
+                      - region [ref=e431] [cursor=pointer]:
+                        - button "Sway" [ref=e432]:
+                          - img [ref=e433]
+                          - generic [ref=e434]: Sway
+                        - button "Swaymenu de contexto do aplicativo" [ref=e435]:
+                          - generic [ref=e437]: 
+                    - listitem [ref=e438]:
+                      - region [ref=e442] [cursor=pointer]:
+                        - button "Teams" [ref=e443]:
+                          - img [ref=e444]
+                          - generic [ref=e445]: Teams
+                        - button "Teamsmenu de contexto do aplicativo" [ref=e446]:
+                          - generic [ref=e448]: 
+                    - listitem [ref=e449]:
+                      - region [ref=e453] [cursor=pointer]:
+                        - button "To Do" [ref=e454]:
+                          - img [ref=e455]
+                          - generic [ref=e456]: To Do
+                        - button "To Domenu de contexto do aplicativo" [ref=e457]:
+                          - generic [ref=e459]: 
+                    - listitem [ref=e460]:
+                      - region [ref=e464] [cursor=pointer]:
+                        - button "Visio" [ref=e465]:
+                          - img [ref=e466]
+                          - generic [ref=e467]: Visio
+                        - button "Visiomenu de contexto do aplicativo" [ref=e468]:
+                          - generic [ref=e470]: 
+                    - listitem [ref=e471]:
+                      - region [ref=e475] [cursor=pointer]:
+                        - button "Viva" [ref=e476]:
+                          - img [ref=e477]
+                          - generic [ref=e478]: Viva
+                        - button "Vivamenu de contexto do aplicativo" [ref=e479]:
+                          - generic [ref=e481]: 
+                    - listitem [ref=e482]:
+                      - region [ref=e486] [cursor=pointer]:
+                        - button "Whiteboard" [ref=e487]:
+                          - img [ref=e488]
+                          - generic [ref=e489]: Whiteboard
+                        - button "Whiteboardmenu de contexto do aplicativo" [ref=e490]:
+                          - generic [ref=e492]: 
+                    - listitem [ref=e493]:
+                      - region [ref=e497] [cursor=pointer]:
+                        - button "Word" [ref=e498]:
+                          - img [ref=e499]
+                          - generic [ref=e500]: Word
+                        - button "Wordmenu de contexto do aplicativo" [ref=e501]:
+                          - generic [ref=e503]: 
+                    - listitem [ref=e504]:
+                      - region [ref=e508]:
+                        - img [ref=e510]
+                    - listitem [ref=e511]:
+                      - region [ref=e515]:
+                        - img [ref=e517]
+                    - listitem [ref=e518]:
+                      - region [ref=e522]:
+                        - img [ref=e524]
+                    - listitem [ref=e525]:
+                      - region [ref=e529]:
+                        - img [ref=e531]

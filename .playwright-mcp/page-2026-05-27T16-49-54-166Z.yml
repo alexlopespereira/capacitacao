@@ -1,0 +1,32 @@
+- generic [ref=e5]:
+  - img "Imagem do plano de fundo da organização" [ref=e7]
+  - generic [ref=e8]:
+    - generic [ref=e14]:
+      - img "Microsoft" [ref=e17]
+      - main [ref=e18]:
+        - generic [ref=e21]:
+          - generic [ref=e24]:
+            - heading "Entrar" [level=1] [ref=e25]
+            - generic [ref=e26]: Continuar para Microsoft Azure
+          - generic [ref=e27]:
+            - alert
+            - generic [ref=e29]:
+              - textbox "Insira o seu email, telefone ou Skype." [active] [ref=e30]:
+                - /placeholder: Email, telefone ou Skype
+              - textbox [ref=e31]
+          - generic [ref=e35]:
+            - generic [ref=e36]:
+              - text: Não tem uma conta?
+              - link "Criar uma conta da Microsoft" [ref=e37] [cursor=pointer]:
+                - /url: https://login.live.com/oauth20_authorize.srf?scope=openid+profile+email+offline_access&response_type=code&client_id=51483342-085c-4d86-bf88-cf50c7252078&response_mode=form_post&redirect_uri=https%3a%2f%2flogin.microsoftonline.com%2fcommon%2ffederation%2foauth2msa&state=rQQIARAAjZE_TBNRAMbv0T-URmyp0ZC41IQQI_b-l9ImDFdooYW2UHu0JTHNu7t37SvXe_Xu2tI6uTESJ8JAomMdRBaNE4ODYTBMxrjI4EBYNE4kDhocnFm-5csv-X75_F6R5jmafeDiaTYxpYqiIrJzQkRQFDYixlUuoogxLRKPiSgqqIqmC2rWG2U5UWCtkD9Ybh6AF0ePnz4P7X34jPc_7oOxmoG7iFZJawimGo7TthMM0yaWAw0aDjrWv4qBHafBGKSOTeYdAKcAnAMwHJliuTiahdFYROEhH4kpIowoLIxFNH1OjCosH0M6-joSKEgdp8FfBbHwAP0a8ekWrLeQ6ey72qifbW8uZGYzTWm7UJb5akkWVsuZfrWUcfKDDJvDbLRQ3jRWyzKfH0hCrlTnck1pu_ooY2danKEtpXDBtDEsR9nNSrZRFYpthY_KqJI0Mk2C1dbGFqxkjaqwjvUKOz90_ddsQRPW0dUOWiUWonvY1EjPpk3kMEeucWLVoYkH0MHEtE9cK9fBGFpDOuwYTpi0kYm1cNsiOjZQmOi6gU1Ug6qKbPuLC5y6wYX7js8dvD1Jhan706wn4fP5g4HJ0TB16QYvPSF_8O7BEzj9PZB9pX5b77y9R514mMpaWiPGmtUu9-2ZSsXm0wVV7mmVPtdd6iA9V291BriZTZdT0ryQ4M49YNcLdr23TryBlg0NumnTikV6NrJ-esHOKPV-7Fqv7_nB0D-z2GWLeJlswQ2p2dioJQuGAUm91pclx8nlNYlf1Lqp2kpTSUqHfnB4AxyPU5c33xz__vTn2esfyxeBh4bZkIVUTmANU5XFQlGOC6TYX-OiC5xt5VUmvVidTa-XUkxSmj8MUmdB6myCupwI74Sovw2&estsfed=1&uaid=019e6a57b2a17b5d921298c4d6699ac8&signup=1&lw=1&fl=easi2&cobrandid=ed5d1924-9524-4e70-8f68-5ee5e35afbef&fci=c44b4083-3bb0-49c1-b47d-974e53cbdf3c
+                - text: Crie uma!
+            - link "Não consegue acessar sua conta?" [ref=e39] [cursor=pointer]:
+              - /url: "#"
+          - button "Avançar" [ref=e42] [cursor=pointer]
+    - contentinfo [ref=e43]:
+      - generic [ref=e44]:
+        - link "Termos de uso" [ref=e45] [cursor=pointer]:
+          - /url: https://www.microsoft.com/pt-BR/servicesagreement/
+        - link "Privacidade e cookies" [ref=e46] [cursor=pointer]:
+          - /url: https://privacy.microsoft.com/pt-BR/privacystatement
+        - button "Clique aqui para obter informações sobre solução de problemas" [ref=e47] [cursor=pointer]: ...

@@ -1,0 +1,156 @@
+- application [ref=e2]:
+  - generic [ref=e6]:
+    - banner "Visual Studio Code (Pré-visualização). Em qualquer lugar, a qualquer momento, totalmente em seu navegador." [ref=e8]:
+      - generic [ref=e10]: Visual Studio Code (Pré-visualização). Em qualquer lugar, a qualquer momento, totalmente em seu navegador.
+      - generic [ref=e11]:
+        - button "Leia a documentação" [ref=e12] [cursor=pointer]
+        - button "Privacidade e Cookies" [ref=e13] [cursor=pointer]
+        - button "Termos de Uso" [ref=e14] [cursor=pointer]
+        - button "Baixar o Visual Studio Code" [ref=e15] [cursor=pointer]
+      - toolbar [ref=e18]:
+        - button "Fechar Banner" [ref=e19] [cursor=pointer]: 
+    - generic [ref=e21]:
+      - toolbar [ref=e29]:
+        - button "Voltar (⌃-)" [ref=e225] [cursor=pointer]: 
+        - button "Ir para Frente (⌃⇧-)" [disabled] [ref=e226]: 
+        - listitem [ref=e227] [cursor=pointer]:
+          - toolbar [ref=e230]:
+            - button "PowerPages (Workspace)" [ref=e231]:
+              - generic [ref=e232]: PowerPages (Workspace)
+      - toolbar "Ações de título" [ref=e42]:
+        - button "Personalizar Layout..." [ref=e43] [cursor=pointer]: 
+        - button "Alternar a Barra Lateral Primária (⌘B)" [pressed] [ref=e44] [cursor=pointer]: 
+        - button "Ativar/Desativar Painel (⌘J)" [ref=e45] [cursor=pointer]: 
+        - button "Alternar a Barra Lateral Secundária (⌥⌘B)" [ref=e46] [cursor=pointer]: 
+    - generic [ref=e51]:
+      - generic [ref=e53]:
+        - menubar [ref=e54]:
+          - menuitem "Menu do Aplicativo" [ref=e55]:
+            - generic [ref=e56] [cursor=pointer]: 
+        - tablist "Seletor de Exibição Ativo" [ref=e59]:
+          - tab "Explorador (⇧⌘E) - Um arquivo não salvo" [ref=e1749] [cursor=pointer]:
+            - generic "Explorador (⇧⌘E) - Um arquivo não salvo" [ref=e1750]: 
+            - generic "Explorador (⇧⌘E) - Um arquivo não salvo" [ref=e1751]:
+              - generic [ref=e1752]: "1"
+          - tab "Pesquisar (⇧⌘F)" [ref=e62] [cursor=pointer]:
+            - generic "Pesquisar (⇧⌘F)" [ref=e63]: 
+          - tab "Controle do Código-Fonte (⌃⇧G)" [ref=e64] [cursor=pointer]:
+            - generic "Controle do Código-Fonte (⌃⇧G)" [ref=e65]: 
+          - tab "Executar e Depurar (⇧⌘D)" [ref=e66] [cursor=pointer]:
+            - generic "Executar e Depurar (⇧⌘D)" [ref=e67]: 
+          - tab "Explorador Remoto" [ref=e68] [cursor=pointer]:
+            - generic "Explorador Remoto" [ref=e69]: 
+          - tab "Extensões (⇧⌘X)" [ref=e70] [cursor=pointer]:
+            - generic "Extensões (⇧⌘X)" [ref=e71]: 
+          - tab "Power Platform" [expanded] [selected] [ref=e72] [cursor=pointer]:
+            - generic "Power Platform" [ref=e73]
+        - toolbar "Gerenciar" [ref=e76]:
+          - button "Contas" [ref=e77] [cursor=pointer]:
+            - generic "Contas" [ref=e78]: 
+          - button "Gerenciar" [ref=e79] [cursor=pointer]:
+            - generic "Gerenciar" [ref=e80]: 
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - 'heading "Power Platform: Copilot In Power Pages [PREVIEW]" [level=2] [ref=e874]'
+          - 'toolbar "Power Platform: Copilot In Power Pages [PREVIEW] ações" [ref=e875]':
+            - button "Limpar Conversa" [ref=e876] [cursor=pointer]: 
+          - generic:
+            - generic:
+              - generic:
+                - toolbar
+        - generic [ref=e882]:  
+      - main [ref=e147]:
+        - generic [ref=e424]:
+          - generic [ref=e425] [cursor=pointer]:
+            - generic [ref=e426]:
+              - tablist [ref=e427]:
+                - tab "Bem-vindo, versão prévia" [ref=e428]:
+                  - generic "Bem-vindo" [ref=e429]:
+                    - generic [ref=e431]: Bem-vindo
+                  - toolbar "Ações de aba" [ref=e434]:
+                    - button "Fechar (⌘W)" [ref=e435]: 
+                - tab "Página Inicial.pt-BR.webpage.copy.html" [selected] [ref=e436]:
+                  - generic "/Teste Power Pages - Capacitacao/web-pages/Página Inicial/Página Inicial.pt-BR.webpage.copy.html" [ref=e437]:
+                    - text: 
+                    - generic [ref=e439]: Página Inicial.pt-BR.webpage.copy.html
+                  - toolbar "Ações de aba" [ref=e442]:
+                    - button "Fechar (⌘W)" [ref=e443]: 
+              - toolbar "Ações de editor" [ref=e447]:
+                - button "Current Active Users" [ref=e1753]: 
+                - button "Dividir o Editor à Direita (⌘\\) [⌥] Dividir o Editor na Parte Inferior" [ref=e1754]: 
+                - button "Mais Ações..." [ref=e1757]: 
+            - list [ref=e455]:
+              - listitem [ref=e456]:
+                - generic "/Teste Power Pages - Capacitacao" [ref=e457]:
+                  - generic [ref=e459]: Teste Power Pages - Capacitacao
+                - generic [ref=e460]: 
+              - listitem [ref=e461]:
+                - generic "/Teste Power Pages - Capacitacao/web-pages" [ref=e462]:
+                  - generic [ref=e464]: web-pages
+                - generic [ref=e465]: 
+              - listitem [ref=e466]:
+                - generic "/Teste Power Pages - Capacitacao/web-pages/Página Inicial" [ref=e467]:
+                  - generic [ref=e469]: Página Inicial
+                - generic [ref=e470]: 
+              - listitem [ref=e471]:
+                - generic "/Teste Power Pages - Capacitacao/web-pages/Página Inicial/Página Inicial.pt-BR.webpage.copy.html" [ref=e472]:
+                  - text: 
+                  - generic [ref=e474]: Página Inicial.pt-BR.webpage.copy.html
+                - text: 
+          - generic "Página Inicial.pt-BR.webpage.copy.html" [ref=e889]:
+            - code [ref=e484]:
+              - generic [ref=e485]:
+                - textbox "Página Inicial.pt-BR.webpage.copy.html" [active] [ref=e890]
+                - textbox [ref=e486]
+                - generic [ref=e1760]: "1"
+    - status [ref=e182]:
+      - generic [ref=e183]:
+        - generic "remote" [ref=e184]:
+          - button "remote" [ref=e185] [cursor=pointer]:
+            - generic [ref=e186]: 
+        - generic "Nenhum Problema" [ref=e187]:
+          - button "Nenhum Problema" [ref=e188] [cursor=pointer]:
+            - generic [ref=e189]: 
+            - text: "0"
+            - generic [ref=e190]: 
+            - text: "0"
+      - generic [ref=e191]:
+        - generic "Notificações" [ref=e192]:
+          - button "Notificações" [ref=e193] [cursor=pointer]:
+            - generic [ref=e807]: 
+        - 'generic "Layout: U.S." [ref=e195]':
+          - 'button "Layout: U.S." [ref=e196] [cursor=pointer]'
+        - generic "Status do Copilot" [ref=e197]:
+          - button "Status do Copilot" [ref=e198] [cursor=pointer]:
+            - generic [ref=e199]: 
+        - generic "HTML" [ref=e1727]:
+          - button "HTML" [ref=e1728] [cursor=pointer]
+        - 'generic "Status da Linguagem do Editor: $(copilot) Nenhuma sugestão embutida disponível, Sugestões embutidas" [ref=e1729]':
+          - 'button "Status da Linguagem do Editor: $(copilot) Nenhuma sugestão embutida disponível, Sugestões embutidas" [ref=e1730] [cursor=pointer]':
+            - generic [ref=e1731]: 
+        - generic "CRLF" [ref=e1732]:
+          - button "CRLF" [ref=e1733] [cursor=pointer]
+        - generic "UTF-8" [ref=e1734]:
+          - button "UTF-8" [ref=e1735] [cursor=pointer]
+        - 'generic "Espaços: 4" [ref=e1736]':
+          - 'button "Espaços: 4" [ref=e1737] [cursor=pointer]'
+        - generic "Ln 1, Col 1" [ref=e1764]:
+          - button "Ln 1, Col 1" [ref=e1765] [cursor=pointer]
+  - generic [ref=e200]:
+    - alert [ref=e201]: expandido
+    - alert
+  - iframe [ref=e1741]:
+    - document [active] [ref=f7e1]:
+      - iframe [ref=f7e2]:
+        - document [active] [ref=f9e1]:
+          - generic [ref=f9e5]:
+            - generic [ref=f9e7]:
+              - img "Copilot Icon" [ref=f9e9]
+              - heading "Copilot" [level=4] [ref=f9e17]
+            - generic [ref=f9e18]:
+              - paragraph
+              - paragraph [ref=f9e19]: Olá! No momento, sua conta Microsoft não dá suporte ao Copilot. Entre em contato com seu administrador para obter mais detalhes.
+              - paragraph [ref=f9e20]:
+                - text: Para saber mais, consulte a
+                - link "documentação do Copilot no Power Pages." [ref=f9e21] [cursor=pointer]:
+                  - /url: https://go.microsoft.com/fwlink/?linkid=2206366

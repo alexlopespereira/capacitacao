@@ -1,0 +1,11 @@
+[      48ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[      48ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[     111ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[     111ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[     441ms] [LOG] Version: 17.327.2.1
+Session: 1d69badc287648d0b51b1d94d679b336 @ https://portal.azure.com/Content/Dynamic/8jDYglgmjj3y.js:382
+[     568ms] [LOG] Extension: Microsoft_Azure_Copilot @ blob:https://portal.azure.com/a83e7004-27a5-4a56-844c-1b8a2e29c8c0:0
+[     572ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[     572ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[     588ms] [LOG] Extension: HubsExtension @ blob:https://portal.azure.com/a83e7004-27a5-4a56-844c-1b8a2e29c8c0:0
+[     909ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://portal.azure.com/#home:0

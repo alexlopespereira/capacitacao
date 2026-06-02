@@ -1,0 +1,423 @@
+- application [ref=e2]:
+  - generic [ref=e6]:
+    - banner "Visual Studio Code (Pré-visualização). Em qualquer lugar, a qualquer momento, totalmente em seu navegador." [ref=e8]:
+      - generic [ref=e10]: Visual Studio Code (Pré-visualização). Em qualquer lugar, a qualquer momento, totalmente em seu navegador.
+      - generic [ref=e11]:
+        - button "Leia a documentação" [ref=e12] [cursor=pointer]
+        - button "Privacidade e Cookies" [ref=e13] [cursor=pointer]
+        - button "Termos de Uso" [ref=e14] [cursor=pointer]
+        - button "Baixar o Visual Studio Code" [ref=e15] [cursor=pointer]
+      - toolbar [ref=e18]:
+        - button "Fechar Banner" [ref=e19] [cursor=pointer]: 
+    - generic [ref=e21]:
+      - toolbar [ref=e29]:
+        - button "Voltar (⌃-)" [ref=e225] [cursor=pointer]: 
+        - button "Ir para Frente (⌃⇧-)" [disabled] [ref=e226]: 
+        - listitem [ref=e227] [cursor=pointer]:
+          - toolbar [ref=e230]:
+            - button "PowerPages (Workspace)" [ref=e231]:
+              - generic [ref=e232]: PowerPages (Workspace)
+      - toolbar "Ações de título" [ref=e42]:
+        - button "Personalizar Layout..." [ref=e43] [cursor=pointer]: 
+        - button "Alternar a Barra Lateral Primária (⌘B)" [pressed] [ref=e44] [cursor=pointer]: 
+        - button "Ativar/Desativar Painel (⌘J)" [ref=e45] [cursor=pointer]: 
+        - button "Alternar a Barra Lateral Secundária (⌥⌘B)" [ref=e46] [cursor=pointer]: 
+    - generic [ref=e51]:
+      - generic [ref=e53]:
+        - menubar [ref=e54]:
+          - menuitem "Menu do Aplicativo" [ref=e55]:
+            - generic [ref=e56] [cursor=pointer]: 
+        - tablist "Seletor de Exibição Ativo" [ref=e59]:
+          - tab "Explorador (⇧⌘E)" [expanded] [selected] [ref=e60] [cursor=pointer]:
+            - generic "Explorador (⇧⌘E)" [ref=e61]: 
+          - tab "Pesquisar (⇧⌘F)" [ref=e62] [cursor=pointer]:
+            - generic "Pesquisar (⇧⌘F)" [ref=e63]: 
+          - tab "Controle do Código-Fonte (⌃⇧G)" [ref=e64] [cursor=pointer]:
+            - generic "Controle do Código-Fonte (⌃⇧G)" [ref=e65]: 
+          - tab "Executar e Depurar (⇧⌘D)" [ref=e66] [cursor=pointer]:
+            - generic "Executar e Depurar (⇧⌘D)" [ref=e67]: 
+          - tab "Explorador Remoto" [ref=e68] [cursor=pointer]:
+            - generic "Explorador Remoto" [ref=e69]: 
+          - tab "Extensões (⇧⌘X)" [ref=e70] [cursor=pointer]:
+            - generic "Extensões (⇧⌘X)" [ref=e71]: 
+          - tab "Power Platform" [ref=e72] [cursor=pointer]:
+            - generic "Power Platform" [ref=e73]
+        - toolbar "Gerenciar" [ref=e76]:
+          - button "Contas" [ref=e77] [cursor=pointer]:
+            - generic "Contas" [ref=e78]: 
+          - button "Gerenciar" [ref=e79] [cursor=pointer]:
+            - generic "Gerenciar" [ref=e80]: 
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - heading "Explorador" [level=2] [ref=e84]
+          - toolbar "Explorador ações" [ref=e88]:
+            - button "Modos de Exibição e Mais Ações..." [ref=e235] [cursor=pointer]: 
+          - generic:
+            - generic:
+              - generic:
+                - toolbar
+        - generic [ref=e96]:
+          - generic [ref=e237]:
+            - 'button "Seção do Explorador: PowerPages (Workspace)" [expanded] [ref=e238] [cursor=pointer]':
+              - generic [ref=e239]: 
+              - text: 
+              - 'heading "Seção do Explorador: PowerPages (Workspace)" [level=3] [ref=e240]': PowerPages (Workspace)
+              - text:    
+            - tree "Explorador de Arquivos" [ref=e251]:
+              - generic [ref=e252]:
+                - treeitem "Teste Power Pages - Capacitacao" [expanded] [level=1] [ref=e253] [cursor=pointer]:
+                  - generic [ref=e254]:
+                    - generic [ref=e255]: 
+                    - generic "/Teste Power Pages - Capacitacao" [ref=e257]:
+                      - generic [ref=e260]: Teste Power Pages - Capacitacao
+                - treeitem "advanced-forms" [level=2] [ref=e261] [cursor=pointer]:
+                  - generic [ref=e262]:
+                    - generic [ref=e263]: 
+                    - generic "/Teste Power Pages - Capacitacao/advanced-forms" [ref=e265]:
+                      - generic [ref=e268]: advanced-forms
+                - treeitem "basic-forms" [level=2] [ref=e269] [cursor=pointer]:
+                  - generic [ref=e270]:
+                    - generic [ref=e271]: 
+                    - generic "/Teste Power Pages - Capacitacao/basic-forms" [ref=e273]:
+                      - generic [ref=e276]: basic-forms
+                - treeitem "content-snippets" [level=2] [ref=e277] [cursor=pointer]:
+                  - generic [ref=e278]:
+                    - generic [ref=e279]: 
+                    - generic "/Teste Power Pages - Capacitacao/content-snippets" [ref=e281]:
+                      - generic [ref=e284]: content-snippets
+                - treeitem "lists" [level=2] [ref=e285] [cursor=pointer]:
+                  - generic [ref=e286]:
+                    - generic [ref=e287]: 
+                    - generic "/Teste Power Pages - Capacitacao/lists" [ref=e289]:
+                      - generic [ref=e292]: lists
+                - treeitem "web-files" [level=2] [ref=e293] [cursor=pointer]:
+                  - generic [ref=e294]:
+                    - generic [ref=e295]: 
+                    - generic "/Teste Power Pages - Capacitacao/web-files" [ref=e297]:
+                      - generic [ref=e300]: web-files
+                - treeitem "web-pages" [expanded] [level=2] [ref=e301] [cursor=pointer]:
+                  - generic [ref=e302]:
+                    - generic [ref=e303]: 
+                    - generic "/Teste Power Pages - Capacitacao/web-pages" [ref=e305]:
+                      - generic [ref=e308]: web-pages
+                - treeitem "Acesso Negado" [level=3] [ref=e309] [cursor=pointer]:
+                  - generic [ref=e310]:
+                    - generic [ref=e311]: 
+                    - generic "/Teste Power Pages - Capacitacao/web-pages/Acesso Negado" [ref=e313]:
+                      - generic [ref=e316]: Acesso Negado
+                - treeitem "Fale conosco" [level=3] [ref=e317] [cursor=pointer]:
+                  - generic [ref=e318]:
+                    - generic [ref=e319]: 
+                    - generic "/Teste Power Pages - Capacitacao/web-pages/Fale conosco" [ref=e321]:
+                      - generic [ref=e324]: Fale conosco
+                - treeitem "Página Inicial" [expanded] [level=3] [ref=e325] [cursor=pointer]:
+                  - generic [ref=e326]:
+                    - generic [ref=e327]: 
+                    - generic "/Teste Power Pages - Capacitacao/web-pages/Página Inicial" [ref=e329]:
+                      - generic [ref=e332]: Página Inicial
+                - treeitem "Página Inicial.pt-BR.customcss.css" [level=4] [ref=e333] [cursor=pointer]:
+                  - generic "/Teste Power Pages - Capacitacao/web-pages/Página Inicial/Página Inicial.pt-BR.customcss.css" [ref=e336]:
+                    - text: 
+                    - generic [ref=e339]: Página Inicial.pt-BR.customcss.css
+                - treeitem "Página Inicial.pt-BR.customjs.js" [level=4] [ref=e340] [cursor=pointer]:
+                  - generic "/Teste Power Pages - Capacitacao/web-pages/Página Inicial/Página Inicial.pt-BR.customjs.js" [ref=e343]:
+                    - text: 
+                    - generic [ref=e346]: Página Inicial.pt-BR.customjs.js
+                - treeitem "Página Inicial.pt-BR.webpage.copy.html" [level=4] [selected] [ref=e347] [cursor=pointer]:
+                  - generic "/Teste Power Pages - Capacitacao/web-pages/Página Inicial/Página Inicial.pt-BR.webpage.copy.html" [ref=e350]:
+                    - text: 
+                    - generic [ref=e353]: Página Inicial.pt-BR.webpage.copy.html
+                - treeitem "Página Não Encontrada" [level=3] [ref=e354] [cursor=pointer]:
+                  - generic [ref=e355]:
+                    - generic [ref=e356]: 
+                    - generic "/Teste Power Pages - Capacitacao/web-pages/Página Não Encontrada" [ref=e358]:
+                      - generic [ref=e361]: Página Não Encontrada
+                - treeitem "Página Offline Padrão" [level=3] [ref=e362] [cursor=pointer]:
+                  - generic [ref=e363]:
+                    - generic [ref=e364]: 
+                    - generic "/Teste Power Pages - Capacitacao/web-pages/Página Offline Padrão" [ref=e366]:
+                      - generic [ref=e369]: Página Offline Padrão
+                - treeitem "Páginas" [level=3] [ref=e370] [cursor=pointer]:
+                  - generic [ref=e371]:
+                    - generic [ref=e372]: 
+                    - generic "/Teste Power Pages - Capacitacao/web-pages/Páginas" [ref=e374]:
+                      - generic [ref=e377]: Páginas
+                - treeitem "Perfil" [level=3] [ref=e378] [cursor=pointer]:
+                  - generic [ref=e379]:
+                    - generic [ref=e380]: 
+                    - generic "/Teste Power Pages - Capacitacao/web-pages/Perfil" [ref=e382]:
+                      - generic [ref=e385]: Perfil
+                - treeitem "Pesquisar" [level=3] [ref=e386] [cursor=pointer]:
+                  - generic [ref=e387]:
+                    - generic [ref=e388]: 
+                    - generic "/Teste Power Pages - Capacitacao/web-pages/Pesquisar" [ref=e390]:
+                      - generic [ref=e393]: Pesquisar
+                - treeitem "Subpágina 1" [level=3] [ref=e394] [cursor=pointer]:
+                  - generic [ref=e395]:
+                    - generic [ref=e396]: 
+                    - generic "/Teste Power Pages - Capacitacao/web-pages/Subpágina 1" [ref=e398]:
+                      - generic [ref=e401]: Subpágina 1
+                - treeitem "Subpágina 2" [level=3] [ref=e402] [cursor=pointer]:
+                  - generic [ref=e403]:
+                    - generic [ref=e404]: 
+                    - generic "/Teste Power Pages - Capacitacao/web-pages/Subpágina 2" [ref=e406]:
+                      - generic [ref=e409]: Subpágina 2
+                - treeitem "web-templates" [level=2] [ref=e410] [cursor=pointer]:
+                  - generic [ref=e411]:
+                    - generic [ref=e412]: 
+                    - generic "/Teste Power Pages - Capacitacao/web-templates" [ref=e414]:
+                      - generic [ref=e417]: web-templates
+          - button "Estrutura do Código Seção" [ref=e122] [cursor=pointer]:
+            - generic [ref=e123]: 
+            - text: 
+            - heading "Estrutura do Código" [level=3] [ref=e124]
+            - text:  
+          - button "Linha do tempo Seção" [ref=e127] [cursor=pointer]:
+            - generic [ref=e128]: 
+            - text: 
+            - heading "Linha do tempo" [level=3] [ref=e129]
+            - text:    
+          - button "AÇÕES DO POWER PAGES Seção" [ref=e132] [cursor=pointer]:
+            - generic [ref=e133]: 
+            - heading "AÇÕES DO POWER PAGES" [level=3] [ref=e134]
+          - button "People On The Site Seção" [ref=e137] [cursor=pointer]:
+            - generic [ref=e138]: 
+            - text: 
+            - heading "People On The Site" [level=3] [ref=e139]
+      - main [ref=e147]:
+        - generic [ref=e422]:
+          - generic [ref=e424]:
+            - text: 
+            - generic [ref=e425] [cursor=pointer]:
+              - generic [ref=e426]:
+                - tablist [ref=e427]:
+                  - tab "Bem-vindo, versão prévia" [ref=e428]:
+                    - generic "Bem-vindo" [ref=e429]:
+                      - generic [ref=e431]: Bem-vindo
+                    - toolbar "Ações de aba" [ref=e434]:
+                      - button "Fechar (⌘W)" [ref=e435]: 
+                  - tab "Página Inicial.pt-BR.webpage.copy.html" [selected] [ref=e436]:
+                    - generic "/Teste Power Pages - Capacitacao/web-pages/Página Inicial/Página Inicial.pt-BR.webpage.copy.html" [ref=e437]:
+                      - text: 
+                      - generic [ref=e439]: Página Inicial.pt-BR.webpage.copy.html
+                    - toolbar "Ações de aba" [ref=e442]:
+                      - button "Fechar (⌘W)" [ref=e443]: 
+                - toolbar "Ações de editor" [ref=e447]:
+                  - button "Current Active Users" [ref=e823]: 
+                  - button "Dividir o Editor à Direita (⌘\\) [⌥] Dividir o Editor na Parte Inferior" [ref=e824]: 
+                  - button "Mais Ações..." [ref=e827]: 
+              - list [ref=e455]:
+                - listitem [ref=e456]:
+                  - generic "/Teste Power Pages - Capacitacao" [ref=e457]:
+                    - generic [ref=e459]: Teste Power Pages - Capacitacao
+                  - generic [ref=e460]: 
+                - listitem [ref=e461]:
+                  - generic "/Teste Power Pages - Capacitacao/web-pages" [ref=e462]:
+                    - generic [ref=e464]: web-pages
+                  - generic [ref=e465]: 
+                - listitem [ref=e466]:
+                  - generic "/Teste Power Pages - Capacitacao/web-pages/Página Inicial" [ref=e467]:
+                    - generic [ref=e469]: Página Inicial
+                  - generic [ref=e470]: 
+                - listitem [ref=e471]:
+                  - generic "/Teste Power Pages - Capacitacao/web-pages/Página Inicial/Página Inicial.pt-BR.webpage.copy.html" [ref=e472]:
+                    - text: 
+                    - generic [ref=e474]: Página Inicial.pt-BR.webpage.copy.html
+                  - generic [ref=e475]: 
+                - listitem [ref=e476]:
+                  - generic [ref=e828]: 
+                  - generic "div.row.sectionBlockLayout (campo)" [ref=e829]:
+                    - generic [ref=e832]: div.row.sectionBlockLayout
+                  - generic [ref=e833]: 
+                - listitem [ref=e834]:
+                  - generic [ref=e835]: 
+                  - generic "div.container (campo)" [ref=e836]:
+                    - generic [ref=e839]: div.container
+                  - generic [ref=e840]: 
+                - listitem [ref=e841]:
+                  - generic [ref=e842]: 
+                  - generic "div.col-lg-4.columnBlockLayout (campo)" [ref=e843]:
+                    - generic [ref=e846]: div.col-lg-4.columnBlockLayout
+                  - text: 
+            - generic "Página Inicial.pt-BR.webpage.copy.html, 1 de Grupo do Editor" [ref=e483]:
+              - code [ref=e484]:
+                - generic [ref=e485]:
+                  - textbox "Página Inicial.pt-BR.webpage.copy.html, 1 de Grupo do Editor" [active]
+                  - textbox [ref=e486]
+                  - generic [ref=e489]:
+                    - generic [ref=e847]:
+                      - generic [ref=e848] [cursor=pointer]: 
+                      - generic [ref=e849]: "1"
+                    - generic [ref=e494]:
+                      - generic [ref=e495] [cursor=pointer]: 
+                      - generic [ref=e496]: "2"
+                    - generic [ref=e498]: "3"
+                    - generic [ref=e499]:
+                      - generic [ref=e500] [cursor=pointer]: 
+                      - generic [ref=e501]: "4"
+                    - generic [ref=e503]: "5"
+                    - generic [ref=e505]: "6"
+                    - generic [ref=e507]: "7"
+                    - generic [ref=e509]: "8"
+                    - generic [ref=e511]: "9"
+                    - generic [ref=e513]: "10"
+                    - generic [ref=e514]:
+                      - generic [ref=e515] [cursor=pointer]: 
+                      - generic [ref=e516]: "11"
+                    - generic [ref=e517]:
+                      - generic [ref=e518] [cursor=pointer]: 
+                      - generic [ref=e519]: "12"
+                    - generic [ref=e520]:
+                      - generic [ref=e521] [cursor=pointer]: 
+                      - generic [ref=e522]: "13"
+                    - generic [ref=e524]: "14"
+                    - generic [ref=e526]: "15"
+                    - generic [ref=e528]: "16"
+                    - generic [ref=e530]: "17"
+                    - generic [ref=e532]: "18"
+                    - generic [ref=e533]:
+                      - generic [ref=e534] [cursor=pointer]: 
+                      - generic [ref=e535]: "19"
+                    - generic [ref=e536]:
+                      - generic [ref=e537] [cursor=pointer]: 
+                      - generic [ref=e538]: "20"
+                    - generic [ref=e850]:
+                      - generic [ref=e852] [cursor=pointer]: 
+                      - generic [ref=e853]: "21"
+                    - generic [ref=e543]: "22"
+                    - generic [ref=e545]: "23"
+                    - generic [ref=e547]: "24"
+                    - generic [ref=e548]:
+                      - generic [ref=e549] [cursor=pointer]: 
+                      - generic [ref=e550]: "25"
+                    - generic [ref=e552]: "26"
+                    - generic [ref=e554]: "27"
+                    - generic [ref=e556]: "28"
+                    - generic [ref=e557]:
+                      - generic [ref=e558] [cursor=pointer]: 
+                      - generic [ref=e559]: "29"
+                    - generic [ref=e561]: "30"
+                    - generic [ref=e563]: "31"
+                    - generic [ref=e565]: "32"
+                    - generic [ref=e567]: "33"
+                    - generic [ref=e569]: "34"
+                    - generic [ref=e571]: "35"
+                    - generic [ref=e573]: "36"
+                    - generic [ref=e575]: "37"
+                    - generic [ref=e576]:
+                      - generic [ref=e577] [cursor=pointer]: 
+                      - generic [ref=e578]: "38"
+                    - generic [ref=e579]:
+                      - generic [ref=e580] [cursor=pointer]: 
+                      - generic [ref=e581]: "39"
+                    - generic [ref=e582]:
+                      - generic [ref=e583] [cursor=pointer]: 
+                      - generic [ref=e584]: "40"
+                    - generic [ref=e586]: "41"
+                  - generic [ref=e694]:
+                    - generic [ref=e696]: "<div class=\"row sectionBlockLayout\" data-component-theme=\"portalThemeColor1\" style=\"display: flex; flex-wrap: wrap; text-align: left; min-height: auto;\">"
+                    - generic [ref=e698]: "<div class=\"container\" style=\"padding: 0px; display: flex; flex-wrap: wrap; flex-direction: row-reverse;\">"
+                    - generic [ref=e700]: "<div class=\"col-lg-6 columnBlockLayout\" style=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 300px;\"><img src=\"/Geometric-4.png\" alt=\"\" name=\"Geometric-4.png\" style=\"width: 117%; height: 305.545px; max-width: 100%;\"></div>"
+                    - generic [ref=e702]: "<div class=\"col-lg-6 columnBlockLayout\" style=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 300px;\">"
+                    - generic [ref=e704]: <h2>Create an engaging headline, welcome, or call to action</h2>
+                    - generic [ref=e706]: <button onclick="window.location.href='/'" type="button" value="/" class="button1">Add a call to action here</button>
+                    - generic [ref=e708]: </div>
+                    - generic [ref=e710]: </div>
+                    - generic [ref=e712]: </div>
+                    - generic [ref=e714]: "<div class=\"row sectionBlockLayout\" data-component-theme=\"portalThemeColor3\" style=\"display: flex; flex-wrap: wrap; min-height: 28px;\"></div>"
+                    - generic [ref=e716]: "<div class=\"row sectionBlockLayout\" style=\"display: flex; flex-wrap: wrap; text-align: left; min-height: auto;\">"
+                    - generic [ref=e718]: "<div class=\"container\" style=\"padding: 0px; display: flex; flex-wrap: wrap;\">"
+                    - generic [ref=e720]: "<div class=\"col-lg-12 columnBlockLayout\" style=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 300px;\">"
+                    - generic [ref=e722]: "<h2 style=\"text-align: center;\">Introduction section</h2>"
+                    - generic [ref=e724]: "<p style=\"text-align: center;\">Create a short paragraph that shows your target audience a clear benefit to them if they continue past this point and offer direction about the next steps</p>"
+                    - generic [ref=e726]: </div>
+                    - generic [ref=e728]: </div>
+                    - generic [ref=e730]: </div>
+                    - generic [ref=e732]: "<div class=\"row sectionBlockLayout\" style=\"display: flex; flex-wrap: wrap; text-align: left; min-height: auto;\">"
+                    - generic [ref=e734]: "<div class=\"container\" style=\"padding: 0px; display: flex; flex-wrap: wrap;\">"
+                    - generic [ref=e736]: "<div class=\"col-lg-4 columnBlockLayout\" style=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 300px;\"><img src=\"/Circle-1.png\" alt=\"\" name=\"Circle-1.png\" style=\"width: 108px; height: 108px; max-width: 100%; margin-left: auto; margin-right: auto;\">"
+                    - generic [ref=e738]: "<h3 style=\"text-align: center;\">Featured Item 1</h3>"
+                    - generic [ref=e740]: "<p style=\"text-align: center;\">Create a short description or engaging message to motivate your audience to find out more about this item.</p>"
+                    - generic [ref=e742]: </div>
+                    - generic [ref=e744]: "<div class=\"col-lg-4 columnBlockLayout\" style=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 300px;\"><img src=\"/Circle-2.png\" alt=\"\" name=\"Circle-2.png\" style=\"width: 108px; height: 108px; max-width: 100%; margin-left: auto; margin-right: auto;\">"
+                    - generic [ref=e746]: "<h3 style=\"text-align: center;\">Featured Item 2</h3>"
+                    - generic [ref=e748]: "<p style=\"text-align: center;\">Create a short description or engaging message to motivate your audience to find out more about this item.</p>"
+                    - generic [ref=e750]: </div>
+                    - generic [ref=e752]: "<div class=\"col-lg-4 columnBlockLayout\" style=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 300px;\"><img src=\"/Circle-3.png\" alt=\"\" name=\"Circle-3.png\" style=\"width: 108px; height: 108px; max-width: 100%; margin-left: auto; margin-right: auto;\">"
+                    - generic [ref=e754]: "<h3 style=\"text-align: center;\">Featured Item 3</h3>"
+                    - generic [ref=e756]: "<p style=\"text-align: center;\">Create a short description or engaging message to motivate your audience to find out more about this item.</p>"
+                    - generic [ref=e758]: </div>
+                    - generic [ref=e760]: </div>
+                    - generic [ref=e762]: </div>
+                    - generic [ref=e764]: "<div class=\"row sectionBlockLayout\" data-component-theme=\"portalThemeColor6\" style=\"display: flex; flex-wrap: wrap; min-height: 52px;\"></div>"
+                    - generic [ref=e766]: "<div class=\"row sectionBlockLayout\" data-component-theme=\"portalThemeColor5\" style=\"display: flex; flex-wrap: wrap; height: 15px; min-height: 52px;\">"
+                    - generic [ref=e768]: </div>
+                    - generic [ref=e770]: "<div class=\"row sectionBlockLayout\" data-component-theme=\"portalThemeColor3\" style=\"display: flex; flex-wrap: wrap; text-align: left; min-height: auto;\">"
+                    - generic [ref=e772]: "<div class=\"container\" style=\"padding: 0px; display: flex; flex-wrap: wrap; flex-direction: row;\">"
+                    - generic [ref=e774]: "<div class=\"col-lg-6 columnBlockLayout\" style=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 300px;\">"
+                    - generic [ref=e776]: <h2>Showcase a video</h2>
+          - generic [ref=e784]:
+            - text: 
+            - generic [ref=e786] [cursor=pointer]:
+              - tablist [ref=e787]:
+                - tab "Copilot In Power Pages, 2 de Grupo do Editor" [selected] [ref=e788]:
+                  - generic "Copilot In Power Pages" [ref=e789]:
+                    - text: 
+                    - generic [ref=e791]: Copilot In Power Pages
+                  - toolbar "Ações de aba" [ref=e794]:
+                    - button "Fechar (⌘W)" [ref=e795]: 
+              - toolbar "Ações de editor" [ref=e799]:
+                - button "Mais Ações..." [ref=e802]: 
+    - status [ref=e182]:
+      - generic [ref=e183]:
+        - generic "remote" [ref=e184]:
+          - button "remote" [ref=e185] [cursor=pointer]:
+            - generic [ref=e186]: 
+        - generic "Nenhum Problema" [ref=e187]:
+          - button "Nenhum Problema" [ref=e188] [cursor=pointer]:
+            - generic [ref=e189]: 
+            - text: "0"
+            - generic [ref=e190]: 
+            - text: "0"
+      - generic [ref=e191]:
+        - generic "Notificações" [ref=e192]:
+          - button "Notificações" [ref=e193] [cursor=pointer]:
+            - generic [ref=e807]: 
+        - 'generic "Layout: U.S." [ref=e195]':
+          - 'button "Layout: U.S." [ref=e196] [cursor=pointer]'
+        - generic "Status do Copilot" [ref=e197]:
+          - button "Status do Copilot" [ref=e198] [cursor=pointer]:
+            - generic [ref=e199]: 
+        - generic "HTML" [ref=e808]:
+          - button "HTML" [ref=e809] [cursor=pointer]
+        - 'generic "Status da Linguagem do Editor: $(copilot) Nenhuma sugestão embutida disponível, Sugestões embutidas" [ref=e810]':
+          - 'button "Status da Linguagem do Editor: $(copilot) Nenhuma sugestão embutida disponível, Sugestões embutidas" [ref=e811] [cursor=pointer]':
+            - generic [ref=e812]: 
+        - generic "CRLF" [ref=e813]:
+          - button "CRLF" [ref=e814] [cursor=pointer]
+        - generic "UTF-8" [ref=e815]:
+          - button "UTF-8" [ref=e816] [cursor=pointer]
+        - 'generic "Espaços: 4" [ref=e817]':
+          - 'button "Espaços: 4" [ref=e818] [cursor=pointer]'
+        - generic "Ln 21, Col 21" [ref=e872]:
+          - button "Ln 21, Col 21" [ref=e873] [cursor=pointer]
+  - generic [ref=e200]:
+    - alert [ref=e201]: expandido
+    - alert
+  - iframe [ref=e822]:
+    - document [active] [ref=f5e1]:
+      - iframe [ref=f5e2]:
+        - document [active] [ref=f6e1]:
+          - region "Permitir que o Copilot ajude você a codificar" [ref=f6e2]:
+            - generic [ref=f6e3]:
+              - heading "Permitir que o Copilot ajude você a codificar" [level=1] [ref=f6e4]
+              - paragraph [ref=f6e5]: Seja código HTML, CSS, JS ou Liquid, basta descrever o que você precisa e deixar a IA criar para você.
+              - button "Continuar com o Copilot para Power Pages" [ref=f6e6] [cursor=pointer]
+              - link "Obtenha o GitHub Copilot para experimentar o @powerpages" [ref=f6e7] [cursor=pointer]:
+                - /url: "#"
+                - text: Obtenha o GitHub Copilot para experimentar o @powerpages
+                - img "Ícone de seta" [ref=f6e8]
+            - img "Ilustração do Copilot" [ref=f6e10]
+            - generic [ref=f6e11]:
+              - checkbox "Não mostrar novamente" [ref=f6e12] [cursor=pointer]
+              - generic [ref=f6e13]: Não mostrar novamente

@@ -1,0 +1,76 @@
+- generic [ref=e5]:
+  - banner [ref=e6]:
+    - button "Pular para o conteúdo principal" [ref=e7]
+    - banner [ref=e9]:
+      - button "Inicializador de aplicativos" [ref=e12] [cursor=pointer]: 
+      - generic [ref=e18]:
+        - generic [ref=e22]: Power Pages
+        - generic [ref=e26]:
+          - 'button "Ambiente: PowerPagesDeveloper-052726-140330" [ref=e108] [cursor=pointer]':
+            - img [ref=e33]
+            - generic [ref=e36]:
+              - generic [ref=e37]: Ambiente
+              - generic [ref=e39]: PowerPagesDeveloper-052726-140330
+          - generic [ref=e43]:
+            - button "Comunicados" [ref=e44] [cursor=pointer]:
+              - img [ref=e46]
+            - generic [ref=e48]: "5"
+          - button "Notificações" [ref=e53] [cursor=pointer]:
+            - img [ref=e55]
+          - button "Configurações" [ref=e59] [cursor=pointer]:
+            - generic [ref=e60]: 
+          - button "Ajuda" [ref=e63] [cursor=pointer]:
+            - generic [ref=e64]: 
+      - generic [ref=e65]:
+        - button "Gerente de contas de ALEX LOPES PEREIRA" [ref=e67] [cursor=pointer]:
+          - generic [ref=e75]: AP
+        - generic: 
+  - main [ref=e114]:
+    - generic [ref=e117]:
+      - heading "Fale mais sobre você" [level=1] [ref=e119]
+      - generic [ref=e121]:
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - heading "Fale um pouco sobre você" [level=2] [ref=e127]
+            - paragraph [ref=e128]: Isso nos ajudará a fornecer uma experiência no produto personalizada para seu conhecimento.
+          - generic [ref=e129]:
+            - heading "Para qual indústria você está criando um site?" [level=3] [ref=e130]
+            - listbox "Seleção de Setor" [ref=e131]:
+              - generic [ref=e132]:
+                - option "Educação" [ref=e133] [cursor=pointer]:
+                  - generic [ref=e135]:
+                    - img "Educação" [ref=e137]
+                    - generic [ref=e138]: Educação
+                - option "Finanças" [ref=e139] [cursor=pointer]:
+                  - generic [ref=e141]:
+                    - img "Finanças" [ref=e143]
+                    - generic [ref=e144]: Finanças
+                - option "Administração Pública" [ref=e145] [cursor=pointer]:
+                  - generic [ref=e147]:
+                    - img "Administração Pública" [ref=e149]
+                    - generic [ref=e150]: Administração Pública
+                - option "Assistência Médica" [ref=e151] [cursor=pointer]:
+                  - generic [ref=e153]:
+                    - img "Assistência Médica" [ref=e155]
+                    - generic [ref=e156]: Assistência Médica
+                - option "Fabricação" [ref=e157] [cursor=pointer]:
+                  - generic [ref=e159]:
+                    - img "Fabricação" [ref=e161]
+                    - generic [ref=e162]: Fabricação
+                - option "Entidade sem fins lucrativos" [ref=e163] [cursor=pointer]:
+                  - generic [ref=e165]:
+                    - img "Entidade sem fins lucrativos" [ref=e167]
+                    - generic [ref=e168]: Entidade sem fins lucrativos
+                - option "Transporte" [ref=e169] [cursor=pointer]:
+                  - generic [ref=e171]:
+                    - img "Transporte" [ref=e173]
+                    - generic [ref=e174]: Transporte
+                - option "Outro(s)" [ref=e175] [cursor=pointer]:
+                  - generic [ref=e177]:
+                    - img "Outro(s)" [ref=e179]
+                    - generic [ref=e180]: Outro(s)
+        - generic [ref=e183]:
+          - button "Ignorar" [ref=e184] [cursor=pointer]:
+            - generic [ref=e187]: Ignorar
+          - button "Próximo(a)" [disabled] [ref=e188]:
+            - generic [ref=e189]: Próximo(a)

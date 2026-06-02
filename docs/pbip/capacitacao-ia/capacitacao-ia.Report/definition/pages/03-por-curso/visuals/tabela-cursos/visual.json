@@ -1,0 +1,89 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "tabela-cursos",
+  "position": {
+    "x": 16,
+    "y": 80,
+    "z": 0,
+    "width": 640,
+    "height": 624,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "nome_curso"
+                }
+              },
+              "queryRef": "dashboard_base.nome_curso",
+              "nativeQueryRef": "nome_curso"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "ia_label"
+                }
+              },
+              "queryRef": "dashboard_base.ia_label",
+              "nativeQueryRef": "ia_label"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "Matriculas"
+                }
+              },
+              "queryRef": "Matriculas",
+              "nativeQueryRef": "Matriculas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "Pessoas Unicas"
+                }
+              },
+              "queryRef": "Pessoas Unicas",
+              "nativeQueryRef": "Pessoas Unicas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "% Matriculas IA"
+                }
+              },
+              "queryRef": "% Matriculas IA",
+              "nativeQueryRef": "% Matriculas IA"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {},
+    "drillFilterOtherVisuals": true
+  },
+  "visualContainerObjects": {
+    "title": [
+      {
+        "properties": {
+          "show": { "expr": { "Literal": { "Value": "true" } } },
+          "text": { "expr": { "Literal": { "Value": "'Detalhe por curso'" } } }
+        }
+      }
+    ]
+  }
+}

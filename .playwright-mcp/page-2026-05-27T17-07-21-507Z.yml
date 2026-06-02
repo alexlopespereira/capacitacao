@@ -1,0 +1,38 @@
+- generic [ref=e5]:
+  - banner [ref=e6]:
+    - button "Pular para o conteúdo principal" [ref=e549]
+    - banner [ref=e9]:
+      - button "Inicializador de aplicativos" [ref=e550] [cursor=pointer]: 
+      - generic [ref=e18]:
+        - generic [ref=e22]: Power Pages
+        - generic [ref=e26]:
+          - 'button "Ambiente: PowerPagesDeveloper-052726-140330" [ref=e551] [cursor=pointer]':
+            - img [ref=e33]
+            - generic [ref=e36]:
+              - generic [ref=e37]: Ambiente
+              - generic [ref=e39]: PowerPagesDeveloper-052726-140330
+          - generic [ref=e43]:
+            - button "Comunicados" [ref=e552] [cursor=pointer]:
+              - img [ref=e46]
+            - generic [ref=e48]: "5"
+          - button "Notificações" [ref=e553] [cursor=pointer]:
+            - img [ref=e55]
+          - button "Configurações" [ref=e554] [cursor=pointer]:
+            - generic [ref=e60]: 
+          - button "Ajuda" [ref=e555] [cursor=pointer]:
+            - generic [ref=e64]: 
+      - generic [ref=e65]:
+        - button "Gerente de contas de ALEX LOPES PEREIRA" [ref=e556] [cursor=pointer]:
+          - generic [ref=e75]: AP
+        - generic: 
+  - main [ref=e114]:
+    - generic [ref=e610]:
+      - status:
+        - generic [ref=e611]: ALEX, estamos configurando seu novo site, o que pode levar algum tempo. Vamos verificar a home page.
+      - heading "ALEX, estamos configurando seu novo site, o que pode levar algum tempo. Vamos verificar a home page." [level=1] [ref=e612]:
+        - generic [ref=e613]: ALEX, estamos configurando seu novo site, o que pode levar algum tempo.
+        - generic [ref=e614]: Vamos verificar a home page.
+      - progressbar "Barra de progresso da criação do site" [ref=e619]
+      - button "animation" [ref=e620]:
+        - img [ref=e621]
+      - generic "Configurando o ambiente. Isso pode levar alguns minutos." [ref=e719]: Configurando o ambiente. Isso pode levar alguns minutos....

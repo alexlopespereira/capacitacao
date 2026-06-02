@@ -1,0 +1,9 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pages/1.0.0/schema.json",
+  "pageOrder": [
+{%- for p in pages %}
+    "{{ p.name }}"{% if not loop.last %},{% endif %}
+{%- endfor %}
+  ],
+  "activePageName": "{{ pages[0].name }}"
+}

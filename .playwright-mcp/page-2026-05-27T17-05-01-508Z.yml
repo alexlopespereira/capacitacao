@@ -1,0 +1,75 @@
+- generic [ref=e5]:
+  - banner [ref=e6]:
+    - button "Pular para o conteúdo principal" [ref=e7]
+    - banner [ref=e9]:
+      - button "Inicializador de aplicativos" [ref=e12] [cursor=pointer]: 
+      - generic [ref=e18]:
+        - generic [ref=e22]: Power Pages
+        - generic [ref=e26]:
+          - 'button "Ambiente: PowerPagesDeveloper-052726-140330" [ref=e108] [cursor=pointer]':
+            - img [ref=e33]
+            - generic [ref=e36]:
+              - generic [ref=e37]: Ambiente
+              - generic [ref=e39]: PowerPagesDeveloper-052726-140330
+          - generic [ref=e43]:
+            - button "Comunicados" [ref=e44] [cursor=pointer]:
+              - img [ref=e46]
+            - generic [ref=e48]: "5"
+          - button "Notificações" [ref=e53] [cursor=pointer]:
+            - img [ref=e55]
+          - button "Configurações" [ref=e59] [cursor=pointer]:
+            - generic [ref=e60]: 
+          - button "Ajuda" [ref=e63] [cursor=pointer]:
+            - generic [ref=e64]: 
+      - generic [ref=e65]:
+        - button "Gerente de contas de ALEX LOPES PEREIRA" [ref=e67] [cursor=pointer]:
+          - generic [ref=e75]: AP
+        - generic: 
+  - main [ref=e114]:
+    - generic [ref=e117]:
+      - heading "Criar um site" [level=1] [ref=e191]
+      - generic [ref=e197]:
+        - generic [ref=e198]:
+          - generic [ref=e199]:
+            - img "Ícone do Copilot" [ref=e200]
+            - heading "Descreva o site que você deseja e deixe o Copilot criá-lo" [level=1] [ref=e201]
+          - paragraph [ref=e203]: Simplifique o processo de criação do site com a ajuda da IA generativa. Crie layouts de páginas, crie formulários, adicione blocos de texto editáveis e muito mais, apenas descrevendo o que você precisa.
+          - generic [ref=e204]:
+            - paragraph [ref=e205]: "Os prompts abaixo se baseiam no setor da sua organização:"
+            - button "escolher um setor" [ref=e206] [cursor=pointer]
+          - generic [ref=e207]:
+            - generic [ref=e211]:
+              - list [ref=e213]:
+                - button "Portal de Cadastro de Clientes Crie um site para capturar e gerenciar informações de clientes, permitindo que empresas coletem dados de contato e preferências para melhorar o atendimento ao cliente." [ref=e214] [cursor=pointer]:
+                  - generic [ref=e216]:
+                    - generic "Portal de Cadastro de Clientes" [ref=e217]
+                    - generic "Crie um site para capturar e gerenciar informações de clientes, permitindo que empresas coletem dados de contato e preferências para melhorar o atendimento ao cliente." [ref=e218]
+                - button "Sistema de Agendamento Online Desenvolva um site para que usuários possam agendar serviços ou consultas, processando informações de horários, dados pessoais e confirmações de agendamento." [ref=e219] [cursor=pointer]:
+                  - generic [ref=e221]:
+                    - generic "Sistema de Agendamento Online" [ref=e222]
+                    - generic "Desenvolva um site para que usuários possam agendar serviços ou consultas, processando informações de horários, dados pessoais e confirmações de agendamento." [ref=e223]
+                - button "Portal de Feedback e Avaliações Faça um site para coletar feedback e avaliações de usuários sobre serviços ou produtos, processando dados de opinião para análise e melhoria contínua." [ref=e224] [cursor=pointer]:
+                  - generic [ref=e226]:
+                    - generic "Portal de Feedback e Avaliações" [ref=e227]
+                    - generic "Faça um site para coletar feedback e avaliações de usuários sobre serviços ou produtos, processando dados de opinião para análise e melhoria contínua." [ref=e228]
+                - button "Formulário de Solicitação de Serviços Construa um site para que clientes possam enviar solicitações de serviços específicos, capturando detalhes relevantes para atendimento e acompanhamento." [ref=e229] [cursor=pointer]:
+                  - generic [ref=e231]:
+                    - generic "Formulário de Solicitação de Serviços" [ref=e232]
+                    - generic "Construa um site para que clientes possam enviar solicitações de serviços específicos, capturando detalhes relevantes para atendimento e acompanhamento." [ref=e233]
+              - button "Atualizar para obter mais sugestões" [ref=e236] [cursor=pointer]:
+                - generic [ref=e238]:
+                  - img [ref=e239]
+                  - generic [ref=e240]: Ver mais sugestões
+            - generic [ref=e242]:
+              - generic [ref=e247]:
+                - textbox "Descreva o site desejado e deixe que a IA crie o primeiro rascunho" [active] [ref=e248]
+                - button "Criar meu site" [disabled] [ref=e252]:
+                  - generic [ref=e254]: 
+              - button "Criar meu site" [disabled] [ref=e256]:
+                - generic [ref=e259]: Criar meu site
+        - region "Outras maneiras de criar um site" [ref=e261]:
+          - heading "Outras maneiras de criar um site" [level=2] [ref=e262]
+          - link "Começar com um modelo" [ref=e264] [cursor=pointer]:
+            - generic [ref=e268]:
+              - generic [ref=e269]: Começar com um modelo
+              - generic [ref=e270]: Selecione em uma galeria de modelos de site predefinidos para começar a trabalhar no site.

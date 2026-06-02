@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "kpi-pessoas",
+  "position": {
+    "x": 640,
+    "y": 16,
+    "z": 0,
+    "width": 296,
+    "height": 140,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "Pessoas Unicas"
+                }
+              },
+              "queryRef": "Pessoas Unicas",
+              "nativeQueryRef": "Pessoas Unicas"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {},
+    "drillFilterOtherVisuals": true
+  },
+  "visualContainerObjects": {
+    "title": [
+      {
+        "properties": {
+          "show": { "expr": { "Literal": { "Value": "true" } } },
+          "text": { "expr": { "Literal": { "Value": "'Pessoas únicas'" } } }
+        }
+      }
+    ]
+  }
+}

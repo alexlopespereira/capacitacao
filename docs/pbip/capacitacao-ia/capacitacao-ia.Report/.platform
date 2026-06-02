@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "capacitacao-ia"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "20a1f0c1-42ec-4e39-b9f2-e9d8524802af"
+  }
+}

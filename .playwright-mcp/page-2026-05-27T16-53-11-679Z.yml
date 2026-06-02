@@ -1,0 +1,264 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - button "Pular para o conteúdo principal"
+    - banner "Microsoft Azure" [ref=e3]:
+      - button "Mostrar menu do Microsoft Cloud" [ref=e5] [cursor=pointer]:
+        - img [ref=e7]
+      - button "Mostrar menu do portal" [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - heading "Microsoft Azure" [level=1] [ref=e12]:
+        - link "Microsoft Azure" [ref=e13] [cursor=pointer]:
+          - /url: "#home"
+      - search [ref=e14]:
+        - generic [ref=e15]:
+          - img [ref=e17]
+          - textbox "Pesquisar recursos, serviços e documentos (G+/)" [ref=e20]
+      - button "Copilot" [ref=e21] [cursor=pointer]:
+        - img [ref=e23]
+      - generic [ref=e25]:
+        - button "Cloud Shell" [ref=e26] [cursor=pointer]:
+          - img [ref=e27]
+        - button "Notificações" [ref=e30] [cursor=pointer]:
+          - img [ref=e31]
+        - button "Configurações" [ref=e33] [cursor=pointer]:
+          - img [ref=e34]
+        - button "Suporte + Solução de Problemas" [ref=e37] [cursor=pointer]:
+          - img [ref=e38]
+        - button "Comentários" [ref=e40] [cursor=pointer]:
+          - img [ref=e41]
+      - button "Menu da conta Atualmente conectado como alex.pereira@gestao.gov.br, no locatário Ministério da Gestão e da Inovação dos Serv. Pub. (colaboragov.onmicrosoft.com)" [ref=e44] [cursor=pointer]:
+        - 'generic "Nome: ALEX LOPES PEREIRA Email: alex.pereira@gestao.gov.br Diretório: Ministério da Gestão e da Inovação dos Serv. Pub. (456213cf-7073-47c6-bf49-41b654ad449b) Domínio: colaboragov.onmicrosoft.com Sua entrada usou autenticação multifator." [ref=e45]':
+          - generic [ref=e46]:
+            - generic [ref=e47]: alex.pereira@gestao.gov.br
+            - generic [ref=e48]: Ministério da Gestão e da Inovação dos Serv. Pub. (colaboragov.onmicrosoft.com)
+          - img [ref=e51]
+    - main [ref=e56]:
+      - generic [ref=e58]:
+        - generic [ref=e60]:
+          - generic [ref=e61]: Bem-vindo(a) ao Azure.
+          - generic [ref=e62]: Você não tem uma assinatura? Confira as opções a seguir.
+          - list [ref=e63]:
+            - listitem [ref=e64]:
+              - img [ref=e66]
+              - generic [ref=e68]: Começar com uma avaliação gratuita do Azure
+              - generic [ref=e70]:
+                - text: Receba um crédito gratuito de 200 dólares para produtos e serviços do Azure, além de 12 meses de
+                - link "serviços gratuitos" [ref=e71] [cursor=pointer]:
+                  - /url: "#blade/Microsoft_Azure_Billing/FreeServicesBlade"
+                - text: populares.
+              - link "Iniciar" [ref=e74] [cursor=pointer]
+            - listitem [ref=e75]:
+              - img [ref=e77]
+              - generic [ref=e79]: Gerenciar o Microsoft Entra ID
+              - generic [ref=e80]: Gerencie o acesso, defina políticas inteligentes e aprimora a segurança com o Microsoft Entra ID.
+              - generic [ref=e81]:
+                - link "Exibir" [ref=e83] [cursor=pointer]
+                - generic [ref=e84]:
+                  - link "Gerenciar o Microsoft Entra ID Saiba mais" [ref=e85] [cursor=pointer]:
+                    - /url: https://go.microsoft.com/fwLink/?LinkID=2106209
+                    - text: Saiba mais
+                  - img [ref=e87]
+            - listitem [ref=e89]:
+              - img [ref=e91]
+              - generic [ref=e93]: Microsoft Azure for Students
+              - generic [ref=e94]: Receba software gratuito, crédito do Azure ou acesso ao Azure Dev Tools for Teaching após verificar seu status acadêmico.
+              - link "Iniciar" [ref=e97] [cursor=pointer]
+        - generic [ref=e98]:
+          - heading "Serviços do Azure" [level=3] [ref=e99]
+          - grid "Serviços do Azure" [ref=e100]:
+            - row "Criar um recurso Centro de Início Rápido Foundry Serviços do Kubernetes Máquinas virtuais Serviços de Aplicativos Contas de armazenamento Bancos de dados SQL Azure Cosmos DB Mais serviços" [ref=e198]:
+              - gridcell "Criar um recurso" [ref=e102] [cursor=pointer]:
+                - link "Criar um recurso" [ref=e103]:
+                  - /url: "#create/hub"
+                  - img [ref=e199]
+                  - generic [ref=e108]: Criar um recurso
+              - gridcell "Centro de Início Rápido" [ref=e202] [cursor=pointer]:
+                - link "Centro de Início Rápido" [ref=e203]:
+                  - /url: "#blade/Microsoft_Azure_Resources/QuickstartCenterMenuBlade"
+                  - img [ref=e205]
+                  - generic [ref=e207]: Centro de Início Rápido
+              - gridcell "Foundry" [ref=e208] [cursor=pointer]:
+                - link "Foundry" [ref=e209]:
+                  - /url: "#blade/Microsoft_Azure_ProjectOxford/CognitiveServicesHub"
+                  - img [ref=e211]
+                  - generic [ref=e213]: Foundry
+              - gridcell "Serviços do Kubernetes" [ref=e214] [cursor=pointer]:
+                - link "Serviços do Kubernetes" [ref=e215]:
+                  - /url: "#view/Microsoft_Azure_KubernetesFleet/KubernetesHub.MenuView/~/clusters"
+                  - img [ref=e217]
+                  - generic [ref=e219]: Serviços do Kubernetes
+              - gridcell "Máquinas virtuais" [ref=e220] [cursor=pointer]:
+                - link "Máquinas virtuais" [ref=e221]:
+                  - /url: "#blade/Microsoft_Azure_ComputeHub/ComputeHubMenuBlade/virtualMachinesBrowse"
+                  - img [ref=e223]
+                  - generic [ref=e225]: Máquinas virtuais
+              - gridcell "Serviços de Aplicativos" [ref=e226] [cursor=pointer]:
+                - link "Serviços de Aplicativos" [ref=e227]:
+                  - /url: "#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2Fsites"
+                  - img [ref=e229]
+                  - generic [ref=e231]: Serviços de Aplicativos
+              - gridcell "Contas de armazenamento" [ref=e232] [cursor=pointer]:
+                - link "Contas de armazenamento" [ref=e233]:
+                  - /url: "#view/Microsoft_Azure_StorageHub/StorageHub.MenuView/~/StorageAccountsBrowse"
+                  - img [ref=e235]
+                  - generic [ref=e237]: Contas de armazenamento
+              - gridcell "Bancos de dados SQL" [ref=e238] [cursor=pointer]:
+                - link "Bancos de dados SQL" [ref=e239]:
+                  - /url: "#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Sql%2Fservers%2Fdatabases"
+                  - img [ref=e241]
+                  - generic [ref=e243]: Bancos de dados SQL
+              - gridcell "Azure Cosmos DB" [ref=e244] [cursor=pointer]:
+                - link "Azure Cosmos DB" [ref=e245]:
+                  - /url: "#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.DocumentDb%2FdatabaseAccounts"
+                  - img [ref=e247]
+                  - generic [ref=e249]: Azure Cosmos DB
+              - gridcell "Mais serviços" [ref=e109] [cursor=pointer]:
+                - link "Mais serviços" [ref=e110]:
+                  - /url: "#allservices"
+                  - img [ref=e250]
+                  - generic [ref=e115]: Mais serviços
+          - heading "Recursos" [level=3] [ref=e116]
+          - generic [ref=e118]:
+            - tablist [ref=e120]:
+              - tab "Recente" [selected] [ref=e121] [cursor=pointer]:
+                - generic [ref=e123]: Recente
+              - tab "Favorito" [ref=e124] [cursor=pointer]:
+                - generic [ref=e126]: Favorito
+            - tabpanel [ref=e127]:
+              - grid "Recursos" [ref=e130]:
+                - row "Nome Tipo Última visualização" [ref=e131]:
+                  - columnheader "Nome" [ref=e132]
+                  - columnheader "Tipo" [ref=e133]
+                  - columnheader "Última visualização" [ref=e134]
+                - generic [ref=e135]:
+                  - img [ref=e137]
+                  - generic [ref=e139]: Nenhum recurso foi visualizado recentemente
+                  - button "Exibir todos os recursos" [ref=e142] [cursor=pointer]:
+                    - generic [ref=e143]: Exibir todos os recursos
+          - heading "Navegar" [level=3] [ref=e144]
+          - grid "Navegar" [ref=e253]:
+            - row "Assinaturas Grupos de Recursos Todos os recursos Painel" [ref=e254]:
+              - gridcell "Assinaturas" [ref=e255]:
+                - link "Assinaturas" [ref=e256] [cursor=pointer]:
+                  - /url: "#view/HubsExtension/ServiceMenuBlade/extension/Microsoft_Azure_Resources/menuId/ResourceManager/itemId/subscriptions"
+                  - img [ref=e258]
+                  - generic [ref=e260]: Assinaturas
+              - gridcell "Grupos de Recursos" [ref=e261]:
+                - link "Grupos de Recursos" [ref=e262] [cursor=pointer]:
+                  - /url: "#view/HubsExtension/ServiceMenuBlade/extension/Microsoft_Azure_Resources/menuId/ResourceManager/itemId/resourcegroups"
+                  - img [ref=e264]
+                  - generic [ref=e266]: Grupos de Recursos
+              - gridcell "Todos os recursos" [ref=e267]:
+                - link "Todos os recursos" [ref=e268] [cursor=pointer]:
+                  - /url: "#view/HubsExtension/ServiceMenuBlade/extension/Microsoft_Azure_Resources/menuId/ResourceManager/itemId/browseAll"
+                  - img [ref=e270]
+                  - generic [ref=e272]: Todos os recursos
+              - gridcell "Painel" [ref=e273]:
+                - link "Painel" [ref=e274] [cursor=pointer]:
+                  - /url: "#dashboard"
+                  - img [ref=e276]
+                  - generic [ref=e278]: Painel
+          - heading "Ferramentas" [level=3] [ref=e145]
+          - grid "Ferramentas" [ref=e279]:
+            - row "Microsoft Learn Azure Monitor Microsoft Defender para Nuvem Gerenciamento de Custos" [ref=e280]:
+              - gridcell "Microsoft Learn" [ref=e281]:
+                - link "Microsoft Learn" [ref=e282] [cursor=pointer]:
+                  - /url: https://aka.ms/homemslearn
+                  - img [ref=e285]
+                  - generic [ref=e287]:
+                    - generic [ref=e288]:
+                      - text: Microsoft Learn
+                      - img [ref=e290]
+                    - generic [ref=e293]: Saiba mais sobre o Azure com o treinamento online gratuito da Microsoft
+              - gridcell "Azure Monitor" [ref=e294]:
+                - link "Azure Monitor" [ref=e295] [cursor=pointer]:
+                  - /url: "#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade"
+                  - img [ref=e298]
+                  - generic [ref=e300]:
+                    - generic [ref=e301]: Azure Monitor
+                    - generic [ref=e303]: Monitorar seus aplicativos e sua infraestrutura
+              - gridcell "Microsoft Defender para Nuvem" [ref=e304]:
+                - link "Microsoft Defender para Nuvem" [ref=e305] [cursor=pointer]:
+                  - /url: "#blade/Microsoft_Azure_Security/SecurityMenuBlade"
+                  - img [ref=e308]
+                  - generic [ref=e310]:
+                    - generic [ref=e311]: Microsoft Defender para Nuvem
+                    - generic [ref=e313]: Proteja seus aplicativos e sua infraestrutura
+              - gridcell "Gerenciamento de Custos" [ref=e314]:
+                - link "Gerenciamento de Custos" [ref=e315] [cursor=pointer]:
+                  - /url: "#blade/Microsoft_Azure_CostManagement/Menu/openedBy/AzurePortal"
+                  - img [ref=e318]
+                  - generic [ref=e320]:
+                    - generic [ref=e321]: Gerenciamento de Custos
+                    - generic [ref=e323]: Analisar e otimizar gratuitamente seus gastos com a nuvem
+          - generic [ref=e146]:
+            - generic [ref=e147]:
+              - heading "Links úteis" [level=3] [ref=e148]
+              - generic [ref=e149]:
+                - link "Documentação Técnica" [ref=e151] [cursor=pointer]:
+                  - /url: https://aka.ms/hometechnicaldocumentation
+                  - text: Documentação Técnica
+                  - img [ref=e153]
+                - link "Serviços do Azure" [ref=e156] [cursor=pointer]:
+                  - /url: https://go.microsoft.com/fwlink/?linkid=2009591
+                  - text: Serviços do Azure
+                  - img [ref=e158]
+                - link "Atualizações Recentes do Azure" [ref=e161] [cursor=pointer]:
+                  - /url: https://go.microsoft.com/fwlink/?linkid=2043134
+                  - text: Atualizações Recentes do Azure
+                  - img [ref=e163]
+                - link "Ferramentas de Migração do Azure" [ref=e166] [cursor=pointer]:
+                  - /url: "#blade/Microsoft_Azure_Migrate/AmhResourceMenuBlade/overview"
+                - link "Localize um especialista do Azure" [ref=e168] [cursor=pointer]:
+                  - /url: "#blade/Microsoft_Azure_CustomerHub/ServiceProvidersBlade/overview"
+                - link "Centro de Início Rápido" [ref=e170] [cursor=pointer]:
+                  - /url: "#blade/Microsoft_Azure_Resources/QuickstartCenterBlade"
+            - generic [ref=e171]:
+              - heading "Aplicativo móvel do Azure" [level=3] [ref=e172]
+              - generic [ref=e173]:
+                - link "Baixar na App Store" [ref=e174] [cursor=pointer]:
+                  - /url: https://itunes.apple.com/app/microsoft-azure/id1219013620?ls=1&mt=8
+                  - img "Baixar na App Store" [ref=e175]
+                - link "Obtenha no Google Play" [ref=e176] [cursor=pointer]:
+                  - /url: https://play.google.com/store/apps/details?id=com.microsoft.azure
+                  - img "Obtenha no Google Play" [ref=e177]
+  - generic:
+    - generic:
+      - generic: O portal do Microsoft Azure está sendo carregado.
+      - generic: O portal do Microsoft Azure está pronto.
+  - img [ref=e178]
+  - img [ref=e179]
+  - img [ref=e180]
+  - img [ref=e181]
+  - img [ref=e182]
+  - img [ref=e183]
+  - img [ref=e184]
+  - img [ref=e185]
+  - img [ref=e186]
+  - img [ref=e187]
+  - img [ref=e188]
+  - img [ref=e189]
+  - img [ref=e190]
+  - img [ref=e191]
+  - img [ref=e192]
+  - img [ref=e193]
+  - img [ref=e194]
+  - img [ref=e195]
+  - img [ref=e196]
+  - img [ref=e197]
+  - img [ref=e324]
+  - img [ref=e325]
+  - img [ref=e326]
+  - img [ref=e327]
+  - img [ref=e328]
+  - img [ref=e329]
+  - img [ref=e330]
+  - img [ref=e331]
+  - img [ref=e332]
+  - img [ref=e333]
+  - img [ref=e334]
+  - img [ref=e335]
+  - img [ref=e336]
+  - img [ref=e337]
+  - img [ref=e338]
+  - img [ref=e339]

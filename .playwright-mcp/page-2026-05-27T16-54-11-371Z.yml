@@ -1,0 +1,351 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - button "Pular para o conteúdo principal"
+    - banner "Microsoft Azure" [ref=e3]:
+      - button "Mostrar menu do Microsoft Cloud" [ref=e5] [cursor=pointer]:
+        - img [ref=e7]
+      - button "Mostrar menu do portal" [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - heading "Microsoft Azure" [level=1] [ref=e12]:
+        - link "Microsoft Azure" [ref=e13] [cursor=pointer]:
+          - /url: "#home"
+      - search [ref=e14]:
+        - generic [ref=e15]:
+          - img [ref=e17]
+          - textbox "Pesquisar recursos, serviços e documentos (G+/)" [ref=e20]
+      - button "Copilot" [ref=e21] [cursor=pointer]:
+        - img [ref=e23]
+      - generic [ref=e25]:
+        - button "Cloud Shell" [ref=e26] [cursor=pointer]:
+          - img [ref=e27]
+        - button "Notificações" [ref=e30] [cursor=pointer]:
+          - img [ref=e31]
+        - button "Configurações" [ref=e33] [cursor=pointer]:
+          - img [ref=e34]
+        - button "Suporte + Solução de Problemas" [ref=e37] [cursor=pointer]:
+          - img [ref=e38]
+        - button "Comentários" [ref=e40] [cursor=pointer]:
+          - img [ref=e41]
+      - button "Menu da conta Atualmente conectado como alex.pereira@gestao.gov.br, no locatário Ministério da Gestão e da Inovação dos Serv. Pub. (colaboragov.onmicrosoft.com)" [ref=e44] [cursor=pointer]:
+        - 'generic "Nome: ALEX LOPES PEREIRA Email: alex.pereira@gestao.gov.br Diretório: Ministério da Gestão e da Inovação dos Serv. Pub. (456213cf-7073-47c6-bf49-41b654ad449b) Domínio: colaboragov.onmicrosoft.com Sua entrada usou autenticação multifator." [ref=e45]':
+          - generic [ref=e46]:
+            - generic [ref=e47]: alex.pereira@gestao.gov.br
+            - generic [ref=e48]: Ministério da Gestão e da Inovação dos Serv. Pub. (colaboragov.onmicrosoft.com)
+          - img [ref=e51]
+    - main [ref=e56]:
+      - generic [ref=e621]:
+        - generic [ref=e622]:
+          - generic "Configurações do portal | Diretórios + assinaturas" [ref=e623]
+          - button "Fechar" [ref=e625] [cursor=pointer]:
+            - img [ref=e626]
+        - generic [ref=e628]:
+          - generic [ref=e629]:
+            - generic [ref=e630]:
+              - img [ref=e632]
+              - generic "Menu de pesquisa" [ref=e634]:
+                - searchbox "Menu de pesquisa" [active] [ref=e639]
+            - list [ref=e641]:
+              - listitem [ref=e642] [cursor=pointer]:
+                - generic [ref=e643]: Diretórios + assinaturas
+              - listitem [ref=e644] [cursor=pointer]:
+                - generic [ref=e645]: Aparência
+              - listitem [ref=e646] [cursor=pointer]:
+                - generic [ref=e647]: Idioma e região
+              - listitem [ref=e648] [cursor=pointer]:
+                - generic [ref=e649]: Minhas informações
+              - listitem [ref=e650] [cursor=pointer]:
+                - generic [ref=e651]: Saída e notificações
+            - generic [ref=e652]:
+              - generic [ref=e653]: Links úteis
+              - list [ref=e654]:
+                - listitem [ref=e655]:
+                  - link "Saiba mais sobre as configurações" [ref=e656] [cursor=pointer]:
+                    - /url: https://go.microsoft.com/fwLink/?LinkID=2157930&amp;clcid=0x416
+                - listitem [ref=e657]:
+                  - link "URLs de lista segura" [ref=e658] [cursor=pointer]:
+                    - /url: https://go.microsoft.com/fwLink/?LinkID=2157931&amp;clcid=0x416
+                - listitem [ref=e659]:
+                  - link "Microsoft Partner Network" [ref=e660] [cursor=pointer]:
+                    - /url: "#blade/Microsoft_Azure_Billing/managementpartnerblade"
+                - listitem [ref=e661]:
+                  - link "Política de Privacidade" [ref=e662] [cursor=pointer]:
+                    - /url: https://go.microsoft.com/fwLink/?LinkID=521839&amp;clcid=0x416
+                - listitem [ref=e663]:
+                  - link "Mais recursos do Azure" [ref=e664] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e665]:
+                  - link "Fornecer comentários" [ref=e666] [cursor=pointer]:
+                    - /url: "#"
+          - generic [ref=e669]:
+            - generic [ref=e670]:
+              - generic [ref=e671]: Todos os serviços e recursos incluídos no Portal do Azure herdarão a seleção da filtragem básica. Sua seleção também será salva e recarregada na próxima vez que você entrar ou recarregar o Portal do Azure.
+              - generic [ref=e672]:
+                - generic [ref=e673]:
+                  - generic [ref=e675]:
+                    - text: Filtro de assinatura padrão
+                    - button "O portal mostrará os dados apenas para essas assinaturas selecionadas na inicialização do portal." [ref=e677] [cursor=pointer]:
+                      - img [ref=e680]
+                  - generic [ref=e685]: Não há assinaturas no diretório Ministério da Gestão e da Inovação dos Serv. Pub. (colaboragov.onmicrosoft.com) – Alterne para outro diretório.
+                - generic [ref=e688]:
+                  - generic [ref=e689]:
+                    - text: Filtros avançados
+                    - button "Filtros avançados" [ref=e691] [cursor=pointer]:
+                      - img [ref=e694]
+                  - button "Filtros avançados" [ref=e701] [cursor=pointer]
+            - generic [ref=e704]:
+              - generic [ref=e706]:
+                - text: Diretórios
+                - button "Diretórios aos quais você foi adicionado como membro ou por meio do acesso baseado em funções de assinatura." [ref=e708] [cursor=pointer]:
+                  - img [ref=e711]
+              - generic [ref=e715]:
+                - text: A troca de diretórios recarregará o portal. O diretório escolhido impactará a assinatura, o grupo de recursos e os filtros regionais que estão disponíveis no portal.
+                - link "Saiba mais sobre os diretórios." [ref=e716] [cursor=pointer]:
+                  - /url: https://go.microsoft.com/fwLink/?LinkID=862659&amp;clcid=0x416
+              - generic [ref=e717]:
+                - generic [ref=e719]:
+                  - generic [ref=e720]:
+                    - text: Diretório atual
+                    - button "Esse é o diretório no qual você está conectado no momento." [ref=e722] [cursor=pointer]:
+                      - img [ref=e725]
+                  - text: ": Ministério da Gestão e da Inovação dos Serv. Pub. (colaboragov.onmicrosoft.com)"
+                - generic [ref=e730]:
+                  - generic [ref=e731]:
+                    - text: Diretório de inicialização
+                    - button "Na inicialização do Portal do Azure, você sempre entrará no diretório “Última visita”. Você pode selecionar outro diretório como seu diretório de inicialização." [ref=e733] [cursor=pointer]:
+                      - img [ref=e736]
+                  - text: ": Última visita"
+              - generic [ref=e740]:
+                - tablist [ref=e742]:
+                  - tab "Favoritos" [ref=e743] [cursor=pointer]:
+                    - generic [ref=e745]: Favoritos
+                  - tab "Todos os Diretórios" [selected] [ref=e746] [cursor=pointer]:
+                    - generic [ref=e748]: Todos os Diretórios
+                - tabpanel "Todos os Diretórios" [ref=e749]:
+                  - generic [ref=e751]:
+                    - generic [ref=e753]:
+                      - img [ref=e755]
+                      - generic "Caixa de pesquisa" [ref=e757]:
+                        - searchbox "Caixa de pesquisa" [ref=e762]
+                    - grid "Todos os Diretórios" [ref=e764]:
+                      - generic [ref=e767]:
+                        - row "Favorito Nome do diretório Mudar diretório Domínio ID do diretório" [ref=e769]:
+                          - columnheader "Favorito" [ref=e770] [cursor=pointer]
+                          - columnheader "Nome do diretório" [ref=e773] [cursor=pointer]:
+                            - generic [ref=e774]:
+                              - generic [ref=e775]: Nome do diretório
+                              - img [ref=e779]
+                          - columnheader "Mudar diretório" [ref=e783] [cursor=pointer]
+                          - columnheader "Domínio" [ref=e786] [cursor=pointer]:
+                            - generic [ref=e787]:
+                              - generic [ref=e788]: Domínio
+                              - img [ref=e792]
+                          - columnheader "ID do diretório" [ref=e796] [cursor=pointer]:
+                            - generic [ref=e797]:
+                              - generic [ref=e798]: ID do diretório
+                              - img [ref=e802]
+                        - row "Ministério da Gestão e da Inovação dos Serv. Pub. Atual colaboragov.onmicrosoft.com 456213cf-7073-47c6-bf49-41b654ad449b" [ref=e808]:
+                          - generic [ref=e809]:
+                            - gridcell [ref=e810]:
+                              - img [ref=e812] [cursor=pointer]
+                            - gridcell "Ministério da Gestão e da Inovação dos Serv. Pub." [ref=e814]:
+                              - generic [ref=e815]: Ministério da Gestão e da Inovação dos Serv. Pub.
+                            - gridcell "Atual" [ref=e816]:
+                              - generic [ref=e817]:
+                                - img [ref=e819]
+                                - generic [ref=e821]: Atual
+                            - gridcell "colaboragov.onmicrosoft.com" [ref=e822]:
+                              - generic [ref=e823]: colaboragov.onmicrosoft.com
+                            - gridcell "456213cf-7073-47c6-bf49-41b654ad449b" [ref=e824]:
+                              - generic [ref=e825]: 456213cf-7073-47c6-bf49-41b654ad449b
+      - generic [ref=e340]:
+        - navigation "Histórico de navegação" [ref=e343]:
+          - navigation "breadcrumb" [ref=e346]:
+            - list [ref=e347]:
+              - listitem [ref=e348]:
+                - link "Página inicial" [ref=e349] [cursor=pointer]:
+                  - /url: "#home"
+        - region "Assinaturas Ministério da Gestão e da Inovação dos Serv. Pub. (colaboragov.onmicrosoft.com)" [ref=e358]:
+          - generic "Assinaturas Ministério da Gestão e da Inovação dos Serv. Pub. (colaboragov.onmicrosoft.com)" [ref=e361]:
+            - generic [ref=e363]:
+              - generic [ref=e364]:
+                - heading "Assinaturas" [level=2] [ref=e365]: Assinaturas
+                - generic [ref=e366]:
+                  - button "Fixar o conteúdo 'Assinaturas' no painel" [ref=e367] [cursor=pointer]:
+                    - img [ref=e370]
+                  - button "Mais ações de conteúdo" [ref=e373] [cursor=pointer]:
+                    - img [ref=e376]
+                  - group "Sugestões de chat do Copilot" [ref=e380]:
+                    - generic [ref=e381]:
+                      - button "Sugestões de chat do Copilot" [expanded] [ref=e382]:
+                        - img [ref=e385]
+                      - button "Comparar os diferentes tipos Azure assinatura" [ref=e388]
+                    - button "Prever meu custo para o próximo período de cobrança" [ref=e390]
+                  - button "Fechar o conteúdo 'Assinaturas'" [ref=e391] [cursor=pointer]:
+                    - img [ref=e394]
+              - generic [ref=e397]: Ministério da Gestão e da Inovação dos Serv. Pub. (colaboragov.onmicrosoft.com)
+          - generic [ref=e399]:
+            - toolbar [ref=e402]:
+              - button "Adicionar" [ref=e403] [cursor=pointer]:
+                - img [ref=e405]
+                - generic [ref=e407]: Adicionar
+              - button "Gerenciar Políticas" [ref=e408] [cursor=pointer]:
+                - img [ref=e410]
+                - generic [ref=e412]: Gerenciar Políticas
+              - button "Exibir Solicitações" [ref=e413] [cursor=pointer]:
+                - img [ref=e415]
+                - generic [ref=e417]: Exibir Solicitações
+              - button "Exibir assinaturas qualificadas" [ref=e418] [cursor=pointer]:
+                - img [ref=e420]
+                - generic [ref=e422]: Exibir assinaturas qualificadas
+              - button "Exportar para CSV" [ref=e423] [cursor=pointer]:
+                - img [ref=e425]
+                - generic [ref=e427]: Exportar para CSV
+            - generic [ref=e435]:
+              - generic [ref=e441]:
+                - text: Mostrando assinaturas no diretório Ministério da Gestão e da Inovação dos Serv. Pub.. Alguma assinatura não aparece?
+                - link "Alternar diretórios" [ref=e442] [cursor=pointer]:
+                  - /url: "#menu/directory"
+              - generic [ref=e443]:
+                - generic [ref=e445]:
+                  - generic [ref=e446]:
+                    - img [ref=e448]
+                    - generic "Caixa de pesquisa" [ref=e450]:
+                      - searchbox "Caixa de pesquisa" [ref=e455]
+                  - list [ref=e458]:
+                    - listitem [ref=e459]:
+                      - generic [ref=e460] [cursor=pointer]:
+                        - button "Assinaturas" [ref=e461]:
+                          - generic [ref=e463]:
+                            - generic [ref=e464]: Assinaturas
+                            - generic [ref=e465]: ":"
+                            - generic [ref=e466]: Filtrado (0 de 0)
+                        - generic: Usar as teclas 'Espaço' ou 'Enter' para habilitar o modo de edição
+                    - listitem [ref=e467]:
+                      - generic [ref=e468] [cursor=pointer]:
+                        - button "Minha função" [ref=e469]:
+                          - generic [ref=e471]:
+                            - generic [ref=e472]: Minha função
+                            - generic [ref=e473]: ==
+                            - generic [ref=e474]: tudo
+                        - generic: Usar as teclas 'Espaço' ou 'Enter' para habilitar o modo de edição
+                    - listitem [ref=e475]:
+                      - generic [ref=e476] [cursor=pointer]:
+                        - button "Status" [ref=e477]:
+                          - generic [ref=e479]:
+                            - generic [ref=e480]: Status
+                            - generic [ref=e481]: ==
+                            - generic [ref=e482]: tudo
+                        - generic: Usar as teclas 'Espaço' ou 'Enter' para habilitar o modo de edição
+                    - listitem [ref=e483]:
+                      - button "Adicionar filtro" [ref=e485] [cursor=pointer]:
+                        - img [ref=e487]
+                        - generic [ref=e489]: Adicionar filtro
+                - grid "Grade de Assinaturas" [ref=e491]:
+                  - generic [ref=e494]:
+                    - row "Nome da assinatura ID da Assinatura Minha função Custo atual Classificação de Segurança Grupo de gerenciamento pai Status Comandos" [ref=e496]:
+                      - columnheader "Nome da assinatura" [ref=e497] [cursor=pointer]:
+                        - generic [ref=e498]:
+                          - generic [ref=e499]: Nome da assinatura
+                          - img [ref=e503]
+                      - columnheader "ID da Assinatura" [ref=e507] [cursor=pointer]:
+                        - generic [ref=e508]:
+                          - generic [ref=e509]: ID da Assinatura
+                          - img [ref=e513]
+                      - columnheader "Minha função" [ref=e517] [cursor=pointer]:
+                        - generic [ref=e518]:
+                          - generic [ref=e519]: Minha função
+                          - img [ref=e523]
+                      - columnheader "Custo atual" [ref=e527] [cursor=pointer]:
+                        - generic [ref=e529]: Custo atual
+                      - columnheader "Classificação de Segurança" [ref=e531] [cursor=pointer]:
+                        - generic [ref=e532]:
+                          - generic [ref=e533]: Classificação de Segurança
+                          - img [ref=e537]
+                      - columnheader "Grupo de gerenciamento pai" [ref=e541] [cursor=pointer]:
+                        - generic [ref=e542]:
+                          - generic [ref=e543]: Grupo de gerenciamento pai
+                          - img [ref=e547]
+                      - columnheader "Status" [ref=e551] [cursor=pointer]:
+                        - generic [ref=e552]:
+                          - generic [ref=e553]: Status
+                          - img [ref=e557]
+                      - columnheader "Comandos" [ref=e561]
+                    - generic [ref=e566]: Nenhuma das entradas correspondeu ao filtro fornecido.
+                - generic [ref=e568]:
+                  - button "< Anterior" [disabled] [ref=e570]:
+                    - generic [ref=e571]: < Anterior
+                  - generic [ref=e572]: Page
+                  - generic [ref=e575]:
+                    - combobox "Selecionar" [ref=e577] [cursor=pointer]: "1"
+                    - button "Alternância" [ref=e578] [cursor=pointer]:
+                      - generic:
+                        - img
+                  - generic [ref=e579]: of
+                  - generic [ref=e580]: "1"
+                  - button "Próximo >" [disabled] [ref=e582]:
+                    - generic [ref=e583]: Próximo >
+                  - generic [ref=e584]: Mostrando 0 para 0 de 0
+                  - link "Enviar comentários" [ref=e588] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e590]
+                    - text: Enviar comentários
+  - img [ref=e178]
+  - img [ref=e179]
+  - img [ref=e180]
+  - img [ref=e181]
+  - img [ref=e182]
+  - img [ref=e183]
+  - img [ref=e184]
+  - img [ref=e185]
+  - img [ref=e186]
+  - img [ref=e187]
+  - img [ref=e188]
+  - img [ref=e189]
+  - img [ref=e190]
+  - img [ref=e191]
+  - img [ref=e192]
+  - img [ref=e193]
+  - img [ref=e194]
+  - img [ref=e195]
+  - img [ref=e196]
+  - img [ref=e197]
+  - img [ref=e324]
+  - img [ref=e325]
+  - img [ref=e326]
+  - img [ref=e327]
+  - img [ref=e328]
+  - img [ref=e329]
+  - img [ref=e330]
+  - img [ref=e331]
+  - img [ref=e332]
+  - img [ref=e333]
+  - img [ref=e334]
+  - img [ref=e335]
+  - img [ref=e336]
+  - img [ref=e337]
+  - img [ref=e338]
+  - img [ref=e339]
+  - img [ref=e592]
+  - img [ref=e593]
+  - img [ref=e594]
+  - img [ref=e595]
+  - img [ref=e596]
+  - img [ref=e597]
+  - img [ref=e598]
+  - img [ref=e599]
+  - img [ref=e600]
+  - img [ref=e601]
+  - img [ref=e602]
+  - img [ref=e603]
+  - img [ref=e604]
+  - img [ref=e605]
+  - img [ref=e606]
+  - img [ref=e607]
+  - img [ref=e608]
+  - img [ref=e609]
+  - img [ref=e610]
+  - img [ref=e826]
+  - img [ref=e827]
+  - img [ref=e828]
+  - img [ref=e829]
+  - img [ref=e830]

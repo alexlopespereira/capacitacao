@@ -1,0 +1,163 @@
+- generic [ref=e1]:
+  - generic [ref=e5]:
+    - banner [ref=e6]:
+      - button "Pular para o conteúdo principal" [ref=e549]
+      - banner [ref=e9]:
+        - button "Inicializador de aplicativos" [ref=e550] [cursor=pointer]: 
+        - generic [ref=e18]:
+          - generic [ref=e22]: Power Pages
+          - generic [ref=e26]:
+            - 'button "Ambiente: PowerPagesDeveloper-052726-140330" [ref=e551] [cursor=pointer]':
+              - img [ref=e33]
+              - generic [ref=e36]:
+                - generic [ref=e37]: Ambiente
+                - generic [ref=e39]: PowerPagesDeveloper-052726-140330
+            - generic [ref=e43]:
+              - button "Comunicados" [ref=e552] [cursor=pointer]:
+                - img [ref=e46]
+              - generic [ref=e48]: "5"
+            - button "Notificações" [ref=e553] [cursor=pointer]:
+              - img [ref=e55]
+            - button "Configurações" [ref=e554] [cursor=pointer]:
+              - generic [ref=e60]: 
+            - button "Ajuda" [ref=e555] [cursor=pointer]:
+              - generic [ref=e64]: 
+        - generic [ref=e65]:
+          - button "Gerente de contas de ALEX LOPES PEREIRA" [ref=e556] [cursor=pointer]:
+            - generic [ref=e75]: AP
+          - generic: 
+    - generic [ref=e1032]:
+      - generic [ref=e1035]:
+        - button "Painel de navegação à esquerda" [expanded] [ref=e1036] [cursor=pointer]:
+          - generic [ref=e1038]: 
+        - navigation [ref=e1040]:
+          - menu [ref=e1041]:
+            - menuitem "Página Inicial" [ref=e1043] [cursor=pointer]:
+              - generic [ref=e1044]:
+                - img [ref=e1046]
+                - generic [ref=e1049]: Página Inicial
+            - menuitem "Modelos" [ref=e1051] [cursor=pointer]:
+              - generic [ref=e1052]:
+                - img [ref=e1054]
+                - generic [ref=e1057]: Modelos
+            - menuitem "Aprender" [ref=e1059] [cursor=pointer]:
+              - generic [ref=e1060]:
+                - img [ref=e1062]
+                - generic [ref=e1065]: Aprender
+            - menuitem "Central de Ações" [ref=e1067] [cursor=pointer]:
+              - generic [ref=e1068]:
+                - img [ref=e1070]
+                - generic [ref=e1073]: Central de Ações
+                - generic [ref=e1075]: Criar
+            - generic [ref=e1076]:
+              - separator
+            - menuitem "Soluções" [ref=e1078] [cursor=pointer]:
+              - generic [ref=e1079]:
+                - generic [ref=e1080]: 
+                - generic [ref=e1082]: Soluções
+            - generic [ref=e1083]:
+              - separator
+            - menuitem "Power Platform" [ref=e1085] [cursor=pointer]:
+              - generic [ref=e1086]:
+                - img [ref=e1088]
+                - generic [ref=e1091]: Power Platform
+      - main [ref=e1095]:
+        - generic [ref=e1097]:
+          - generic [ref=e1099]:
+            - generic [ref=e1100]:
+              - heading "Comece a criar seu site com o Copilot" [level=1] [ref=e1102]
+              - generic [ref=e1103]:
+                - generic [ref=e1105]:
+                  - button "Design a site to manage project workflows" [ref=e1106] [cursor=pointer]:
+                    - generic [ref=e1109]: Design a site to manage project workflows
+                  - button "Create a website to submit compliance reports" [ref=e1110] [cursor=pointer]:
+                    - generic [ref=e1113]: Create a website to submit compliance reports
+                  - button "Ver mais sugestões" [ref=e1114] [cursor=pointer]:
+                    - img [ref=e1116]
+                - generic [ref=e1121]:
+                  - textbox "Descreva o site desejado e deixe que a IA crie o primeiro rascunho" [ref=e1122]
+                  - button "Criar meu site" [disabled] [ref=e1126]:
+                    - generic [ref=e1128]: 
+                - paragraph [ref=e1129]:
+                  - text: Verifique se o conteúdo gerado por IA é preciso e apropriado antes de usá-lo.
+                  - link "Consulte os termos" [ref=e1130] [cursor=pointer]:
+                    - /url: "https://go.microsoft.com/fwlink/?linkid=2173149 "
+            - region "Outras maneiras de criar um site" [ref=e1131]:
+              - heading "Outras maneiras de criar um site" [level=2] [ref=e1132]
+              - generic [ref=e1133]:
+                - link "Começar com um modelo" [ref=e1134] [cursor=pointer]:
+                  - generic [ref=e1138]:
+                    - generic [ref=e1139]: Começar com um modelo
+                    - generic [ref=e1140]: Selecione em uma galeria de modelos de site predefinidos para começar a trabalhar no site.
+                - link "Começar do zero" [ref=e1141] [cursor=pointer]:
+                  - generic [ref=e1145]:
+                    - generic [ref=e1146]: Começar do zero
+                    - generic [ref=e1147]: Comece com um site em branco, que você poderá personalizar de acordo com as suas necessidades.
+            - generic [ref=e1149]:
+              - tablist [ref=e1151]:
+                - tab "Sites ativos" [selected] [ref=e1153] [cursor=pointer]:
+                  - generic [ref=e1154]: Sites ativos
+                - tab "Sites inativos" [ref=e1155] [cursor=pointer]:
+                  - generic [ref=e1156]: Sites inativos
+              - generic [ref=e1165]:
+                - generic [ref=e1166]:
+                  - heading "Teste Power Pages - Capacitacao" [level=2] [ref=e1168]
+                  - generic [ref=e1170]: Há 1 min
+                - generic [ref=e1171]:
+                  - generic [ref=e1172]:
+                    - img "Ícone de site particular" [ref=e1175]
+                    - generic [ref=e1176]:
+                      - link "teste-capacitacao-sgd.powerappsportals.com" [ref=e1177] [cursor=pointer]:
+                        - /url: https://teste-capacitacao-sgd.powerappsportals.com
+                      - text: "- Particular"
+                  - generic [ref=e1182]: Preparando seu site
+                - generic [ref=e1183]:
+                  - generic [ref=e1184]:
+                    - generic [ref=e1185]: Criador
+                    - generic [ref=e1188]:
+                      - generic [ref=e1189]: AP
+                      - generic [ref=e1191]: ALEX LOPES PEREIRA
+                  - generic [ref=e1192]:
+                    - generic [ref=e1193]: Próximas etapas sugeridas
+                    - generic [ref=e1194]:
+                      - link "Conectar um domínio personalizado" [ref=e1195] [cursor=pointer]:
+                        - /url: https://go.microsoft.com/fwlink/?linkid=2173235
+                        - generic [ref=e1196]: Conectar um domínio personalizado
+                      - link "Habilitar copiloto do site Criar" [ref=e1199] [cursor=pointer]:
+                        - /url: https://go.microsoft.com/fwlink/?linkid=2281825
+                        - generic [ref=e1200]:
+                          - text: Habilitar copiloto do site
+                          - generic [ref=e1203]: Criar
+                - generic [ref=e1204]:
+                  - button "Editar Teste Power Pages - Capacitacao" [disabled] [ref=e1205]:
+                    - generic [ref=e1206]:
+                      - button "Editar Teste Power Pages - Capacitacao" [disabled] [ref=e1207]:
+                        - generic [ref=e1208]:
+                          - generic [ref=e1209]: 
+                          - generic [ref=e1211]: Editar
+                      - button "Editar Teste Power Pages - Capacitacao" [disabled]:
+                        - generic:
+                          - generic: 
+                  - button "Visualização" [disabled] [ref=e1213]:
+                    - generic [ref=e1214]:
+                      - img [ref=e1215]
+                      - generic [ref=e1218]: Visualização
+                      - generic [ref=e1219]: Menu de Visualização
+                  - button "Mais" [disabled] [ref=e1220]:
+                    - generic [ref=e1222]: 
+          - generic [ref=e1224]:
+            - link "Privacidade" [ref=e1225] [cursor=pointer]:
+              - /url: https://go.microsoft.com/fwlink/?LinkId=521839
+            - link "Termos de serviço" [ref=e1226] [cursor=pointer]:
+              - /url: https://go.microsoft.com/fwlink/?linkid=2207383
+  - dialog "Workshop Power Pages in a Day gratuito" [ref=e1232]:
+    - generic [ref=e1234]:
+      - heading "Workshop Power Pages in a Day gratuito" [level=3] [ref=e1236]
+      - paragraph [ref=e1239]: Acelere sua experiência do Power Pages e aprenda a criar sites de negócios interativos, ricos e centrados em dados em escala, em apenas um dia, ao participar deste workshop prático.
+      - generic [ref=e1241]:
+        - button "Registre-se Hoje" [active] [ref=e1242] [cursor=pointer]:
+          - generic [ref=e1245]: Registre-se Hoje
+        - button "Ignorar" [ref=e1246] [cursor=pointer]:
+          - generic [ref=e1249]: Ignorar
+      - button [ref=e1250] [cursor=pointer]:
+        - generic [ref=e1252]: 
