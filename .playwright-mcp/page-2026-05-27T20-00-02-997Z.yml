@@ -1,0 +1,58 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "Pular para o conteúdo principal" [ref=e3] [cursor=pointer]:
+      - /url: "#mainContent"
+    - generic [ref=e4]:
+      - link "Logotipo do nome da empresa Nome da empresa" [ref=e8] [cursor=pointer]:
+        - /url: ~/
+        - img "Logotipo do nome da empresa" [ref=e9]
+        - heading "Nome da empresa" [level=1] [ref=e10]
+      - navigation "Main Navigation" [ref=e12]:
+        - list [ref=e13]:
+          - listitem [ref=e14]:
+            - link "Página Inicial" [ref=e15] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e16]
+          - listitem [ref=e17]:
+            - button "Páginas" [ref=e18] [cursor=pointer]: Páginas
+          - listitem [ref=e19]
+          - listitem [ref=e20]:
+            - link "Fale conosco" [ref=e21] [cursor=pointer]:
+              - /url: /contact-us/
+          - listitem [ref=e22]
+          - listitem [ref=e23]:
+            - button "Pesquisar" [ref=e24] [cursor=pointer]:
+              - generic [ref=e25]: 
+            - text: 
+          - listitem [ref=e26]
+          - listitem [ref=e27]:
+            - link "Entrar" [ref=e28] [cursor=pointer]:
+              - /url: /SignIn?returnUrl=%2F
+  - main [ref=e29]:
+    - generic [ref=e33]:
+      - heading "Servidores federais capacitados — 35 cursos alvo (ENAP)" [level=2] [ref=e34]
+      - paragraph [ref=e35]: Pessoas únicas acumuladas que concluíram ao menos um curso · período 2024-08 → 2026-04
+      - generic [ref=e36]: 65.923 pessoas únicas
+      - img [ref=e37]:
+        - generic [ref=e38]: "0"
+        - generic [ref=e39]: "14.000"
+        - generic [ref=e40]: "28.000"
+        - generic [ref=e41]: "42.000"
+        - generic [ref=e42]: "56.000"
+        - generic [ref=e43]: "70.000"
+        - generic [ref=e47]: 2024-08
+        - generic [ref=e50]: 2024-10
+        - generic [ref=e53]: 2024-12
+        - generic [ref=e56]: 2025-02
+        - generic [ref=e59]: 2025-04
+        - generic [ref=e62]: 2025-06
+        - generic [ref=e65]: 2025-08
+        - generic [ref=e68]: 2025-10
+        - generic [ref=e71]: 2025-12
+        - generic [ref=e74]: 2026-02
+        - generic [ref=e77]: 2026-04
+  - contentinfo [ref=e81]:
+    - generic [ref=e87]:
+      - paragraph [ref=e88]: Copyright ©
+      - paragraph [ref=e89]: "2026"
+      - paragraph [ref=e90]: . Todos os direitos reservados.

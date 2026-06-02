@@ -22,3 +22,7 @@ dados/
 !docs/contagem_mensal.csv
 !docs/pessoas_por_mes.csv
 !scripts/cursos_alvo.csv
+
+# Power BI Desktop — cache e .pbix compilado local
+docs/pbip/**/.pbi/
+docs/pbip/**/*.pbix

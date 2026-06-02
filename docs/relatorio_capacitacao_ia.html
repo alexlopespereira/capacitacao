@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<title>Relatório — Capacitação em IA (ENAP)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 1100px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+  h1 { margin-bottom: 0.2rem; }
+  h2 { margin-top: 2rem; }
+  .meta { color: #666; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  table { border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; width: 100%; }
+  th, td { border: 1px solid #ddd; padding: 6px 10px; text-align: right; }
+  th { background: #f4f4f4; }
+  td:first-child, th:first-child, .esq { text-align: left; }
+  tr.secao td { font-weight: 700; background: #eef4fb; }
+  tr.total td { font-weight: 700; background: #e9f7ef; border-top: 2px solid #999; }
+  tr.subhdr td { font-weight: 600; background: #fafafa; color: #555; text-align: left; }
+  tr.sub td:first-child { padding-left: 1.8rem; }
+  tr.muted td { color: #999; }
+  .scroll { overflow-x: auto; }
+  a { color: #0366d6; }
+  .legenda { font-size: 0.85rem; color: #555; }
+</style>
+</head>
+<body>
+<h1>Relatório sobre Conclusão de Cursos dos Programas de Capacitação de IA</h1>
+<p class="meta">
+  <strong>Data:</strong> 27/05/2026 ·
+  <strong>Período coberto:</strong> 2024-08 a 2026-04 (matrículas concluídas) ·
+  Fonte: <a href="https://dadosaberto.evg.gov.br/">dadosaberto.evg.gov.br</a><br>
+  Programa = 35 cursos-alvo · Específicos de IA = 11 cursos
+  (125.373 matrículas).
+</p>
+
+<h2>Indicadores por grupo</h2>
+<div class="scroll">
+<table>
+<thead><tr>
+  <th>Grupo</th>
+  <th>Pessoas concluintes<br>(≥1 curso do programa)</th>
+  <th>Pessoas concluintes<br>(≥1 curso de IA)</th>
+  <th>Matrículas concluídas<br>(cursos do programa)</th>
+  <th>Matrículas concluídas<br>(cursos de IA)</th>
+</tr></thead>
+<tbody><tr class="secao"><td>Total no Setor Público</td><td>161.712</td><td>53.087</td><td>272.383</td><td>86.794</td></tr><tr class="subhdr"><td colspan="5">Por Esfera no Setor Público</td></tr><tr class="sub"><td>Federal</td><td>68.065</td><td>28.263</td><td>116.148</td><td>49.179</td></tr><tr class="sub"><td>Estadual</td><td>76.107</td><td>18.001</td><td>129.788</td><td>27.584</td></tr><tr class="sub"><td>Municipal</td><td>17.989</td><td>6.950</td><td>26.447</td><td>10.031</td></tr><tr class="subhdr"><td colspan="5">Por Poder no Setor Público</td></tr><tr class="sub"><td>Executivo</td><td>83.434</td><td>28.593</td><td>149.611</td><td>47.989</td></tr><tr class="sub"><td>Legislativo</td><td>2.151</td><td>938</td><td>3.630</td><td>1.519</td></tr><tr class="sub"><td>Judiciário</td><td>16.016</td><td>8.212</td><td>25.662</td><td>12.904</td></tr><tr class="sub muted"><td>(Poder não informado)</td><td>61.881</td><td>15.623</td><td>93.480</td><td>24.382</td></tr><tr class="secao"><td>No Setor Privado / não-servidor</td><td>86.181</td><td>29.444</td><td>112.776</td><td>38.579</td></tr><tr class="total"><td>Total (independente de esfera e poder)</td><td>247.081</td><td>82.349</td><td>385.159</td><td>125.373</td></tr></tbody>
+</table>
+</div>
+<p class="legenda">
+  <strong>Pessoas</strong> = servidores/pessoas distintas (contagem única de
+  <code>codigo_pessoa</code>); <strong>não somam entre grupos</strong> — uma
+  pessoa pode aparecer em mais de um recorte e em mais de um curso.
+  <strong>Matrículas</strong> = nº de conclusões (somam).
+  Federal+Estadual+Municipal reconciliam o total público em matrículas;
+  os poderes não, pois ~32% dos registros públicos vêm sem poder informado
+  (linha "Poder não informado").
+  "Setor Privado / não-servidor" agrega iniciativa privada, sociedade civil e
+  público geral — a fonte não distingue empresa privada pura.
+</p>
+
+<h2>Detalhe por curso</h2>
+<div class="scroll">
+<table>
+<thead><tr>
+  <th>id</th><th class="esq">Curso</th><th>Específico de IA?</th>
+  <th>Matrículas concl.</th><th>Pessoas concl.</th>
+</tr></thead>
+<tbody><tr><td>107</td><td class="esq">Planejamento Estratégico para Organizações Públicas</td><td>Não</td><td>6.993</td><td>6.914</td></tr><tr><td>153</td><td class="esq">Introdução à Lei Brasileira de Proteção de Dados Pessoais</td><td>Não</td><td>53.020</td><td>52.609</td></tr><tr><td>270</td><td class="esq">Governança de Dados</td><td>Não</td><td>4.911</td><td>4.872</td></tr><tr><td>290</td><td class="esq">Proteção de Dados Pessoais no Setor Público</td><td>Não</td><td>55.115</td><td>54.713</td></tr><tr><td>343</td><td class="esq">Planejamento da Contratação de Soluções de TIC</td><td>Não</td><td>818</td><td>813</td></tr><tr><td>367</td><td class="esq">Novas Tecnologias para a Transformação Digital</td><td>Não</td><td>5.533</td><td>5.502</td></tr><tr><td>373</td><td class="esq">Liderança e Gestão De Equipes</td><td>Não</td><td>32.859</td><td>32.549</td></tr><tr><td>377</td><td class="esq">Inteligência Artificial no Contexto do Serviço Público</td><td>Sim</td><td>18.127</td><td>17.908</td></tr><tr><td>406</td><td class="esq">Análise de dados como suporte à tomada de decisão</td><td>Não</td><td>8.037</td><td>7.999</td></tr><tr><td>419</td><td class="esq">Transformação Digital no Serviço Público</td><td>Não</td><td>4.275</td><td>4.254</td></tr><tr><td>529</td><td class="esq">Como implementar a LGPD: bases, mecanismos e processos</td><td>Não</td><td>11.599</td><td>11.526</td></tr><tr><td>534</td><td class="esq">Internet das coisas (IoT) aplicada para resolução de desafios</td><td>Não</td><td>4.432</td><td>4.413</td></tr><tr><td>536</td><td class="esq">Governança de Dados na Transformação Digital</td><td>Não</td><td>2.818</td><td>2.790</td></tr><tr><td>629</td><td class="esq">Aprendendo com Python</td><td>Não</td><td>6.822</td><td>6.773</td></tr><tr><td>724</td><td class="esq">Gestão de Riscos em Projetos de Transformação Digital</td><td>Não</td><td>2.187</td><td>2.173</td></tr><tr><td>787</td><td class="esq">Gestão de projetos</td><td>Não</td><td>6.928</td><td>6.884</td></tr><tr><td>797</td><td class="esq">Automação de Processos através da RPA para Transformação Digital</td><td>Não</td><td>13.146</td><td>13.106</td></tr><tr><td>802</td><td class="esq">Visualização de Dados Aplicada à Transformação Digital</td><td>Não</td><td>2.592</td><td>2.576</td></tr><tr><td>810</td><td class="esq">Desvendando a Inteligência Artificial na Administração Pública</td><td>Sim</td><td>18.844</td><td>18.676</td></tr><tr><td>815</td><td class="esq">Storytelling com Dados para Comunicação Profissional de Sucesso</td><td>Não</td><td>8.183</td><td>8.136</td></tr><tr><td>861</td><td class="esq">Inteligência Artificial para simplificar o dia a dia</td><td>Sim</td><td>18.418</td><td>18.276</td></tr><tr><td>956</td><td class="esq">Inovando na Gestão de Projetos</td><td>Não</td><td>8.241</td><td>8.187</td></tr><tr><td>976</td><td class="esq">Introdução à Ciência de Dados - Conceitos e Ferramentas</td><td>Não</td><td>6.713</td><td>6.669</td></tr><tr><td>1073</td><td class="esq">Segurança Cibernética: Controles 1 a 6 do CIS Controls</td><td>Não</td><td>3.991</td><td>3.956</td></tr><tr><td>1088</td><td class="esq">A História da IA</td><td>Sim</td><td>11.166</td><td>11.101</td></tr><tr><td>1090</td><td class="esq">Ética em IA</td><td>Sim</td><td>14.779</td><td>14.684</td></tr><tr><td>1091</td><td class="esq">Inteligência Artificial Generativa</td><td>Sim</td><td>19.244</td><td>19.134</td></tr><tr><td>1139</td><td class="esq">Colaboração com o Microsoft 365</td><td>Não</td><td>3.954</td><td>3.924</td></tr><tr><td>1153</td><td class="esq">Fundamentos da Segurança Cibernética - Introdução ao CIS Controls</td><td>Não</td><td>4.492</td><td>4.456</td></tr><tr><td>1167</td><td class="esq">IA Generativo da Microsoft - Copilot</td><td>Sim</td><td>12.744</td><td>12.670</td></tr><tr><td>1263</td><td class="esq">Governo Data-Driven: transformação orientada por dados em governos</td><td>Não</td><td>2.127</td><td>2.108</td></tr><tr><td>1304</td><td class="esq">Visão Geral da IA no Azure</td><td>Sim</td><td>1.350</td><td>1.341</td></tr><tr><td>1305</td><td class="esq">Fundamentos da Visão Computacional - IA do Azure</td><td>Sim</td><td>2.148</td><td>2.140</td></tr><tr><td>1328</td><td class="esq">Processamento de Linguagem Natural</td><td>Sim</td><td>2.270</td><td>2.254</td></tr><tr><td>1395</td><td class="esq">IA - Aplicações no Governo Federal</td><td>Sim</td><td>6.283</td><td>6.255</td></tr></tbody>
+</table>
+</div>
+
+<p class="meta">Filtros: <code>sit_matricula = 'Concluida'</code> ·
+35 cursos-alvo · <code>dt_matricula</code> em [2024-08, 2026-04] ·
+junção por <code>nome_curso</code> normalizado. Base de dados reaproveitável:
+<a href="dashboard_base.csv">dashboard_base.csv</a> (tabela fato) ·
+<a href="dashboard_agregado.csv">dashboard_agregado.csv</a>.</p>
+</body>
+</html>

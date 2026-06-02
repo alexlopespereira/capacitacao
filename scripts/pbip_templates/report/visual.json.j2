@@ -1,0 +1,66 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "{{ visual.name }}",
+  "position": {
+    "x": {{ visual.position.x }},
+    "y": {{ visual.position.y }},
+    "z": {{ visual.position.z | default(0) }},
+    "width": {{ visual.position.width }},
+    "height": {{ visual.position.height }},
+    "tabOrder": {{ visual.tab_order | default(0) }}
+  },
+  "visual": {
+    "visualType": "{{ visual.visual_type }}",
+    "query": {
+      "queryState": {
+{%- for role_name, projections in visual.projections.items() %}
+        "{{ role_name }}": {
+          "projections": [
+{%- for proj in projections %}
+            {
+              "field": {
+{%- if proj.kind == "measure" %}
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "{{ proj.entity }}" } },
+                  "Property": "{{ proj.property }}"
+                }
+{%- else %}
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "{{ proj.entity }}" } },
+                  "Property": "{{ proj.property }}"
+                }
+{%- endif %}
+              },
+              "queryRef": "{{ proj.query_ref }}",
+              "nativeQueryRef": "{{ proj.native_query_ref }}"
+            }{% if not loop.last %},{% endif %}
+{%- endfor %}
+          ]
+        }{% if not loop.last %},{% endif %}
+{%- endfor %}
+      },
+      "sortDefinition": {
+        "sort": [],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {{ visual.objects_json | default('{}') }},
+    "drillFilterOtherVisuals": true
+  }{% if visual.title %},
+  "visualContainerObjects": {
+    "title": [
+      {
+        "properties": {
+          "show": { "expr": { "Literal": { "Value": "true" } } },
+          "text": { "expr": { "Literal": { "Value": "'{{ visual.title }}'" } } }
+        }
+      }
+    ]
+  }
+{%- endif %}
+{%- if visual.filters %},
+  "filterConfig": {
+    "filters": {{ visual.filters_json }}
+  }
+{%- endif %}
+}

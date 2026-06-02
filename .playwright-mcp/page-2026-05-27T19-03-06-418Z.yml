@@ -1,0 +1,246 @@
+- generic [ref=e1]:
+  - generic [ref=e5]:
+    - banner [ref=e6]:
+      - button "Pular para o conteúdo principal" [ref=e7]
+      - banner [ref=e20]:
+        - button "Inicializador de aplicativos" [ref=e23] [cursor=pointer]: 
+        - generic [ref=e29]:
+          - generic [ref=e33]: Power Pages
+          - generic [ref=e37]:
+            - 'button "Ambiente: PowerPagesDeveloper-052726-140330" [ref=e42] [cursor=pointer]':
+              - img [ref=e44]
+              - generic [ref=e47]:
+                - generic [ref=e48]: Ambiente
+                - generic [ref=e50]: PowerPagesDeveloper-052726-140330
+            - generic [ref=e54]:
+              - button "Comunicados" [ref=e55] [cursor=pointer]:
+                - img [ref=e57]
+              - generic [ref=e59]: "5"
+            - button "Notificações" [ref=e64] [cursor=pointer]:
+              - img [ref=e66]
+            - button "Configurações" [ref=e70] [cursor=pointer]:
+              - generic [ref=e71]: 
+            - button "Ajuda" [ref=e74] [cursor=pointer]:
+              - generic [ref=e75]: 
+        - generic [ref=e76]:
+          - button "Gerente de contas de ALEX LOPES PEREIRA" [ref=e78] [cursor=pointer]:
+            - generic [ref=e86]: AP
+          - generic: 
+    - generic [ref=e9]:
+      - generic:
+        - generic:
+          - region "Barra de comandos" [ref=e88]:
+            - menubar "Barra de navegação superior. Use as teclas de seta para a esquerda e a direita para navegar pelos controles" [ref=e92]:
+              - group [ref=e93]:
+                - menuitem "Início" [ref=e94] [cursor=pointer]:
+                  - img [ref=e96]
+                - menuitem "Teste Power Pages - Capacitacao - Particular - Salvo(a)" [ref=e99] [cursor=pointer]:
+                  - generic [ref=e100]:
+                    - img [ref=e101]
+                    - generic [ref=e103]:
+                      - generic "Teste Power Pages - Capacitacao" [ref=e104]
+                      - generic [ref=e105]: "- Particular"
+                      - generic [ref=e107]: "- Salvo(a)"
+                      - img [ref=e109]
+              - group [ref=e111]:
+                - menuitem "Copilot" [active] [ref=e112] [cursor=pointer]:
+                  - img [ref=e476]
+                - menuitem "Aprendizagem" [ref=e122] [cursor=pointer]:
+                  - img [ref=e125]
+                - menuitem "Comentário" [ref=e127] [cursor=pointer]:
+                  - img [ref=e130]
+                - menuitem [ref=e132]: 
+                - menuitem "Visualização" [ref=e133] [cursor=pointer]:
+                  - generic [ref=e134]:
+                    - img [ref=e135]
+                    - generic [ref=e138]: Visualização
+                    - generic [ref=e139]: Menu de Visualização
+                - menuitem "A sincronização da configuração do site entre colaboradores é feita automaticamente. Escolha \"Sincronizar\" para sincronizar manualmente agora." [ref=e140] [cursor=pointer]:
+                  - generic [ref=e141]:
+                    - img [ref=e142]
+                    - generic [ref=e145]: Sincronizar
+          - tabpanel "Toolbelt" [ref=e146]:
+            - menu [ref=e149]:
+              - menuitem "Páginas" [expanded] [ref=e150] [cursor=pointer]:
+                - generic [ref=e154]:
+                  - img [ref=e156]
+                  - paragraph [ref=e158]: Páginas
+              - menuitem "Aplicação de Estilo" [ref=e159] [cursor=pointer]:
+                - generic [ref=e163]:
+                  - img [ref=e165]
+                  - paragraph [ref=e167]: Aplicação de Estilo
+              - menuitem "Dados" [ref=e168] [cursor=pointer]:
+                - generic [ref=e172]:
+                  - img [ref=e174]
+                  - paragraph [ref=e176]: Dados
+              - menuitem "Configurar" [ref=e177] [cursor=pointer]:
+                - generic [ref=e181]:
+                  - img [ref=e183]
+                  - paragraph [ref=e185]: Configurar
+              - menuitem "Segurança" [ref=e186] [cursor=pointer]:
+                - generic [ref=e190]:
+                  - generic [ref=e191]:
+                    - generic [ref=e193]: Novo
+                    - img [ref=e195]
+                  - paragraph [ref=e197]: Segurança
+              - menuitem "Mais itens" [ref=e199] [cursor=pointer]:
+                - generic [ref=e201]: 
+          - generic [ref=e205]:
+            - navigation "Páginas" [ref=e206]:
+              - generic [ref=e207]:
+                - heading "Páginas" [level=1] [ref=e208]
+                - button "Adicionar uma nova página a este site" [ref=e209] [cursor=pointer]:
+                  - generic [ref=e210]:
+                    - generic [ref=e211]: 
+                    - generic [ref=e213]: Página
+              - generic [ref=e215]:
+                - generic [ref=e216]:
+                  - generic [ref=e218]: Navegação principal
+                  - tree "Navegação principal" [ref=e224]:
+                    - group [ref=e225]:
+                      - treeitem "Página Inicial selected" [level=1] [selected] [ref=e227] [cursor=pointer]:
+                        - generic "Página Inicial selected" [ref=e228]:
+                          - generic [ref=e229]: 
+                        - generic "Página Inicial" [ref=e231]
+                        - button "Mais" [ref=e233]:
+                          - img "Mais" [ref=e234]: 
+                    - group [ref=e235]:
+                      - treeitem "Páginas" [level=1] [ref=e237] [cursor=pointer]:
+                        - generic [ref=e239]: 
+                        - generic "Páginas" [ref=e240]:
+                          - generic [ref=e241]: 
+                        - generic "Páginas" [ref=e243]
+                    - group [ref=e244]:
+                      - treeitem "Fale conosco" [level=1] [ref=e246] [cursor=pointer]:
+                        - generic "Fale conosco" [ref=e247]:
+                          - generic [ref=e248]: 
+                        - generic "Fale conosco" [ref=e250]
+                - generic [ref=e251]:
+                  - generic [ref=e253]: Outras páginas
+                  - tree "Outras páginas" [ref=e258]:
+                    - treeitem "Acesso Negado" [level=1] [ref=e260] [cursor=pointer]:
+                      - generic "Acesso Negado" [ref=e261]:
+                        - generic [ref=e262]: 
+                      - generic "Acesso Negado" [ref=e264]
+                    - treeitem "Página Não Encontrada" [level=1] [ref=e266] [cursor=pointer]:
+                      - generic "Página Não Encontrada" [ref=e267]:
+                        - generic [ref=e268]: 
+                      - generic "Página Não Encontrada" [ref=e270]
+                    - treeitem "Página Offline Padrão" [level=1] [ref=e272] [cursor=pointer]:
+                      - generic "Página Offline Padrão" [ref=e273]:
+                        - generic [ref=e274]: 
+                      - generic "Página Offline Padrão" [ref=e276]
+            - generic [ref=e277]:
+              - region
+              - generic [ref=e278]:
+                - generic [ref=e279]:
+                  - menubar [ref=e280]:
+                    - menuitem "Desfazer" [disabled] [ref=e281]:
+                      - img [ref=e283]
+                    - menuitem "Refazer" [disabled] [ref=e285]:
+                      - img [ref=e287]
+                    - menuitem "Comentários sobre recursos de versão preliminar" [ref=e289] [cursor=pointer]:
+                      - img [ref=e291]
+                  - menubar "Exibir menu de formato" [ref=e293]:
+                    - menuitem "Editar código" [ref=e294] [cursor=pointer]:
+                      - generic [ref=e295]:
+                        - img [ref=e297]
+                        - generic [ref=e308]: Editar código
+                    - menuitem "Opções de zoom de tela" [ref=e313] [cursor=pointer]:
+                      - generic [ref=e314]:
+                        - generic [ref=e315]: 
+                        - generic [ref=e316]: 
+                    - menuitem "Maximizar a tela" [ref=e318] [cursor=pointer]:
+                      - img [ref=e320]
+                - iframe [ref=e330]:
+                  - generic [ref=f86e2]:
+                    - generic [ref=f86e3]:
+                      - button "Editar cabeçalho do site" [ref=f86e6] [cursor=pointer]:
+                        - generic:
+                          - img
+                        - generic: Editar cabeçalho do site
+                      - banner [ref=f86e7]:
+                        - generic [ref=f86e8]:
+                          - link "imageLink Nome da empresa" [ref=f86e12] [cursor=pointer]:
+                            - /url: ~/
+                            - generic "image Logotipo do nome da empresa" [ref=f86e13]:
+                              - img "image Logotipo do nome da empresa" [ref=f86e14]
+                            - heading "Título 1 Nome da empresa" [level=1] [ref=f86e15]: Nome da empresa
+                          - button "Alternar navegação" [ref=f86e16] [cursor=pointer]:
+                            - generic [ref=f86e17]: Alternar navegação
+                          - text:  
+                    - main [ref=f86e19]:
+                      - generic [ref=f86e21]:
+                        - generic "Seção SEÇÃO Create an engaging headline, welcome, or... Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e114]:
+                          - generic [ref=f86e23]:
+                            - generic "Coluna" [ref=f86e24]:
+                              - generic "Imagem Geometric-4.png Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e25]:
+                                - img "Imagem Geometric-4.png Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e26]
+                            - generic "Coluna Create an engaging headline, welcome, or call..." [ref=f86e27]:
+                              - heading "Create an engaging headline, welcome, or call to action" [level=2] [ref=f86e28]
+                              - button "Add a call to action here" [ref=f86e29] [cursor=pointer]
+                        - generic "Coluna Introduction sectionCreate a short paragraph that shows..." [ref=f86e33]:
+                          - heading "Introduction section" [level=2] [ref=f86e34]
+                          - paragraph [ref=f86e35]: Create a short paragraph that shows your target audience a clear benefit to them if they continue past this point and offer direction about the next steps
+                        - generic [ref=f86e37]:
+                          - generic "Coluna Featured Item 1Create a short description or..." [ref=f86e38]:
+                            - generic "Imagem Circle-1.png Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e39]:
+                              - img "Imagem Circle-1.png Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e40]
+                            - heading "Featured Item 1" [level=3] [ref=f86e41]
+                            - paragraph [ref=f86e42]: Create a short description or engaging message to motivate your audience to find out more about this item.
+                          - generic "Coluna Featured Item 2Create a short description or..." [ref=f86e43]:
+                            - generic "Imagem Circle-2.png Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e44]:
+                              - img "Imagem Circle-2.png Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e45]
+                            - heading "Featured Item 2" [level=3] [ref=f86e46]
+                            - paragraph [ref=f86e47]: Create a short description or engaging message to motivate your audience to find out more about this item.
+                          - generic "Coluna Featured Item 3Create a short description or..." [ref=f86e48]:
+                            - generic "Imagem Circle-3.png Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e49]:
+                              - img "Imagem Circle-3.png Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e50]
+                            - heading "Featured Item 3" [level=3] [ref=f86e51]
+                            - paragraph [ref=f86e52]: Create a short description or engaging message to motivate your audience to find out more about this item.
+                        - generic [ref=f86e56]:
+                          - generic "Coluna Showcase a videoVideos are optional, but are..." [ref=f86e57]:
+                            - heading "Showcase a video" [level=2] [ref=f86e58]
+                            - paragraph [ref=f86e59]: Videos are optional, but are often used to summarize the benefits of a product or service. Describe the video content and give viewers a clear reason to click.
+                            - button "Add a call to action here" [ref=f86e60] [cursor=pointer]
+                          - generic "Coluna" [ref=f86e61]:
+                            - generic "Video /Video1.mp4 Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e62]
+                        - generic [ref=f86e65]:
+                          - generic "Coluna" [ref=f86e66]:
+                            - generic "Imagem Graph-1.png Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e67]:
+                              - img "Imagem Graph-1.png Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e68]
+                          - generic "Coluna Product or service oneHighlight specific benefits of..." [ref=f86e69]:
+                            - heading "Product or service one" [level=2] [ref=f86e70]
+                            - paragraph [ref=f86e71]: Highlight specific benefits of a product or service and invite your site visitors to learn more about how it works and why your organization is the right one to meet their unique needs.
+                        - generic [ref=f86e73]:
+                          - generic "Coluna" [ref=f86e74]:
+                            - generic "Imagem Site-mockup-1.png Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e75]:
+                              - img "Imagem Site-mockup-1.png Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e76]
+                          - generic "Coluna Product or service twoHighlight specific benefits of..." [ref=f86e77]:
+                            - heading "Product or service two" [level=2] [ref=f86e78]
+                            - paragraph [ref=f86e79]: Highlight specific benefits of a product or service and invite your site visitors to learn more about how it works and why your organization is the right one to meet their unique needs.
+                            - paragraph
+                        - generic [ref=f86e82]:
+                          - generic "Coluna" [ref=f86e83]:
+                            - generic "Imagem Geometric-2.png Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e84]:
+                              - img "Imagem Geometric-2.png Pressione Enter para editar Este componente é arrastável. Pressione espaço para arrastar" [ref=f86e85]
+                          - generic "Coluna Share a storyMain pages often include links..." [ref=f86e86]:
+                            - heading "Share a story" [level=2] [ref=f86e87]
+                            - paragraph [ref=f86e88]: Main pages often include links to stories about how individual people or organizations benefit from interacting with your organization.
+                            - button "Add a call to action here" [ref=f86e89] [cursor=pointer]
+                        - generic "Coluna Introduce another ideaThis section can be used..." [ref=f86e94]:
+                          - heading "Introduce another idea" [level=2] [ref=f86e96]
+                          - paragraph [ref=f86e97]: This section can be used to offer supporting information or introduce a new idea. It’s best to keep it relevant to the contents of the page so it doesn’t feel out of place. Common topics include a summary of your organization’s mission, people, or an upcoming event with links to provide more information.
+                    - contentinfo [ref=f86e100]:
+                      - generic [ref=f86e105]:
+                        - paragraph [ref=f86e106]: Copyright ©
+                        - paragraph [ref=f86e107]: "2026"
+                        - paragraph [ref=f86e108]: . Todos os direitos reservados.
+                - button "Chatbot" [ref=e351]:
+                  - img [ref=e353]
+  - generic:
+    - generic: Salvo(a)
+    - generic: Salvo(a)
+  - paragraph [ref=e483]: Copilot
+  - generic:
+    - region

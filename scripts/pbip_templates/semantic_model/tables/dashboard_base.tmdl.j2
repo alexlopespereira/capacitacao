@@ -1,0 +1,127 @@
+/// Tabela fato unica gerada por scripts/gerar_base_dashboard.py
+/// 385k linhas — schema flat (sem dimensoes separadas).
+table dashboard_base
+	lineageTag: {{ lineage.table_dashboard_base }}
+
+	measure 'Matriculas' = COUNTROWS(dashboard_base)
+		formatString: #,0
+		lineageTag: {{ lineage.measure_matriculas }}
+
+	measure 'Matriculas IA' = CALCULATE([Matriculas], dashboard_base[ia] = 1)
+		formatString: #,0
+		lineageTag: {{ lineage.measure_matriculas_ia }}
+
+	measure 'Pessoas Unicas' = DISTINCTCOUNT(dashboard_base[codigo_pessoa])
+		formatString: #,0
+		lineageTag: {{ lineage.measure_pessoas_unicas }}
+
+	measure 'Pessoas Unicas IA' = CALCULATE([Pessoas Unicas], dashboard_base[ia] = 1)
+		formatString: #,0
+		lineageTag: {{ lineage.measure_pessoas_unicas_ia }}
+
+	measure '% Matriculas IA' = DIVIDE([Matriculas IA], [Matriculas])
+		formatString: 0.0%
+		lineageTag: {{ lineage.measure_pct_matriculas_ia }}
+
+	column ano_mes
+		dataType: string
+		sourceColumn: ano_mes
+		sortByColumn: ano_mes_sort
+		summarizeBy: none
+		lineageTag: {{ lineage.column_ano_mes }}
+
+	column ano
+		dataType: int64
+		sourceColumn: ano
+		formatString: 0
+		summarizeBy: none
+		lineageTag: {{ lineage.column_ano }}
+
+	column mes
+		dataType: int64
+		sourceColumn: mes
+		formatString: 0
+		summarizeBy: none
+		lineageTag: {{ lineage.column_mes }}
+
+	column id_curso
+		dataType: int64
+		sourceColumn: id_curso
+		formatString: 0
+		summarizeBy: none
+		lineageTag: {{ lineage.column_id_curso }}
+
+	column nome_curso
+		dataType: string
+		sourceColumn: nome_curso
+		summarizeBy: none
+		lineageTag: {{ lineage.column_nome_curso }}
+
+	column ia
+		dataType: int64
+		sourceColumn: ia
+		formatString: 0
+		summarizeBy: none
+		lineageTag: {{ lineage.column_ia }}
+
+	column esfera
+		dataType: string
+		sourceColumn: esfera
+		summarizeBy: none
+		lineageTag: {{ lineage.column_esfera }}
+
+	column setor
+		dataType: string
+		sourceColumn: setor
+		summarizeBy: none
+		lineageTag: {{ lineage.column_setor }}
+
+	column poder
+		dataType: string
+		sourceColumn: poder
+		summarizeBy: none
+		lineageTag: {{ lineage.column_poder }}
+
+	column codigo_pessoa
+		dataType: string
+		sourceColumn: codigo_pessoa
+		isHidden
+		summarizeBy: none
+		lineageTag: {{ lineage.column_codigo_pessoa }}
+
+	/// Coluna calculada para ordenacao cronologica do eixo de linha temporal.
+	column ano_mes_sort = ([ano] * 100) + [mes]
+		dataType: int64
+		formatString: 0
+		isHidden
+		summarizeBy: none
+		lineageTag: {{ lineage.column_ano_mes_sort }}
+
+	/// Rotulo legivel de IA para uso em slicers e visuais.
+	column ia_label = IF(dashboard_base[ia] = 1, "IA", "Nao IA")
+		dataType: string
+		summarizeBy: none
+		lineageTag: {{ lineage.column_ia_label }}
+
+	partition dashboard_base = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(CsvPath), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Promoted, {
+						{"ano_mes", type text},
+						{"ano", Int64.Type},
+						{"mes", Int64.Type},
+						{"id_curso", Int64.Type},
+						{"nome_curso", type text},
+						{"ia", Int64.Type},
+						{"esfera", type text},
+						{"setor", type text},
+						{"poder", type text},
+						{"codigo_pessoa", type text}
+					})
+				in
+					Typed
+
+	annotation PBI_ResultType = Table

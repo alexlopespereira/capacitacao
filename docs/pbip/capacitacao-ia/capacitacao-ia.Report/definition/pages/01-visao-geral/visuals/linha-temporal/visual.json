@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "linha-temporal",
+  "position": {
+    "x": 16,
+    "y": 172,
+    "z": 0,
+    "width": 944,
+    "height": 532,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "ano_mes"
+                }
+              },
+              "queryRef": "dashboard_base.ano_mes",
+              "nativeQueryRef": "ano_mes"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "ia_label"
+                }
+              },
+              "queryRef": "dashboard_base.ia_label",
+              "nativeQueryRef": "ia_label"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "Matriculas"
+                }
+              },
+              "queryRef": "Matriculas",
+              "nativeQueryRef": "Matriculas"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {},
+    "drillFilterOtherVisuals": true
+  },
+  "visualContainerObjects": {
+    "title": [
+      {
+        "properties": {
+          "show": { "expr": { "Literal": { "Value": "true" } } },
+          "text": { "expr": { "Literal": { "Value": "'Matrículas por mês (IA vs Não IA)'" } } }
+        }
+      }
+    ]
+  }
+}

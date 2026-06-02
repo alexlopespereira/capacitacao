@@ -109,6 +109,74 @@ O workflow aceita disparo manual (`workflow_dispatch`) com 3 inputs:
   normaliza caixa, acentos, dashes e pontuação para mitigar variações
   triviais; renomes substanciais exigem atualização do `cursos_alvo.csv`.
 
+## Power BI Desktop (.pbip)
+
+Além do relatório HTML estático, o repositório gera programaticamente um
+**Power BI Project (PBIP)** que abre no Power BI Desktop sem necessidade de
+construir o modelo ou os visuais na UI.
+
+### Gerar
+
+```bash
+pip install -r scripts/requirements.txt
+python scripts/gerar_base_dashboard.py        # produz docs/dashboard_base.csv
+python scripts/gerar_pbip.py --validate       # produz docs/pbip/capacitacao-ia/
+```
+
+Flags úteis de `gerar_pbip.py`:
+
+| Flag | Default | Função |
+|---|---|---|
+| `--output` | `docs/pbip/capacitacao-ia` | diretório de saída |
+| `--csv-path` | `docs/dashboard_base.csv` | CSV fato a referenciar |
+| `--csv-path-mode` | `relative` | `relative` (ajustar na 1ª abertura) ou `absolute` (caminho resolvido em tempo de geração) |
+| `--validate` | desligado | valida todos os JSON gerados |
+| `--force` | desligado | sobrescreve `--output` existente |
+| `--dry-run` | desligado | gera em tempdir, valida, descarta — útil em CI |
+
+### Abrir no Power BI Desktop
+
+1. **Instalar Power BI Desktop** (Windows, gratuito):
+   <https://aka.ms/pbidesktopstore> (Microsoft Store) ou
+   <https://www.microsoft.com/download/details.aspx?id=58494>.
+2. **Habilitar PBIP preview:** Arquivo → Opções e configurações → Opções →
+   Recursos de visualização → marcar **"Salvar como projeto do Power BI
+   (.pbip)"** e **"Pasta PBIR para relatórios"** → OK → reiniciar.
+3. **Abrir:** duplo-clique em `docs/pbip/capacitacao-ia/capacitacao-ia.pbip`.
+4. Na **primeira abertura** com `--csv-path-mode relative`, o Power Query
+   pedirá o caminho do parâmetro `CsvPath`. Aponte para o
+   `docs/dashboard_base.csv` (absoluto na sua máquina) → **Aplicar**. Carga
+   leva ~5–15s para 385k linhas.
+
+### O que esperar
+
+| Página | Conteúdo |
+|---|---|
+| **1 — Visão Geral** | 4 KPIs (Matrículas, Matrículas IA, Pessoas únicas, Pessoas únicas IA) + linha temporal IA vs Não IA + slicers de período e tipo |
+| **2 — Por Grupo** | Matriz Esfera × Poder com Matrículas e Pessoas únicas + slicers de ano, setor, tipo |
+| **3 — Por Curso** | Tabela detalhada dos 35 cursos + barra Top 10 por matrículas + slicer de tipo |
+
+### macOS / Linux
+
+Power BI Desktop é **Windows-only**. Alternativas:
+
+- VM Windows (Parallels/UTM/VMware).
+- Power BI Service (web): zipar a pasta `capacitacao-ia/` e fazer upload
+  como workspace item via [Fabric REST API](https://learn.microsoft.com/fabric/developer/rest-api/).
+- Gerar localmente em macOS (`gerar_pbip.py` é puramente Python) e enviar
+  os arquivos para uma máquina Windows para abrir.
+
+### Limitações conhecidas
+
+- **PBIR (visuais como JSON) ainda está em preview** no Desktop. Nomes
+  internos de `visualType` podem mudar entre versões; se algum visual não
+  carregar, ajustar o `VISUAL_TYPE_MAP` no `gerar_pbip.py`.
+- **Caminho relativo do CSV em M** não é suportado nativamente — daí o
+  parâmetro `CsvPath` (workaround padrão). Para evitar a fricção na
+  primeira abertura, regenerar com `--csv-path-mode absolute`.
+- Cada `git pull` que atualiza `dashboard_base.csv` exige clicar em
+  **Atualizar** no Desktop para recarregar.
+
 ## Licença
 
 Os dados pertencem à ENAP e são publicados sob os termos do portal

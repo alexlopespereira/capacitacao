@@ -1,0 +1,23 @@
+{
+  "column_ano": "7ec13e53-b02b-428d-8513-aff3edd5a308",
+  "column_ano_mes": "c9223556-3433-4571-85b9-77d8b8fa94c2",
+  "column_ano_mes_sort": "3936d047-2a9b-4527-be0d-386c9249efcd",
+  "column_codigo_pessoa": "f215d4b6-62c8-4091-a389-039253c30c18",
+  "column_esfera": "710b7ae4-fc26-4619-af5c-ce5734fc3d30",
+  "column_ia": "7f66c5ef-5325-4313-91fb-f98b3320de4d",
+  "column_ia_label": "6b43369b-2e69-41ad-8f4b-71802771ef36",
+  "column_id_curso": "19a11d26-3fc1-4166-94e5-2d108670520f",
+  "column_mes": "b02f752d-fdce-4d29-87d0-326c2c48e406",
+  "column_nome_curso": "ab3d2b75-1b3c-4ec6-a0ca-e8c87ddfd397",
+  "column_poder": "85058cd5-b75a-4abd-922c-bbecdea60d2c",
+  "column_setor": "85366ba0-f1cc-4d76-ac5a-91ed19552ad5",
+  "expression_csv_path": "338c9796-37bb-4770-9186-f158aa7ffe20",
+  "measure_matriculas": "aaec4cc1-1333-4265-859a-8a9291b074c2",
+  "measure_matriculas_ia": "a27fb1fa-c40b-42fd-ba01-674dab67b6c4",
+  "measure_pct_matriculas_ia": "efbd6d9d-d1cc-4a65-8729-51ffe9f34d0b",
+  "measure_pessoas_unicas": "06742375-6ac6-4ddc-996c-c70a35e5b643",
+  "measure_pessoas_unicas_ia": "49d19b49-cf2d-4bae-a0fb-6ffc82b76c70",
+  "report_logical_id": "20a1f0c1-42ec-4e39-b9f2-e9d8524802af",
+  "semantic_model_logical_id": "cca66b51-7c63-4a92-957c-640cea05b249",
+  "table_dashboard_base": "45024c93-3e9a-449d-a9b4-1bc451368289"
+}

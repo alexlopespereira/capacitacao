@@ -1,0 +1,39 @@
+- generic [ref=e1]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - img "Imagem do plano de fundo da organização" [ref=e2]
+          - generic [ref=e3]:
+            - generic [ref=e9]:
+              - img "Microsoft" [ref=e12]
+              - main [ref=e13]:
+                - generic [ref=e14]:
+                  - generic "alex.pereira@gestao.gov.br" [ref=e18]
+                  - generic [ref=e20]:
+                    - heading "Permissões solicitadas" [level=1] [ref=e24]
+                    - generic [ref=e26]:
+                      - generic [ref=e27]: PPMI-powerpagesmanagedidentity-8a1250fe-9b8e-4665-942a-048f4a9fc081
+                      - button "Informações do aplicativo" [active] [ref=e29] [cursor=pointer]
+                    - generic [ref=e30]: Este aplicativo não foi publicado pela Microsoft.
+                    - generic [ref=e31]: "Este aplicativo gostaria de:"
+                    - button "Sign you in and read your profile" [ref=e34] [cursor=pointer]:
+                      - generic [ref=e38]: Sign you in and read your profile
+                    - generic [ref=e41]:
+                      - generic [ref=e42]:
+                        - text: Aceitar essas permissões significa que você permite que este aplicativo use seus dados conforme especificado nos termos de serviço e na política de privacidade. Você pode alterar essas permissões em https://myapps.microsoft.com.
+                        - button "Mostrar detalhes" [ref=e43] [cursor=pointer]
+                      - generic [ref=e44]:
+                        - text: Este aplicativo parece suspeito?
+                        - link "Denuncie-o aqui" [ref=e45] [cursor=pointer]:
+                          - /url: "#"
+                    - generic [ref=e46]:
+                      - button "Cancelar" [ref=e48] [cursor=pointer]
+                      - button "Aceitar" [ref=e50] [cursor=pointer]
+            - contentinfo [ref=e51]:
+              - generic [ref=e52]:
+                - link "Termos de uso" [ref=e53] [cursor=pointer]:
+                  - /url: https://www.microsoft.com/pt-BR/servicesagreement/
+                - link "Privacidade e cookies" [ref=e54] [cursor=pointer]:
+                  - /url: https://privacy.microsoft.com/pt-BR/privacystatement
+                - button "Clique aqui para obter informações sobre solução de problemas" [ref=e55] [cursor=pointer]: ...

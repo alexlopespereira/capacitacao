@@ -1,36 +1,36 @@
-id_curso,tx_nome_curso
-107,Planejamento Estratégico para Organizações Públicas
-153,Introdução à Lei Brasileira de Proteção de Dados Pessoais
-270,Governança de Dados
-290,Proteção de Dados Pessoais no Setor Público
-343,Planejamento da Contratação de Soluções de TIC
-367,Novas Tecnologias para a Transformação Digital
-373,Liderança e Gestão De Equipes
-377,Inteligência Artificial no Contexto do Serviço Público
-406,Análise de dados como suporte à tomada de decisão
-419,Transformação Digital no Serviço Público
-529,"Como implementar a LGPD: bases, mecanismos e processos"
-534,Internet das coisas (IoT) aplicada para resolução de desafios
-536,Governança de Dados na Transformação Digital
-629,Aprendendo com Python
-724,Gestão de Riscos em Projetos de Transformação Digital
-787,Gestão de projetos
-797,Automação de Processos através da RPA para Transformação Digital
-802,Visualização de Dados Aplicada à Transformação Digital
-810,Desvendando a Inteligência Artificial na Administração Pública
-815,Storytelling com Dados para Comunicação Profissional de Sucesso
-861,Inteligência Artificial para simplificar o dia a dia
-956,Inovando na Gestão de Projetos
-976,Introdução à Ciência de Dados - Conceitos e Ferramentas
-1073,"Segurança Cibernética: Controles 1 a 6 do CIS Controls"
-1088,A História da IA
-1090,Ética em IA
-1091,Inteligência Artificial Generativa
-1139,Colaboração com o Microsoft 365
-1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls
-1167,IA Generativo da Microsoft - Copilot
-1263,"Governo Data-Driven: transformação orientada por dados em governos"
-1304,Visão Geral da IA no Azure
-1305,Fundamentos da Visão Computacional - IA do Azure
-1328,Processamento de Linguagem Natural
-1395,IA - Aplicações no Governo Federal
+id_curso,tx_nome_curso,IA
+107,Planejamento Estratégico para Organizações Públicas,0
+153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,0
+270,Governança de Dados,0
+290,Proteção de Dados Pessoais no Setor Público,0
+343,Planejamento da Contratação de Soluções de TIC,0
+367,Novas Tecnologias para a Transformação Digital,0
+373,Liderança e Gestão De Equipes,0
+377,Inteligência Artificial no Contexto do Serviço Público,1
+406,Análise de dados como suporte à tomada de decisão,0
+419,Transformação Digital no Serviço Público,0
+529,"Como implementar a LGPD: bases, mecanismos e processos",0
+534,Internet das coisas (IoT) aplicada para resolução de desafios,0
+536,Governança de Dados na Transformação Digital,0
+629,Aprendendo com Python,0
+724,Gestão de Riscos em Projetos de Transformação Digital,0
+787,Gestão de projetos,0
+797,Automação de Processos através da RPA para Transformação Digital,0
+802,Visualização de Dados Aplicada à Transformação Digital,0
+810,Desvendando a Inteligência Artificial na Administração Pública,1
+815,Storytelling com Dados para Comunicação Profissional de Sucesso,0
+861,Inteligência Artificial para simplificar o dia a dia,1
+956,Inovando na Gestão de Projetos,0
+976,Introdução à Ciência de Dados - Conceitos e Ferramentas,0
+1073,"Segurança Cibernética: Controles 1 a 6 do CIS Controls",0
+1088,A História da IA,1
+1090,Ética em IA,1
+1091,Inteligência Artificial Generativa,1
+1139,Colaboração com o Microsoft 365,0
+1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,0
+1167,IA Generativo da Microsoft - Copilot,1
+1263,"Governo Data-Driven: transformação orientada por dados em governos",0
+1304,Visão Geral da IA no Azure,1
+1305,Fundamentos da Visão Computacional - IA do Azure,1
+1328,Processamento de Linguagem Natural,1
+1395,IA - Aplicações no Governo Federal,1

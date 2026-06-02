@@ -1,0 +1,63 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "barra-topn-cursos",
+  "position": {
+    "x": 672,
+    "y": 80,
+    "z": 0,
+    "width": 592,
+    "height": 624,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "nome_curso"
+                }
+              },
+              "queryRef": "dashboard_base.nome_curso",
+              "nativeQueryRef": "nome_curso"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "Matriculas"
+                }
+              },
+              "queryRef": "Matriculas",
+              "nativeQueryRef": "Matriculas"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {},
+    "drillFilterOtherVisuals": true
+  },
+  "visualContainerObjects": {
+    "title": [
+      {
+        "properties": {
+          "show": { "expr": { "Literal": { "Value": "true" } } },
+          "text": { "expr": { "Literal": { "Value": "'Top 10 cursos por matrículas'" } } }
+        }
+      }
+    ]
+  }
+}

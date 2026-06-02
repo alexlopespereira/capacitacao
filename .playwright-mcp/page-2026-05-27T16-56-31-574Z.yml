@@ -1,0 +1,13 @@
+- generic [ref=e2]:
+  - img [ref=e4]
+  - heading "Alternar para uma conta que tenha permissão" [level=3] [ref=e5]
+  - paragraph [ref=e6]: Sua conta (alex.pereira@gestao.gov.br) não tem permissão para exibir ou gerenciar esta página no Microsoft 365 Centro de administração
+  - link "Saiba mais sobre as funções do administrador" [ref=e7] [cursor=pointer]:
+    - /url: https://docs.microsoft.com/pt-BR/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide
+  - paragraph [ref=e8]:
+    - text: Tentando gerenciar seu ambiente do Azure?
+    - link "Vá para o portal do Azure" [ref=e9] [cursor=pointer]:
+      - /url: https://portal.azure.com/
+  - generic [ref=e10]: "Correlation ID: e562105b-7201-410b-9a7b-d0a657a52611"
+  - link "Sair e alternar" [ref=e11] [cursor=pointer]:
+    - /url: /estslogout?ru=/adminportal/home

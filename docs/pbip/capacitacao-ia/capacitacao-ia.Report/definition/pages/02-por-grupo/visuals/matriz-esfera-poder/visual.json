@@ -1,0 +1,87 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "matriz-esfera-poder",
+  "position": {
+    "x": 16,
+    "y": 16,
+    "z": 0,
+    "width": 928,
+    "height": 688,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "esfera"
+                }
+              },
+              "queryRef": "dashboard_base.esfera",
+              "nativeQueryRef": "esfera"
+            }
+          ]
+        },
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "poder"
+                }
+              },
+              "queryRef": "dashboard_base.poder",
+              "nativeQueryRef": "poder"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "Matriculas"
+                }
+              },
+              "queryRef": "Matriculas",
+              "nativeQueryRef": "Matriculas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "Pessoas Unicas"
+                }
+              },
+              "queryRef": "Pessoas Unicas",
+              "nativeQueryRef": "Pessoas Unicas"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {},
+    "drillFilterOtherVisuals": true
+  },
+  "visualContainerObjects": {
+    "title": [
+      {
+        "properties": {
+          "show": { "expr": { "Literal": { "Value": "true" } } },
+          "text": { "expr": { "Literal": { "Value": "'Esfera × Poder'" } } }
+        }
+      }
+    ]
+  }
+}

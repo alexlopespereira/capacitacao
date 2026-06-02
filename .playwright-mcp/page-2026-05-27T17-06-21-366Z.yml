@@ -1,0 +1,67 @@
+- generic [ref=e5]:
+  - banner [ref=e6]:
+    - button "Pular para o conteúdo principal" [ref=e549]
+    - banner [ref=e9]:
+      - button "Inicializador de aplicativos" [ref=e550] [cursor=pointer]: 
+      - generic [ref=e18]:
+        - generic [ref=e22]: Power Pages
+        - generic [ref=e26]:
+          - 'button "Ambiente: PowerPagesDeveloper-052726-140330" [ref=e551] [cursor=pointer]':
+            - img [ref=e33]
+            - generic [ref=e36]:
+              - generic [ref=e37]: Ambiente
+              - generic [ref=e39]: PowerPagesDeveloper-052726-140330
+          - generic [ref=e43]:
+            - button "Comunicados" [ref=e552] [cursor=pointer]:
+              - img [ref=e46]
+            - generic [ref=e48]: "5"
+          - button "Notificações" [ref=e553] [cursor=pointer]:
+            - img [ref=e55]
+          - button "Configurações" [ref=e554] [cursor=pointer]:
+            - generic [ref=e60]: 
+          - button "Ajuda" [ref=e555] [cursor=pointer]:
+            - generic [ref=e64]: 
+      - generic [ref=e65]:
+        - button "Gerente de contas de ALEX LOPES PEREIRA" [ref=e556] [cursor=pointer]:
+          - generic [ref=e75]: AP
+        - generic: 
+  - main [ref=e114]:
+    - generic [ref=e117]:
+      - heading "Detalhes do site" [level=1] [ref=e558]
+      - generic [ref=e560]:
+        - generic [ref=e562]:
+          - generic [ref=e563]:
+            - heading "Ótimo. Vamos adicionar alguns detalhes básicos enquanto iniciamos a configuração do seu novo site" [level=2] [ref=e564]
+            - generic:
+              - button
+          - generic [ref=e566]:
+            - img "Visualização do [object Object]" [ref=e568]
+            - generic [ref=e569]:
+              - generic [ref=e571]:
+                - generic [ref=e572]: Dê um nome ao seu site *
+                - textbox "Dê um nome ao seu site *" [ref=e574]: Site 1
+              - generic [ref=e575]:
+                - generic [ref=e577]:
+                  - generic [ref=e578]: Crie um endereço web *
+                  - generic [ref=e579]:
+                    - textbox "Crie um endereço web * .powerappsportals.com" [ref=e580]: site-2zia7
+                    - generic [ref=e582]: .powerappsportals.com
+                - generic [ref=e583]:
+                  - generic [ref=e584]: 
+                  - generic [ref=e585]: site-2zia7.powerappsportals.com
+              - generic [ref=e586]:
+                - generic [ref=e588]:
+                  - generic [ref=e589]: Idioma do site
+                  - combobox "Idioma do site português (Brasil)" [active] [ref=e590]:
+                    - generic [ref=e591] [cursor=pointer]: português (Brasil)
+                    - generic [ref=e592] [cursor=pointer]:
+                      - generic: 
+                - button "Ocultar detalhes" [expanded] [ref=e593] [cursor=pointer]:
+                  - generic [ref=e594]:
+                    - generic [ref=e596]: Ocultar detalhes
+                    - generic [ref=e597]: 
+        - generic [ref=e600]:
+          - button "Voltar" [ref=e601] [cursor=pointer]:
+            - generic [ref=e604]: Voltar
+          - button "Concluído" [ref=e605] [cursor=pointer]:
+            - generic [ref=e606]: Concluído
