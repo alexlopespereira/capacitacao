@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
   "name": "kpi-matriculas-ia",
   "position": {
-    "x": 328,
-    "y": 16,
+    "x": 266,
+    "y": 64,
     "z": 0,
-    "width": 296,
-    "height": 140,
+    "width": 234,
+    "height": 116,
     "tabOrder": 0
   },
   "visual": {
@@ -28,22 +28,19 @@
           ]
         }
       },
-      "sortDefinition": {
-        "sort": [],
-        "isDefaultSort": true
-      }
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
     },
     "objects": {},
-    "drillFilterOtherVisuals": true
-  },
-  "visualContainerObjects": {
-    "title": [
-      {
-        "properties": {
-          "show": { "expr": { "Literal": { "Value": "true" } } },
-          "text": { "expr": { "Literal": { "Value": "'Matrículas IA'" } } }
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Matrículas IA'" } } }
+          }
         }
-      }
-    ]
+      ]
+    }
   }
 }

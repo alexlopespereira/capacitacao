@@ -3,10 +3,10 @@
   "name": "matriz-esfera-poder",
   "position": {
     "x": 16,
-    "y": 16,
+    "y": 64,
     "z": 0,
-    "width": 928,
-    "height": 688,
+    "width": 984,
+    "height": 634,
     "tabOrder": 0
   },
   "visual": {
@@ -66,22 +66,19 @@
           ]
         }
       },
-      "sortDefinition": {
-        "sort": [],
-        "isDefaultSort": true
-      }
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
     },
     "objects": {},
-    "drillFilterOtherVisuals": true
-  },
-  "visualContainerObjects": {
-    "title": [
-      {
-        "properties": {
-          "show": { "expr": { "Literal": { "Value": "true" } } },
-          "text": { "expr": { "Literal": { "Value": "'Esfera × Poder'" } } }
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Esfera × Poder'" } } }
+          }
         }
-      }
-    ]
+      ]
+    }
   }
 }

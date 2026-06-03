@@ -105,11 +105,26 @@ def classificar(esfera_raw: str | None, poder_raw: str | None) -> tuple[str, str
     return SEM_ESFERA, "Privado/Nao-servidor", SEM_PODER
 
 
+def _set_csv_field_size_limit() -> None:
+    """Maior field_size_limit suportado pela plataforma.
+
+    No Python do Windows o C long e 32-bit, entao sys.maxsize (2^63-1)
+    estoura em csv.field_size_limit. Reduz ate caber.
+    """
+    limite = sys.maxsize
+    while True:
+        try:
+            csv.field_size_limit(limite)
+            return
+        except OverflowError:
+            limite //= 10
+
+
 def processar_csv(
     stream: io.TextIOBase, mapa: dict[str, tuple[int, str, int]]
 ) -> list[dict]:
     """Extrai linhas-fato (Concluida + 35 cursos alvo) de um CSV mensal."""
-    csv.field_size_limit(sys.maxsize)
+    _set_csv_field_size_limit()
     reader = csv.DictReader(stream, delimiter="|")
     linhas: list[dict] = []
     for row in reader:
@@ -164,6 +179,42 @@ def coletar(
         return df
     df = df[(df["ano_mes"] >= INICIO_HISTORICO) & (df["ano_mes"] <= janela_max)]
     return df.sort_values(["ano_mes", "id_curso"]).reset_index(drop=True)
+
+
+FATO_COLS = [
+    "ano_mes", "ano", "mes", "id_curso", "nome_curso",
+    "ia", "esfera", "setor", "poder", "codigo_pessoa",
+]
+FATO_DTYPES = {
+    "ano_mes": str, "ano": "Int64", "mes": "Int64", "id_curso": "Int64",
+    "nome_curso": str, "ia": "Int64", "esfera": str, "setor": str,
+    "poder": str, "codigo_pessoa": str,
+}
+
+
+def merge_fato(novo: pd.DataFrame, base_csv: Path) -> pd.DataFrame:
+    """Acumula a tabela-fato preservando meses fora da janela do download.
+
+    Idempotente por mês (mesma lógica de merge_historico em
+    atualizar_historico.py): para cada ano_mes presente em `novo`, substitui
+    as linhas correspondentes na base existente; meses antigos que não vieram
+    no download atual são preservados. Isso permite que o dashboard acumule
+    histórico mesmo com a fonte ENAP rolante (últimos 12 meses).
+    """
+    if not base_csv.exists():
+        return novo
+    antigo = pd.read_csv(base_csv, dtype=FATO_DTYPES)[FATO_COLS]
+    antigo["codigo_pessoa"] = antigo["codigo_pessoa"].fillna("")
+    if novo.empty:
+        return antigo.sort_values(["ano_mes", "id_curso"]).reset_index(drop=True)
+    meses_novos = set(novo["ano_mes"].unique())
+    antigo_filtrado = antigo[~antigo["ano_mes"].isin(meses_novos)]
+    final = pd.concat([antigo_filtrado, novo], ignore_index=True)
+    # normaliza tipos (concat com Int64 vs int)
+    for c in ("ano", "mes", "id_curso", "ia"):
+        final[c] = final[c].astype("int64")
+    final["codigo_pessoa"] = final["codigo_pessoa"].fillna("").astype(str)
+    return final.sort_values(["ano_mes", "id_curso"]).reset_index(drop=True)
 
 
 AGG_DIMS = ["ano_mes", "ano", "mes", "ia", "esfera", "setor", "poder"]
@@ -468,6 +519,12 @@ def main() -> int:
         default=None,
         help="Ultimo ano-mes a processar (YYYY-MM). Default: mes anterior ao atual.",
     )
+    parser.add_argument(
+        "--rebuild",
+        action="store_true",
+        help="Reconstroi a base do zero (NAO acumula). Default: acumula meses "
+             "antigos preservando dashboard_base.csv (fonte ENAP e rolante).",
+    )
     args = parser.parse_args()
 
     janela_max = args.ate or ultimo_mes_completo()
@@ -477,6 +534,12 @@ def main() -> int:
     print(f"Cursos alvo: {len(mapa)} (IA=1: {sum(v[2] for v in mapa.values())})")
 
     fato = coletar(args.source, janela_max, mapa)
+    if not args.rebuild:
+        antes = len(fato)
+        fato = merge_fato(fato, BASE_CSV)
+        meses = sorted(fato["ano_mes"].unique()) if not fato.empty else []
+        print(f"Acumulado: {antes} linhas novas -> {len(fato)} linhas totais "
+              f"({len(meses)} meses: {meses[0] if meses else '-'}..{meses[-1] if meses else '-'})")
     agg = agregar(fato)
 
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
