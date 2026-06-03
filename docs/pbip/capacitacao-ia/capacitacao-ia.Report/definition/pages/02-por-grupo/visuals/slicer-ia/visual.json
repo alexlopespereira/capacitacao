@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
   "name": "slicer-ia",
   "position": {
-    "x": 960,
-    "y": 440,
+    "x": 1016,
+    "y": 430,
     "z": 0,
-    "width": 288,
-    "height": 200,
+    "width": 248,
+    "height": 130,
     "tabOrder": 0
   },
   "visual": {
@@ -28,22 +28,19 @@
           ]
         }
       },
-      "sortDefinition": {
-        "sort": [],
-        "isDefaultSort": true
-      }
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
     },
     "objects": {},
-    "drillFilterOtherVisuals": true
-  },
-  "visualContainerObjects": {
-    "title": [
-      {
-        "properties": {
-          "show": { "expr": { "Literal": { "Value": "true" } } },
-          "text": { "expr": { "Literal": { "Value": "'Tipo de curso'" } } }
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Tipo de curso (IA)'" } } }
+          }
         }
-      }
-    ]
+      ]
+    }
   }
 }

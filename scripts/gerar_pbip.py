@@ -95,12 +95,13 @@ def column(name: str) -> dict[str, Any]:
     }
 
 
-def kpi_card(name: str, title: str, measure_name: str, x: int, y: int) -> dict[str, Any]:
+def kpi_card(name: str, title: str, measure_name: str, x: int, y: int,
+             width: int = 234, height: int = 116) -> dict[str, Any]:
     return {
         "name": name,
         "title": title,
         "visual_type": "card",
-        "position": {"x": x, "y": y, "width": 296, "height": 140},
+        "position": {"x": x, "y": y, "width": width, "height": height},
         "projections": {"Values": [measure(measure_name)]},
     }
 
@@ -116,10 +117,100 @@ def slicer(name: str, title: str, column_name: str, x: int, y: int,
     }
 
 
+def textbox(name: str, text: str, x: int, y: int,
+            width: int, height: int, font_size: str = "20pt") -> dict[str, Any]:
+    """Caixa de texto estática (usada como título de cada aba — item 5)."""
+    return {
+        "name": name,
+        "visual_type": "textbox",
+        "text": text,
+        "font_size": font_size,
+        "position": {"x": x, "y": y, "width": width, "height": height},
+    }
+
+
+# Painel lateral de filtros (item 3): 5 slicers fixos, idênticos em todas as
+# abas (esfera, setor, poder, IA/Não IA, ano), empilhados na coluna direita.
+FILTER_PANEL_X = 1016
+FILTER_PANEL_W = 248
+_FILTER_SPECS = (
+    ("slicer-esfera", "Esfera", "esfera"),
+    ("slicer-setor", "Setor", "setor"),
+    ("slicer-poder", "Poder", "poder"),
+    ("slicer-ia", "Tipo de curso (IA)", "ia_label"),
+    ("slicer-ano", "Ano", "ano"),
+)
+
+
+def filter_panel() -> list[dict[str, Any]]:
+    h, gap, y0 = 130, 8, 16
+    return [
+        slicer(name, title, col, x=FILTER_PANEL_X, y=y0 + i * (h + gap),
+               width=FILTER_PANEL_W, height=h)
+        for i, (name, title, col) in enumerate(_FILTER_SPECS)
+    ]
+
+
+# --- Configurações de query reaproveitáveis (itens 1 e 2) -------------------
+
+# Item 1: rótulos de valores ligados no gráfico de linha.
+_LABELS_ON = json.dumps(
+    {"labels": [{"properties": {"show": {"expr": {"Literal": {"Value": "true"}}}}}]}
+)
+
+# Item 2: ordenação decrescente por [Matriculas].
+_SORT_MATRICULAS_DESC = json.dumps({
+    "sort": [{
+        "field": {"Measure": {
+            "Expression": {"SourceRef": {"Entity": ENTITY}},
+            "Property": "Matriculas",
+        }},
+        "direction": "Descending",
+    }],
+    "isDefaultSort": False,
+})
+
+# Item 2: filtro Top N (10 cursos com mais matrículas).
+_TOPN_CURSOS = json.dumps([{
+    "name": "b1f0a4c2-7d3e-4a91-9c84-0e5f2a6b8d11",
+    "field": {"Column": {
+        "Expression": {"SourceRef": {"Entity": ENTITY}}, "Property": "nome_curso",
+    }},
+    "filter": {
+        "Version": 2,
+        "From": [
+            {"Name": "subquery", "Expression": {"Subquery": {"Query": {
+                "Version": 2,
+                "From": [{"Name": "d", "Entity": ENTITY, "Type": 0}],
+                "Select": [{"Column": {
+                    "Expression": {"SourceRef": {"Source": "d"}},
+                    "Property": "nome_curso",
+                }, "Name": "field"}],
+                "OrderBy": [{"Direction": 2, "Expression": {"Measure": {
+                    "Expression": {"SourceRef": {"Source": "d"}},
+                    "Property": "Matriculas",
+                }}}],
+                "Top": 10,
+            }}}, "Type": 2},
+            {"Name": "d", "Entity": ENTITY, "Type": 0},
+        ],
+        "Where": [{"Condition": {"In": {
+            "Expressions": [{"Column": {
+                "Expression": {"SourceRef": {"Source": "d"}}, "Property": "nome_curso",
+            }}],
+            "Table": {"SourceRef": {"Source": "subquery"}},
+        }}}],
+    },
+    "type": "TopN",
+}])
+
+
 # ---------------------------------------------------------------------------
 # PAGES_SPEC — fonte única de verdade do layout.
 # ---------------------------------------------------------------------------
 
+# Layout comum: título no topo (y=16), conteúdo a partir de y=64, painel de
+# filtros na coluna direita (x=1016). Área de conteúdo: x=16..1000 (largura 984).
 PAGES_SPEC: list[dict[str, Any]] = [
     {
         "name": "01-visao-geral",
@@ -127,23 +218,26 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "width": 1280,
         "height": 720,
         "visuals": [
-            kpi_card("kpi-matriculas", "Total matrículas", "Matriculas", x=16, y=16),
-            kpi_card("kpi-matriculas-ia", "Matrículas IA", "Matriculas IA", x=328, y=16),
-            kpi_card("kpi-pessoas", "Pessoas únicas", "Pessoas Unicas", x=640, y=16),
-            kpi_card("kpi-pessoas-ia", "Pessoas únicas IA", "Pessoas Unicas IA", x=952, y=16),
+            textbox("titulo-pagina", "Visão Geral — Capacitação em IA",
+                    x=16, y=16, width=984, height=40, font_size="22pt"),
+            kpi_card("kpi-matriculas", "Total matrículas", "Matriculas", x=16, y=64),
+            kpi_card("kpi-matriculas-ia", "Matrículas IA", "Matriculas IA", x=266, y=64),
+            kpi_card("kpi-pessoas", "Pessoas únicas", "Pessoas Unicas", x=516, y=64),
+            kpi_card("kpi-pessoas-ia", "Pessoas únicas IA", "Pessoas Unicas IA", x=766, y=64),
             {
                 "name": "linha-temporal",
                 "title": "Matrículas por mês (IA vs Não IA)",
                 "visual_type": "lineChart",
-                "position": {"x": 16, "y": 172, "width": 944, "height": 532},
+                "position": {"x": 16, "y": 196, "width": 984, "height": 502},
                 "projections": {
                     "Category": [column("ano_mes")],
                     "Series": [column("ia_label")],
                     "Y": [measure("Matriculas")],
                 },
+                # Item 1: rótulos de valores ligados.
+                "objects_json": _LABELS_ON,
             },
-            slicer("slicer-periodo", "Período", "ano_mes", x=976, y=172, height=260),
-            slicer("slicer-ia", "Tipo de curso", "ia_label", x=976, y=444, height=260),
+            *filter_panel(),
         ],
     },
     {
@@ -152,20 +246,20 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "width": 1280,
         "height": 720,
         "visuals": [
+            textbox("titulo-pagina", "Por Grupo — Esfera × Poder",
+                    x=16, y=16, width=984, height=40, font_size="22pt"),
             {
                 "name": "matriz-esfera-poder",
                 "title": "Esfera × Poder",
                 "visual_type": "pivotTable",
-                "position": {"x": 16, "y": 16, "width": 928, "height": 688},
+                "position": {"x": 16, "y": 64, "width": 984, "height": 634},
                 "projections": {
                     "Rows": [column("esfera")],
                     "Columns": [column("poder")],
                     "Values": [measure("Matriculas"), measure("Pessoas Unicas")],
                 },
             },
-            slicer("slicer-ano", "Ano", "ano", x=960, y=16, height=200),
-            slicer("slicer-setor", "Setor", "setor", x=960, y=228, height=200),
-            slicer("slicer-ia", "Tipo de curso", "ia_label", x=960, y=440, height=200),
+            *filter_panel(),
         ],
     },
     {
@@ -174,11 +268,13 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "width": 1280,
         "height": 720,
         "visuals": [
+            textbox("titulo-pagina", "Por Curso",
+                    x=16, y=16, width=984, height=40, font_size="22pt"),
             {
                 "name": "tabela-cursos",
                 "title": "Detalhe por curso",
                 "visual_type": "tableEx",
-                "position": {"x": 16, "y": 80, "width": 640, "height": 624},
+                "position": {"x": 16, "y": 64, "width": 580, "height": 634},
                 "projections": {
                     "Values": [
                         column("nome_curso"),
@@ -193,13 +289,17 @@ PAGES_SPEC: list[dict[str, Any]] = [
                 "name": "barra-topn-cursos",
                 "title": "Top 10 cursos por matrículas",
                 "visual_type": "barChart",
-                "position": {"x": 672, "y": 80, "width": 592, "height": 624},
+                "position": {"x": 612, "y": 64, "width": 388, "height": 634},
                 "projections": {
                     "Category": [column("nome_curso")],
                     "Y": [measure("Matriculas")],
                 },
+                # Item 2: ordena desc + limita ao Top 10.
+                "sort_json": _SORT_MATRICULAS_DESC,
+                "filters": True,
+                "filters_json": _TOPN_CURSOS,
             },
-            slicer("slicer-ia", "Tipo de curso", "ia_label", x=16, y=16, width=640, height=52),
+            *filter_panel(),
         ],
     },
 ]

@@ -9,6 +9,35 @@
     "height": {{ visual.position.height }},
     "tabOrder": {{ visual.tab_order | default(0) }}
   },
+{%- if visual.visual_type == "textbox" %}
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "{{ visual.text }}",
+                    "textStyle": {
+                      "fontSize": "{{ visual.font_size | default('20pt') }}",
+                      "fontWeight": "bold",
+                      "color": "#1F3864"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
+{%- else %}
   "visual": {
     "visualType": "{{ visual.visual_type }}",
     "query": {
@@ -39,28 +68,26 @@
         }{% if not loop.last %},{% endif %}
 {%- endfor %}
       },
-      "sortDefinition": {
-        "sort": [],
-        "isDefaultSort": true
-      }
+      "sortDefinition": {{ visual.sort_json | default('{"sort": [], "isDefaultSort": true}') }}
     },
     "objects": {{ visual.objects_json | default('{}') }},
-    "drillFilterOtherVisuals": true
-  }{% if visual.title %},
-  "visualContainerObjects": {
-    "title": [
-      {
-        "properties": {
-          "show": { "expr": { "Literal": { "Value": "true" } } },
-          "text": { "expr": { "Literal": { "Value": "'{{ visual.title }}'" } } }
+    "drillFilterOtherVisuals": true{% if visual.title %},
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'{{ visual.title }}'" } } }
+          }
         }
-      }
-    ]
-  }
+      ]
+    }
 {%- endif %}
+  }
 {%- if visual.filters %},
   "filterConfig": {
     "filters": {{ visual.filters_json }}
   }
 {%- endif %}
 }
+{%- endif %}
