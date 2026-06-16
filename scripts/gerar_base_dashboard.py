@@ -39,8 +39,9 @@ from __future__ import annotations
 import argparse
 import csv
 import io
+import shutil
 import sys
-from datetime import date
+from datetime import date, datetime
 from html import escape
 from pathlib import Path
 
@@ -63,6 +64,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DOCS_DIR = REPO_ROOT / "docs"
 CURSOS_ALVO = Path(__file__).parent / "cursos_alvo.csv"
 BASE_CSV = DOCS_DIR / "dashboard_base.csv"
+BACKUP_DIR = DOCS_DIR / ".base_backups"
 AGREGADO_CSV = DOCS_DIR / "dashboard_agregado.csv"
 RELATORIO_HTML = DOCS_DIR / "relatorio_capacitacao_ia.html"
 RELATORIO_XLSX = DOCS_DIR / "relatorio_capacitacao_ia.xlsx"
@@ -215,6 +217,30 @@ def merge_fato(novo: pd.DataFrame, base_csv: Path) -> pd.DataFrame:
         final[c] = final[c].astype("int64")
     final["codigo_pessoa"] = final["codigo_pessoa"].fillna("").astype(str)
     return final.sort_values(["ano_mes", "id_curso"]).reset_index(drop=True)
+
+
+def _meses_da_base(base_csv: Path) -> set[str]:
+    """Conjunto de ano_mes presentes numa base existente (vazio se nao existe)."""
+    if not base_csv.exists():
+        return set()
+    try:
+        antiga = pd.read_csv(base_csv, usecols=["ano_mes"], dtype={"ano_mes": str})
+    except (ValueError, pd.errors.EmptyDataError):
+        return set()
+    return set(antiga["ano_mes"].dropna().unique())
+
+
+def _backup_base(base_csv: Path) -> Path:
+    """Copia base_csv para docs/.base_backups/<nome>-<carimbo>.csv antes de sobrescrever.
+
+    Backup datado (nao sobrescreve backups anteriores) para que um run ruim
+    -- ex.: download incompleto -- nunca destrua a ultima base boa.
+    """
+    BACKUP_DIR.mkdir(parents=True, exist_ok=True)
+    carimbo = datetime.now().strftime("%Y%m%d-%H%M%S")
+    destino = BACKUP_DIR / f"{base_csv.stem}-{carimbo}.csv"
+    shutil.copy2(base_csv, destino)
+    return destino
 
 
 AGG_DIMS = ["ano_mes", "ano", "mes", "ia", "esfera", "setor", "poder"]
@@ -525,6 +551,12 @@ def main() -> int:
         help="Reconstroi a base do zero (NAO acumula). Default: acumula meses "
              "antigos preservando dashboard_base.csv (fonte ENAP e rolante).",
     )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Confirma a sobrescrita mesmo que a nova base perca meses que "
+             "existem na base atual (a salvaguarda aborta por padrao).",
+    )
     args = parser.parse_args()
 
     janela_max = args.ate or ultimo_mes_completo()
@@ -542,7 +574,31 @@ def main() -> int:
               f"({len(meses)} meses: {meses[0] if meses else '-'}..{meses[-1] if meses else '-'})")
     agg = agregar(fato)
 
+    # Salvaguarda anti-encolhimento: a fonte normal da ENAP e rolante (ultimos
+    # 12 meses). Rodar sem o dump historico completo -- sobretudo com --rebuild
+    # -- apagaria meses antigos da base. Aborta se a nova base perderia meses
+    # presentes na atual (a menos que --force confirme) e sempre faz backup
+    # datado antes de sobrescrever.
+    meses_antigos = _meses_da_base(BASE_CSV)
+    meses_novos = set(fato["ano_mes"].unique()) if not fato.empty else set()
+    perdidos = sorted(meses_antigos - meses_novos)
+    if perdidos and not args.force:
+        print(
+            f"\nABORTADO: a nova base perderia {len(perdidos)} mes(es) que existem "
+            f"na base atual ({perdidos[0]}..{perdidos[-1]}).\n"
+            f"  Base atual: {len(meses_antigos)} meses | nova: {len(meses_novos)} meses.\n"
+            "  Isso costuma significar que a fonte e a janela rolante (ultimos 12\n"
+            "  meses), nao o dump historico completo.\n"
+            "    - Para acumular preservando o historico, rode SEM --rebuild.\n"
+            "    - Se a perda for intencional, repita com --force.",
+            file=sys.stderr,
+        )
+        return 1
+
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
+    if BASE_CSV.exists():
+        bkp = _backup_base(BASE_CSV)
+        print(f"Backup da base anterior: {bkp.relative_to(REPO_ROOT)}")
     fato.to_csv(BASE_CSV, index=False)
     agg.to_csv(AGREGADO_CSV, index=False)
 

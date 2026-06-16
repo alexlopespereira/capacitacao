@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "barra-topn-cursos",
   "position": {
-    "x": 612,
-    "y": 64,
+    "x": 15.742947190406641,
+    "y": 390.42509032208466,
     "z": 0,
-    "width": 388,
-    "height": 634,
+    "height": 306.98747021292951,
+    "width": 983.93419940041508,
     "tabOrder": 0
   },
   "visual": {
@@ -18,12 +18,18 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_base"
+                    }
+                  },
                   "Property": "nome_curso"
                 }
               },
               "queryRef": "dashboard_base.nome_curso",
-              "nativeQueryRef": "nome_curso"
+              "nativeQueryRef": "Curso",
+              "active": true,
+              "displayName": "Curso"
             }
           ]
         },
@@ -32,7 +38,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_base"
+                    }
+                  },
                   "Property": "Matriculas"
                 }
               },
@@ -42,22 +52,175 @@
           ]
         }
       },
-      "sortDefinition": {"sort": [{"field": {"Measure": {"Expression": {"SourceRef": {"Entity": "dashboard_base"}}, "Property": "Matriculas"}}, "direction": "Descending"}], "isDefaultSort": false}
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dashboard_base"
+                  }
+                },
+                "Property": "Matriculas"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
     },
-    "objects": {},
-    "drillFilterOtherVisuals": true,
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "maxMarginFactor": {
+              "expr": {
+                "Literal": {
+                  "Value": "50L"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Top 10 cursos por matrículas'" } } }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top 10 cursos por matrículas'"
+                }
+              }
+            }
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   },
   "filterConfig": {
-    "filters": [{"name": "b1f0a4c2-7d3e-4a91-9c84-0e5f2a6b8d11", "field": {"Column": {"Expression": {"SourceRef": {"Entity": "dashboard_base"}}, "Property": "nome_curso"}}, "filter": {"Version": 2, "From": [{"Name": "subquery", "Expression": {"Subquery": {"Query": {"Version": 2, "From": [{"Name": "d", "Entity": "dashboard_base", "Type": 0}], "Select": [{"Column": {"Expression": {"SourceRef": {"Source": "d"}}, "Property": "nome_curso"}, "Name": "field"}], "OrderBy": [{"Direction": 2, "Expression": {"Measure": {"Expression": {"SourceRef": {"Source": "d"}}, "Property": "Matriculas"}}}], "Top": 10}}}, "Type": 2}, {"Name": "d", "Entity": "dashboard_base", "Type": 0}], "Where": [{"Condition": {"In": {"Expressions": [{"Column": {"Expression": {"SourceRef": {"Source": "d"}}, "Property": "nome_curso"}}], "Table": {"SourceRef": {"Source": "subquery"}}}}}]}, "type": "TopN"}]
+    "filters": [
+      {
+        "name": "b1f0a4c2-7d3e-4a91-9c84-0e5f2a6b8d11",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dashboard_base"
+              }
+            },
+            "Property": "nome_curso"
+          }
+        },
+        "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "d",
+                        "Entity": "dashboard_base",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "d"
+                            }
+                          },
+                          "Property": "nome_curso"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Measure": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "Matriculas"
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 10
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "d",
+              "Entity": "dashboard_base",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "nome_curso"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "dbdda3eecb3e484703aa",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dashboard_base"
+              }
+            },
+            "Property": "Matriculas"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

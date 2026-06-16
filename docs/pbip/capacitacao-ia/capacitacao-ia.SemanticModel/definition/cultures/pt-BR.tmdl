@@ -1,0 +1,1234 @@
+cultureInfo pt-BR
+
+	linguisticMetadata =
+			{
+			  "Version": "4.1.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "dashboard_base": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dashboard base": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dashboard_base": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "base": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "dashboard headquarters": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "dashboard center": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "dashboard seat": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "dashboard station": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "headquarters": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "center": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "seat": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "station": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "dashboard pier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.451
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.ano_me": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "ano_mes"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano me": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ano_mes": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "ano-mes": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.me": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "mes"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "me": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.id_curso": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "id_curso"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "id curso": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "id_curso": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "identification curso": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "identity curso": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "identifier curso": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "credential curso": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.nome_curso": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "nome_curso"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "nome curso": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "nome_curso": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Curso": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.ia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "ia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ia": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.esfera": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "esfera"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "esfera": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.setor": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "setor"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "setor": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.poder": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "poder"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "poder": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.codigo_pessoa": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "codigo_pessoa"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "codigo pessoa": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "codigo_pessoa": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.ano_mes_sort": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "ano_mes_sort"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "ano mes sort": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ano me sort": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "ano_mes_sort": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "ano me category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "ano me genus": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "ano me species": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "ano me variety": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "ano me nature": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "ano me kind": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "ano me class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "ano me type": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "ano me ilk": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "ano me order": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.ia_label": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "ia_label"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ia label": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ia_label": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "label": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "ia sticker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "sticker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "ia tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "ia decal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "decal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "ia name tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.589
+			          }
+			        },
+			        {
+			          "name tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.571
+			          }
+			        },
+			        {
+			          "IA?": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.matriculas": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "Matriculas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "matriculas": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.matriculas_IA": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "Matriculas IA"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "matriculas IA": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.pessoas_unicas": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "Pessoas Unicas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "pessoas unicas": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.pessoas_unicas_IA": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "Pessoas Unicas IA"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "pessoas unicas IA": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_base.matriculas_IA1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_base",
+			          "ConceptualProperty": "% Matriculas IA"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% matriculas IA": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "percentage matricula ia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "pct matricula ia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "dashboard_base_has_matriculas_IA1": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.matriculas_IA1": {
+			          "Target": {
+			            "Entity": "dashboard_base.matriculas_IA1"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.matriculas_IA1"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have__matriculas_IA"
+			        }
+			      ]
+			    },
+			    "dashboard_base_has_pessoas_unicas_IA": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.pessoas_unicas_IA": {
+			          "Target": {
+			            "Entity": "dashboard_base.pessoas_unicas_IA"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.pessoas_unicas_IA"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have_pessoas_unicas_IA"
+			        }
+			      ]
+			    },
+			    "dashboard_base_has_pessoas_unicas": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.pessoas_unicas": {
+			          "Target": {
+			            "Entity": "dashboard_base.pessoas_unicas"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.pessoas_unicas"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have_pessoas_unicas"
+			        }
+			      ]
+			    },
+			    "dashboard_base_has_matriculas_IA": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.matriculas_IA": {
+			          "Target": {
+			            "Entity": "dashboard_base.matriculas_IA"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.matriculas_IA"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have_matriculas_IA"
+			        }
+			      ]
+			    },
+			    "dashboard_base_has_matriculas": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.matriculas": {
+			          "Target": {
+			            "Entity": "dashboard_base.matriculas"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.matriculas"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have_matriculas"
+			        }
+			      ]
+			    },
+			    "dashboard_base_has_ia_label": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.ia_label": {
+			          "Target": {
+			            "Entity": "dashboard_base.ia_label"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.ia_label"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have_ia_labels"
+			        }
+			      ]
+			    },
+			    "dashboard_base_has_poder": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.poder": {
+			          "Target": {
+			            "Entity": "dashboard_base.poder"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.poder"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have_poders"
+			        }
+			      ]
+			    },
+			    "dashboard_base_has_setor": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.setor": {
+			          "Target": {
+			            "Entity": "dashboard_base.setor"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.setor"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have_setors"
+			        }
+			      ]
+			    },
+			    "dashboard_base_has_esfera": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.esfera": {
+			          "Target": {
+			            "Entity": "dashboard_base.esfera"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.esfera"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have_esferas"
+			        }
+			      ]
+			    },
+			    "dashboard_base_has_ia": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.ia": {
+			          "Target": {
+			            "Entity": "dashboard_base.ia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.ia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have_ia"
+			        }
+			      ]
+			    },
+			    "dashboard_base_has_nome_curso": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.nome_curso": {
+			          "Target": {
+			            "Entity": "dashboard_base.nome_curso"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.nome_curso"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have_nome_cursos"
+			        }
+			      ]
+			    },
+			    "dashboard_base_has_id_curso": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.id_curso": {
+			          "Target": {
+			            "Entity": "dashboard_base.id_curso"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.id_curso"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have_id_cursos"
+			        }
+			      ]
+			    },
+			    "dashboard_base_has_me": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.me": {
+			          "Target": {
+			            "Entity": "dashboard_base.me"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.me"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have_me"
+			        }
+			      ]
+			    },
+			    "dashboard_base_has_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.ano": {
+			          "Target": {
+			            "Entity": "dashboard_base.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have_anos"
+			        }
+			      ]
+			    },
+			    "dashboard_base_has_ano_me": {
+			      "Binding": {
+			        "ConceptualEntity": "dashboard_base"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_base": {
+			          "Target": {
+			            "Entity": "dashboard_base"
+			          }
+			        },
+			        "dashboard_base.ano_me": {
+			          "Target": {
+			            "Entity": "dashboard_base.ano_me"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_base"
+			            },
+			            "Object": {
+			              "Role": "dashboard_base.ano_me"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_bases_have_ano_me"
+			        }
+			      ]
+			    }
+			  },
+			  "Agents": {
+			    "Internal": {
+			      "Version": "1.1.0"
+			    }
+			  }
+			}
+		contentType: json
+

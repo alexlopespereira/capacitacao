@@ -17,11 +17,17 @@ Thumbs.db
 
 # Dados brutos baixados localmente para teste (gigabytes)
 dados/
+data/
 *.tar.gz
+*.rar
 *.csv
 !docs/contagem_mensal.csv
 !docs/pessoas_por_mes.csv
+!docs/dashboard_base.csv
 !scripts/cursos_alvo.csv
+
+# Backups datados da base do dashboard (gerados pelo --rebuild/sobrescrita)
+docs/.base_backups/
 
 # Power BI Desktop — cache e .pbix compilado local
 docs/pbip/**/.pbi/
