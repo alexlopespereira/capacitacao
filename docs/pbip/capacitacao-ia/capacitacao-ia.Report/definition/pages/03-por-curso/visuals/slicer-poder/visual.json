@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
   "name": "slicer-poder",
   "position": {
-    "x": 1015.4200937812283,
-    "y": 291.24452302252286,
+    "x": 1016,
+    "y": 342,
     "z": 0,
-    "height": 163.72665078022905,
-    "width": 248.73856560842492,
+    "width": 248,
+    "height": 104,
     "tabOrder": 0
   },
   "visual": {
@@ -18,85 +18,29 @@
             {
               "field": {
                 "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dashboard_base"
-                    }
-                  },
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
                   "Property": "poder"
                 }
               },
               "queryRef": "dashboard_base.poder",
-              "nativeQueryRef": "poder",
-              "active": true
+              "nativeQueryRef": "poder"
             }
           ]
         }
       },
-      "sortDefinition": {
-        "isDefaultSort": true
-      }
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
     },
-    "objects": {
-      "general": [
-        {
-          "properties": {}
-        }
-      ],
-      "header": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
+    "objects": {},
+    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Poder'"
-                }
-              }
-            }
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Poder'" } } }
           }
         }
       ]
-    },
-    "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "d2f5880990eb725ebb10",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dashboard_base"
-              }
-            },
-            "Property": "poder"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
+    }
   }
 }

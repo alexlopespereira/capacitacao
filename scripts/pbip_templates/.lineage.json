@@ -2,7 +2,14 @@
   "column_ano": "7ec13e53-b02b-428d-8513-aff3edd5a308",
   "column_ano_mes": "c9223556-3433-4571-85b9-77d8b8fa94c2",
   "column_ano_mes_sort": "3936d047-2a9b-4527-be0d-386c9249efcd",
+  "column_bridge_id_curso": "51739e2c-e34a-41f0-964f-5dc11f27d173",
+  "column_bridge_nome_curso": "03641cf1-cb5e-48ff-9193-a221c5cc28ea",
+  "column_bridge_programa_trilha": "78045730-6c63-423b-a5d0-5e9cdf2e66c0",
+  "column_bridge_publico_alvo": "63fa1fd4-600c-401f-a59a-2a6f6fa9ac28",
   "column_codigo_pessoa": "f215d4b6-62c8-4091-a389-039253c30c18",
+  "column_dimc_ia": "ee75cd81-e7af-4099-ad91-a437389a012f",
+  "column_dimc_id_curso": "e5bd5276-b284-4d9a-9588-f88106304a0b",
+  "column_dimc_nome_curso": "e935f3e2-66b2-46ad-9a11-54edc1aba998",
   "column_esfera": "710b7ae4-fc26-4619-af5c-ce5734fc3d30",
   "column_ia": "7f66c5ef-5325-4313-91fb-f98b3320de4d",
   "column_ia_label": "6b43369b-2e69-41ad-8f4b-71802771ef36",
@@ -17,7 +24,12 @@
   "measure_pct_matriculas_ia": "efbd6d9d-d1cc-4a65-8729-51ffe9f34d0b",
   "measure_pessoas_unicas": "06742375-6ac6-4ddc-996c-c70a35e5b643",
   "measure_pessoas_unicas_ia": "49d19b49-cf2d-4bae-a0fb-6ffc82b76c70",
+  "measure_qtd_publicos": "d4d60ff4-9600-4482-b018-8e8e749b26d4",
+  "rel_bridge_curso": "2008d260-16a4-4948-b1c0-11f671873f18",
+  "rel_fact_curso": "c05fb1ad-8776-4a27-99ed-8c01b6a209d6",
   "report_logical_id": "20a1f0c1-42ec-4e39-b9f2-e9d8524802af",
   "semantic_model_logical_id": "cca66b51-7c63-4a92-957c-640cea05b249",
-  "table_dashboard_base": "45024c93-3e9a-449d-a9b4-1bc451368289"
+  "table_bridge_publico": "1b5157f4-da7b-4682-9a83-662909449823",
+  "table_dashboard_base": "45024c93-3e9a-449d-a9b4-1bc451368289",
+  "table_dim_curso": "58e65bc6-7f66-4c35-bc60-9af746a42099"
 }

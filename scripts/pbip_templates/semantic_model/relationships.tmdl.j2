@@ -1,0 +1,8 @@
+relationship {{ lineage.rel_fact_curso }}
+	fromColumn: dashboard_base.id_curso
+	toColumn: dim_curso.id_curso
+
+relationship {{ lineage.rel_bridge_curso }}
+	fromColumn: bridge_publico.id_curso
+	toColumn: dim_curso.id_curso
+	crossFilteringBehavior: bothDirections

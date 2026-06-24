@@ -1,9 +1,11 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
   "pageOrder": [
     "01-visao-geral",
     "02-por-grupo",
-    "03-por-curso"
+    "03-por-curso",
+    "04-por-publico",
+    "05-publico-curso"
   ],
   "activePageName": "01-visao-geral"
 }

@@ -1,0 +1,38 @@
+/// Dimensao de cursos (hub) derivada da tabela fato — 1 linha por curso.
+/// Serve de ponte entre dashboard_base e bridge_publico (relacao m:n por
+/// id_curso). Garante integridade referencial: todo id_curso da bridge e do
+/// fato existe aqui.
+table dim_curso
+	lineageTag: 58e65bc6-7f66-4c35-bc60-9af746a42099
+
+	column id_curso
+		dataType: int64
+		isKey
+		sourceColumn: id_curso
+		formatString: 0
+		summarizeBy: none
+		lineageTag: e5bd5276-b284-4d9a-9588-f88106304a0b
+
+	column nome_curso
+		dataType: string
+		sourceColumn: nome_curso
+		summarizeBy: none
+		lineageTag: e935f3e2-66b2-46ad-9a11-54edc1aba998
+
+	column ia
+		dataType: int64
+		sourceColumn: ia
+		formatString: 0
+		summarizeBy: none
+		lineageTag: ee75cd81-e7af-4099-ad91-a437389a012f
+
+	partition dim_curso = m
+		mode: import
+		source =
+				let
+					Source = dashboard_base,
+					Cursos = Table.Distinct(Table.SelectColumns(Source, {"id_curso", "nome_curso", "ia"}))
+				in
+					Cursos
+
+	annotation PBI_ResultType = Table

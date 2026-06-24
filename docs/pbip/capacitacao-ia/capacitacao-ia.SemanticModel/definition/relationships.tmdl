@@ -1,0 +1,8 @@
+relationship c05fb1ad-8776-4a27-99ed-8c01b6a209d6
+	fromColumn: dashboard_base.id_curso
+	toColumn: dim_curso.id_curso
+
+relationship 2008d260-16a4-4948-b1c0-11f671873f18
+	fromColumn: bridge_publico.id_curso
+	toColumn: dim_curso.id_curso
+	crossFilteringBehavior: bothDirections

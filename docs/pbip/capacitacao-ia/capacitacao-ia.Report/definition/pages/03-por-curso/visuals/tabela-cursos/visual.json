@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
   "name": "tabela-cursos",
   "position": {
-    "x": 15.742947190406641,
-    "y": 81.863325390114525,
+    "x": 16,
+    "y": 64,
     "z": 0,
-    "height": 291.24452302252286,
-    "width": 983.93419940041508,
+    "width": 580,
+    "height": 634,
     "tabOrder": 0
   },
   "visual": {
@@ -18,41 +18,27 @@
             {
               "field": {
                 "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dashboard_base"
-                    }
-                  },
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
                   "Property": "nome_curso"
                 }
               },
               "queryRef": "dashboard_base.nome_curso",
-              "nativeQueryRef": "Curso",
-              "displayName": "Curso"
+              "nativeQueryRef": "nome_curso"
             },
             {
               "field": {
                 "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dashboard_base"
-                    }
-                  },
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
                   "Property": "ia_label"
                 }
               },
               "queryRef": "dashboard_base.ia_label",
-              "nativeQueryRef": "IA?",
-              "displayName": "IA?"
+              "nativeQueryRef": "ia_label"
             },
             {
               "field": {
                 "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dashboard_base"
-                    }
-                  },
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
                   "Property": "Matriculas"
                 }
               },
@@ -62,171 +48,39 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dashboard_base"
-                    }
-                  },
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
                   "Property": "Pessoas Unicas"
                 }
               },
               "queryRef": "Pessoas Unicas",
               "nativeQueryRef": "Pessoas Unicas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "% Matriculas IA"
+                }
+              },
+              "queryRef": "% Matriculas IA",
+              "nativeQueryRef": "% Matriculas IA"
             }
           ]
         }
       },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "dashboard_base"
-                  }
-                },
-                "Property": "nome_curso"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
-      }
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
     },
-    "objects": {
-      "columnWidth": [
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "648.3030448768504D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "dashboard_base.nome_curso"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "91.93305182874161D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "dashboard_base.ia_label"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "110.36041491282447D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Matriculas"
-          }
-        }
-      ],
-      "columnHeaders": [
-        {
-          "properties": {}
-        }
-      ]
-    },
+    "objects": {},
+    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Detalhe por curso'"
-                }
-              }
-            }
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Detalhe por curso'" } } }
           }
         }
       ]
-    },
-    "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "109b7a40cc0d0bcedcd4",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dashboard_base"
-              }
-            },
-            "Property": "nome_curso"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "45e3da4eabea3a478eb5",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dashboard_base"
-              }
-            },
-            "Property": "ia_label"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "04f8437e353c31843530",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dashboard_base"
-              }
-            },
-            "Property": "Matriculas"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "8a37f4e9031575769d31",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dashboard_base"
-              }
-            },
-            "Property": "Pessoas Unicas"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
+    }
   }
 }

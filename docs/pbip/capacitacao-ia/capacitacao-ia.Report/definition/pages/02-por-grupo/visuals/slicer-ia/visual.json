@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
   "name": "slicer-ia",
   "position": {
-    "x": 1016.4428886758377,
-    "y": 468.49523979398447,
+    "x": 1016,
+    "y": 452,
     "z": 0,
-    "height": 113.24251410224966,
-    "width": 247.48968807830369,
+    "width": 248,
+    "height": 104,
     "tabOrder": 0
   },
   "visual": {
@@ -18,127 +18,29 @@
             {
               "field": {
                 "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dashboard_base"
-                    }
-                  },
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
                   "Property": "ia_label"
                 }
               },
               "queryRef": "dashboard_base.ia_label",
-              "nativeQueryRef": "ia_label",
-              "active": true
+              "nativeQueryRef": "ia_label"
             }
           ]
         }
       },
-      "sortDefinition": {
-        "isDefaultSort": true
-      }
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
     },
-    "objects": {
-      "header": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "general": [
-        {
-          "properties": {
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "d",
-                    "Entity": "dashboard_base",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "In": {
-                        "Expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "d"
-                                }
-                              },
-                              "Property": "ia_label"
-                            }
-                          }
-                        ],
-                        "Values": [
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'IA'"
-                              }
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
-            }
-          }
-        }
-      ]
-    },
+    "objects": {},
+    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Tipo de curso (IA)'"
-                }
-              }
-            }
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Tipo de curso (IA)'" } } }
           }
         }
       ]
-    },
-    "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "014103c16c13dc563638",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dashboard_base"
-              }
-            },
-            "Property": "ia_label"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
+    }
   }
 }
