@@ -43,6 +43,8 @@ DEFAULT_OUTPUT = REPO_ROOT / "docs" / "pbip" / "capacitacao-ia"
 DEFAULT_CSV = REPO_ROOT / "docs" / "dashboard_base.csv"
 PROJECT_NAME = "capacitacao-ia"
 ENTITY = "dashboard_base"
+BRIDGE = "bridge_publico"
+DIMC = "dim_curso"
 
 # Identificadores estáveis para lineageTag (TMDL) e logicalId (.platform).
 # Persistir em .lineage.json para diffs git limpos entre regenerações.
@@ -66,6 +68,19 @@ LINEAGE_KEYS: tuple[str, ...] = (
     "column_codigo_pessoa",
     "column_ano_mes_sort",
     "column_ia_label",
+    # Dimensão Público-alvo (bridge m:n curso<->público).
+    "table_dim_curso",
+    "column_dimc_id_curso",
+    "column_dimc_nome_curso",
+    "column_dimc_ia",
+    "table_bridge_publico",
+    "measure_qtd_publicos",
+    "column_bridge_id_curso",
+    "column_bridge_nome_curso",
+    "column_bridge_publico_alvo",
+    "column_bridge_programa_trilha",
+    "rel_fact_curso",
+    "rel_bridge_curso",
     "semantic_model_logical_id",
     "report_logical_id",
 )
@@ -86,11 +101,25 @@ def measure(name: str) -> dict[str, Any]:
 
 
 def column(name: str) -> dict[str, Any]:
+    return column_of(ENTITY, name)
+
+
+def measure_of(entity: str, name: str) -> dict[str, Any]:
+    return {
+        "kind": "measure",
+        "entity": entity,
+        "property": name,
+        "query_ref": name,
+        "native_query_ref": name,
+    }
+
+
+def column_of(entity: str, name: str) -> dict[str, Any]:
     return {
         "kind": "column",
-        "entity": ENTITY,
+        "entity": entity,
         "property": name,
-        "query_ref": f"{ENTITY}.{name}",
+        "query_ref": f"{entity}.{name}",
         "native_query_ref": name,
     }
 
@@ -107,13 +136,14 @@ def kpi_card(name: str, title: str, measure_name: str, x: int, y: int,
 
 
 def slicer(name: str, title: str, column_name: str, x: int, y: int,
-           width: int = 288, height: int = 200) -> dict[str, Any]:
+           width: int = 288, height: int = 200,
+           entity: str = ENTITY) -> dict[str, Any]:
     return {
         "name": name,
         "title": title,
         "visual_type": "slicer",
         "position": {"x": x, "y": y, "width": width, "height": height},
-        "projections": {"Values": [column(column_name)]},
+        "projections": {"Values": [column_of(entity, column_name)]},
     }
 
 
@@ -133,21 +163,24 @@ def textbox(name: str, text: str, x: int, y: int,
 # abas (esfera, setor, poder, IA/Não IA, ano), empilhados na coluna direita.
 FILTER_PANEL_X = 1016
 FILTER_PANEL_W = 248
+# (name, título, coluna, entidade). O slicer de Público-alvo vem da bridge e,
+# por ser bidirecional até o fato, cruza com todos os visuais (item H).
 _FILTER_SPECS = (
-    ("slicer-esfera", "Esfera", "esfera"),
-    ("slicer-setor", "Setor", "setor"),
-    ("slicer-poder", "Poder", "poder"),
-    ("slicer-ia", "Tipo de curso (IA)", "ia_label"),
-    ("slicer-ano", "Ano", "ano"),
+    ("slicer-publico", "Público-alvo", "publico_alvo", BRIDGE),
+    ("slicer-esfera", "Esfera", "esfera", ENTITY),
+    ("slicer-setor", "Setor", "setor", ENTITY),
+    ("slicer-poder", "Poder", "poder", ENTITY),
+    ("slicer-ia", "Tipo de curso (IA)", "ia_label", ENTITY),
+    ("slicer-ano", "Ano", "ano", ENTITY),
 )
 
 
 def filter_panel() -> list[dict[str, Any]]:
-    h, gap, y0 = 130, 8, 16
+    h, gap, y0 = 104, 6, 12
     return [
         slicer(name, title, col, x=FILTER_PANEL_X, y=y0 + i * (h + gap),
-               width=FILTER_PANEL_W, height=h)
-        for i, (name, title, col) in enumerate(_FILTER_SPECS)
+               width=FILTER_PANEL_W, height=h, entity=entity)
+        for i, (name, title, col, entity) in enumerate(_FILTER_SPECS)
     ]
 
 
@@ -164,6 +197,30 @@ _SORT_MATRICULAS_DESC = json.dumps({
         "field": {"Measure": {
             "Expression": {"SourceRef": {"Entity": ENTITY}},
             "Property": "Matriculas",
+        }},
+        "direction": "Descending",
+    }],
+    "isDefaultSort": False,
+})
+
+# Ordenação decrescente por [Pessoas Unicas] (página Público-alvo).
+_SORT_PESSOAS_DESC = json.dumps({
+    "sort": [{
+        "field": {"Measure": {
+            "Expression": {"SourceRef": {"Entity": ENTITY}},
+            "Property": "Pessoas Unicas",
+        }},
+        "direction": "Descending",
+    }],
+    "isDefaultSort": False,
+})
+
+# Ordenação decrescente por [Qtd Publicos] (cursos mais transversais).
+_SORT_QTD_PUBLICOS_DESC = json.dumps({
+    "sort": [{
+        "field": {"Measure": {
+            "Expression": {"SourceRef": {"Entity": BRIDGE}},
+            "Property": "Qtd Publicos",
         }},
         "direction": "Descending",
     }],
@@ -302,6 +359,117 @@ PAGES_SPEC: list[dict[str, Any]] = [
             *filter_panel(),
         ],
     },
+    {
+        "name": "04-por-publico",
+        "display_name": "Por Público-Alvo",
+        "width": 1280,
+        "height": 720,
+        "visuals": [
+            textbox("titulo-pagina", "Por Público-Alvo",
+                    x=16, y=16, width=984, height=40, font_size="22pt"),
+            # A — Ranking de matrículas por público.
+            {
+                "name": "barra-matriculas-publico",
+                "title": "Matrículas por público-alvo",
+                "visual_type": "barChart",
+                "position": {"x": 16, "y": 64, "width": 484, "height": 300},
+                "projections": {
+                    "Category": [column_of(BRIDGE, "publico_alvo")],
+                    "Y": [measure("Matriculas")],
+                },
+                "sort_json": _SORT_MATRICULAS_DESC,
+                "objects_json": _LABELS_ON,
+            },
+            # B — Pessoas únicas por público (alcance real).
+            {
+                "name": "barra-pessoas-publico",
+                "title": "Pessoas únicas por público-alvo",
+                "visual_type": "barChart",
+                "position": {"x": 516, "y": 64, "width": 484, "height": 300},
+                "projections": {
+                    "Category": [column_of(BRIDGE, "publico_alvo")],
+                    "Y": [measure("Pessoas Unicas")],
+                },
+                "sort_json": _SORT_PESSOAS_DESC,
+                "objects_json": _LABELS_ON,
+            },
+            # C — Mix IA × Não-IA por público (100% empilhado).
+            {
+                "name": "barra-mix-ia-publico",
+                "title": "Mix IA × Não-IA por público (%)",
+                "visual_type": "hundredPercentStackedBarChart",
+                "position": {"x": 16, "y": 380, "width": 484, "height": 318},
+                "projections": {
+                    "Category": [column_of(BRIDGE, "publico_alvo")],
+                    "Series": [column("ia_label")],
+                    "Y": [measure("Matriculas")],
+                },
+            },
+            # D — Evolução mensal de matrículas por público.
+            {
+                "name": "linha-publico-mes",
+                "title": "Matrículas por mês e público-alvo",
+                "visual_type": "lineChart",
+                "position": {"x": 516, "y": 380, "width": 484, "height": 318},
+                "projections": {
+                    "Category": [column("ano_mes")],
+                    "Series": [column_of(BRIDGE, "publico_alvo")],
+                    "Y": [measure("Matriculas")],
+                },
+            },
+            *filter_panel(),
+        ],
+    },
+    {
+        "name": "05-publico-curso",
+        "display_name": "Público × Curso",
+        "width": 1280,
+        "height": 720,
+        "visuals": [
+            textbox("titulo-pagina", "Público × Curso",
+                    x=16, y=16, width=984, height=40, font_size="22pt"),
+            # E — Matriz Público → Trilha → Curso (drill-down).
+            {
+                "name": "matriz-publico-curso",
+                "title": "Matrículas por público, trilha e curso",
+                "visual_type": "pivotTable",
+                "position": {"x": 16, "y": 64, "width": 600, "height": 634},
+                "projections": {
+                    "Rows": [
+                        column_of(BRIDGE, "publico_alvo"),
+                        column_of(BRIDGE, "programa_trilha"),
+                        column_of(BRIDGE, "nome_curso"),
+                    ],
+                    "Values": [measure("Matriculas"), measure("Pessoas Unicas")],
+                },
+            },
+            # F — Cursos mais transversais (nº de públicos por curso).
+            {
+                "name": "barra-cursos-transversais",
+                "title": "Cursos mais transversais (nº de públicos)",
+                "visual_type": "barChart",
+                "position": {"x": 628, "y": 64, "width": 372, "height": 310},
+                "projections": {
+                    "Category": [column_of(BRIDGE, "nome_curso")],
+                    "Y": [measure_of(BRIDGE, "Qtd Publicos")],
+                },
+                "sort_json": _SORT_QTD_PUBLICOS_DESC,
+            },
+            # G — Composição institucional: Público × Poder.
+            {
+                "name": "matriz-publico-poder",
+                "title": "Matrículas por público e poder",
+                "visual_type": "pivotTable",
+                "position": {"x": 628, "y": 388, "width": 372, "height": 310},
+                "projections": {
+                    "Rows": [column_of(BRIDGE, "publico_alvo")],
+                    "Columns": [column("poder")],
+                    "Values": [measure("Matriculas")],
+                },
+            },
+            *filter_panel(),
+        ],
+    },
 ]
 
 
@@ -386,7 +554,11 @@ def build_semantic_model(env: Environment, out_dir: Path, ctx: dict[str, Any]) -
                render(env, "semantic_model/relationships.tmdl.j2", ctx))
     write_file(definition / "tables" / "dashboard_base.tmdl",
                render(env, "semantic_model/tables/dashboard_base.tmdl.j2", ctx))
-    files_written += 7
+    write_file(definition / "tables" / "dim_curso.tmdl",
+               render(env, "semantic_model/tables/dim_curso.tmdl.j2", ctx))
+    write_file(definition / "tables" / "bridge_publico.tmdl",
+               render(env, "semantic_model/tables/bridge_publico.tmdl.j2", ctx))
+    files_written += 9
     return files_written
 
 

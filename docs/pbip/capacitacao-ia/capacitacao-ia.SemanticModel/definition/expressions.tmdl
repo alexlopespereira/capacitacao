@@ -1,5 +1,4 @@
-expression CsvPath = "C:/Projects/capacitacao/docs/dashboard_base.csv" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression CsvPath = "docs/dashboard_base.csv" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: 338c9796-37bb-4770-9186-f158aa7ffe20
 
 	annotation PBI_ResultType = Text
-

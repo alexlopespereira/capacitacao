@@ -1,0 +1,54 @@
+/// Tabela-ponte curso -> publico-alvo (muitos-para-muitos).
+/// Carregada de docs/dashboard_publico_alvo.csv (mesma pasta do CSV fato,
+/// caminho derivado de CsvPath). Liga-se a dim_curso por id_curso com filtro
+/// bidirecional, de modo que selecionar um publico filtra o fato.
+table bridge_publico
+	lineageTag: {{ lineage.table_bridge_publico }}
+
+	measure 'Qtd Publicos' = DISTINCTCOUNT(bridge_publico[publico_alvo])
+		formatString: #,0
+		lineageTag: {{ lineage.measure_qtd_publicos }}
+
+	column id_curso
+		dataType: int64
+		sourceColumn: id_curso
+		formatString: 0
+		summarizeBy: none
+		lineageTag: {{ lineage.column_bridge_id_curso }}
+
+	column nome_curso
+		dataType: string
+		sourceColumn: nome_curso
+		summarizeBy: none
+		lineageTag: {{ lineage.column_bridge_nome_curso }}
+
+	column publico_alvo
+		dataType: string
+		sourceColumn: publico_alvo
+		summarizeBy: none
+		lineageTag: {{ lineage.column_bridge_publico_alvo }}
+
+	column programa_trilha
+		dataType: string
+		sourceColumn: programa_trilha
+		summarizeBy: none
+		lineageTag: {{ lineage.column_bridge_programa_trilha }}
+
+	partition bridge_publico = m
+		mode: import
+		source =
+				let
+					Folder = Text.BeforeDelimiter(CsvPath, "/", {0, RelativePosition.FromEnd}),
+					BridgePath = Folder & "/dashboard_publico_alvo.csv",
+					Source = Csv.Document(File.Contents(BridgePath), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Promoted, {
+						{"id_curso", Int64.Type},
+						{"nome_curso", type text},
+						{"publico_alvo", type text},
+						{"programa_trilha", type text}
+					})
+				in
+					Typed
+
+	annotation PBI_ResultType = Table

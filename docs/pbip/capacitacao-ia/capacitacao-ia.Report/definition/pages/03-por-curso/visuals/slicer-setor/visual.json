@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
   "name": "slicer-setor",
   "position": {
-    "x": 1015.4200937812283,
-    "y": 173.17241909447304,
+    "x": 1016,
+    "y": 232,
     "z": 0,
-    "height": 105.47774617572449,
-    "width": 248.73856560842492,
+    "width": 248,
+    "height": 104,
     "tabOrder": 0
   },
   "visual": {
@@ -18,85 +18,29 @@
             {
               "field": {
                 "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dashboard_base"
-                    }
-                  },
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
                   "Property": "setor"
                 }
               },
               "queryRef": "dashboard_base.setor",
-              "nativeQueryRef": "setor",
-              "active": true
+              "nativeQueryRef": "setor"
             }
           ]
         }
       },
-      "sortDefinition": {
-        "isDefaultSort": true
-      }
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
     },
-    "objects": {
-      "general": [
-        {
-          "properties": {}
-        }
-      ],
-      "header": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
+    "objects": {},
+    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Setor'"
-                }
-              }
-            }
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Setor'" } } }
           }
         }
       ]
-    },
-    "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "038e1f4ebe1cd38e7066",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dashboard_base"
-              }
-            },
-            "Property": "setor"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
+    }
   }
 }

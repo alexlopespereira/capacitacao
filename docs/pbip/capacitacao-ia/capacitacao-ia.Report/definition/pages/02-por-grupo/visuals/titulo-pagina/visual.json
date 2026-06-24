@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
   "name": "titulo-pagina",
   "position": {
-    "x": 16.326916263139246,
-    "y": 16.326916263139246,
+    "x": 16,
+    "y": 16,
     "z": 0,
-    "height": 54.423054210464151,
-    "width": 983.69670485413951,
+    "width": 984,
+    "height": 40,
     "tabOrder": 0
   },
   "visual": {
@@ -21,9 +21,9 @@
                   {
                     "value": "Por Grupo — Esfera × Poder",
                     "textStyle": {
-                      "fontWeight": "bold",
                       "fontSize": "22pt",
-                      "color": "#1f3864"
+                      "fontWeight": "bold",
+                      "color": "#1F3864"
                     }
                   }
                 ]

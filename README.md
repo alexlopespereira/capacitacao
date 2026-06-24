@@ -120,8 +120,15 @@ construir o modelo ou os visuais na UI.
 ```bash
 pip install -r scripts/requirements.txt
 python scripts/gerar_base_dashboard.py        # produz docs/dashboard_base.csv
+python scripts/gerar_publico_alvo.py          # produz docs/dashboard_publico_alvo.csv (bridge)
 python scripts/gerar_pbip.py --validate       # produz docs/pbip/capacitacao-ia/
 ```
+
+> A dimensão **Público-alvo** é carregada de `docs/dashboard_publico_alvo.csv`
+> (tabela-ponte curso↔público, relação muitos-para-muitos). A fonte curada do
+> mapeamento é `scripts/cursos_publico_alvo.csv`. Como um curso pode pertencer a
+> vários públicos, **a soma de matrículas por público excede o total geral**
+> (dupla contagem esperada); os KPIs sem o filtro de público permanecem corretos.
 
 Flags úteis de `gerar_pbip.py`:
 
@@ -155,6 +162,11 @@ Flags úteis de `gerar_pbip.py`:
 | **1 — Visão Geral** | 4 KPIs (Matrículas, Matrículas IA, Pessoas únicas, Pessoas únicas IA) + linha temporal IA vs Não IA + slicers de período e tipo |
 | **2 — Por Grupo** | Matriz Esfera × Poder com Matrículas e Pessoas únicas + slicers de ano, setor, tipo |
 | **3 — Por Curso** | Tabela detalhada dos 35 cursos + barra Top 10 por matrículas + slicer de tipo |
+| **4 — Por Público-Alvo** | Ranking de matrículas e de pessoas únicas por público + mix IA×Não-IA (100%) + evolução mensal por público |
+| **5 — Público × Curso** | Matriz com drill Público→Trilha→Curso + cursos mais transversais (nº de públicos) + matriz Público × Poder |
+
+> Todas as páginas ganham um slicer de **Público-alvo** no painel de filtros,
+> que cruza com qualquer visual.
 
 ### macOS / Linux
 

@@ -24,7 +24,9 @@ data/
 !docs/contagem_mensal.csv
 !docs/pessoas_por_mes.csv
 !docs/dashboard_base.csv
+!docs/dashboard_publico_alvo.csv
 !scripts/cursos_alvo.csv
+!scripts/cursos_publico_alvo.csv
 
 # Backups datados da base do dashboard (gerados pelo --rebuild/sobrescrita)
 docs/.base_backups/

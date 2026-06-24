@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
   "name": "slicer-setor",
   "position": {
-    "x": 1016.350537380418,
-    "y": 179.5960788945317,
+    "x": 1016,
+    "y": 232,
     "z": 0,
-    "height": 114.28841384197472,
-    "width": 247.62489665761188,
+    "width": 248,
+    "height": 104,
     "tabOrder": 0
   },
   "visual": {
@@ -18,59 +18,26 @@
             {
               "field": {
                 "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dashboard_base"
-                    }
-                  },
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
                   "Property": "setor"
                 }
               },
               "queryRef": "dashboard_base.setor",
-              "nativeQueryRef": "setor",
-              "active": true
+              "nativeQueryRef": "setor"
             }
           ]
         }
       },
-      "sortDefinition": {
-        "isDefaultSort": true
-      }
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
     },
+    "objects": {},
+    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Setor'"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    "drillFilterOtherVisuals": true,
-    "objects": {
-      "header": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Setor'" } } }
           }
         }
       ]

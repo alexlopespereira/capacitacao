@@ -3,6 +3,7 @@
   "datasetReference": {
     "byPath": {
       "path": "../capacitacao-ia.SemanticModel"
-    }
+    },
+    "byConnection": null
   }
 }

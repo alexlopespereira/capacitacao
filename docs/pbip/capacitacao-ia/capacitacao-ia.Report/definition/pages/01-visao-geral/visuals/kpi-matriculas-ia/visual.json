@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
   "name": "kpi-matriculas-ia",
   "position": {
-    "x": 266.67296563127434,
-    "y": 72.470330717992681,
+    "x": 266,
+    "y": 64,
     "z": 0,
-    "height": 131.97590646037557,
-    "width": 232.65855674973426,
+    "width": 234,
+    "height": 116,
     "tabOrder": 0
   },
   "visual": {
@@ -18,11 +18,7 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dashboard_base"
-                    }
-                  },
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
                   "Property": "Matriculas IA"
                 }
               },
@@ -32,25 +28,19 @@
           ]
         }
       },
-      "sortDefinition": {
-        "isDefaultSort": true
-      }
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
     },
+    "objects": {},
+    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Matrículas IA'" } } }
           }
         }
       ]
-    },
-    "drillFilterOtherVisuals": true
+    }
   }
 }

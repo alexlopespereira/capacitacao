@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
   "name": "linha-temporal",
   "position": {
-    "x": 16.326916263139246,
-    "y": 219.05279319711821,
+    "x": 16,
+    "y": 196,
     "z": 0,
-    "height": 478.92287705208452,
-    "width": 983.69670485413951,
+    "width": 984,
+    "height": 502,
     "tabOrder": 0
   },
   "visual": {
@@ -18,18 +18,12 @@
             {
               "field": {
                 "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dashboard_base"
-                    }
-                  },
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
                   "Property": "ano_mes"
                 }
               },
               "queryRef": "dashboard_base.ano_mes",
-              "nativeQueryRef": "ano-mes",
-              "active": true,
-              "displayName": "ano-mes"
+              "nativeQueryRef": "ano_mes"
             }
           ]
         },
@@ -38,17 +32,12 @@
             {
               "field": {
                 "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dashboard_base"
-                    }
-                  },
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
                   "Property": "ia_label"
                 }
               },
               "queryRef": "dashboard_base.ia_label",
-              "nativeQueryRef": "IA?",
-              "displayName": "IA?"
+              "nativeQueryRef": "ia_label"
             }
           ]
         },
@@ -57,11 +46,7 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dashboard_base"
-                    }
-                  },
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
                   "Property": "Matriculas"
                 }
               },
@@ -71,93 +56,19 @@
           ]
         }
       },
-      "sortDefinition": {
-        "isDefaultSort": true
-      }
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
     },
-    "objects": {
-      "labels": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
+    "objects": {"labels": [{"properties": {"show": {"expr": {"Literal": {"Value": "true"}}}}}]},
+    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Matrículas por mês (IA vs Não IA)'"
-                }
-              }
-            }
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Matrículas por mês (IA vs Não IA)'" } } }
           }
         }
       ]
-    },
-    "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "bf85b2c45080e3321b29",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dashboard_base"
-              }
-            },
-            "Property": "ano_mes"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "8eb35c4f6a3b266a4425",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dashboard_base"
-              }
-            },
-            "Property": "ia_label"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "097408fe0b9038d1d831",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dashboard_base"
-              }
-            },
-            "Property": "Matriculas"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
+    }
   }
 }

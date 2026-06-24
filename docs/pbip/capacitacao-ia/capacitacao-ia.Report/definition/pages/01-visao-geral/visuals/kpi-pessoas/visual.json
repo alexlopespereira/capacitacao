@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
   "name": "kpi-pessoas",
   "position": {
-    "x": 515.65843864414785,
-    "y": 72.470330717992681,
+    "x": 516,
+    "y": 64,
     "z": 0,
-    "height": 131.97590646037557,
-    "width": 234.01913310499586,
+    "width": 234,
+    "height": 116,
     "tabOrder": 0
   },
   "visual": {
@@ -18,11 +18,7 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dashboard_base"
-                    }
-                  },
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
                   "Property": "Pessoas Unicas"
                 }
               },
@@ -32,25 +28,19 @@
           ]
         }
       },
-      "sortDefinition": {
-        "isDefaultSort": true
-      }
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
     },
+    "objects": {},
+    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Pessoas únicas'" } } }
           }
         }
       ]
-    },
-    "drillFilterOtherVisuals": true
+    }
   }
 }
