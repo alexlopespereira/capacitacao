@@ -135,6 +135,14 @@ def kpi_card(name: str, title: str, measure_name: str, x: int, y: int,
     }
 
 
+# Estilo do slicer: "Dropdown" (em vez de lista vertical "Basic").
+_SLICER_DROPDOWN = json.dumps({
+    "data": [
+        {"properties": {"mode": {"expr": {"Literal": {"Value": "'Dropdown'"}}}}}
+    ]
+})
+
+
 def slicer(name: str, title: str, column_name: str, x: int, y: int,
            width: int = 288, height: int = 200,
            entity: str = ENTITY) -> dict[str, Any]:
@@ -144,6 +152,7 @@ def slicer(name: str, title: str, column_name: str, x: int, y: int,
         "visual_type": "slicer",
         "position": {"x": x, "y": y, "width": width, "height": height},
         "projections": {"Values": [column_of(entity, column_name)]},
+        "objects_json": _SLICER_DROPDOWN,
     }
 
 

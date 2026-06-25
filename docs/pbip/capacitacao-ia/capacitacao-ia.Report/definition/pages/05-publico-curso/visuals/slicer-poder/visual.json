@@ -30,7 +30,7 @@
       },
       "sortDefinition": {"sort": [], "isDefaultSort": true}
     },
-    "objects": {},
+    "objects": {"data": [{"properties": {"mode": {"expr": {"Literal": {"Value": "'Dropdown'"}}}}}]},
     "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
