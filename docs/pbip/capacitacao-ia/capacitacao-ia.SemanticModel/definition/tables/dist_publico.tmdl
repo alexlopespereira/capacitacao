@@ -1,0 +1,74 @@
+/// Distribuicao de cursos-por-pessoa por publico-alvo (pre-computada por
+/// scripts/gerar_distribuicao_publico.py). Grao: (publico, k) onde k = nº de
+/// cursos distintos do publico concluidos; qtd_pessoas = pessoas com aquele k.
+/// Tabela autonoma (sem relacionamentos): retrato estatico sobre todo o
+/// historico — NAO responde aos slicers de esfera/ano/IA.
+table dist_publico
+	lineageTag: 046cce0d-04df-491a-9dbb-16076bb39397
+
+	measure 'Qtd Pessoas' = SUM(dist_publico[qtd_pessoas])
+		formatString: #,0
+		lineageTag: ac6a535c-fae0-4bed-82b4-deca8a4759e0
+
+	measure 'Pessoas com Todos os Cursos' = SUMX(FILTER(dist_publico, dist_publico[qtd_cursos] = dist_publico[n_cursos_publico]), dist_publico[qtd_pessoas])
+		formatString: #,0
+		lineageTag: 95370c5e-34ee-4668-aa44-bacd83aea2cf
+
+	measure '% Concluiu Tudo' = DIVIDE([Pessoas com Todos os Cursos], [Qtd Pessoas])
+		formatString: 0.00%
+		lineageTag: 5c249169-b42e-4199-8433-510ac893fa8e
+
+	measure 'Media Cursos por Pessoa' = DIVIDE(SUMX(dist_publico, dist_publico[qtd_cursos] * dist_publico[qtd_pessoas]), [Qtd Pessoas])
+		formatString: 0.00
+		lineageTag: 97903686-75c0-446c-9810-a5ad6c69cb41
+
+	measure 'Qtd Cursos no Publico' = MAX(dist_publico[n_cursos_publico])
+		formatString: 0
+		lineageTag: a49a7e61-77cb-4a84-89e3-3e97bb567818
+
+	column publico_alvo
+		dataType: string
+		sourceColumn: publico_alvo
+		summarizeBy: none
+		lineageTag: 89639aff-5c1c-46a4-b559-56fc89789b55
+
+	column qtd_cursos
+		dataType: int64
+		sourceColumn: qtd_cursos
+		formatString: 0
+		summarizeBy: none
+		lineageTag: 5a66ff25-c028-4140-b80e-e3147a91af74
+
+	column qtd_pessoas
+		dataType: int64
+		sourceColumn: qtd_pessoas
+		formatString: 0
+		summarizeBy: none
+		lineageTag: 8ad367e8-21f8-47c5-95df-fe4ac17f615d
+
+	column n_cursos_publico
+		dataType: int64
+		sourceColumn: n_cursos_publico
+		formatString: 0
+		isHidden
+		summarizeBy: none
+		lineageTag: d1ab078b-20b5-44f5-a46b-43f29154c82d
+
+	partition dist_publico = m
+		mode: import
+		source =
+				let
+					Folder = Text.BeforeDelimiter(CsvPath, "/", {0, RelativePosition.FromEnd}),
+					DistPath = Folder & "/dashboard_dist_publico.csv",
+					Source = Csv.Document(File.Contents(DistPath), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Promoted, {
+						{"publico_alvo", type text},
+						{"qtd_cursos", Int64.Type},
+						{"qtd_pessoas", Int64.Type},
+						{"n_cursos_publico", Int64.Type}
+					})
+				in
+					Typed
+
+	annotation PBI_ResultType = Table

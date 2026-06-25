@@ -121,6 +121,7 @@ construir o modelo ou os visuais na UI.
 pip install -r scripts/requirements.txt
 python scripts/gerar_base_dashboard.py        # produz docs/dashboard_base.csv
 python scripts/gerar_publico_alvo.py          # produz docs/dashboard_publico_alvo.csv (bridge)
+python scripts/gerar_distribuicao_publico.py  # produz docs/dashboard_dist_publico.csv (histograma)
 python scripts/gerar_pbip.py --validate       # produz docs/pbip/capacitacao-ia/
 ```
 
@@ -164,6 +165,7 @@ Flags úteis de `gerar_pbip.py`:
 | **3 — Por Curso** | Tabela detalhada dos 35 cursos + barra Top 10 por matrículas + slicer de tipo |
 | **4 — Por Público-Alvo** | Ranking de matrículas e de pessoas únicas por público + mix IA×Não-IA (100%) + evolução mensal por público |
 | **5 — Público × Curso** | Matriz com drill Público→Trilha→Curso + cursos mais transversais (nº de públicos) + matriz Público × Poder |
+| **6 — Distribuição por Público** | Histograma de pessoas por nº de cursos concluídos + tabela resumo (fizeram ≥1, fizeram todos, % e média). Retrato estático — não responde aos slicers |
 
 > Todas as páginas ganham um slicer de **Público-alvo** no painel de filtros,
 > que cruza com qualquer visual.

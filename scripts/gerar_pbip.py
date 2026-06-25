@@ -45,6 +45,7 @@ PROJECT_NAME = "capacitacao-ia"
 ENTITY = "dashboard_base"
 BRIDGE = "bridge_publico"
 DIMC = "dim_curso"
+DIST = "dist_publico"
 
 # Identificadores estáveis para lineageTag (TMDL) e logicalId (.platform).
 # Persistir em .lineage.json para diffs git limpos entre regenerações.
@@ -81,6 +82,17 @@ LINEAGE_KEYS: tuple[str, ...] = (
     "column_bridge_programa_trilha",
     "rel_fact_curso",
     "rel_bridge_curso",
+    # Distribuição cursos-por-pessoa por público (tabela pré-computada).
+    "table_dist_publico",
+    "column_dist_publico_alvo",
+    "column_dist_qtd_cursos",
+    "column_dist_qtd_pessoas",
+    "column_dist_n_cursos",
+    "measure_dist_qtd_pessoas",
+    "measure_dist_pessoas_todos",
+    "measure_dist_pct_todos",
+    "measure_dist_media",
+    "measure_dist_cursos_no_publico",
     "semantic_model_logical_id",
     "report_logical_id",
 )
@@ -234,6 +246,14 @@ _SORT_QTD_PUBLICOS_DESC = json.dumps({
         "direction": "Descending",
     }],
     "isDefaultSort": False,
+})
+
+# Eixo X categórico (histograma): força barras discretas por nº de cursos
+# em vez de eixo contínuo numérico.
+_CAT_AXIS = json.dumps({
+    "categoryAxis": [
+        {"properties": {"axisType": {"expr": {"Literal": {"Value": "'Categorical'"}}}}}
+    ]
 })
 
 # Item 2: filtro Top N (10 cursos com mais matrículas).
@@ -479,6 +499,51 @@ PAGES_SPEC: list[dict[str, Any]] = [
             *filter_panel(),
         ],
     },
+    {
+        "name": "06-distribuicao-publico",
+        "display_name": "Distribuição por Público",
+        "width": 1280,
+        "height": 720,
+        # Página estática (tabela dist_publico sem relacionamentos): sem painel
+        # de filtros, pois não responde aos slicers.
+        "visuals": [
+            textbox("titulo-pagina", "Distribuição de cursos por pessoa, por público-alvo",
+                    x=16, y=16, width=1248, height=40, font_size="22pt"),
+            textbox("nota-pagina",
+                    "Retrato sobre todo o histórico (todas as esferas). Não responde aos filtros das outras páginas.",
+                    x=16, y=58, width=1248, height=24, font_size="11pt"),
+            # Histograma: quantas pessoas concluíram quantos cursos de cada público.
+            {
+                "name": "histograma-distribuicao",
+                "title": "Pessoas por nº de cursos concluídos (por público)",
+                "visual_type": "clusteredColumnChart",
+                "position": {"x": 16, "y": 92, "width": 820, "height": 606},
+                "projections": {
+                    "Category": [column_of(DIST, "qtd_cursos")],
+                    "Series": [column_of(DIST, "publico_alvo")],
+                    "Y": [measure_of(DIST, "Qtd Pessoas")],
+                },
+                "objects_json": _CAT_AXIS,
+            },
+            # Tabela resumo: alcance vs conclusão integral por público.
+            {
+                "name": "tabela-resumo-publico",
+                "title": "Resumo por público",
+                "visual_type": "tableEx",
+                "position": {"x": 852, "y": 92, "width": 412, "height": 606},
+                "projections": {
+                    "Values": [
+                        column_of(DIST, "publico_alvo"),
+                        measure_of(DIST, "Qtd Cursos no Publico"),
+                        measure_of(DIST, "Qtd Pessoas"),
+                        measure_of(DIST, "Pessoas com Todos os Cursos"),
+                        measure_of(DIST, "% Concluiu Tudo"),
+                        measure_of(DIST, "Media Cursos por Pessoa"),
+                    ],
+                },
+            },
+        ],
+    },
 ]
 
 
@@ -567,7 +632,9 @@ def build_semantic_model(env: Environment, out_dir: Path, ctx: dict[str, Any]) -
                render(env, "semantic_model/tables/dim_curso.tmdl.j2", ctx))
     write_file(definition / "tables" / "bridge_publico.tmdl",
                render(env, "semantic_model/tables/bridge_publico.tmdl.j2", ctx))
-    files_written += 9
+    write_file(definition / "tables" / "dist_publico.tmdl",
+               render(env, "semantic_model/tables/dist_publico.tmdl.j2", ctx))
+    files_written += 10
     return files_written
 
 
