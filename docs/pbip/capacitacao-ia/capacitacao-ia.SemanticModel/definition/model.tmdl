@@ -6,7 +6,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["dashboard_base", "dim_curso", "bridge_publico"]
+annotation PBI_QueryOrder = ["dashboard_base", "dim_curso", "bridge_publico", "dist_publico"]
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 

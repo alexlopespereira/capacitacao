@@ -25,6 +25,7 @@ data/
 !docs/pessoas_por_mes.csv
 !docs/dashboard_base.csv
 !docs/dashboard_publico_alvo.csv
+!docs/dashboard_dist_publico.csv
 !docs/cursos_monitorados_enap.csv
 !scripts/cursos_alvo.csv
 !scripts/cursos_publico_alvo.csv

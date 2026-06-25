@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "histograma-distribuicao",
+  "position": {
+    "x": 16,
+    "y": 92,
+    "z": 0,
+    "width": 820,
+    "height": 606,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Property": "qtd_cursos"
+                }
+              },
+              "queryRef": "dist_publico.qtd_cursos",
+              "nativeQueryRef": "qtd_cursos"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Property": "publico_alvo"
+                }
+              },
+              "queryRef": "dist_publico.publico_alvo",
+              "nativeQueryRef": "publico_alvo"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Property": "Qtd Pessoas"
+                }
+              },
+              "queryRef": "Qtd Pessoas",
+              "nativeQueryRef": "Qtd Pessoas"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
+    },
+    "objects": {"categoryAxis": [{"properties": {"axisType": {"expr": {"Literal": {"Value": "'Categorical'"}}}}}]},
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Pessoas por nº de cursos concluídos (por público)'" } } }
+          }
+        }
+      ]
+    }
+  }
+}

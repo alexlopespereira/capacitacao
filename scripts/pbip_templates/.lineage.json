@@ -10,6 +10,10 @@
   "column_dimc_ia": "ee75cd81-e7af-4099-ad91-a437389a012f",
   "column_dimc_id_curso": "e5bd5276-b284-4d9a-9588-f88106304a0b",
   "column_dimc_nome_curso": "e935f3e2-66b2-46ad-9a11-54edc1aba998",
+  "column_dist_n_cursos": "d1ab078b-20b5-44f5-a46b-43f29154c82d",
+  "column_dist_publico_alvo": "89639aff-5c1c-46a4-b559-56fc89789b55",
+  "column_dist_qtd_cursos": "5a66ff25-c028-4140-b80e-e3147a91af74",
+  "column_dist_qtd_pessoas": "8ad367e8-21f8-47c5-95df-fe4ac17f615d",
   "column_esfera": "710b7ae4-fc26-4619-af5c-ce5734fc3d30",
   "column_ia": "7f66c5ef-5325-4313-91fb-f98b3320de4d",
   "column_ia_label": "6b43369b-2e69-41ad-8f4b-71802771ef36",
@@ -19,6 +23,11 @@
   "column_poder": "85058cd5-b75a-4abd-922c-bbecdea60d2c",
   "column_setor": "85366ba0-f1cc-4d76-ac5a-91ed19552ad5",
   "expression_csv_path": "338c9796-37bb-4770-9186-f158aa7ffe20",
+  "measure_dist_cursos_no_publico": "a49a7e61-77cb-4a84-89e3-3e97bb567818",
+  "measure_dist_media": "97903686-75c0-446c-9810-a5ad6c69cb41",
+  "measure_dist_pct_todos": "5c249169-b42e-4199-8433-510ac893fa8e",
+  "measure_dist_pessoas_todos": "95370c5e-34ee-4668-aa44-bacd83aea2cf",
+  "measure_dist_qtd_pessoas": "ac6a535c-fae0-4bed-82b4-deca8a4759e0",
   "measure_matriculas": "aaec4cc1-1333-4265-859a-8a9291b074c2",
   "measure_matriculas_ia": "a27fb1fa-c40b-42fd-ba01-674dab67b6c4",
   "measure_pct_matriculas_ia": "efbd6d9d-d1cc-4a65-8729-51ffe9f34d0b",
@@ -31,5 +40,6 @@
   "semantic_model_logical_id": "cca66b51-7c63-4a92-957c-640cea05b249",
   "table_bridge_publico": "1b5157f4-da7b-4682-9a83-662909449823",
   "table_dashboard_base": "45024c93-3e9a-449d-a9b4-1bc451368289",
-  "table_dim_curso": "58e65bc6-7f66-4c35-bc60-9af746a42099"
+  "table_dim_curso": "58e65bc6-7f66-4c35-bc60-9af746a42099",
+  "table_dist_publico": "046cce0d-04df-491a-9dbb-16076bb39397"
 }

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "tabela-resumo-publico",
+  "position": {
+    "x": 852,
+    "y": 92,
+    "z": 0,
+    "width": 412,
+    "height": 606,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Property": "publico_alvo"
+                }
+              },
+              "queryRef": "dist_publico.publico_alvo",
+              "nativeQueryRef": "publico_alvo"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Property": "Qtd Cursos no Publico"
+                }
+              },
+              "queryRef": "Qtd Cursos no Publico",
+              "nativeQueryRef": "Qtd Cursos no Publico"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Property": "Qtd Pessoas"
+                }
+              },
+              "queryRef": "Qtd Pessoas",
+              "nativeQueryRef": "Qtd Pessoas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Property": "Pessoas com Todos os Cursos"
+                }
+              },
+              "queryRef": "Pessoas com Todos os Cursos",
+              "nativeQueryRef": "Pessoas com Todos os Cursos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Property": "% Concluiu Tudo"
+                }
+              },
+              "queryRef": "% Concluiu Tudo",
+              "nativeQueryRef": "% Concluiu Tudo"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Property": "Media Cursos por Pessoa"
+                }
+              },
+              "queryRef": "Media Cursos por Pessoa",
+              "nativeQueryRef": "Media Cursos por Pessoa"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
+    },
+    "objects": {},
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Resumo por público'" } } }
+          }
+        }
+      ]
+    }
+  }
+}
