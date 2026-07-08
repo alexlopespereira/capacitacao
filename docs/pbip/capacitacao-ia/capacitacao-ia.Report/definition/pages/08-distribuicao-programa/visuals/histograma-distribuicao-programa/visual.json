@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "histograma-distribuicao-programa",
+  "position": {
+    "x": 16,
+    "y": 92,
+    "z": 0,
+    "width": 760,
+    "height": 606,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Property": "qtd_cursos"
+                }
+              },
+              "queryRef": "dist_programa.qtd_cursos",
+              "nativeQueryRef": "qtd_cursos"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Property": "programa"
+                }
+              },
+              "queryRef": "dist_programa.programa",
+              "nativeQueryRef": "programa"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Property": "Pessoas no Programa"
+                }
+              },
+              "queryRef": "Pessoas no Programa",
+              "nativeQueryRef": "Pessoas no Programa"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
+    },
+    "objects": {"categoryAxis": [{"properties": {"axisType": {"expr": {"Literal": {"Value": "'Categorical'"}}}}}]},
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Pessoas por nº de cursos concluídos (por programa)'" } } }
+          }
+        }
+      ]
+    }
+  }
+}

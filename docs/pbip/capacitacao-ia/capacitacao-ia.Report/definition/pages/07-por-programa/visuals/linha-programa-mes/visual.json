@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "linha-programa-mes",
+  "position": {
+    "x": 516,
+    "y": 380,
+    "z": 0,
+    "width": 484,
+    "height": 318,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "ano_mes"
+                }
+              },
+              "queryRef": "dashboard_base.ano_mes",
+              "nativeQueryRef": "ano_mes"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "bridge_programa" } },
+                  "Property": "programa"
+                }
+              },
+              "queryRef": "bridge_programa.programa",
+              "nativeQueryRef": "programa"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "Matriculas"
+                }
+              },
+              "queryRef": "Matriculas",
+              "nativeQueryRef": "Matriculas"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
+    },
+    "objects": {},
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Matrículas por mês e programa'" } } }
+          }
+        }
+      ]
+    }
+  }
+}

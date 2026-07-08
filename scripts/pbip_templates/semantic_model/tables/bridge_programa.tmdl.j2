@@ -1,0 +1,50 @@
+/// Tabela-ponte curso -> programa (muitos-para-muitos: um curso pode estar em
+/// varios programas, inclusive do mesmo publico). Carregada de
+/// docs/dashboard_programa.csv. Liga-se a dim_curso por id_curso com filtro
+/// bidirecional, para que selecionar um programa filtre o fato.
+table bridge_programa
+	lineageTag: {{ lineage.table_bridge_programa }}
+
+	column id_curso
+		dataType: int64
+		sourceColumn: id_curso
+		formatString: 0
+		summarizeBy: none
+		lineageTag: {{ lineage.column_progbridge_id_curso }}
+
+	column nome_curso
+		dataType: string
+		sourceColumn: nome_curso
+		summarizeBy: none
+		lineageTag: {{ lineage.column_progbridge_nome_curso }}
+
+	column programa
+		dataType: string
+		sourceColumn: programa
+		summarizeBy: none
+		lineageTag: {{ lineage.column_progbridge_programa }}
+
+	column publico_alvo
+		dataType: string
+		sourceColumn: publico_alvo
+		summarizeBy: none
+		lineageTag: {{ lineage.column_progbridge_publico_alvo }}
+
+	partition bridge_programa = m
+		mode: import
+		source =
+				let
+					Folder = Text.BeforeDelimiter(CsvPath, "/", {0, RelativePosition.FromEnd}),
+					ProgPath = Folder & "/dashboard_programa.csv",
+					Source = Csv.Document(File.Contents(ProgPath), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Promoted, {
+						{"id_curso", Int64.Type},
+						{"nome_curso", type text},
+						{"programa", type text},
+						{"publico_alvo", type text}
+					})
+				in
+					Typed
+
+	annotation PBI_ResultType = Table

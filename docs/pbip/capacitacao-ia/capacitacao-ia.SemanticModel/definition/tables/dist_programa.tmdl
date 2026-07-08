@@ -1,0 +1,74 @@
+/// Distribuicao de cursos-por-pessoa por programa (pre-computada por
+/// scripts/gerar_programa.py). Grao: (programa, k) onde k = nº de cursos
+/// distintos do programa concluidos; qtd_pessoas = pessoas com aquele k.
+/// Tabela autonoma (sem relacionamentos): retrato estatico, nao responde aos
+/// slicers de esfera/ano/IA.
+table dist_programa
+	lineageTag: e3bc2cc5-800b-4f7e-bab6-66ddd889dce9
+
+	measure 'Pessoas no Programa' = SUM(dist_programa[qtd_pessoas])
+		formatString: #,0
+		lineageTag: 6764e790-7eed-45bd-8f0e-01b66c48896e
+
+	measure 'Pessoas Todos do Programa' = SUMX(FILTER(dist_programa, dist_programa[qtd_cursos] = dist_programa[n_cursos_programa]), dist_programa[qtd_pessoas])
+		formatString: #,0
+		lineageTag: d3b6c3b8-ac4d-47b0-922e-a9b5c86af07d
+
+	measure '% Concluiu Programa' = DIVIDE([Pessoas Todos do Programa], [Pessoas no Programa])
+		formatString: 0.00%
+		lineageTag: 16029a8d-29b0-4ac5-bf3b-8302f71ad9d6
+
+	measure 'Media Cursos Programa' = DIVIDE(SUMX(dist_programa, dist_programa[qtd_cursos] * dist_programa[qtd_pessoas]), [Pessoas no Programa])
+		formatString: 0.00
+		lineageTag: 7aaa8c88-93f7-4cf4-903f-3d76afab7297
+
+	measure 'Qtd Cursos no Programa' = MAX(dist_programa[n_cursos_programa])
+		formatString: 0
+		lineageTag: 82de2bd1-e7aa-4fe5-a534-d77fa8cfebf5
+
+	column programa
+		dataType: string
+		sourceColumn: programa
+		summarizeBy: none
+		lineageTag: 73134b1c-142c-4492-abec-e83761a8f623
+
+	column qtd_cursos
+		dataType: int64
+		sourceColumn: qtd_cursos
+		formatString: 0
+		summarizeBy: none
+		lineageTag: 2bcf2e43-6978-4b25-b763-95d041a9786a
+
+	column qtd_pessoas
+		dataType: int64
+		sourceColumn: qtd_pessoas
+		formatString: 0
+		summarizeBy: none
+		lineageTag: de5ec42c-c78c-45a9-be8e-049d29cbfce4
+
+	column n_cursos_programa
+		dataType: int64
+		sourceColumn: n_cursos_programa
+		formatString: 0
+		isHidden
+		summarizeBy: none
+		lineageTag: 084f1e0d-d1ad-4193-89a9-c35d607181a6
+
+	partition dist_programa = m
+		mode: import
+		source =
+				let
+					Folder = Text.BeforeDelimiter(CsvPath, "/", {0, RelativePosition.FromEnd}),
+					DistPath = Folder & "/dashboard_dist_programa.csv",
+					Source = Csv.Document(File.Contents(DistPath), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Promoted, {
+						{"programa", type text},
+						{"qtd_cursos", Int64.Type},
+						{"qtd_pessoas", Int64.Type},
+						{"n_cursos_programa", Int64.Type}
+					})
+				in
+					Typed
+
+	annotation PBI_ResultType = Table

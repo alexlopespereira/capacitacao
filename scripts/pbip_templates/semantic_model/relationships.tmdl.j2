@@ -6,3 +6,8 @@ relationship {{ lineage.rel_bridge_curso }}
 	fromColumn: bridge_publico.id_curso
 	toColumn: dim_curso.id_curso
 	crossFilteringBehavior: bothDirections
+
+relationship {{ lineage.rel_progbridge_curso }}
+	fromColumn: bridge_programa.id_curso
+	toColumn: dim_curso.id_curso
+	crossFilteringBehavior: bothDirections

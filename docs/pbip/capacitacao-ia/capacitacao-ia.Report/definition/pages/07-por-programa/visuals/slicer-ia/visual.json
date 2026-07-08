@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "slicer-ia",
+  "position": {
+    "x": 1016,
+    "y": 452,
+    "z": 0,
+    "width": 248,
+    "height": 104,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Property": "ia_label"
+                }
+              },
+              "queryRef": "dashboard_base.ia_label",
+              "nativeQueryRef": "ia_label"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
+    },
+    "objects": {"data": [{"properties": {"mode": {"expr": {"Literal": {"Value": "'Dropdown'"}}}}}]},
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Tipo de curso (IA)'" } } }
+          }
+        }
+      ]
+    }
+  }
+}

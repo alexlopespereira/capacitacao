@@ -46,6 +46,8 @@ ENTITY = "dashboard_base"
 BRIDGE = "bridge_publico"
 DIMC = "dim_curso"
 DIST = "dist_publico"
+PROG = "bridge_programa"
+DISTP = "dist_programa"
 
 # Identificadores estáveis para lineageTag (TMDL) e logicalId (.platform).
 # Persistir em .lineage.json para diffs git limpos entre regenerações.
@@ -93,6 +95,23 @@ LINEAGE_KEYS: tuple[str, ...] = (
     "measure_dist_pct_todos",
     "measure_dist_media",
     "measure_dist_cursos_no_publico",
+    # Dimensão Programa (bridge m:n curso<->programa + distribuição).
+    "table_bridge_programa",
+    "column_progbridge_id_curso",
+    "column_progbridge_nome_curso",
+    "column_progbridge_programa",
+    "column_progbridge_publico_alvo",
+    "rel_progbridge_curso",
+    "table_dist_programa",
+    "column_distprog_programa",
+    "column_distprog_qtd_cursos",
+    "column_distprog_qtd_pessoas",
+    "column_distprog_n_cursos",
+    "measure_distprog_pessoas",
+    "measure_distprog_todos",
+    "measure_distprog_pct",
+    "measure_distprog_media",
+    "measure_distprog_cursos",
     "semantic_model_logical_id",
     "report_logical_id",
 )
@@ -184,24 +203,27 @@ def textbox(name: str, text: str, x: int, y: int,
 # abas (esfera, setor, poder, IA/Não IA, ano), empilhados na coluna direita.
 FILTER_PANEL_X = 1016
 FILTER_PANEL_W = 248
-# (name, título, coluna, entidade). O slicer de Público-alvo vem da bridge e,
-# por ser bidirecional até o fato, cruza com todos os visuais (item H).
-_FILTER_SPECS = (
-    ("slicer-publico", "Público-alvo", "publico_alvo", BRIDGE),
+# Slicers comuns (do fato), idênticos em todas as páginas.
+_COMMON_FILTERS = (
     ("slicer-esfera", "Esfera", "esfera", ENTITY),
     ("slicer-setor", "Setor", "setor", ENTITY),
     ("slicer-poder", "Poder", "poder", ENTITY),
     ("slicer-ia", "Tipo de curso (IA)", "ia_label", ENTITY),
     ("slicer-ano", "Ano", "ano", ENTITY),
 )
+# Slicer da dimensão de análise no topo do painel. Vem de uma bridge e, por ser
+# bidirecional até o fato, cruza com todos os visuais.
+_DIM_PUBLICO = ("slicer-publico", "Público-alvo", "publico_alvo", BRIDGE)
+_DIM_PROGRAMA = ("slicer-programa", "Programa", "programa", PROG)
 
 
-def filter_panel() -> list[dict[str, Any]]:
+def filter_panel(dim: tuple[str, str, str, str] = _DIM_PUBLICO) -> list[dict[str, Any]]:
+    specs = (dim,) + _COMMON_FILTERS
     h, gap, y0 = 104, 6, 12
     return [
         slicer(name, title, col, x=FILTER_PANEL_X, y=y0 + i * (h + gap),
                width=FILTER_PANEL_W, height=h, entity=entity)
-        for i, (name, title, col, entity) in enumerate(_FILTER_SPECS)
+        for i, (name, title, col, entity) in enumerate(specs)
     ]
 
 
@@ -305,7 +327,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "height": 720,
         "visuals": [
             textbox("titulo-pagina", "Visão Geral — Capacitação em IA",
-                    x=16, y=16, width=984, height=40, font_size="22pt"),
+                    x=16, y=10, width=984, height=50, font_size="22pt"),
             kpi_card("kpi-matriculas", "Total matrículas", "Matriculas", x=16, y=64),
             kpi_card("kpi-matriculas-ia", "Matrículas IA", "Matriculas IA", x=266, y=64),
             kpi_card("kpi-pessoas", "Pessoas únicas", "Pessoas Unicas", x=516, y=64),
@@ -333,7 +355,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "height": 720,
         "visuals": [
             textbox("titulo-pagina", "Por Grupo — Esfera × Poder",
-                    x=16, y=16, width=984, height=40, font_size="22pt"),
+                    x=16, y=10, width=984, height=50, font_size="22pt"),
             {
                 "name": "matriz-esfera-poder",
                 "title": "Esfera × Poder",
@@ -355,7 +377,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "height": 720,
         "visuals": [
             textbox("titulo-pagina", "Por Curso",
-                    x=16, y=16, width=984, height=40, font_size="22pt"),
+                    x=16, y=10, width=984, height=50, font_size="22pt"),
             {
                 "name": "tabela-cursos",
                 "title": "Detalhe por curso",
@@ -395,7 +417,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "height": 720,
         "visuals": [
             textbox("titulo-pagina", "Por Público-Alvo",
-                    x=16, y=16, width=984, height=40, font_size="22pt"),
+                    x=16, y=10, width=984, height=50, font_size="22pt"),
             # A — Ranking de matrículas por público.
             {
                 "name": "barra-matriculas-publico",
@@ -456,7 +478,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "height": 720,
         "visuals": [
             textbox("titulo-pagina", "Público × Curso",
-                    x=16, y=16, width=984, height=40, font_size="22pt"),
+                    x=16, y=10, width=984, height=50, font_size="22pt"),
             # E — Matriz Público → Trilha → Curso (drill-down).
             {
                 "name": "matriz-publico-curso",
@@ -508,10 +530,10 @@ PAGES_SPEC: list[dict[str, Any]] = [
         # de filtros, pois não responde aos slicers.
         "visuals": [
             textbox("titulo-pagina", "Distribuição de cursos por pessoa, por público-alvo",
-                    x=16, y=16, width=1248, height=40, font_size="22pt"),
+                    x=16, y=10, width=1248, height=50, font_size="22pt"),
             textbox("nota-pagina",
                     "Retrato sobre todo o histórico (todas as esferas). Não responde aos filtros das outras páginas.",
-                    x=16, y=58, width=1248, height=24, font_size="11pt"),
+                    x=16, y=62, width=1248, height=28, font_size="11pt"),
             # Histograma: quantas pessoas concluíram quantos cursos de cada público.
             {
                 "name": "histograma-distribuicao",
@@ -539,6 +561,104 @@ PAGES_SPEC: list[dict[str, Any]] = [
                         measure_of(DIST, "Pessoas com Todos os Cursos"),
                         measure_of(DIST, "% Concluiu Tudo"),
                         measure_of(DIST, "Media Cursos por Pessoa"),
+                    ],
+                },
+            },
+        ],
+    },
+    {
+        "name": "07-por-programa",
+        "display_name": "Por Programa",
+        "width": 1280,
+        "height": 720,
+        "visuals": [
+            textbox("titulo-pagina", "Por Programa",
+                    x=16, y=10, width=984, height=50, font_size="22pt"),
+            {
+                "name": "barra-matriculas-programa",
+                "title": "Matrículas por programa",
+                "visual_type": "barChart",
+                "position": {"x": 16, "y": 64, "width": 484, "height": 300},
+                "projections": {
+                    "Category": [column_of(PROG, "programa")],
+                    "Y": [measure("Matriculas")],
+                },
+                "sort_json": _SORT_MATRICULAS_DESC,
+                "objects_json": _LABELS_ON,
+            },
+            {
+                "name": "barra-pessoas-programa",
+                "title": "Pessoas únicas por programa",
+                "visual_type": "barChart",
+                "position": {"x": 516, "y": 64, "width": 484, "height": 300},
+                "projections": {
+                    "Category": [column_of(PROG, "programa")],
+                    "Y": [measure("Pessoas Unicas")],
+                },
+                "sort_json": _SORT_PESSOAS_DESC,
+                "objects_json": _LABELS_ON,
+            },
+            {
+                "name": "barra-mix-ia-programa",
+                "title": "Mix IA × Não-IA por programa (%)",
+                "visual_type": "hundredPercentStackedBarChart",
+                "position": {"x": 16, "y": 380, "width": 484, "height": 318},
+                "projections": {
+                    "Category": [column_of(PROG, "programa")],
+                    "Series": [column("ia_label")],
+                    "Y": [measure("Matriculas")],
+                },
+            },
+            {
+                "name": "linha-programa-mes",
+                "title": "Matrículas por mês e programa",
+                "visual_type": "lineChart",
+                "position": {"x": 516, "y": 380, "width": 484, "height": 318},
+                "projections": {
+                    "Category": [column("ano_mes")],
+                    "Series": [column_of(PROG, "programa")],
+                    "Y": [measure("Matriculas")],
+                },
+            },
+            *filter_panel(_DIM_PROGRAMA),
+        ],
+    },
+    {
+        "name": "08-distribuicao-programa",
+        "display_name": "Distribuição por Programa",
+        "width": 1280,
+        "height": 720,
+        "visuals": [
+            textbox("titulo-pagina", "Distribuição de cursos por pessoa, por programa",
+                    x=16, y=10, width=1248, height=50, font_size="22pt"),
+            textbox("nota-pagina",
+                    "Retrato sobre todo o histórico (todas as esferas). Não responde aos filtros das outras páginas.",
+                    x=16, y=62, width=1248, height=28, font_size="11pt"),
+            {
+                "name": "histograma-distribuicao-programa",
+                "title": "Pessoas por nº de cursos concluídos (por programa)",
+                "visual_type": "clusteredColumnChart",
+                "position": {"x": 16, "y": 92, "width": 760, "height": 606},
+                "projections": {
+                    "Category": [column_of(DISTP, "qtd_cursos")],
+                    "Series": [column_of(DISTP, "programa")],
+                    "Y": [measure_of(DISTP, "Pessoas no Programa")],
+                },
+                "objects_json": _CAT_AXIS,
+            },
+            {
+                "name": "tabela-resumo-programa",
+                "title": "Resumo por programa: fizeram ≥1 vs todos os cursos",
+                "visual_type": "tableEx",
+                "position": {"x": 792, "y": 92, "width": 472, "height": 606},
+                "projections": {
+                    "Values": [
+                        column_of(DISTP, "programa"),
+                        measure_of(DISTP, "Qtd Cursos no Programa"),
+                        measure_of(DISTP, "Pessoas no Programa"),
+                        measure_of(DISTP, "Pessoas Todos do Programa"),
+                        measure_of(DISTP, "% Concluiu Programa"),
+                        measure_of(DISTP, "Media Cursos Programa"),
                     ],
                 },
             },
@@ -634,7 +754,11 @@ def build_semantic_model(env: Environment, out_dir: Path, ctx: dict[str, Any]) -
                render(env, "semantic_model/tables/bridge_publico.tmdl.j2", ctx))
     write_file(definition / "tables" / "dist_publico.tmdl",
                render(env, "semantic_model/tables/dist_publico.tmdl.j2", ctx))
-    files_written += 10
+    write_file(definition / "tables" / "bridge_programa.tmdl",
+               render(env, "semantic_model/tables/bridge_programa.tmdl.j2", ctx))
+    write_file(definition / "tables" / "dist_programa.tmdl",
+               render(env, "semantic_model/tables/dist_programa.tmdl.j2", ctx))
+    files_written += 12
     return files_written
 
 

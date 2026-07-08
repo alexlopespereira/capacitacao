@@ -6,7 +6,9 @@
     "03-por-curso",
     "04-por-publico",
     "05-publico-curso",
-    "06-distribuicao-publico"
+    "06-distribuicao-publico",
+    "07-por-programa",
+    "08-distribuicao-programa"
   ],
   "activePageName": "01-visao-geral"
 }

@@ -3,10 +3,10 @@
   "name": "titulo-pagina",
   "position": {
     "x": 16,
-    "y": 16,
+    "y": 10,
     "z": 0,
     "width": 1248,
-    "height": 40,
+    "height": 50,
     "tabOrder": 0
   },
   "visual": {
