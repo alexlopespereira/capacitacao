@@ -26,9 +26,12 @@ data/
 !docs/dashboard_base.csv
 !docs/dashboard_publico_alvo.csv
 !docs/dashboard_dist_publico.csv
+!docs/dashboard_programa.csv
+!docs/dashboard_dist_programa.csv
 !docs/cursos_monitorados_enap.csv
 !scripts/cursos_alvo.csv
 !scripts/cursos_publico_alvo.csv
+!scripts/cursos_programa.csv
 
 # Backups datados da base do dashboard (gerados pelo --rebuild/sobrescrita)
 docs/.base_backups/

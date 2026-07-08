@@ -1,0 +1,96 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "tabela-resumo-programa",
+  "position": {
+    "x": 792,
+    "y": 92,
+    "z": 0,
+    "width": 472,
+    "height": 606,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Property": "programa"
+                }
+              },
+              "queryRef": "dist_programa.programa",
+              "nativeQueryRef": "programa"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Property": "Qtd Cursos no Programa"
+                }
+              },
+              "queryRef": "Qtd Cursos no Programa",
+              "nativeQueryRef": "Qtd Cursos no Programa"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Property": "Pessoas no Programa"
+                }
+              },
+              "queryRef": "Pessoas no Programa",
+              "nativeQueryRef": "Pessoas no Programa"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Property": "Pessoas Todos do Programa"
+                }
+              },
+              "queryRef": "Pessoas Todos do Programa",
+              "nativeQueryRef": "Pessoas Todos do Programa"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Property": "% Concluiu Programa"
+                }
+              },
+              "queryRef": "% Concluiu Programa",
+              "nativeQueryRef": "% Concluiu Programa"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Property": "Media Cursos Programa"
+                }
+              },
+              "queryRef": "Media Cursos Programa",
+              "nativeQueryRef": "Media Cursos Programa"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
+    },
+    "objects": {},
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Resumo por programa: fizeram ≥1 vs todos os cursos'" } } }
+          }
+        }
+      ]
+    }
+  }
+}
