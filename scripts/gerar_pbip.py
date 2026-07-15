@@ -847,8 +847,11 @@ def main() -> int:
     parser.add_argument("--csv-path", type=Path, default=DEFAULT_CSV,
                         help=f"caminho do CSV fato (default: {DEFAULT_CSV})")
     parser.add_argument("--csv-path-mode", choices=["relative", "absolute"],
-                        default="relative",
-                        help="como embutir o caminho do CSV na expressão M (default: relative)")
+                        default="absolute",
+                        help="como embutir o caminho do CSV na expressão M (default: absolute). "
+                             "O Power Query exige caminho ABSOLUTO em File.Contents; usar "
+                             "'relative' faz o Power BI Desktop falhar ao carregar com "
+                             "'The supplied file path must be a valid absolute path.'")
     parser.add_argument("--validate", action="store_true",
                         help="valida todos os arquivos JSON gerados")
     parser.add_argument("--force", action="store_true",
