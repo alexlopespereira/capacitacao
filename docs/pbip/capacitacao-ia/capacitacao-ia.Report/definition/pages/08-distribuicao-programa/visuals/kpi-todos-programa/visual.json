@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "kpi-todos-programa",
+  "position": {
+    "x": 928,
+    "y": 10,
+    "z": 0,
+    "width": 336,
+    "height": 74,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Property": "Pessoas Todos do Programa"
+                }
+              },
+              "queryRef": "Pessoas Todos do Programa",
+              "nativeQueryRef": "Pessoas Todos do Programa"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {"sort": [], "isDefaultSort": true}
+    },
+    "objects": {},
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "text": { "expr": { "Literal": { "Value": "'Concluíram todos os cursos do programa'" } } }
+          }
+        }
+      ]
+    }
+  }
+}

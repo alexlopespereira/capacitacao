@@ -272,48 +272,16 @@ _SORT_QTD_PUBLICOS_DESC = json.dumps({
     "isDefaultSort": False,
 })
 
-# Eixo X categórico (histograma): força barras discretas por nº de cursos
-# em vez de eixo contínuo numérico.
-_CAT_AXIS = json.dumps({
+# Eixo X categórico (histograma): força barras discretas por nº de cursos em vez
+# de eixo contínuo numérico, com rótulos de valores ligados.
+_CAT_AXIS_LABELS = json.dumps({
     "categoryAxis": [
         {"properties": {"axisType": {"expr": {"Literal": {"Value": "'Categorical'"}}}}}
-    ]
+    ],
+    "labels": [
+        {"properties": {"show": {"expr": {"Literal": {"Value": "true"}}}}}
+    ],
 })
-
-# Item 2: filtro Top N (10 cursos com mais matrículas).
-_TOPN_CURSOS = json.dumps([{
-    "name": "b1f0a4c2-7d3e-4a91-9c84-0e5f2a6b8d11",
-    "field": {"Column": {
-        "Expression": {"SourceRef": {"Entity": ENTITY}}, "Property": "nome_curso",
-    }},
-    "filter": {
-        "Version": 2,
-        "From": [
-            {"Name": "subquery", "Expression": {"Subquery": {"Query": {
-                "Version": 2,
-                "From": [{"Name": "d", "Entity": ENTITY, "Type": 0}],
-                "Select": [{"Column": {
-                    "Expression": {"SourceRef": {"Source": "d"}},
-                    "Property": "nome_curso",
-                }, "Name": "field"}],
-                "OrderBy": [{"Direction": 2, "Expression": {"Measure": {
-                    "Expression": {"SourceRef": {"Source": "d"}},
-                    "Property": "Matriculas",
-                }}}],
-                "Top": 10,
-            }}}, "Type": 2},
-            {"Name": "d", "Entity": ENTITY, "Type": 0},
-        ],
-        "Where": [{"Condition": {"In": {
-            "Expressions": [{"Column": {
-                "Expression": {"SourceRef": {"Source": "d"}}, "Property": "nome_curso",
-            }}],
-            "Table": {"SourceRef": {"Source": "subquery"}},
-        }}}],
-    },
-    "type": "TopN",
-}])
-
 
 # Filtro de nível de relatório: o painel de capacitação conta apenas IA e Dados.
 # Cursos de Gestão/Outros seguem na tabela fato (auditáveis) mas são removidos de
@@ -410,11 +378,13 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "visuals": [
             textbox("titulo-pagina", "Por Curso",
                     x=16, y=10, width=984, height=50, font_size="22pt"),
+            # Tabela (metade da altura anterior). Selecionar uma linha (curso)
+            # cross-filtra o gráfico de linha abaixo -> histórico temporal do curso.
             {
                 "name": "tabela-cursos",
-                "title": "Detalhe por curso",
+                "title": "Detalhe por curso (selecione um curso para ver o histórico abaixo)",
                 "visual_type": "tableEx",
-                "position": {"x": 16, "y": 64, "width": 580, "height": 634},
+                "position": {"x": 16, "y": 64, "width": 984, "height": 317},
                 "projections": {
                     "Values": [
                         column("nome_curso"),
@@ -424,19 +394,19 @@ PAGES_SPEC: list[dict[str, Any]] = [
                     ],
                 },
             },
+            # Linha: pessoas concluintes ao longo do tempo. Sem seleção mostra o
+            # total (todos os cursos IA+Dados); com um curso selecionado na
+            # tabela, mostra a série temporal daquele curso.
             {
-                "name": "barra-topn-cursos",
-                "title": "Top 10 cursos por matrículas",
-                "visual_type": "barChart",
-                "position": {"x": 612, "y": 64, "width": 388, "height": 634},
+                "name": "linha-concluintes-curso",
+                "title": "Pessoas concluintes ao longo do tempo (do curso selecionado)",
+                "visual_type": "lineChart",
+                "position": {"x": 16, "y": 397, "width": 984, "height": 301},
                 "projections": {
-                    "Category": [column("nome_curso")],
-                    "Y": [measure("Matriculas")],
+                    "Category": [column("ano_mes")],
+                    "Y": [measure("Pessoas Unicas")],
                 },
-                # Item 2: ordena desc + limita ao Top 10.
-                "sort_json": _SORT_MATRICULAS_DESC,
-                "filters": True,
-                "filters_json": _TOPN_CURSOS,
+                "objects_json": _LABELS_ON,
             },
             *filter_panel(),
         ],
@@ -486,6 +456,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                     "Series": [column("categoria")],
                     "Y": [measure("Matriculas")],
                 },
+                "objects_json": _LABELS_ON,
             },
             # D — Evolução mensal de matrículas por público.
             {
@@ -498,6 +469,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                     "Series": [column_of(BRIDGE, "publico_alvo")],
                     "Y": [measure("Matriculas")],
                 },
+                "objects_json": _LABELS_ON,
             },
             *filter_panel(),
         ],
@@ -536,6 +508,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                     "Y": [measure_of(BRIDGE, "Qtd Publicos")],
                 },
                 "sort_json": _SORT_QTD_PUBLICOS_DESC,
+                "objects_json": _LABELS_ON,
             },
             # G — Composição institucional: Público × Poder.
             {
@@ -576,7 +549,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                     "Series": [column_of(DIST, "publico_alvo")],
                     "Y": [measure_of(DIST, "Qtd Pessoas")],
                 },
-                "objects_json": _CAT_AXIS,
+                "objects_json": _CAT_AXIS_LABELS,
             },
             # Tabela resumo: alcance vs conclusão integral por público.
             {
@@ -639,6 +612,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                     "Series": [column("categoria")],
                     "Y": [measure("Matriculas")],
                 },
+                "objects_json": _LABELS_ON,
             },
             {
                 "name": "linha-programa-mes",
@@ -650,6 +624,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                     "Series": [column_of(PROG, "programa")],
                     "Y": [measure("Matriculas")],
                 },
+                "objects_json": _LABELS_ON,
             },
             *filter_panel(_DIM_PROGRAMA),
         ],
@@ -661,10 +636,22 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "height": 720,
         "visuals": [
             textbox("titulo-pagina", "Distribuição de cursos por pessoa, por programa",
-                    x=16, y=10, width=1248, height=50, font_size="22pt"),
+                    x=16, y=10, width=900, height=50, font_size="22pt"),
             textbox("nota-pagina",
                     "Retrato sobre todo o histórico (todas as esferas). Não responde aos filtros das outras páginas.",
-                    x=16, y=62, width=1248, height=28, font_size="11pt"),
+                    x=16, y=62, width=900, height=28, font_size="11pt"),
+            # KPI: pessoas que concluíram TODOS os cursos de um programa. Sem
+            # seleção = total (soma entre programas); selecionar um programa na
+            # tabela de resumo ao lado cross-filtra este card para aquele programa.
+            {
+                "name": "kpi-todos-programa",
+                "title": "Concluíram todos os cursos do programa",
+                "visual_type": "card",
+                "position": {"x": 928, "y": 10, "width": 336, "height": 74},
+                "projections": {
+                    "Values": [measure_of(DISTP, "Pessoas Todos do Programa")],
+                },
+            },
             {
                 "name": "histograma-distribuicao-programa",
                 "title": "Pessoas por nº de cursos concluídos (por programa)",
@@ -675,7 +662,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                     "Series": [column_of(DISTP, "programa")],
                     "Y": [measure_of(DISTP, "Pessoas no Programa")],
                 },
-                "objects_json": _CAT_AXIS,
+                "objects_json": _CAT_AXIS_LABELS,
             },
             {
                 "name": "tabela-resumo-programa",

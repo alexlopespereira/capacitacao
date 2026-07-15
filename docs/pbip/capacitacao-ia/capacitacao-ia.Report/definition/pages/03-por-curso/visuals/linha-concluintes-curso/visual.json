@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
-  "name": "linha-programa-mes",
+  "name": "linha-concluintes-curso",
   "position": {
-    "x": 516,
-    "y": 380,
+    "x": 16,
+    "y": 397,
     "z": 0,
-    "width": 484,
-    "height": 318,
+    "width": 984,
+    "height": 301,
     "tabOrder": 0
   },
   "visual": {
@@ -27,31 +27,17 @@
             }
           ]
         },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": { "SourceRef": { "Entity": "bridge_programa" } },
-                  "Property": "programa"
-                }
-              },
-              "queryRef": "bridge_programa.programa",
-              "nativeQueryRef": "programa"
-            }
-          ]
-        },
         "Y": {
           "projections": [
             {
               "field": {
                 "Measure": {
                   "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
-                  "Property": "Matriculas"
+                  "Property": "Pessoas Unicas"
                 }
               },
-              "queryRef": "Matriculas",
-              "nativeQueryRef": "Matriculas"
+              "queryRef": "Pessoas Unicas",
+              "nativeQueryRef": "Pessoas Unicas"
             }
           ]
         }
@@ -65,7 +51,7 @@
         {
           "properties": {
             "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Matrículas por mês e programa'" } } }
+            "text": { "expr": { "Literal": { "Value": "'Pessoas concluintes ao longo do tempo (do curso selecionado)'" } } }
           }
         }
       ]

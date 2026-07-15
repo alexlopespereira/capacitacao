@@ -5,8 +5,8 @@
     "x": 16,
     "y": 64,
     "z": 0,
-    "width": 580,
-    "height": 634,
+    "width": 984,
+    "height": 317,
     "tabOrder": 0
   },
   "visual": {
@@ -67,7 +67,7 @@
         {
           "properties": {
             "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Detalhe por curso'" } } }
+            "text": { "expr": { "Literal": { "Value": "'Detalhe por curso (selecione um curso para ver o histórico abaixo)'" } } }
           }
         }
       ]
