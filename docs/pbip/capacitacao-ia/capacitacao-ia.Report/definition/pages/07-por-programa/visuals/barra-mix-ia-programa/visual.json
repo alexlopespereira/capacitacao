@@ -33,11 +33,11 @@
               "field": {
                 "Column": {
                   "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
-                  "Property": "ia_label"
+                  "Property": "categoria"
                 }
               },
-              "queryRef": "dashboard_base.ia_label",
-              "nativeQueryRef": "ia_label"
+              "queryRef": "dashboard_base.categoria",
+              "nativeQueryRef": "categoria"
             }
           ]
         },
@@ -65,7 +65,7 @@
         {
           "properties": {
             "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Mix IA × Não-IA por programa (%)'" } } }
+            "text": { "expr": { "Literal": { "Value": "'Mix IA × Dados por programa (%)'" } } }
           }
         }
       ]

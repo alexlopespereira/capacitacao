@@ -19,10 +19,9 @@ table dim_curso
 		summarizeBy: none
 		lineageTag: e935f3e2-66b2-46ad-9a11-54edc1aba998
 
-	column ia
-		dataType: int64
-		sourceColumn: ia
-		formatString: 0
+	column categoria
+		dataType: string
+		sourceColumn: categoria
 		summarizeBy: none
 		lineageTag: ee75cd81-e7af-4099-ad91-a437389a012f
 
@@ -31,7 +30,7 @@ table dim_curso
 		source =
 				let
 					Source = dashboard_base,
-					Cursos = Table.Distinct(Table.SelectColumns(Source, {"id_curso", "nome_curso", "ia"}))
+					Cursos = Table.Distinct(Table.SelectColumns(Source, {"id_curso", "nome_curso", "categoria"}))
 				in
 					Cursos
 

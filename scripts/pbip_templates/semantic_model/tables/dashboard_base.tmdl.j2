@@ -3,25 +3,40 @@
 table dashboard_base
 	lineageTag: {{ lineage.table_dashboard_base }}
 
+	/// O relatorio aplica um filtro de nivel de relatorio categoria IN {"IA","Dados"},
+	/// entao [Matriculas]/[Pessoas Unicas] "totais" ja excluem Gestao/Outros: sao o
+	/// universo do painel de capacitacao em IA e Dados.
 	measure 'Matriculas' = COUNTROWS(dashboard_base)
 		formatString: #,0
 		lineageTag: {{ lineage.measure_matriculas }}
 
-	measure 'Matriculas IA' = CALCULATE([Matriculas], dashboard_base[ia] = 1)
+	measure 'Matriculas IA' = CALCULATE([Matriculas], dashboard_base[categoria] = "IA")
 		formatString: #,0
 		lineageTag: {{ lineage.measure_matriculas_ia }}
+
+	measure 'Matriculas Dados' = CALCULATE([Matriculas], dashboard_base[categoria] = "Dados")
+		formatString: #,0
+		lineageTag: {{ lineage.measure_matriculas_dados }}
 
 	measure 'Pessoas Unicas' = DISTINCTCOUNT(dashboard_base[codigo_pessoa])
 		formatString: #,0
 		lineageTag: {{ lineage.measure_pessoas_unicas }}
 
-	measure 'Pessoas Unicas IA' = CALCULATE([Pessoas Unicas], dashboard_base[ia] = 1)
+	measure 'Pessoas Unicas IA' = CALCULATE([Pessoas Unicas], dashboard_base[categoria] = "IA")
 		formatString: #,0
 		lineageTag: {{ lineage.measure_pessoas_unicas_ia }}
+
+	measure 'Pessoas Unicas Dados' = CALCULATE([Pessoas Unicas], dashboard_base[categoria] = "Dados")
+		formatString: #,0
+		lineageTag: {{ lineage.measure_pessoas_unicas_dados }}
 
 	measure '% Matriculas IA' = DIVIDE([Matriculas IA], [Matriculas])
 		formatString: 0.0%
 		lineageTag: {{ lineage.measure_pct_matriculas_ia }}
+
+	measure '% Matriculas Dados' = DIVIDE([Matriculas Dados], [Matriculas])
+		formatString: 0.0%
+		lineageTag: {{ lineage.measure_pct_matriculas_dados }}
 
 	column ano_mes
 		dataType: string
@@ -57,12 +72,13 @@ table dashboard_base
 		summarizeBy: none
 		lineageTag: {{ lineage.column_nome_curso }}
 
-	column ia
-		dataType: int64
-		sourceColumn: ia
-		formatString: 0
+	/// Categoria do curso: IA / Dados / Gestão / Outros. O painel conta IA+Dados;
+	/// Gestão e Outros ficam na base (auditaveis) mas fora dos indicadores.
+	column categoria
+		dataType: string
+		sourceColumn: categoria
 		summarizeBy: none
-		lineageTag: {{ lineage.column_ia }}
+		lineageTag: {{ lineage.column_categoria }}
 
 	column esfera
 		dataType: string
@@ -97,12 +113,6 @@ table dashboard_base
 		summarizeBy: none
 		lineageTag: {{ lineage.column_ano_mes_sort }}
 
-	/// Rotulo legivel de IA para uso em slicers e visuais.
-	column ia_label = IF(dashboard_base[ia] = 1, "IA", "Nao IA")
-		dataType: string
-		summarizeBy: none
-		lineageTag: {{ lineage.column_ia_label }}
-
 	partition dashboard_base = m
 		mode: import
 		source =
@@ -115,7 +125,7 @@ table dashboard_base
 						{"mes", Int64.Type},
 						{"id_curso", Int64.Type},
 						{"nome_curso", type text},
-						{"ia", Int64.Type},
+						{"categoria", type text},
 						{"esfera", type text},
 						{"setor", type text},
 						{"poder", type text},

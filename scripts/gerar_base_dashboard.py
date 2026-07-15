@@ -1,7 +1,10 @@
 """Gera a base de dados para o dashboard de capacitacao (ENAP).
 
 Dimensoes do dashboard:
-  1. ia      -> 0/1  (coluna IA de cursos_alvo.csv; join por nome_curso normalizado)
+  1. categoria -> IA / Dados / Gestao / Outros  (coluna `categoria` de
+                cursos_alvo.csv; join por nome_curso normalizado). O painel de
+                capacitacao conta IA+Dados; Gestao e Outros ficam na base
+                (auditaveis) mas fora dos indicadores.
   2. esfera  -> Federal / Estadual / Municipal / "(sem esfera)"
   3. setor   -> "Publico"  quando esfera in {Federal, Estadual, Municipal}
                 "Privado/Nao-servidor"  quando esfera vazia
@@ -26,7 +29,7 @@ janela [INICIO_HISTORICO, --ate] sobre dt_matricula.
 
 Saidas (em docs/):
   - dashboard_base.csv          tabela fato: 1 linha por matricula concluida
-  - dashboard_agregado.csv      agregado por (tempo x ia x esfera x setor x poder)
+  - dashboard_agregado.csv      agregado por (tempo x categoria x esfera x setor x poder)
   - relatorio_capacitacao_ia.html  relatorio estatico (4 indicadores x grupos)
   - relatorio_capacitacao_ia.xlsx  mesma tabela do relatorio, formatada (Excel)
 
@@ -75,21 +78,33 @@ PODERES = {"Executivo", "Legislativo", "Judiciario"}
 SEM_PODER = "(sem poder)"
 
 
-def carregar_alvos_ia() -> dict[str, tuple[int, str, int]]:
-    """Le cursos_alvo.csv -> {nome_norm: (id_curso, nome, ia)}.
+CATEGORIAS_VALIDAS = {"IA", "Dados", "Gestão", "Outros"}
+# Categorias que compoem o painel de capacitacao em IA e Dados (indicadores).
+CATEGORIAS_PAINEL = {"IA", "Dados"}
 
-    Exige a coluna IA (0/1) criada para a classificacao IA / nao-IA.
+
+def carregar_alvos() -> dict[str, tuple[int, str, str]]:
+    """Le cursos_alvo.csv -> {nome_norm: (id_curso, nome, categoria)}.
+
+    Exige a coluna `categoria` (IA / Dados / Gestão / Outros) criada para a
+    classificacao dos cursos-alvo.
     """
     df = pd.read_csv(CURSOS_ALVO)
-    faltando = {"id_curso", "tx_nome_curso", "IA"} - set(df.columns)
+    faltando = {"id_curso", "tx_nome_curso", "categoria"} - set(df.columns)
     if faltando:
         raise SystemExit(
             f"cursos_alvo.csv sem coluna(s) {sorted(faltando)} -- "
-            "rode a classificacao IA antes de gerar a base."
+            "rode a classificacao por categoria antes de gerar a base."
+        )
+    invalidas = set(df["categoria"].dropna().unique()) - CATEGORIAS_VALIDAS
+    if invalidas:
+        raise SystemExit(
+            f"cursos_alvo.csv com categoria(s) invalida(s): {sorted(invalidas)} -- "
+            f"use apenas {sorted(CATEGORIAS_VALIDAS)}."
         )
     df["nome_norm"] = df["tx_nome_curso"].map(normalize)
     return {
-        row.nome_norm: (int(row.id_curso), row.tx_nome_curso, int(row.IA))
+        row.nome_norm: (int(row.id_curso), row.tx_nome_curso, str(row.categoria))
         for row in df.itertuples(index=False)
     }
 
@@ -123,7 +138,7 @@ def _set_csv_field_size_limit() -> None:
 
 
 def processar_csv(
-    stream: io.TextIOBase, mapa: dict[str, tuple[int, str, int]]
+    stream: io.TextIOBase, mapa: dict[str, tuple[int, str, str]]
 ) -> list[dict]:
     """Extrai linhas-fato (Concluida + 35 cursos alvo) de um CSV mensal."""
     _set_csv_field_size_limit()
@@ -140,7 +155,7 @@ def processar_csv(
         if len(dt) != 7 or dt[4] != "-":
             continue
         esfera, setor, poder = classificar(row.get("esfera"), row.get("poder"))
-        id_curso, nome, ia = alvo
+        id_curso, nome, categoria = alvo
         linhas.append(
             {
                 "ano_mes": dt,
@@ -148,7 +163,7 @@ def processar_csv(
                 "mes": int(dt[5:7]),
                 "id_curso": id_curso,
                 "nome_curso": nome,
-                "ia": ia,
+                "categoria": categoria,
                 "esfera": esfera,
                 "setor": setor,
                 "poder": poder,
@@ -159,7 +174,7 @@ def processar_csv(
 
 
 def coletar(
-    source: str | Path, janela_max: str, mapa: dict[str, tuple[int, str, int]]
+    source: str | Path, janela_max: str, mapa: dict[str, tuple[int, str, str]]
 ) -> pd.DataFrame:
     todas: list[dict] = []
     for nome_logico, stream in iter_csvs(source):
@@ -174,7 +189,7 @@ def coletar(
 
     cols = [
         "ano_mes", "ano", "mes", "id_curso", "nome_curso",
-        "ia", "esfera", "setor", "poder", "codigo_pessoa",
+        "categoria", "esfera", "setor", "poder", "codigo_pessoa",
     ]
     df = pd.DataFrame(todas, columns=cols)
     if df.empty:
@@ -185,11 +200,11 @@ def coletar(
 
 FATO_COLS = [
     "ano_mes", "ano", "mes", "id_curso", "nome_curso",
-    "ia", "esfera", "setor", "poder", "codigo_pessoa",
+    "categoria", "esfera", "setor", "poder", "codigo_pessoa",
 ]
 FATO_DTYPES = {
     "ano_mes": str, "ano": "Int64", "mes": "Int64", "id_curso": "Int64",
-    "nome_curso": str, "ia": "Int64", "esfera": str, "setor": str,
+    "nome_curso": str, "categoria": str, "esfera": str, "setor": str,
     "poder": str, "codigo_pessoa": str,
 }
 
@@ -213,8 +228,9 @@ def merge_fato(novo: pd.DataFrame, base_csv: Path) -> pd.DataFrame:
     antigo_filtrado = antigo[~antigo["ano_mes"].isin(meses_novos)]
     final = pd.concat([antigo_filtrado, novo], ignore_index=True)
     # normaliza tipos (concat com Int64 vs int)
-    for c in ("ano", "mes", "id_curso", "ia"):
+    for c in ("ano", "mes", "id_curso"):
         final[c] = final[c].astype("int64")
+    final["categoria"] = final["categoria"].astype(str)
     final["codigo_pessoa"] = final["codigo_pessoa"].fillna("").astype(str)
     return final.sort_values(["ano_mes", "id_curso"]).reset_index(drop=True)
 
@@ -243,11 +259,11 @@ def _backup_base(base_csv: Path) -> Path:
     return destino
 
 
-AGG_DIMS = ["ano_mes", "ano", "mes", "ia", "esfera", "setor", "poder"]
+AGG_DIMS = ["ano_mes", "ano", "mes", "categoria", "esfera", "setor", "poder"]
 
 
 def agregar(fato: pd.DataFrame) -> pd.DataFrame:
-    """Agrega por (tempo, ia, esfera, setor, poder): matriculas + pessoas_unicas.
+    """Agrega por (tempo, categoria, esfera, setor, poder): matriculas + pessoas_unicas.
 
     pessoas_unicas usa contagem distinta por celula -- NAO e somavel entre
     celulas (uma pessoa pode aparecer em mais de uma combinacao, inclusive em
@@ -262,7 +278,7 @@ def agregar(fato: pd.DataFrame) -> pd.DataFrame:
         pessoas_unicas=("codigo_pessoa", "nunique"),
     ).reset_index()
     return out.sort_values(
-        ["ano_mes", "ia", "setor", "esfera", "poder"]
+        ["ano_mes", "categoria", "setor", "esfera", "poder"]
     ).reset_index(drop=True)
 
 
@@ -272,14 +288,22 @@ def _fmt(n: int) -> str:
 
 
 def _indicadores(sub: pd.DataFrame) -> dict[str, int]:
-    """Os 4 indicadores do relatorio para um subconjunto da tabela fato."""
+    """Os indicadores do relatorio para um subconjunto da tabela fato.
+
+    O painel de capacitacao cobre IA+Dados; Gestao/Outros ficam de fora dos
+    indicadores (mas seguem na base). Cada metrica e quebrada em IA e Dados.
+    """
     com_pessoa = sub["codigo_pessoa"] != ""
-    ia = sub["ia"] == 1
+    ia = sub["categoria"] == "IA"
+    dados = sub["categoria"] == "Dados"
+    painel = ia | dados
     return {
-        "pessoas": sub.loc[com_pessoa, "codigo_pessoa"].nunique(),
+        "pessoas": sub.loc[com_pessoa & painel, "codigo_pessoa"].nunique(),
         "pessoas_ia": sub.loc[com_pessoa & ia, "codigo_pessoa"].nunique(),
-        "matriculas": int(len(sub)),
+        "pessoas_dados": sub.loc[com_pessoa & dados, "codigo_pessoa"].nunique(),
+        "matriculas": int(painel.sum()),
         "matriculas_ia": int(ia.sum()),
+        "matriculas_dados": int(dados.sum()),
     }
 
 
@@ -310,11 +334,13 @@ def gerar_relatorio_html(fato: pd.DataFrame, janela_max: str) -> str:
     data_hoje = date.today().strftime("%d/%m/%Y")
     meses = sorted(fato["ano_mes"].unique())
     periodo = f"{meses[0]} a {meses[-1]}" if meses else "—"
-    ia_total = int((fato["ia"] == 1).sum())
-    n_cursos_ia = fato.loc[fato["ia"] == 1, "id_curso"].nunique()
+    cursos_por_cat = fato.groupby("categoria")["id_curso"].nunique()
+    n_cursos_ia = int(cursos_por_cat.get("IA", 0))
+    n_cursos_dados = int(cursos_por_cat.get("Dados", 0))
     n_cursos = fato["id_curso"].nunique()
+    matr_painel = int(fato["categoria"].isin(CATEGORIAS_PAINEL).sum())
 
-    # Linhas da tabela principal (4 indicadores x grupos)
+    # Linhas da tabela principal (indicadores IA/Dados x grupos)
     corpo = []
     for cls, rotulo, ind in _linhas_relatorio(fato):
         if ind is None:  # cabecalho de subsecao
@@ -324,24 +350,24 @@ def gerar_relatorio_html(fato: pd.DataFrame, janela_max: str) -> str:
             continue
         corpo.append(
             f'<tr class="{cls}"><td>{escape(rotulo)}</td>'
-            f'<td>{_fmt(ind["pessoas"])}</td>'
+            f'<td>{_fmt(ind["matriculas_ia"])}</td>'
+            f'<td>{_fmt(ind["matriculas_dados"])}</td>'
             f'<td>{_fmt(ind["pessoas_ia"])}</td>'
-            f'<td>{_fmt(ind["matriculas"])}</td>'
-            f'<td>{_fmt(ind["matriculas_ia"])}</td></tr>'
+            f'<td>{_fmt(ind["pessoas_dados"])}</td></tr>'
         )
     tabela_ind = "".join(corpo)
 
-    # Tabela auxiliar: detalhe por curso (id, nome, IA, matriculas, pessoas)
+    # Tabela auxiliar: detalhe por curso (id, nome, categoria, matriculas, pessoas)
     cp = fato["codigo_pessoa"].replace("", pd.NA)
     por_curso = (
         fato.assign(_cp=cp)
-        .groupby(["id_curso", "nome_curso", "ia"], as_index=False)
+        .groupby(["id_curso", "nome_curso", "categoria"], as_index=False)
         .agg(matriculas=("_cp", "size"), pessoas=("_cp", "nunique"))
         .sort_values("id_curso")
     )
     linhas_curso = "".join(
         f'<tr><td>{r.id_curso}</td><td class="esq">{escape(r.nome_curso)}</td>'
-        f'<td>{"Sim" if r.ia == 1 else "Não"}</td>'
+        f'<td class="esq">{escape(r.categoria)}</td>'
         f'<td>{_fmt(r.matriculas)}</td><td>{_fmt(r.pessoas)}</td></tr>'
         for r in por_curso.itertuples(index=False)
     )
@@ -372,13 +398,14 @@ def gerar_relatorio_html(fato: pd.DataFrame, janela_max: str) -> str:
 </style>
 </head>
 <body>
-<h1>Relatório sobre Conclusão de Cursos dos Programas de Capacitação de IA</h1>
+<h1>Relatório sobre Conclusão de Cursos dos Programas de Capacitação em IA e Dados</h1>
 <p class="meta">
   <strong>Data:</strong> {data_hoje} ·
   <strong>Período coberto:</strong> {periodo} (matrículas concluídas) ·
   Fonte: <a href="https://dadosaberto.evg.gov.br/">dadosaberto.evg.gov.br</a><br>
-  Programa = {n_cursos} cursos-alvo · Específicos de IA = {n_cursos_ia} cursos
-  ({_fmt(ia_total)} matrículas).
+  Programa = {n_cursos} cursos-alvo · Painel de capacitação = {n_cursos_ia} cursos de IA +
+  {n_cursos_dados} de Dados ({_fmt(matr_painel)} matrículas). Cursos de Gestão e Outros
+  seguem na base, mas ficam fora dos indicadores.
 </p>
 
 <h2>Indicadores por grupo</h2>
@@ -386,17 +413,18 @@ def gerar_relatorio_html(fato: pd.DataFrame, janela_max: str) -> str:
 <table>
 <thead><tr>
   <th>Grupo</th>
-  <th>Pessoas concluintes<br>(≥1 curso do programa)</th>
-  <th>Pessoas concluintes<br>(≥1 curso de IA)</th>
-  <th>Matrículas concluídas<br>(cursos do programa)</th>
   <th>Matrículas concluídas<br>(cursos de IA)</th>
+  <th>Matrículas concluídas<br>(cursos de Dados)</th>
+  <th>Pessoas concluintes<br>(≥1 curso de IA)</th>
+  <th>Pessoas concluintes<br>(≥1 curso de Dados)</th>
 </tr></thead>
 <tbody>{tabela_ind}</tbody>
 </table>
 </div>
 <p class="legenda">
-  <strong>Pessoas</strong> = servidores/pessoas distintas (contagem única de
-  <code>codigo_pessoa</code>); <strong>não somam entre grupos</strong> — uma
+  <strong>Indicadores cobrem apenas IA e Dados</strong> (cursos de Gestão e Outros
+  ficam de fora). <strong>Pessoas</strong> = servidores/pessoas distintas (contagem
+  única de <code>codigo_pessoa</code>); <strong>não somam entre grupos</strong> — uma
   pessoa pode aparecer em mais de um recorte e em mais de um curso.
   <strong>Matrículas</strong> = nº de conclusões (somam).
   Federal+Estadual+Municipal reconciliam o total público em matrículas;
@@ -410,7 +438,7 @@ def gerar_relatorio_html(fato: pd.DataFrame, janela_max: str) -> str:
 <div class="scroll">
 <table>
 <thead><tr>
-  <th>id</th><th class="esq">Curso</th><th>Específico de IA?</th>
+  <th>id</th><th class="esq">Curso</th><th class="esq">Categoria</th>
   <th>Matrículas concl.</th><th>Pessoas concl.</th>
 </tr></thead>
 <tbody>{linhas_curso}</tbody>
@@ -429,10 +457,10 @@ junção por <code>nome_curso</code> normalizado. Base de dados reaproveitável:
 
 COLS_RELATORIO = [
     "Grupo",
-    "Pessoas concluintes (≥1 curso do programa)",
-    "Pessoas concluintes (≥1 curso de IA)",
-    "Matrículas concluídas (cursos do programa)",
     "Matrículas concluídas (cursos de IA)",
+    "Matrículas concluídas (cursos de Dados)",
+    "Pessoas concluintes (≥1 curso de IA)",
+    "Pessoas concluintes (≥1 curso de Dados)",
 ]
 
 
@@ -461,7 +489,7 @@ def gerar_relatorio_xlsx(fato: pd.DataFrame, janela_max: str) -> None:
     ws.title = "Indicadores"
 
     ws.merge_cells("A1:E1")
-    ws["A1"] = "Relatório sobre Conclusão de Cursos dos Programas de Capacitação de IA"
+    ws["A1"] = "Relatório sobre Conclusão de Cursos dos Programas de Capacitação em IA e Dados"
     ws["A1"].font = Font(bold=True, size=14)
     ws.merge_cells("A2:E2")
     ws["A2"] = f"Data: {data_hoje}  ·  Período coberto: {periodo}  ·  Fonte: dadosaberto.evg.gov.br"
@@ -489,8 +517,8 @@ def gerar_relatorio_xlsx(fato: pd.DataFrame, janela_max: str) -> None:
             r += 1
             continue
 
-        valores = [rotulo, ind["pessoas"], ind["pessoas_ia"],
-                   ind["matriculas"], ind["matriculas_ia"]]
+        valores = [rotulo, ind["matriculas_ia"], ind["matriculas_dados"],
+                   ind["pessoas_ia"], ind["pessoas_dados"]]
         for col, v in enumerate(valores, start=1):
             cell = ws.cell(row=r, column=col, value=v)
             cell.border = borda
@@ -517,6 +545,7 @@ def gerar_relatorio_xlsx(fato: pd.DataFrame, janela_max: str) -> None:
     ws.freeze_panes = f"A{hdr_row + 1}"
 
     nota = (
+        'Indicadores cobrem apenas IA e Dados (Gestão e Outros ficam de fora). '
         'Pessoas = contagem única de pessoas (codigo_pessoa); NÃO somam entre '
         'grupos. Matrículas = nº de conclusões (somam). Federal+Estadual+'
         'Municipal reconciliam o total público em matrículas; os poderes não '
@@ -562,8 +591,13 @@ def main() -> int:
     janela_max = args.ate or ultimo_mes_completo()
     print(f"Janela: {INICIO_HISTORICO} ate {janela_max}")
 
-    mapa = carregar_alvos_ia()
-    print(f"Cursos alvo: {len(mapa)} (IA=1: {sum(v[2] for v in mapa.values())})")
+    mapa = carregar_alvos()
+    from collections import Counter
+    cats = Counter(v[2] for v in mapa.values())
+    print(f"Cursos alvo: {len(mapa)} ("
+          + ", ".join(f"{k}={cats.get(k, 0)}" for k in
+                      ("IA", "Dados", "Gestão", "Outros"))
+          + ")")
 
     fato = coletar(args.source, janela_max, mapa)
     if not args.rebuild:
@@ -617,15 +651,15 @@ def main() -> int:
     print(f"Meses: {sorted(fato['ano_mes'].unique())}")
     print(f"Cursos com conclusao no periodo: {cursos_presentes}/{len(mapa)}")
     print(f"Pessoas unicas (global, distintas): {total_pessoas}")
-    print("\nRelatorio (4 indicadores x grupos):")
+    print("\nRelatorio (indicadores IA/Dados x grupos):")
     for cls, rotulo, ind in _linhas_relatorio(fato):
         if ind is None:
             print(f"  [{rotulo}]")
             continue
         print(
-            f"  {rotulo:42s} pessoas={ind['pessoas']:>7} "
-            f"pessoas_IA={ind['pessoas_ia']:>7} "
-            f"matr={ind['matriculas']:>7} matr_IA={ind['matriculas_ia']:>7}"
+            f"  {rotulo:42s} matr_IA={ind['matriculas_ia']:>7} "
+            f"matr_Dados={ind['matriculas_dados']:>7} "
+            f"pess_IA={ind['pessoas_ia']:>7} pess_Dados={ind['pessoas_dados']:>7}"
         )
     print(
         f"\nArquivos: {BASE_CSV}, {AGREGADO_CSV}, {RELATORIO_HTML}, {RELATORIO_XLSX}"

@@ -3,25 +3,40 @@
 table dashboard_base
 	lineageTag: 45024c93-3e9a-449d-a9b4-1bc451368289
 
+	/// O relatorio aplica um filtro de nivel de relatorio categoria IN {"IA","Dados"},
+	/// entao [Matriculas]/[Pessoas Unicas] "totais" ja excluem Gestao/Outros: sao o
+	/// universo do painel de capacitacao em IA e Dados.
 	measure 'Matriculas' = COUNTROWS(dashboard_base)
 		formatString: #,0
 		lineageTag: aaec4cc1-1333-4265-859a-8a9291b074c2
 
-	measure 'Matriculas IA' = CALCULATE([Matriculas], dashboard_base[ia] = 1)
+	measure 'Matriculas IA' = CALCULATE([Matriculas], dashboard_base[categoria] = "IA")
 		formatString: #,0
 		lineageTag: a27fb1fa-c40b-42fd-ba01-674dab67b6c4
+
+	measure 'Matriculas Dados' = CALCULATE([Matriculas], dashboard_base[categoria] = "Dados")
+		formatString: #,0
+		lineageTag: 80a2c624-58dd-45b5-bcdd-3a1afd7630d5
 
 	measure 'Pessoas Unicas' = DISTINCTCOUNT(dashboard_base[codigo_pessoa])
 		formatString: #,0
 		lineageTag: 06742375-6ac6-4ddc-996c-c70a35e5b643
 
-	measure 'Pessoas Unicas IA' = CALCULATE([Pessoas Unicas], dashboard_base[ia] = 1)
+	measure 'Pessoas Unicas IA' = CALCULATE([Pessoas Unicas], dashboard_base[categoria] = "IA")
 		formatString: #,0
 		lineageTag: 49d19b49-cf2d-4bae-a0fb-6ffc82b76c70
+
+	measure 'Pessoas Unicas Dados' = CALCULATE([Pessoas Unicas], dashboard_base[categoria] = "Dados")
+		formatString: #,0
+		lineageTag: c8b2d332-6410-4298-a0fb-5ee5fe0a8408
 
 	measure '% Matriculas IA' = DIVIDE([Matriculas IA], [Matriculas])
 		formatString: 0.0%
 		lineageTag: efbd6d9d-d1cc-4a65-8729-51ffe9f34d0b
+
+	measure '% Matriculas Dados' = DIVIDE([Matriculas Dados], [Matriculas])
+		formatString: 0.0%
+		lineageTag: da67c9a9-aa17-469d-8d0e-cd71fc69f77b
 
 	column ano_mes
 		dataType: string
@@ -57,10 +72,11 @@ table dashboard_base
 		summarizeBy: none
 		lineageTag: ab3d2b75-1b3c-4ec6-a0ca-e8c87ddfd397
 
-	column ia
-		dataType: int64
-		sourceColumn: ia
-		formatString: 0
+	/// Categoria do curso: IA / Dados / Gestão / Outros. O painel conta IA+Dados;
+	/// Gestão e Outros ficam na base (auditaveis) mas fora dos indicadores.
+	column categoria
+		dataType: string
+		sourceColumn: categoria
 		summarizeBy: none
 		lineageTag: 7f66c5ef-5325-4313-91fb-f98b3320de4d
 
@@ -97,12 +113,6 @@ table dashboard_base
 		summarizeBy: none
 		lineageTag: 3936d047-2a9b-4527-be0d-386c9249efcd
 
-	/// Rotulo legivel de IA para uso em slicers e visuais.
-	column ia_label = IF(dashboard_base[ia] = 1, "IA", "Nao IA")
-		dataType: string
-		summarizeBy: none
-		lineageTag: 6b43369b-2e69-41ad-8f4b-71802771ef36
-
 	partition dashboard_base = m
 		mode: import
 		source =
@@ -115,7 +125,7 @@ table dashboard_base
 						{"mes", Int64.Type},
 						{"id_curso", Int64.Type},
 						{"nome_curso", type text},
-						{"ia", Int64.Type},
+						{"categoria", type text},
 						{"esfera", type text},
 						{"setor", type text},
 						{"poder", type text},
