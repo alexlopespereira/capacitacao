@@ -40,7 +40,7 @@ Filtros aplicados ao dataset bruto:
 ├── .github/workflows/atualizar-mensal.yml   # cron + envio de e-mail
 ├── scripts/
 │   ├── atualizar_historico.py               # job principal
-│   ├── cursos_alvo.csv                      # 35 cursos (id_curso, tx_nome_curso)
+│   ├── cursos_alvo.csv                      # 35 cursos (id_curso, tx_nome_curso, categoria: IA/Dados/Gestão/Outros)
 │   └── requirements.txt                     # pandas
 ├── docs/                                    # GitHub Pages (raiz pública)
 │   ├── index.html                           # tabela pivot + curva de pessoas
@@ -161,13 +161,13 @@ Flags úteis de `gerar_pbip.py`:
 
 | Página | Conteúdo |
 |---|---|
-| **1 — Visão Geral** | 4 KPIs (Matrículas, Matrículas IA, Pessoas únicas, Pessoas únicas IA) + linha temporal IA vs Não IA + slicers de período e tipo |
-| **2 — Por Grupo** | Matriz Esfera × Poder com Matrículas e Pessoas únicas + slicers de ano, setor, tipo |
-| **3 — Por Curso** | Tabela detalhada dos 35 cursos + barra Top 10 por matrículas + slicer de tipo |
-| **4 — Por Público-Alvo** | Ranking de matrículas e de pessoas únicas por público + mix IA×Não-IA (100%) + evolução mensal por público |
+| **1 — Visão Geral** | 4 KPIs (Matrículas IA, Matrículas Dados, Pessoas únicas IA, Pessoas únicas Dados) + linha temporal IA vs Dados + slicers de período e categoria |
+| **2 — Por Grupo** | Matriz Esfera × Poder com Matrículas e Pessoas únicas + slicers de ano, setor, categoria |
+| **3 — Por Curso** | Tabela detalhada dos cursos (com categoria) + barra Top 10 por matrículas + slicer de categoria |
+| **4 — Por Público-Alvo** | Ranking de matrículas e de pessoas únicas por público + mix IA×Dados (100%) + evolução mensal por público |
 | **5 — Público × Curso** | Matriz com drill Público→Trilha→Curso + cursos mais transversais (nº de públicos) + matriz Público × Poder |
 | **6 — Distribuição por Público** | Histograma de pessoas por nº de cursos concluídos + tabela resumo (fizeram ≥1, fizeram todos, % e média). Retrato estático — não responde aos slicers |
-| **7 — Por Programa** | Ranking de matrículas e pessoas únicas por programa + mix IA×Não-IA + evolução mensal (a dimensão Programa é o nível Trilha, curso↔programa m:n) |
+| **7 — Por Programa** | Ranking de matrículas e pessoas únicas por programa + mix IA×Dados + evolução mensal (a dimensão Programa é o nível Trilha, curso↔programa m:n) |
 | **8 — Distribuição por Programa** | Histograma de pessoas por nº de cursos do programa + tabela resumo (fizeram ≥1, fizeram todos, % e média). Retrato estático |
 
 > Todas as páginas ganham um slicer de **Público-alvo** no painel de filtros,

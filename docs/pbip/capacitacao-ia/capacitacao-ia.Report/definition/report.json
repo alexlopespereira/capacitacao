@@ -10,6 +10,7 @@
   },
   "publicCustomVisuals": [],
   "resourcePackages": [],
+  "filterConfig": {"filters": [{"name": "filtro-categoria-painel", "field": {"Column": {"Expression": {"SourceRef": {"Entity": "dashboard_base"}}, "Property": "categoria"}}, "type": "Categorical", "filter": {"Version": 2, "From": [{"Name": "d", "Entity": "dashboard_base", "Type": 0}], "Where": [{"Condition": {"In": {"Expressions": [{"Column": {"Expression": {"SourceRef": {"Source": "d"}}, "Property": "categoria"}}], "Values": [[{"Literal": {"Value": "'IA'"}}], [{"Literal": {"Value": "'Dados'"}}]]}}}]}}]},
   "settings": {
     "useStylableVisualContainerHeader": true,
     "allowChangeFilterTypes": true,

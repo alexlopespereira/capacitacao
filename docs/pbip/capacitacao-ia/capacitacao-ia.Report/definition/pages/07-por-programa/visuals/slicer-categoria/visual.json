@@ -1,43 +1,43 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
-  "name": "kpi-matriculas-ia",
+  "name": "slicer-categoria",
   "position": {
-    "x": 16,
-    "y": 64,
+    "x": 1016,
+    "y": 452,
     "z": 0,
-    "width": 234,
-    "height": 116,
+    "width": 248,
+    "height": 104,
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "card",
+    "visualType": "slicer",
     "query": {
       "queryState": {
         "Values": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
-                  "Property": "Matriculas IA"
+                  "Property": "categoria"
                 }
               },
-              "queryRef": "Matriculas IA",
-              "nativeQueryRef": "Matriculas IA"
+              "queryRef": "dashboard_base.categoria",
+              "nativeQueryRef": "categoria"
             }
           ]
         }
       },
       "sortDefinition": {"sort": [], "isDefaultSort": true}
     },
-    "objects": {},
+    "objects": {"data": [{"properties": {"mode": {"expr": {"Literal": {"Value": "'Dropdown'"}}}}}]},
     "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
             "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Matrículas IA'" } } }
+            "text": { "expr": { "Literal": { "Value": "'Categoria (IA / Dados)'" } } }
           }
         }
       ]

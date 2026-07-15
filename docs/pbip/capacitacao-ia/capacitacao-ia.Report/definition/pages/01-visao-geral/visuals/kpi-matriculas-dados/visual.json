@@ -1,8 +1,8 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
-  "name": "kpi-matriculas",
+  "name": "kpi-matriculas-dados",
   "position": {
-    "x": 16,
+    "x": 266,
     "y": 64,
     "z": 0,
     "width": 234,
@@ -19,11 +19,11 @@
               "field": {
                 "Measure": {
                   "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
-                  "Property": "Matriculas"
+                  "Property": "Matriculas Dados"
                 }
               },
-              "queryRef": "Matriculas",
-              "nativeQueryRef": "Matriculas"
+              "queryRef": "Matriculas Dados",
+              "nativeQueryRef": "Matriculas Dados"
             }
           ]
         }
@@ -37,7 +37,7 @@
         {
           "properties": {
             "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Total matrículas'" } } }
+            "text": { "expr": { "Literal": { "Value": "'Matrículas Dados'" } } }
           }
         }
       ]

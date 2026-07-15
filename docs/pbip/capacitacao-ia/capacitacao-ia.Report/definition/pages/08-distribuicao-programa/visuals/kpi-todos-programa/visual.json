@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
-  "name": "kpi-matriculas-ia",
+  "name": "kpi-todos-programa",
   "position": {
-    "x": 16,
-    "y": 64,
+    "x": 928,
+    "y": 10,
     "z": 0,
-    "width": 234,
-    "height": 116,
+    "width": 336,
+    "height": 74,
     "tabOrder": 0
   },
   "visual": {
@@ -18,12 +18,12 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
-                  "Property": "Matriculas IA"
+                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Property": "Pessoas Todos do Programa"
                 }
               },
-              "queryRef": "Matriculas IA",
-              "nativeQueryRef": "Matriculas IA"
+              "queryRef": "Pessoas Todos do Programa",
+              "nativeQueryRef": "Pessoas Todos do Programa"
             }
           ]
         }
@@ -37,7 +37,7 @@
         {
           "properties": {
             "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Matrículas IA'" } } }
+            "text": { "expr": { "Literal": { "Value": "'Concluíram todos os cursos do programa'" } } }
           }
         }
       ]

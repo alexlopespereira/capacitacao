@@ -44,7 +44,7 @@
       },
       "sortDefinition": {"sort": [{"field": {"Measure": {"Expression": {"SourceRef": {"Entity": "bridge_publico"}}, "Property": "Qtd Publicos"}}, "direction": "Descending"}], "isDefaultSort": false}
     },
-    "objects": {},
+    "objects": {"labels": [{"properties": {"show": {"expr": {"Literal": {"Value": "true"}}}}}]},
     "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [

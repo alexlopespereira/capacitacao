@@ -1,43 +1,43 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
-  "name": "slicer-ia",
+  "name": "kpi-pessoas-dados",
   "position": {
-    "x": 1016,
-    "y": 452,
+    "x": 766,
+    "y": 64,
     "z": 0,
-    "width": 248,
-    "height": 104,
+    "width": 234,
+    "height": 116,
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "slicer",
+    "visualType": "card",
     "query": {
       "queryState": {
         "Values": {
           "projections": [
             {
               "field": {
-                "Column": {
+                "Measure": {
                   "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
-                  "Property": "ia_label"
+                  "Property": "Pessoas Unicas Dados"
                 }
               },
-              "queryRef": "dashboard_base.ia_label",
-              "nativeQueryRef": "ia_label"
+              "queryRef": "Pessoas Unicas Dados",
+              "nativeQueryRef": "Pessoas Unicas Dados"
             }
           ]
         }
       },
       "sortDefinition": {"sort": [], "isDefaultSort": true}
     },
-    "objects": {"data": [{"properties": {"mode": {"expr": {"Literal": {"Value": "'Dropdown'"}}}}}]},
+    "objects": {},
     "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
             "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Tipo de curso (IA)'" } } }
+            "text": { "expr": { "Literal": { "Value": "'Pessoas únicas Dados'" } } }
           }
         }
       ]

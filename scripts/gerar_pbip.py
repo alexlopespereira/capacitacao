@@ -2,7 +2,7 @@
 
 Saída padrão: docs/pbip/capacitacao-ia/ com:
   - capacitacao-ia.pbip              (launcher)
-  - capacitacao-ia.SemanticModel/    (TMDL: tabela fato + 5 medidas DAX)
+  - capacitacao-ia.SemanticModel/    (TMDL: tabela fato + 8 medidas DAX)
   - capacitacao-ia.Report/           (PBIR JSON: 3 páginas interativas)
 
 Pré-requisitos para abrir no Power BI Desktop:
@@ -56,26 +56,28 @@ LINEAGE_KEYS: tuple[str, ...] = (
     "table_dashboard_base",
     "measure_matriculas",
     "measure_matriculas_ia",
+    "measure_matriculas_dados",
     "measure_pessoas_unicas",
     "measure_pessoas_unicas_ia",
+    "measure_pessoas_unicas_dados",
     "measure_pct_matriculas_ia",
+    "measure_pct_matriculas_dados",
     "column_ano_mes",
     "column_ano",
     "column_mes",
     "column_id_curso",
     "column_nome_curso",
-    "column_ia",
+    "column_categoria",
     "column_esfera",
     "column_setor",
     "column_poder",
     "column_codigo_pessoa",
     "column_ano_mes_sort",
-    "column_ia_label",
     # Dimensão Público-alvo (bridge m:n curso<->público).
     "table_dim_curso",
     "column_dimc_id_curso",
     "column_dimc_nome_curso",
-    "column_dimc_ia",
+    "column_dimc_categoria",
     "table_bridge_publico",
     "measure_qtd_publicos",
     "column_bridge_id_curso",
@@ -200,7 +202,7 @@ def textbox(name: str, text: str, x: int, y: int,
 
 
 # Painel lateral de filtros (item 3): 5 slicers fixos, idênticos em todas as
-# abas (esfera, setor, poder, IA/Não IA, ano), empilhados na coluna direita.
+# abas (esfera, setor, poder, categoria, ano), empilhados na coluna direita.
 FILTER_PANEL_X = 1016
 FILTER_PANEL_W = 248
 # Slicers comuns (do fato), idênticos em todas as páginas.
@@ -208,7 +210,7 @@ _COMMON_FILTERS = (
     ("slicer-esfera", "Esfera", "esfera", ENTITY),
     ("slicer-setor", "Setor", "setor", ENTITY),
     ("slicer-poder", "Poder", "poder", ENTITY),
-    ("slicer-ia", "Tipo de curso (IA)", "ia_label", ENTITY),
+    ("slicer-categoria", "Categoria (IA / Dados)", "categoria", ENTITY),
     ("slicer-ano", "Ano", "ano", ENTITY),
 )
 # Slicer da dimensão de análise no topo do painel. Vem de uma bridge e, por ser
@@ -270,47 +272,45 @@ _SORT_QTD_PUBLICOS_DESC = json.dumps({
     "isDefaultSort": False,
 })
 
-# Eixo X categórico (histograma): força barras discretas por nº de cursos
-# em vez de eixo contínuo numérico.
-_CAT_AXIS = json.dumps({
+# Eixo X categórico (histograma): força barras discretas por nº de cursos em vez
+# de eixo contínuo numérico, com rótulos de valores ligados.
+_CAT_AXIS_LABELS = json.dumps({
     "categoryAxis": [
         {"properties": {"axisType": {"expr": {"Literal": {"Value": "'Categorical'"}}}}}
-    ]
+    ],
+    "labels": [
+        {"properties": {"show": {"expr": {"Literal": {"Value": "true"}}}}}
+    ],
 })
 
-# Item 2: filtro Top N (10 cursos com mais matrículas).
-_TOPN_CURSOS = json.dumps([{
-    "name": "b1f0a4c2-7d3e-4a91-9c84-0e5f2a6b8d11",
-    "field": {"Column": {
-        "Expression": {"SourceRef": {"Entity": ENTITY}}, "Property": "nome_curso",
-    }},
-    "filter": {
-        "Version": 2,
-        "From": [
-            {"Name": "subquery", "Expression": {"Subquery": {"Query": {
-                "Version": 2,
-                "From": [{"Name": "d", "Entity": ENTITY, "Type": 0}],
-                "Select": [{"Column": {
+# Filtro de nível de relatório: o painel de capacitação conta apenas IA e Dados.
+# Cursos de Gestão/Outros seguem na tabela fato (auditáveis) mas são removidos de
+# todos os visuais/slicers ligados ao fato — é o que torna os indicadores "mais
+# precisos" sem apagar dados. Não afeta as páginas de Distribuição (tabelas
+# dist_publico/dist_programa, sem relação com o fato).
+_REPORT_FILTER_IA_DADOS = json.dumps({
+    "filters": [{
+        "name": "filtro-categoria-painel",
+        "field": {"Column": {
+            "Expression": {"SourceRef": {"Entity": ENTITY}}, "Property": "categoria",
+        }},
+        "type": "Categorical",
+        "filter": {
+            "Version": 2,
+            "From": [{"Name": "d", "Entity": ENTITY, "Type": 0}],
+            "Where": [{"Condition": {"In": {
+                "Expressions": [{"Column": {
                     "Expression": {"SourceRef": {"Source": "d"}},
-                    "Property": "nome_curso",
-                }, "Name": "field"}],
-                "OrderBy": [{"Direction": 2, "Expression": {"Measure": {
-                    "Expression": {"SourceRef": {"Source": "d"}},
-                    "Property": "Matriculas",
-                }}}],
-                "Top": 10,
-            }}}, "Type": 2},
-            {"Name": "d", "Entity": ENTITY, "Type": 0},
-        ],
-        "Where": [{"Condition": {"In": {
-            "Expressions": [{"Column": {
-                "Expression": {"SourceRef": {"Source": "d"}}, "Property": "nome_curso",
-            }}],
-            "Table": {"SourceRef": {"Source": "subquery"}},
-        }}}],
-    },
-    "type": "TopN",
-}])
+                    "Property": "categoria",
+                }}],
+                "Values": [
+                    [{"Literal": {"Value": "'IA'"}}],
+                    [{"Literal": {"Value": "'Dados'"}}],
+                ],
+            }}}],
+        },
+    }],
+})
 
 
 # ---------------------------------------------------------------------------
@@ -326,20 +326,20 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "width": 1280,
         "height": 720,
         "visuals": [
-            textbox("titulo-pagina", "Visão Geral — Capacitação em IA",
+            textbox("titulo-pagina", "Visão Geral — Capacitação em IA e Dados",
                     x=16, y=10, width=984, height=50, font_size="22pt"),
-            kpi_card("kpi-matriculas", "Total matrículas", "Matriculas", x=16, y=64),
-            kpi_card("kpi-matriculas-ia", "Matrículas IA", "Matriculas IA", x=266, y=64),
-            kpi_card("kpi-pessoas", "Pessoas únicas", "Pessoas Unicas", x=516, y=64),
-            kpi_card("kpi-pessoas-ia", "Pessoas únicas IA", "Pessoas Unicas IA", x=766, y=64),
+            kpi_card("kpi-matriculas-ia", "Matrículas IA", "Matriculas IA", x=16, y=64),
+            kpi_card("kpi-matriculas-dados", "Matrículas Dados", "Matriculas Dados", x=266, y=64),
+            kpi_card("kpi-pessoas-ia", "Pessoas únicas IA", "Pessoas Unicas IA", x=516, y=64),
+            kpi_card("kpi-pessoas-dados", "Pessoas únicas Dados", "Pessoas Unicas Dados", x=766, y=64),
             {
                 "name": "linha-temporal",
-                "title": "Matrículas por mês (IA vs Não IA)",
+                "title": "Matrículas por mês (IA vs Dados)",
                 "visual_type": "lineChart",
                 "position": {"x": 16, "y": 196, "width": 984, "height": 502},
                 "projections": {
                     "Category": [column("ano_mes")],
-                    "Series": [column("ia_label")],
+                    "Series": [column("categoria")],
                     "Y": [measure("Matriculas")],
                 },
                 # Item 1: rótulos de valores ligados.
@@ -378,34 +378,35 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "visuals": [
             textbox("titulo-pagina", "Por Curso",
                     x=16, y=10, width=984, height=50, font_size="22pt"),
+            # Tabela (metade da altura anterior). Selecionar uma linha (curso)
+            # cross-filtra o gráfico de linha abaixo -> histórico temporal do curso.
             {
                 "name": "tabela-cursos",
-                "title": "Detalhe por curso",
+                "title": "Detalhe por curso (selecione um curso para ver o histórico abaixo)",
                 "visual_type": "tableEx",
-                "position": {"x": 16, "y": 64, "width": 580, "height": 634},
+                "position": {"x": 16, "y": 64, "width": 984, "height": 317},
                 "projections": {
                     "Values": [
                         column("nome_curso"),
-                        column("ia_label"),
+                        column("categoria"),
                         measure("Matriculas"),
                         measure("Pessoas Unicas"),
-                        measure("% Matriculas IA"),
                     ],
                 },
             },
+            # Linha: pessoas concluintes ao longo do tempo. Sem seleção mostra o
+            # total (todos os cursos IA+Dados); com um curso selecionado na
+            # tabela, mostra a série temporal daquele curso.
             {
-                "name": "barra-topn-cursos",
-                "title": "Top 10 cursos por matrículas",
-                "visual_type": "barChart",
-                "position": {"x": 612, "y": 64, "width": 388, "height": 634},
+                "name": "linha-concluintes-curso",
+                "title": "Pessoas concluintes ao longo do tempo (do curso selecionado)",
+                "visual_type": "lineChart",
+                "position": {"x": 16, "y": 397, "width": 984, "height": 301},
                 "projections": {
-                    "Category": [column("nome_curso")],
-                    "Y": [measure("Matriculas")],
+                    "Category": [column("ano_mes")],
+                    "Y": [measure("Pessoas Unicas")],
                 },
-                # Item 2: ordena desc + limita ao Top 10.
-                "sort_json": _SORT_MATRICULAS_DESC,
-                "filters": True,
-                "filters_json": _TOPN_CURSOS,
+                "objects_json": _LABELS_ON,
             },
             *filter_panel(),
         ],
@@ -444,17 +445,18 @@ PAGES_SPEC: list[dict[str, Any]] = [
                 "sort_json": _SORT_PESSOAS_DESC,
                 "objects_json": _LABELS_ON,
             },
-            # C — Mix IA × Não-IA por público (100% empilhado).
+            # C — Mix IA × Dados por público (100% empilhado).
             {
                 "name": "barra-mix-ia-publico",
-                "title": "Mix IA × Não-IA por público (%)",
+                "title": "Mix IA × Dados por público (%)",
                 "visual_type": "hundredPercentStackedBarChart",
                 "position": {"x": 16, "y": 380, "width": 484, "height": 318},
                 "projections": {
                     "Category": [column_of(BRIDGE, "publico_alvo")],
-                    "Series": [column("ia_label")],
+                    "Series": [column("categoria")],
                     "Y": [measure("Matriculas")],
                 },
+                "objects_json": _LABELS_ON,
             },
             # D — Evolução mensal de matrículas por público.
             {
@@ -467,6 +469,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                     "Series": [column_of(BRIDGE, "publico_alvo")],
                     "Y": [measure("Matriculas")],
                 },
+                "objects_json": _LABELS_ON,
             },
             *filter_panel(),
         ],
@@ -505,6 +508,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                     "Y": [measure_of(BRIDGE, "Qtd Publicos")],
                 },
                 "sort_json": _SORT_QTD_PUBLICOS_DESC,
+                "objects_json": _LABELS_ON,
             },
             # G — Composição institucional: Público × Poder.
             {
@@ -545,7 +549,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                     "Series": [column_of(DIST, "publico_alvo")],
                     "Y": [measure_of(DIST, "Qtd Pessoas")],
                 },
-                "objects_json": _CAT_AXIS,
+                "objects_json": _CAT_AXIS_LABELS,
             },
             # Tabela resumo: alcance vs conclusão integral por público.
             {
@@ -600,14 +604,15 @@ PAGES_SPEC: list[dict[str, Any]] = [
             },
             {
                 "name": "barra-mix-ia-programa",
-                "title": "Mix IA × Não-IA por programa (%)",
+                "title": "Mix IA × Dados por programa (%)",
                 "visual_type": "hundredPercentStackedBarChart",
                 "position": {"x": 16, "y": 380, "width": 484, "height": 318},
                 "projections": {
                     "Category": [column_of(PROG, "programa")],
-                    "Series": [column("ia_label")],
+                    "Series": [column("categoria")],
                     "Y": [measure("Matriculas")],
                 },
+                "objects_json": _LABELS_ON,
             },
             {
                 "name": "linha-programa-mes",
@@ -619,6 +624,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                     "Series": [column_of(PROG, "programa")],
                     "Y": [measure("Matriculas")],
                 },
+                "objects_json": _LABELS_ON,
             },
             *filter_panel(_DIM_PROGRAMA),
         ],
@@ -630,10 +636,22 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "height": 720,
         "visuals": [
             textbox("titulo-pagina", "Distribuição de cursos por pessoa, por programa",
-                    x=16, y=10, width=1248, height=50, font_size="22pt"),
+                    x=16, y=10, width=900, height=50, font_size="22pt"),
             textbox("nota-pagina",
                     "Retrato sobre todo o histórico (todas as esferas). Não responde aos filtros das outras páginas.",
-                    x=16, y=62, width=1248, height=28, font_size="11pt"),
+                    x=16, y=62, width=900, height=28, font_size="11pt"),
+            # KPI: pessoas que concluíram TODOS os cursos de um programa. Sem
+            # seleção = total (soma entre programas); selecionar um programa na
+            # tabela de resumo ao lado cross-filtra este card para aquele programa.
+            {
+                "name": "kpi-todos-programa",
+                "title": "Concluíram todos os cursos do programa",
+                "visual_type": "card",
+                "position": {"x": 928, "y": 10, "width": 336, "height": 74},
+                "projections": {
+                    "Values": [measure_of(DISTP, "Pessoas Todos do Programa")],
+                },
+            },
             {
                 "name": "histograma-distribuicao-programa",
                 "title": "Pessoas por nº de cursos concluídos (por programa)",
@@ -644,7 +662,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                     "Series": [column_of(DISTP, "programa")],
                     "Y": [measure_of(DISTP, "Pessoas no Programa")],
                 },
-                "objects_json": _CAT_AXIS,
+                "objects_json": _CAT_AXIS_LABELS,
             },
             {
                 "name": "tabela-resumo-programa",
@@ -878,6 +896,7 @@ def main() -> int:
         "lineage": lineage,
         "csv_path_m_literal": csv_literal,
         "pages": PAGES_SPEC,
+        "report_filter_config": _REPORT_FILTER_IA_DADOS,
     }
 
     # Launcher .pbip
