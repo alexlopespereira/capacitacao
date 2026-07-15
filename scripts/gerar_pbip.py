@@ -532,6 +532,12 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "height": 720,
         # Página estática (tabela dist_publico sem relacionamentos): sem painel
         # de filtros, pois não responde aos slicers.
+        # Clicar num público na tabela de resumo FILTRA o histograma (mostra só
+        # as barras daquele público) em vez de apenas destacá-las.
+        "visual_interactions": [
+            {"source": "tabela-resumo-publico",
+             "target": "histograma-distribuicao", "type": "DataFilter"},
+        ],
         "visuals": [
             textbox("titulo-pagina", "Distribuição de cursos por pessoa, por público-alvo",
                     x=16, y=10, width=1248, height=50, font_size="22pt"),
@@ -634,6 +640,14 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "display_name": "Distribuição por Programa",
         "width": 1280,
         "height": 720,
+        # Clicar num programa na tabela FILTRA o histograma e o KPI (mostra só as
+        # barras daquele programa) em vez de apenas destacar/esmaecer as demais.
+        "visual_interactions": [
+            {"source": "tabela-resumo-programa",
+             "target": "histograma-distribuicao-programa", "type": "DataFilter"},
+            {"source": "tabela-resumo-programa",
+             "target": "kpi-todos-programa", "type": "DataFilter"},
+        ],
         "visuals": [
             textbox("titulo-pagina", "Distribuição de cursos por pessoa, por programa",
                     x=16, y=10, width=900, height=50, font_size="22pt"),
