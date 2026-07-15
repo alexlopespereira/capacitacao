@@ -138,7 +138,7 @@ Flags úteis de `gerar_pbip.py`:
 |---|---|---|
 | `--output` | `docs/pbip/capacitacao-ia` | diretório de saída |
 | `--csv-path` | `docs/dashboard_base.csv` | CSV fato a referenciar |
-| `--csv-path-mode` | `relative` | `relative` (ajustar na 1ª abertura) ou `absolute` (caminho resolvido em tempo de geração) |
+| `--csv-path-mode` | `absolute` | `absolute` (caminho resolvido em tempo de geração — recomendado, o Power Query exige caminho absoluto) ou `relative` (ajustar na 1ª abertura) |
 | `--validate` | desligado | valida todos os JSON gerados |
 | `--force` | desligado | sobrescreve `--output` existente |
 | `--dry-run` | desligado | gera em tempdir, valida, descarta — útil em CI |
@@ -152,10 +152,14 @@ Flags úteis de `gerar_pbip.py`:
    Recursos de visualização → marcar **"Salvar como projeto do Power BI
    (.pbip)"** e **"Pasta PBIR para relatórios"** → OK → reiniciar.
 3. **Abrir:** duplo-clique em `docs/pbip/capacitacao-ia/capacitacao-ia.pbip`.
-4. Na **primeira abertura** com `--csv-path-mode relative`, o Power Query
-   pedirá o caminho do parâmetro `CsvPath`. Aponte para o
-   `docs/dashboard_base.csv` (absoluto na sua máquina) → **Aplicar**. Carga
-   leva ~5–15s para 385k linhas.
+4. Com o padrão `--csv-path-mode absolute`, o `CsvPath` já vem com o caminho
+   absoluto resolvido — a carga acontece direto (~5–15s para 385k linhas). Se
+   o repositório **não** estiver em `C:/Projects/capacitacao`, regenere com o
+   caminho da sua máquina: `python scripts/gerar_pbip.py --force`
+   (ou `--csv-path <caminho>/docs/dashboard_base.csv`). Só use
+   `--csv-path-mode relative` se for editar o parâmetro `CsvPath` manualmente
+   na 1ª abertura — caminho relativo faz o Desktop falhar com
+   *"The supplied file path must be a valid absolute path."*
 
 ### O que esperar
 
@@ -163,12 +167,12 @@ Flags úteis de `gerar_pbip.py`:
 |---|---|
 | **1 — Visão Geral** | 4 KPIs (Matrículas IA, Matrículas Dados, Pessoas únicas IA, Pessoas únicas Dados) + linha temporal IA vs Dados + slicers de período e categoria |
 | **2 — Por Grupo** | Matriz Esfera × Poder com Matrículas e Pessoas únicas + slicers de ano, setor, categoria |
-| **3 — Por Curso** | Tabela detalhada dos cursos (com categoria) + barra Top 10 por matrículas + slicer de categoria |
+| **3 — Por Curso** | Tabela detalhada dos cursos (com categoria, meia altura) + gráfico de linha de pessoas concluintes ao longo do tempo — selecionar um curso na tabela cross-filtra a linha (histórico do curso) + slicer de categoria |
 | **4 — Por Público-Alvo** | Ranking de matrículas e de pessoas únicas por público + mix IA×Dados (100%) + evolução mensal por público |
 | **5 — Público × Curso** | Matriz com drill Público→Trilha→Curso + cursos mais transversais (nº de públicos) + matriz Público × Poder |
 | **6 — Distribuição por Público** | Histograma de pessoas por nº de cursos concluídos + tabela resumo (fizeram ≥1, fizeram todos, % e média). Retrato estático — não responde aos slicers |
 | **7 — Por Programa** | Ranking de matrículas e pessoas únicas por programa + mix IA×Dados + evolução mensal (a dimensão Programa é o nível Trilha, curso↔programa m:n) |
-| **8 — Distribuição por Programa** | Histograma de pessoas por nº de cursos do programa + tabela resumo (fizeram ≥1, fizeram todos, % e média). Retrato estático |
+| **8 — Distribuição por Programa** | KPI de pessoas que concluíram **todos** os cursos do programa + histograma de pessoas por nº de cursos do programa + tabela resumo (fizeram ≥1, fizeram todos, % e média). Retrato estático |
 
 > Todas as páginas ganham um slicer de **Público-alvo** no painel de filtros,
 > que cruza com qualquer visual.
@@ -188,9 +192,10 @@ Power BI Desktop é **Windows-only**. Alternativas:
 - **PBIR (visuais como JSON) ainda está em preview** no Desktop. Nomes
   internos de `visualType` podem mudar entre versões; se algum visual não
   carregar, ajustar o `VISUAL_TYPE_MAP` no `gerar_pbip.py`.
-- **Caminho relativo do CSV em M** não é suportado nativamente — daí o
-  parâmetro `CsvPath` (workaround padrão). Para evitar a fricção na
-  primeira abertura, regenerar com `--csv-path-mode absolute`.
+- **Caminho relativo do CSV em M** não é suportado nativamente — o Power Query
+  exige caminho absoluto em `File.Contents`. Por isso o gerador embute o
+  caminho **absoluto** no parâmetro `CsvPath` por padrão (`--csv-path-mode
+  absolute`). Ao mover o repositório de lugar, basta regenerar o PBIP.
 - Cada `git pull` que atualiza `dashboard_base.csv` exige clicar em
   **Atualizar** no Desktop para recarregar.
 
