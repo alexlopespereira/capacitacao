@@ -4,5 +4,15 @@
   "displayName": "{{ page.display_name }}",
   "displayOption": "FitToPage",
   "height": {{ page.height }},
-  "width": {{ page.width }}
+  "width": {{ page.width }}{% if page.visual_interactions %},
+  "visualInteractions": [
+{%- for vi in page.visual_interactions %}
+    {
+      "source": "{{ vi.source }}",
+      "target": "{{ vi.target }}",
+      "type": "{{ vi.type }}"
+    }{% if not loop.last %},{% endif %}
+{%- endfor %}
+  ]
+{%- endif %}
 }

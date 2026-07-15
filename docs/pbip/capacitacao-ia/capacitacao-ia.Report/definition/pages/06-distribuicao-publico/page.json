@@ -4,5 +4,12 @@
   "displayName": "Distribuição por Público",
   "displayOption": "FitToPage",
   "height": 720,
-  "width": 1280
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "tabela-resumo-publico",
+      "target": "histograma-distribuicao",
+      "type": "DataFilter"
+    }
+  ]
 }

@@ -4,5 +4,17 @@
   "displayName": "Distribuição por Programa",
   "displayOption": "FitToPage",
   "height": 720,
-  "width": 1280
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "tabela-resumo-programa",
+      "target": "histograma-distribuicao-programa",
+      "type": "DataFilter"
+    },
+    {
+      "source": "tabela-resumo-programa",
+      "target": "kpi-todos-programa",
+      "type": "DataFilter"
+    }
+  ]
 }
