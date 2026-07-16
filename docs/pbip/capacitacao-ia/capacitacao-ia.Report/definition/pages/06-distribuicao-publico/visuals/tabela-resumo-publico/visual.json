@@ -3,10 +3,10 @@
   "name": "tabela-resumo-publico",
   "position": {
     "x": 852,
-    "y": 92,
+    "y": 120,
     "z": 0,
     "width": 412,
-    "height": 606,
+    "height": 578,
     "tabOrder": 0
   },
   "visual": {

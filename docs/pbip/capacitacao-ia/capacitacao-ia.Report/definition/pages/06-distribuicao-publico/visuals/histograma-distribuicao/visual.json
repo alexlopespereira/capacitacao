@@ -3,10 +3,10 @@
   "name": "histograma-distribuicao",
   "position": {
     "x": 16,
-    "y": 92,
+    "y": 120,
     "z": 0,
     "width": 820,
-    "height": 606,
+    "height": 578,
     "tabOrder": 0
   },
   "visual": {
