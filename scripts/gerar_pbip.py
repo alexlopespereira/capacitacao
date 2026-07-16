@@ -542,14 +542,16 @@ PAGES_SPEC: list[dict[str, Any]] = [
             textbox("titulo-pagina", "Distribuição de cursos por pessoa, por público-alvo",
                     x=16, y=10, width=1248, height=50, font_size="22pt"),
             textbox("nota-pagina",
-                    "Retrato sobre todo o histórico (todas as esferas). Não responde aos filtros das outras páginas.",
-                    x=16, y=62, width=1248, height=28, font_size="11pt"),
+                    "Retrato sobre todo o histórico (todas as esferas); não responde aos filtros das outras páginas. "
+                    "Cada pessoa entra em um único balde, pelo nº exato de cursos que concluiu (não é cumulativo). "
+                    "A última barra são os que concluíram todos os cursos do público.",
+                    x=16, y=62, width=1248, height=54, font_size="11pt"),
             # Histograma: quantas pessoas concluíram quantos cursos de cada público.
             {
                 "name": "histograma-distribuicao",
                 "title": "Pessoas por nº de cursos concluídos (por público)",
                 "visual_type": "clusteredColumnChart",
-                "position": {"x": 16, "y": 92, "width": 820, "height": 606},
+                "position": {"x": 16, "y": 120, "width": 820, "height": 578},
                 "projections": {
                     "Category": [column_of(DIST, "qtd_cursos")],
                     "Series": [column_of(DIST, "publico_alvo")],
@@ -562,7 +564,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                 "name": "tabela-resumo-publico",
                 "title": "Resumo por público",
                 "visual_type": "tableEx",
-                "position": {"x": 852, "y": 92, "width": 412, "height": 606},
+                "position": {"x": 852, "y": 120, "width": 412, "height": 578},
                 "projections": {
                     "Values": [
                         column_of(DIST, "publico_alvo"),
@@ -652,8 +654,10 @@ PAGES_SPEC: list[dict[str, Any]] = [
             textbox("titulo-pagina", "Distribuição de cursos por pessoa, por programa",
                     x=16, y=10, width=900, height=50, font_size="22pt"),
             textbox("nota-pagina",
-                    "Retrato sobre todo o histórico (todas as esferas). Não responde aos filtros das outras páginas.",
-                    x=16, y=62, width=900, height=28, font_size="11pt"),
+                    "Retrato sobre todo o histórico (todas as esferas); não responde aos filtros das outras páginas. "
+                    "Cada pessoa entra em um único balde, pelo nº exato de cursos que concluiu (não é cumulativo). "
+                    "A última barra são os que concluíram o programa inteiro — por isso costuma formar um pico.",
+                    x=16, y=62, width=900, height=54, font_size="11pt"),
             # KPI: pessoas que concluíram TODOS os cursos de um programa. Sem
             # seleção = total (soma entre programas); selecionar um programa na
             # tabela de resumo ao lado cross-filtra este card para aquele programa.
@@ -670,7 +674,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                 "name": "histograma-distribuicao-programa",
                 "title": "Pessoas por nº de cursos concluídos (por programa)",
                 "visual_type": "clusteredColumnChart",
-                "position": {"x": 16, "y": 92, "width": 760, "height": 606},
+                "position": {"x": 16, "y": 120, "width": 760, "height": 578},
                 "projections": {
                     "Category": [column_of(DISTP, "qtd_cursos")],
                     "Series": [column_of(DISTP, "programa")],
@@ -682,7 +686,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                 "name": "tabela-resumo-programa",
                 "title": "Resumo por programa: fizeram ≥1 vs todos os cursos",
                 "visual_type": "tableEx",
-                "position": {"x": 792, "y": 92, "width": 472, "height": 606},
+                "position": {"x": 792, "y": 120, "width": 472, "height": 578},
                 "projections": {
                     "Values": [
                         column_of(DISTP, "programa"),

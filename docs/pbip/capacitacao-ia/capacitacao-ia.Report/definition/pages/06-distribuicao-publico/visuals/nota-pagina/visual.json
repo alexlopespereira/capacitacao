@@ -6,7 +6,7 @@
     "y": 62,
     "z": 0,
     "width": 1248,
-    "height": 28,
+    "height": 54,
     "tabOrder": 0
   },
   "visual": {
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Retrato sobre todo o histórico (todas as esferas). Não responde aos filtros das outras páginas.",
+                    "value": "Retrato sobre todo o histórico (todas as esferas); não responde aos filtros das outras páginas. Cada pessoa entra em um único balde, pelo nº exato de cursos que concluiu (não é cumulativo). A última barra são os que concluíram todos os cursos do público.",
                     "textStyle": {
                       "fontSize": "11pt",
                       "fontWeight": "bold",
