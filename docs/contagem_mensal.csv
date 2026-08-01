@@ -712,8 +712,8 @@ ano_mes,id_curso,tx_nome_curso,count
 2026-05,290,Proteção de Dados Pessoais no Setor Público,677
 2026-05,343,Planejamento da Contratação de Soluções de TIC,26
 2026-05,367,Novas Tecnologias para a Transformação Digital,117
-2026-05,373,Liderança e Gestão De Equipes,434
-2026-05,377,Inteligência Artificial no Contexto do Serviço Público,659
+2026-05,373,Liderança e Gestão De Equipes,435
+2026-05,377,Inteligência Artificial no Contexto do Serviço Público,661
 2026-05,406,Análise de dados como suporte à tomada de decisão,148
 2026-05,419,Transformação Digital no Serviço Público,94
 2026-05,529,"Como implementar a LGPD: bases, mecanismos e processos",270
@@ -726,13 +726,13 @@ ano_mes,id_curso,tx_nome_curso,count
 2026-05,802,Visualização de Dados Aplicada à Transformação Digital,55
 2026-05,810,Desvendando a Inteligência Artificial na Administração Pública,385
 2026-05,815,Storytelling com Dados para Comunicação Profissional de Sucesso,85
-2026-05,861,Inteligência Artificial para simplificar o dia a dia,457
+2026-05,861,Inteligência Artificial para simplificar o dia a dia,458
 2026-05,956,Inovando na Gestão de Projetos,73
 2026-05,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,315
 2026-05,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,80
 2026-05,1088,A História da IA,199
 2026-05,1090,Ética em IA,317
-2026-05,1091,Inteligência Artificial Generativa,554
+2026-05,1091,Inteligência Artificial Generativa,555
 2026-05,1139,Colaboração com o Microsoft 365,176
 2026-05,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,146
 2026-05,1167,IA Generativo da Microsoft - Copilot,263
@@ -741,38 +741,73 @@ ano_mes,id_curso,tx_nome_curso,count
 2026-05,1305,Fundamentos da Visão Computacional - IA do Azure,21
 2026-05,1328,Processamento de Linguagem Natural,12
 2026-05,1395,IA - Aplicações no Governo Federal,313
-2026-06,107,Planejamento Estratégico para Organizações Públicas,38
-2026-06,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,1215
-2026-06,270,Governança de Dados,44
-2026-06,290,Proteção de Dados Pessoais no Setor Público,783
-2026-06,343,Planejamento da Contratação de Soluções de TIC,16
-2026-06,367,Novas Tecnologias para a Transformação Digital,73
-2026-06,373,Liderança e Gestão De Equipes,330
-2026-06,377,Inteligência Artificial no Contexto do Serviço Público,339
-2026-06,406,Análise de dados como suporte à tomada de decisão,58
-2026-06,419,Transformação Digital no Serviço Público,53
-2026-06,529,"Como implementar a LGPD: bases, mecanismos e processos",121
-2026-06,534,Internet das coisas (IoT) aplicada para resolução de desafios,41
-2026-06,536,Governança de Dados na Transformação Digital,42
-2026-06,629,Aprendendo com Python,43
-2026-06,724,Gestão de Riscos em Projetos de Transformação Digital,31
-2026-06,787,Gestão de projetos,38
-2026-06,797,Automação de Processos através da RPA para Transformação Digital,124
-2026-06,802,Visualização de Dados Aplicada à Transformação Digital,29
-2026-06,810,Desvendando a Inteligência Artificial na Administração Pública,171
-2026-06,815,Storytelling com Dados para Comunicação Profissional de Sucesso,68
-2026-06,861,Inteligência Artificial para simplificar o dia a dia,242
-2026-06,956,Inovando na Gestão de Projetos,45
-2026-06,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,202
-2026-06,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,34
-2026-06,1088,A História da IA,121
-2026-06,1090,Ética em IA,264
-2026-06,1091,Inteligência Artificial Generativa,379
-2026-06,1139,Colaboração com o Microsoft 365,65
-2026-06,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,49
-2026-06,1167,IA Generativo da Microsoft - Copilot,173
-2026-06,1263,Governo Data-Driven: transformação orientada por dados em governos,56
+2026-06,107,Planejamento Estratégico para Organizações Públicas,68
+2026-06,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,1462
+2026-06,270,Governança de Dados,76
+2026-06,290,Proteção de Dados Pessoais no Setor Público,970
+2026-06,343,Planejamento da Contratação de Soluções de TIC,22
+2026-06,367,Novas Tecnologias para a Transformação Digital,102
+2026-06,373,Liderança e Gestão De Equipes,485
+2026-06,377,Inteligência Artificial no Contexto do Serviço Público,600
+2026-06,406,Análise de dados como suporte à tomada de decisão,102
+2026-06,419,Transformação Digital no Serviço Público,82
+2026-06,529,"Como implementar a LGPD: bases, mecanismos e processos",196
+2026-06,534,Internet das coisas (IoT) aplicada para resolução de desafios,67
+2026-06,536,Governança de Dados na Transformação Digital,64
+2026-06,629,Aprendendo com Python,66
+2026-06,724,Gestão de Riscos em Projetos de Transformação Digital,37
+2026-06,787,Gestão de projetos,50
+2026-06,797,Automação de Processos através da RPA para Transformação Digital,182
+2026-06,802,Visualização de Dados Aplicada à Transformação Digital,53
+2026-06,810,Desvendando a Inteligência Artificial na Administração Pública,287
+2026-06,815,Storytelling com Dados para Comunicação Profissional de Sucesso,114
+2026-06,861,Inteligência Artificial para simplificar o dia a dia,434
+2026-06,956,Inovando na Gestão de Projetos,64
+2026-06,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,291
+2026-06,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,54
+2026-06,1088,A História da IA,184
+2026-06,1090,Ética em IA,394
+2026-06,1091,Inteligência Artificial Generativa,542
+2026-06,1139,Colaboração com o Microsoft 365,88
+2026-06,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,86
+2026-06,1167,IA Generativo da Microsoft - Copilot,246
+2026-06,1263,Governo Data-Driven: transformação orientada por dados em governos,78
 2026-06,1304,Visão Geral da IA no Azure,11
 2026-06,1305,Fundamentos da Visão Computacional - IA do Azure,13
-2026-06,1328,Processamento de Linguagem Natural,6
-2026-06,1395,IA - Aplicações no Governo Federal,189
+2026-06,1328,Processamento de Linguagem Natural,7
+2026-06,1395,IA - Aplicações no Governo Federal,272
+2026-07,107,Planejamento Estratégico para Organizações Públicas,94
+2026-07,153,Introdução à Lei Brasileira de Proteção de Dados Pessoais,742
+2026-07,270,Governança de Dados,92
+2026-07,290,Proteção de Dados Pessoais no Setor Público,507
+2026-07,343,Planejamento da Contratação de Soluções de TIC,21
+2026-07,367,Novas Tecnologias para a Transformação Digital,136
+2026-07,373,Liderança e Gestão De Equipes,281
+2026-07,377,Inteligência Artificial no Contexto do Serviço Público,432
+2026-07,406,Análise de dados como suporte à tomada de decisão,86
+2026-07,419,Transformação Digital no Serviço Público,83
+2026-07,529,"Como implementar a LGPD: bases, mecanismos e processos",177
+2026-07,534,Internet das coisas (IoT) aplicada para resolução de desafios,50
+2026-07,536,Governança de Dados na Transformação Digital,60
+2026-07,629,Aprendendo com Python,54
+2026-07,724,Gestão de Riscos em Projetos de Transformação Digital,67
+2026-07,787,Gestão de projetos,134
+2026-07,797,Automação de Processos através da RPA para Transformação Digital,153
+2026-07,802,Visualização de Dados Aplicada à Transformação Digital,45
+2026-07,810,Desvendando a Inteligência Artificial na Administração Pública,322
+2026-07,815,Storytelling com Dados para Comunicação Profissional de Sucesso,77
+2026-07,861,Inteligência Artificial para simplificar o dia a dia,315
+2026-07,956,Inovando na Gestão de Projetos,67
+2026-07,976,Introdução à Ciência de Dados - Conceitos e Ferramentas,303
+2026-07,1073,Segurança Cibernética: Controles 1 a 6 do CIS Controls,26
+2026-07,1088,A História da IA,142
+2026-07,1090,Ética em IA,319
+2026-07,1091,Inteligência Artificial Generativa,514
+2026-07,1139,Colaboração com o Microsoft 365,107
+2026-07,1153,Fundamentos da Segurança Cibernética - Introdução ao CIS Controls,54
+2026-07,1167,IA Generativo da Microsoft - Copilot,211
+2026-07,1263,Governo Data-Driven: transformação orientada por dados em governos,35
+2026-07,1304,Visão Geral da IA no Azure,33
+2026-07,1305,Fundamentos da Visão Computacional - IA do Azure,31
+2026-07,1328,Processamento de Linguagem Natural,47
+2026-07,1395,IA - Aplicações no Governo Federal,288
