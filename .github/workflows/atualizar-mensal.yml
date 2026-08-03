@@ -48,13 +48,37 @@ jobs:
       - name: Instalar dependencias
         run: pip install -r scripts/requirements.txt
 
-      - name: Atualizar historico
+      - name: Baixar dump ENAP (uma vez)
+        run: |
+          DUMP="${RUNNER_TEMP}/enap_ultimos12.tar.gz"
+          python - "$DUMP" <<'PY'
+          import sys
+          sys.path.insert(0, "scripts")
+          from atualizar_historico import URL_DEFAULT
+          from urllib.request import urlopen
+          destino = sys.argv[1]
+          print(f"Baixando {URL_DEFAULT}...", flush=True)
+          data = urlopen(URL_DEFAULT, timeout=600).read()
+          with open(destino, "wb") as f:
+              f.write(data)
+          print(f"Download: {len(data) / 1024 / 1024:.1f} MB -> {destino}")
+          PY
+          echo "DUMP=$DUMP" >> "$GITHUB_ENV"
+
+      - name: Atualizar historico e gerar dashboard
         run: |
           ARGS=""
           if [ -n "${{ inputs.ate }}" ]; then
             ARGS="--ate ${{ inputs.ate }}"
           fi
-          python scripts/atualizar_historico.py $ARGS
+          # Historico (tabela pivot + pessoas + index.html)
+          python scripts/atualizar_historico.py --source "$DUMP" $ARGS
+          # Base fato do dashboard (mesma janela; merge idempotente preserva
+          # meses fora do dump). Os 3 geradores seguintes leem docs/dashboard_base.csv.
+          python scripts/gerar_base_dashboard.py --source "$DUMP" $ARGS
+          python scripts/gerar_publico_alvo.py
+          python scripts/gerar_distribuicao_publico.py
+          python scripts/gerar_programa.py
 
       - name: Commit & push se houver mudancas
         id: commit
