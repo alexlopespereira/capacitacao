@@ -28,31 +28,31 @@ table dist_publico
 
 	column publico_alvo
 		dataType: string
-		sourceColumn: publico_alvo
-		summarizeBy: none
 		lineageTag: 89639aff-5c1c-46a4-b559-56fc89789b55
+		summarizeBy: none
+		sourceColumn: publico_alvo
 
 	column qtd_cursos
 		dataType: int64
-		sourceColumn: qtd_cursos
 		formatString: 0
-		summarizeBy: none
 		lineageTag: 5a66ff25-c028-4140-b80e-e3147a91af74
+		summarizeBy: none
+		sourceColumn: qtd_cursos
 
 	column qtd_pessoas
 		dataType: int64
-		sourceColumn: qtd_pessoas
 		formatString: 0
-		summarizeBy: none
 		lineageTag: 8ad367e8-21f8-47c5-95df-fe4ac17f615d
+		summarizeBy: none
+		sourceColumn: qtd_pessoas
 
 	column n_cursos_publico
 		dataType: int64
-		sourceColumn: n_cursos_publico
-		formatString: 0
 		isHidden
-		summarizeBy: none
+		formatString: 0
 		lineageTag: d1ab078b-20b5-44f5-a46b-43f29154c82d
+		summarizeBy: none
+		sourceColumn: n_cursos_publico
 
 	partition dist_publico = m
 		mode: import
@@ -72,3 +72,4 @@ table dist_publico
 					Typed
 
 	annotation PBI_ResultType = Table
+

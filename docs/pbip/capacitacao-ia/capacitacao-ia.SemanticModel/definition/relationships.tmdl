@@ -3,11 +3,12 @@ relationship c05fb1ad-8776-4a27-99ed-8c01b6a209d6
 	toColumn: dim_curso.id_curso
 
 relationship 2008d260-16a4-4948-b1c0-11f671873f18
+	crossFilteringBehavior: bothDirections
 	fromColumn: bridge_publico.id_curso
 	toColumn: dim_curso.id_curso
-	crossFilteringBehavior: bothDirections
 
 relationship 9d4d29e1-4f2a-4e21-8b2c-f1ac65642d25
+	crossFilteringBehavior: bothDirections
 	fromColumn: bridge_programa.id_curso
 	toColumn: dim_curso.id_curso
-	crossFilteringBehavior: bothDirections
+

@@ -28,31 +28,31 @@ table dist_programa
 
 	column programa
 		dataType: string
-		sourceColumn: programa
-		summarizeBy: none
 		lineageTag: 73134b1c-142c-4492-abec-e83761a8f623
+		summarizeBy: none
+		sourceColumn: programa
 
 	column qtd_cursos
 		dataType: int64
-		sourceColumn: qtd_cursos
 		formatString: 0
-		summarizeBy: none
 		lineageTag: 2bcf2e43-6978-4b25-b763-95d041a9786a
+		summarizeBy: none
+		sourceColumn: qtd_cursos
 
 	column qtd_pessoas
 		dataType: int64
-		sourceColumn: qtd_pessoas
 		formatString: 0
-		summarizeBy: none
 		lineageTag: de5ec42c-c78c-45a9-be8e-049d29cbfce4
+		summarizeBy: none
+		sourceColumn: qtd_pessoas
 
 	column n_cursos_programa
 		dataType: int64
-		sourceColumn: n_cursos_programa
-		formatString: 0
 		isHidden
-		summarizeBy: none
+		formatString: 0
 		lineageTag: 084f1e0d-d1ad-4193-89a9-c35d607181a6
+		summarizeBy: none
+		sourceColumn: n_cursos_programa
 
 	partition dist_programa = m
 		mode: import
@@ -72,3 +72,4 @@ table dist_programa
 					Typed
 
 	annotation PBI_ResultType = Table
+

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "tabela-resumo-programa",
   "position": {
     "x": 792,
     "y": 120,
     "z": 0,
-    "width": 472,
     "height": 578,
+    "width": 472,
     "tabOrder": 0
   },
   "visual": {
@@ -18,7 +18,11 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dist_programa"
+                    }
+                  },
                   "Property": "programa"
                 }
               },
@@ -28,7 +32,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dist_programa"
+                    }
+                  },
                   "Property": "Qtd Cursos no Programa"
                 }
               },
@@ -38,7 +46,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dist_programa"
+                    }
+                  },
                   "Property": "Pessoas no Programa"
                 }
               },
@@ -48,7 +60,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dist_programa"
+                    }
+                  },
                   "Property": "Pessoas Todos do Programa"
                 }
               },
@@ -58,7 +74,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dist_programa"
+                    }
+                  },
                   "Property": "% Concluiu Programa"
                 }
               },
@@ -68,7 +88,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dist_programa" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dist_programa"
+                    }
+                  },
                   "Property": "Media Cursos Programa"
                 }
               },
@@ -78,19 +102,120 @@
           ]
         }
       },
-      "sortDefinition": {"sort": [], "isDefaultSort": true}
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
     },
-    "objects": {},
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Resumo por programa: fizeram ≥1 vs todos os cursos'" } } }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Resumo por programa: fizeram ≥1 vs todos os cursos'"
+                }
+              }
+            }
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7e908839ecd757610406",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dist_programa"
+              }
+            },
+            "Property": "programa"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5a17fa51208862e0144e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dist_programa"
+              }
+            },
+            "Property": "Qtd Cursos no Programa"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "44c8a8cc1921bd247064",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dist_programa"
+              }
+            },
+            "Property": "Pessoas no Programa"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8017461e3e60a35eed48",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dist_programa"
+              }
+            },
+            "Property": "Pessoas Todos do Programa"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b6b62ccb4a35d2855120",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dist_programa"
+              }
+            },
+            "Property": "% Concluiu Programa"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1573b6abd995d6ca8879",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dist_programa"
+              }
+            },
+            "Property": "Media Cursos Programa"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

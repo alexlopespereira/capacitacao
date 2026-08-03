@@ -7,28 +7,28 @@ table bridge_programa
 
 	column id_curso
 		dataType: int64
-		sourceColumn: id_curso
 		formatString: 0
-		summarizeBy: none
 		lineageTag: 1e9f62cd-e1f8-4a9a-9b69-5d7af18958fd
+		summarizeBy: none
+		sourceColumn: id_curso
 
 	column nome_curso
 		dataType: string
-		sourceColumn: nome_curso
-		summarizeBy: none
 		lineageTag: 21305109-5a97-496e-9fb6-938be07dbec7
+		summarizeBy: none
+		sourceColumn: nome_curso
 
 	column programa
 		dataType: string
-		sourceColumn: programa
-		summarizeBy: none
 		lineageTag: 3898bfd9-06fe-4abb-88a6-4206c9453a2d
+		summarizeBy: none
+		sourceColumn: programa
 
 	column publico_alvo
 		dataType: string
-		sourceColumn: publico_alvo
-		summarizeBy: none
 		lineageTag: 2aee569d-8064-48ba-a0ac-15eaa04ff003
+		summarizeBy: none
+		sourceColumn: publico_alvo
 
 	partition bridge_programa = m
 		mode: import
@@ -48,3 +48,4 @@ table bridge_programa
 					Typed
 
 	annotation PBI_ResultType = Table
+

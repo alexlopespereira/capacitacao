@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "tabela-resumo-publico",
   "position": {
     "x": 852,
     "y": 120,
     "z": 0,
-    "width": 412,
     "height": 578,
+    "width": 412,
     "tabOrder": 0
   },
   "visual": {
@@ -18,7 +18,11 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dist_publico"
+                    }
+                  },
                   "Property": "publico_alvo"
                 }
               },
@@ -28,7 +32,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dist_publico"
+                    }
+                  },
                   "Property": "Qtd Cursos no Publico"
                 }
               },
@@ -38,7 +46,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dist_publico"
+                    }
+                  },
                   "Property": "Qtd Pessoas"
                 }
               },
@@ -48,7 +60,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dist_publico"
+                    }
+                  },
                   "Property": "Pessoas com Todos os Cursos"
                 }
               },
@@ -58,7 +74,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dist_publico"
+                    }
+                  },
                   "Property": "% Concluiu Tudo"
                 }
               },
@@ -68,7 +88,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dist_publico" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dist_publico"
+                    }
+                  },
                   "Property": "Media Cursos por Pessoa"
                 }
               },
@@ -78,19 +102,32 @@
           ]
         }
       },
-      "sortDefinition": {"sort": [], "isDefaultSort": true}
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
     },
-    "objects": {},
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Resumo por público'" } } }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Resumo por público'"
+                }
+              }
+            }
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

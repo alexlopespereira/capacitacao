@@ -1,43 +1,53 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "matriz-publico-poder",
   "position": {
     "x": 628,
     "y": 388,
     "z": 0,
-    "width": 372,
     "height": 310,
+    "width": 372,
     "tabOrder": 0
   },
   "visual": {
     "visualType": "pivotTable",
     "query": {
       "queryState": {
-        "Rows": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": { "SourceRef": { "Entity": "bridge_publico" } },
-                  "Property": "publico_alvo"
-                }
-              },
-              "queryRef": "bridge_publico.publico_alvo",
-              "nativeQueryRef": "publico_alvo"
-            }
-          ]
-        },
         "Columns": {
           "projections": [
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_base"
+                    }
+                  },
                   "Property": "poder"
                 }
               },
               "queryRef": "dashboard_base.poder",
-              "nativeQueryRef": "poder"
+              "nativeQueryRef": "poder",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "bridge_publico"
+                    }
+                  },
+                  "Property": "publico_alvo"
+                }
+              },
+              "queryRef": "bridge_publico.publico_alvo",
+              "nativeQueryRef": "publico_alvo",
+              "active": true
             }
           ]
         },
@@ -46,7 +56,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_base"
+                    }
+                  },
                   "Property": "Matriculas"
                 }
               },
@@ -56,19 +70,32 @@
           ]
         }
       },
-      "sortDefinition": {"sort": [], "isDefaultSort": true}
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
     },
-    "objects": {},
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Matrículas por público e poder'" } } }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Matrículas por público e poder'"
+                }
+              }
+            }
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

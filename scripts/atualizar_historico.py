@@ -143,6 +143,21 @@ def extrair_ano_mes(nome_logico: str) -> str | None:
     return f"{m.group(1)}-{m.group(2)}"
 
 
+def _set_csv_field_size_limit() -> None:
+    """Maior field_size_limit suportado pela plataforma.
+
+    No Python do Windows o C long e 32-bit, entao sys.maxsize (2^63-1)
+    estoura em csv.field_size_limit. Reduz ate caber.
+    """
+    limite = sys.maxsize
+    while True:
+        try:
+            csv.field_size_limit(limite)
+            return
+        except OverflowError:
+            limite //= 10
+
+
 def processar_csv(
     stream: io.TextIOBase, mapa_alvos: dict[str, tuple[int, str]]
 ) -> tuple[dict[tuple[str, int, str], int], set[tuple[str, str]]]:
@@ -152,7 +167,7 @@ def processar_csv(
     - contagem: {(ano_mes, id_curso, nome): n_matriculas}
     - pessoas: set[(ano_mes, codigo_pessoa)]
     """
-    csv.field_size_limit(sys.maxsize)
+    _set_csv_field_size_limit()
     reader = csv.DictReader(stream, delimiter="|")
     contagem: dict[tuple[str, int, str], int] = {}
     pessoas: set[tuple[str, str]] = set()

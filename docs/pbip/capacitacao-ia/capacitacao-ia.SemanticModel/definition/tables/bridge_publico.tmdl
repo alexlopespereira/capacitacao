@@ -11,28 +11,28 @@ table bridge_publico
 
 	column id_curso
 		dataType: int64
-		sourceColumn: id_curso
 		formatString: 0
-		summarizeBy: none
 		lineageTag: 51739e2c-e34a-41f0-964f-5dc11f27d173
+		summarizeBy: none
+		sourceColumn: id_curso
 
 	column nome_curso
 		dataType: string
-		sourceColumn: nome_curso
-		summarizeBy: none
 		lineageTag: 03641cf1-cb5e-48ff-9193-a221c5cc28ea
+		summarizeBy: none
+		sourceColumn: nome_curso
 
 	column publico_alvo
 		dataType: string
-		sourceColumn: publico_alvo
-		summarizeBy: none
 		lineageTag: 63fa1fd4-600c-401f-a59a-2a6f6fa9ac28
+		summarizeBy: none
+		sourceColumn: publico_alvo
 
 	column programa_trilha
 		dataType: string
-		sourceColumn: programa_trilha
-		summarizeBy: none
 		lineageTag: 78045730-6c63-423b-a5d0-5e9cdf2e66c0
+		summarizeBy: none
+		sourceColumn: programa_trilha
 
 	partition bridge_publico = m
 		mode: import
@@ -52,3 +52,4 @@ table bridge_publico
 					Typed
 
 	annotation PBI_ResultType = Table
+
