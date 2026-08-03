@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "matriz-publico-curso",
   "position": {
     "x": 16,
     "y": 64,
     "z": 0,
-    "width": 600,
     "height": 634,
+    "width": 600,
     "tabOrder": 0
   },
   "visual": {
@@ -18,32 +18,47 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "bridge_publico" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "bridge_publico"
+                    }
+                  },
                   "Property": "publico_alvo"
                 }
               },
               "queryRef": "bridge_publico.publico_alvo",
-              "nativeQueryRef": "publico_alvo"
+              "nativeQueryRef": "publico_alvo",
+              "active": true
             },
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "bridge_publico" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "bridge_publico"
+                    }
+                  },
                   "Property": "programa_trilha"
                 }
               },
               "queryRef": "bridge_publico.programa_trilha",
-              "nativeQueryRef": "programa_trilha"
+              "nativeQueryRef": "programa_trilha",
+              "active": false
             },
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "bridge_publico" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "bridge_publico"
+                    }
+                  },
                   "Property": "nome_curso"
                 }
               },
               "queryRef": "bridge_publico.nome_curso",
-              "nativeQueryRef": "nome_curso"
+              "nativeQueryRef": "nome_curso",
+              "active": false
             }
           ]
         },
@@ -52,7 +67,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_base"
+                    }
+                  },
                   "Property": "Matriculas"
                 }
               },
@@ -62,7 +81,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_base"
+                    }
+                  },
                   "Property": "Pessoas Unicas"
                 }
               },
@@ -72,19 +95,32 @@
           ]
         }
       },
-      "sortDefinition": {"sort": [], "isDefaultSort": true}
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
     },
-    "objects": {},
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Matrículas por público, trilha e curso'" } } }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Matrículas por público, trilha e curso'"
+                }
+              }
+            }
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

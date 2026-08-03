@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "barra-matriculas-publico",
   "position": {
     "x": 16,
     "y": 64,
     "z": 0,
-    "width": 484,
     "height": 300,
+    "width": 484,
     "tabOrder": 0
   },
   "visual": {
@@ -18,12 +18,17 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "bridge_publico" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "bridge_publico"
+                    }
+                  },
                   "Property": "publico_alvo"
                 }
               },
               "queryRef": "bridge_publico.publico_alvo",
-              "nativeQueryRef": "publico_alvo"
+              "nativeQueryRef": "publico_alvo",
+              "active": true
             }
           ]
         },
@@ -32,7 +37,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_base"
+                    }
+                  },
                   "Property": "Matriculas"
                 }
               },
@@ -42,19 +51,61 @@
           ]
         }
       },
-      "sortDefinition": {"sort": [{"field": {"Measure": {"Expression": {"SourceRef": {"Entity": "dashboard_base"}}, "Property": "Matriculas"}}, "direction": "Descending"}], "isDefaultSort": false}
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dashboard_base"
+                  }
+                },
+                "Property": "Matriculas"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
     },
-    "objects": {"labels": [{"properties": {"show": {"expr": {"Literal": {"Value": "true"}}}}}]},
-    "drillFilterOtherVisuals": true,
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Matrículas por público-alvo'" } } }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Matrículas por público-alvo'"
+                }
+              }
+            }
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

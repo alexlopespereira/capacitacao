@@ -8,22 +8,22 @@ table dim_curso
 	column id_curso
 		dataType: int64
 		isKey
-		sourceColumn: id_curso
 		formatString: 0
-		summarizeBy: none
 		lineageTag: e5bd5276-b284-4d9a-9588-f88106304a0b
+		summarizeBy: none
+		sourceColumn: id_curso
 
 	column nome_curso
 		dataType: string
-		sourceColumn: nome_curso
-		summarizeBy: none
 		lineageTag: e935f3e2-66b2-46ad-9a11-54edc1aba998
+		summarizeBy: none
+		sourceColumn: nome_curso
 
 	column categoria
 		dataType: string
-		sourceColumn: categoria
-		summarizeBy: none
 		lineageTag: ee75cd81-e7af-4099-ad91-a437389a012f
+		summarizeBy: none
+		sourceColumn: categoria
 
 	partition dim_curso = m
 		mode: import
@@ -35,3 +35,4 @@ table dim_curso
 					Cursos
 
 	annotation PBI_ResultType = Table
+

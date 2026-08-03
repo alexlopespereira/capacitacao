@@ -6,7 +6,7 @@ table dashboard_base
 	/// O relatorio aplica um filtro de nivel de relatorio categoria IN {"IA","Dados"},
 	/// entao [Matriculas]/[Pessoas Unicas] "totais" ja excluem Gestao/Outros: sao o
 	/// universo do painel de capacitacao em IA e Dados.
-	measure 'Matriculas' = COUNTROWS(dashboard_base)
+	measure Matriculas = COUNTROWS(dashboard_base)
 		formatString: #,0
 		lineageTag: aaec4cc1-1333-4265-859a-8a9291b074c2
 
@@ -40,78 +40,78 @@ table dashboard_base
 
 	column ano_mes
 		dataType: string
+		lineageTag: c9223556-3433-4571-85b9-77d8b8fa94c2
+		summarizeBy: none
 		sourceColumn: ano_mes
 		sortByColumn: ano_mes_sort
-		summarizeBy: none
-		lineageTag: c9223556-3433-4571-85b9-77d8b8fa94c2
 
 	column ano
 		dataType: int64
-		sourceColumn: ano
 		formatString: 0
-		summarizeBy: none
 		lineageTag: 7ec13e53-b02b-428d-8513-aff3edd5a308
+		summarizeBy: none
+		sourceColumn: ano
 
 	column mes
 		dataType: int64
-		sourceColumn: mes
 		formatString: 0
-		summarizeBy: none
 		lineageTag: b02f752d-fdce-4d29-87d0-326c2c48e406
+		summarizeBy: none
+		sourceColumn: mes
 
 	column id_curso
 		dataType: int64
-		sourceColumn: id_curso
 		formatString: 0
-		summarizeBy: none
 		lineageTag: 19a11d26-3fc1-4166-94e5-2d108670520f
+		summarizeBy: none
+		sourceColumn: id_curso
 
 	column nome_curso
 		dataType: string
-		sourceColumn: nome_curso
-		summarizeBy: none
 		lineageTag: ab3d2b75-1b3c-4ec6-a0ca-e8c87ddfd397
+		summarizeBy: none
+		sourceColumn: nome_curso
 
 	/// Categoria do curso: IA / Dados / Gestão / Outros. O painel conta IA+Dados;
 	/// Gestão e Outros ficam na base (auditaveis) mas fora dos indicadores.
 	column categoria
 		dataType: string
-		sourceColumn: categoria
-		summarizeBy: none
 		lineageTag: 7f66c5ef-5325-4313-91fb-f98b3320de4d
+		summarizeBy: none
+		sourceColumn: categoria
 
 	column esfera
 		dataType: string
-		sourceColumn: esfera
-		summarizeBy: none
 		lineageTag: 710b7ae4-fc26-4619-af5c-ce5734fc3d30
+		summarizeBy: none
+		sourceColumn: esfera
 
 	column setor
 		dataType: string
-		sourceColumn: setor
-		summarizeBy: none
 		lineageTag: 85366ba0-f1cc-4d76-ac5a-91ed19552ad5
+		summarizeBy: none
+		sourceColumn: setor
 
 	column poder
 		dataType: string
-		sourceColumn: poder
-		summarizeBy: none
 		lineageTag: 85058cd5-b75a-4abd-922c-bbecdea60d2c
+		summarizeBy: none
+		sourceColumn: poder
 
 	column codigo_pessoa
 		dataType: string
-		sourceColumn: codigo_pessoa
 		isHidden
-		summarizeBy: none
 		lineageTag: f215d4b6-62c8-4091-a389-039253c30c18
+		summarizeBy: none
+		sourceColumn: codigo_pessoa
 
 	/// Coluna calculada para ordenacao cronologica do eixo de linha temporal.
 	column ano_mes_sort = ([ano] * 100) + [mes]
 		dataType: int64
-		formatString: 0
 		isHidden
-		summarizeBy: none
+		formatString: 0
 		lineageTag: 3936d047-2a9b-4527-be0d-386c9249efcd
+		summarizeBy: none
 
 	partition dashboard_base = m
 		mode: import
@@ -135,3 +135,4 @@ table dashboard_base
 					Typed
 
 	annotation PBI_ResultType = Table
+

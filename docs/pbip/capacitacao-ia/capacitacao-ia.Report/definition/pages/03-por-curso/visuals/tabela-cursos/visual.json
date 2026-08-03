@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "tabela-cursos",
   "position": {
     "x": 16,
     "y": 64,
     "z": 0,
-    "width": 984,
     "height": 317,
+    "width": 984,
     "tabOrder": 0
   },
   "visual": {
@@ -18,7 +18,11 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_base"
+                    }
+                  },
                   "Property": "nome_curso"
                 }
               },
@@ -28,7 +32,11 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_base"
+                    }
+                  },
                   "Property": "categoria"
                 }
               },
@@ -38,7 +46,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_base"
+                    }
+                  },
                   "Property": "Matriculas"
                 }
               },
@@ -48,7 +60,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_base"
+                    }
+                  },
                   "Property": "Pessoas Unicas"
                 }
               },
@@ -58,19 +74,32 @@
           ]
         }
       },
-      "sortDefinition": {"sort": [], "isDefaultSort": true}
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
     },
-    "objects": {},
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Detalhe por curso (selecione um curso para ver o histórico abaixo)'" } } }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Detalhe por curso (selecione um curso para ver o histórico abaixo)'"
+                }
+              }
+            }
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

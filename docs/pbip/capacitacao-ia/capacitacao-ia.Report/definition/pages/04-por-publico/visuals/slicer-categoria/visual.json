@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "slicer-categoria",
   "position": {
     "x": 1016,
     "y": 452,
     "z": 0,
-    "width": 248,
     "height": 104,
+    "width": 248,
     "tabOrder": 0
   },
   "visual": {
@@ -18,29 +18,62 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "dashboard_base" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_base"
+                    }
+                  },
                   "Property": "categoria"
                 }
               },
               "queryRef": "dashboard_base.categoria",
-              "nativeQueryRef": "categoria"
+              "nativeQueryRef": "categoria",
+              "active": true
             }
           ]
         }
       },
-      "sortDefinition": {"sort": [], "isDefaultSort": true}
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
     },
-    "objects": {"data": [{"properties": {"mode": {"expr": {"Literal": {"Value": "'Dropdown'"}}}}}]},
-    "drillFilterOtherVisuals": true,
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Categoria (IA / Dados)'" } } }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Categoria (IA / Dados)'"
+                }
+              }
+            }
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

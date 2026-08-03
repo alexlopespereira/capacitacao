@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "slicer-publico",
   "position": {
     "x": 1016,
     "y": 12,
     "z": 0,
-    "width": 248,
     "height": 104,
+    "width": 248,
     "tabOrder": 0
   },
   "visual": {
@@ -18,29 +18,62 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "bridge_publico" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "bridge_publico"
+                    }
+                  },
                   "Property": "publico_alvo"
                 }
               },
               "queryRef": "bridge_publico.publico_alvo",
-              "nativeQueryRef": "publico_alvo"
+              "nativeQueryRef": "publico_alvo",
+              "active": true
             }
           ]
         }
       },
-      "sortDefinition": {"sort": [], "isDefaultSort": true}
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
     },
-    "objects": {"data": [{"properties": {"mode": {"expr": {"Literal": {"Value": "'Dropdown'"}}}}}]},
-    "drillFilterOtherVisuals": true,
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Público-alvo'" } } }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Público-alvo'"
+                }
+              }
+            }
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

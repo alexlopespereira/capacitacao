@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "barra-cursos-transversais",
   "position": {
     "x": 628,
     "y": 64,
     "z": 0,
-    "width": 372,
     "height": 310,
+    "width": 372,
     "tabOrder": 0
   },
   "visual": {
@@ -18,12 +18,17 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "bridge_publico" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "bridge_publico"
+                    }
+                  },
                   "Property": "nome_curso"
                 }
               },
               "queryRef": "bridge_publico.nome_curso",
-              "nativeQueryRef": "nome_curso"
+              "nativeQueryRef": "nome_curso",
+              "active": true
             }
           ]
         },
@@ -32,7 +37,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "bridge_publico" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "bridge_publico"
+                    }
+                  },
                   "Property": "Qtd Publicos"
                 }
               },
@@ -42,19 +51,61 @@
           ]
         }
       },
-      "sortDefinition": {"sort": [{"field": {"Measure": {"Expression": {"SourceRef": {"Entity": "bridge_publico"}}, "Property": "Qtd Publicos"}}, "direction": "Descending"}], "isDefaultSort": false}
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "bridge_publico"
+                  }
+                },
+                "Property": "Qtd Publicos"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
     },
-    "objects": {"labels": [{"properties": {"show": {"expr": {"Literal": {"Value": "true"}}}}}]},
-    "drillFilterOtherVisuals": true,
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
-            "show": { "expr": { "Literal": { "Value": "true" } } },
-            "text": { "expr": { "Literal": { "Value": "'Cursos mais transversais (nº de públicos)'" } } }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Cursos mais transversais (nº de públicos)'"
+                }
+              }
+            }
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }
