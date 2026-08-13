@@ -7,28 +7,28 @@ table bridge_programa
 
 	column id_curso
 		dataType: int64
-		sourceColumn: id_curso
 		formatString: 0
-		summarizeBy: none
 		lineageTag: {{ lineage.column_progbridge_id_curso }}
+		summarizeBy: none
+		sourceColumn: id_curso
 
 	column nome_curso
 		dataType: string
-		sourceColumn: nome_curso
-		summarizeBy: none
 		lineageTag: {{ lineage.column_progbridge_nome_curso }}
+		summarizeBy: none
+		sourceColumn: nome_curso
 
 	column programa
 		dataType: string
-		sourceColumn: programa
-		summarizeBy: none
 		lineageTag: {{ lineage.column_progbridge_programa }}
+		summarizeBy: none
+		sourceColumn: programa
 
 	column publico_alvo
 		dataType: string
-		sourceColumn: publico_alvo
-		summarizeBy: none
 		lineageTag: {{ lineage.column_progbridge_publico_alvo }}
+		summarizeBy: none
+		sourceColumn: publico_alvo
 
 	partition bridge_programa = m
 		mode: import

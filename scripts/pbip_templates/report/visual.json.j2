@@ -1,3 +1,8 @@
+{#- Ordem de chaves e campos ("active", sortDefinition, drillFilterOtherVisuals
+    depois de visualContainerObjects) seguem o que o Power BI Desktop grava, para
+    que regenerar o PBIP nao produza diff sobre um projeto salvo pelo Desktop.
+    Textbox nao tem query: o Desktop nao o reserializa e ele fica no schema 1.0.0. -#}
+{%- if visual.visual_type == "textbox" %}
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
   "name": "{{ visual.name }}",
@@ -9,7 +14,6 @@
     "height": {{ visual.position.height }},
     "tabOrder": {{ visual.tab_order | default(0) }}
   },
-{%- if visual.visual_type == "textbox" %}
   "visual": {
     "visualType": "textbox",
     "objects": {
@@ -20,7 +24,9 @@
               {
                 "textRuns": [
                   {
-                    "value": "{{ visual.text }}",
+                    {#- tojson escapa aspas do texto: as notas sao montadas a
+                        partir dos CSVs curados, entao o conteudo varia. -#}
+                    "value": {{ visual.text | tojson }},
                     "textStyle": {
                       "fontSize": "{{ visual.font_size | default('20pt') }}",
                       "fontWeight": "bold",
@@ -38,11 +44,26 @@
   }
 }
 {%- else %}
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "{{ visual.name }}",
+  "position": {
+    "x": {{ visual.position.x }},
+    "y": {{ visual.position.y }},
+    "z": {{ visual.position.z | default(0) }},
+    "height": {{ visual.position.height }},
+    "width": {{ visual.position.width }},
+    "tabOrder": {{ visual.tab_order | default(0) }}
+  },
   "visual": {
     "visualType": "{{ visual.visual_type }}",
     "query": {
       "queryState": {
 {%- for role_name, projections in visual.projections.items() %}
+{#- Papeis categoricos (e o Values do slicer) carregam a flag "active": o
+    primeiro campo do papel e o ativo, os demais sao niveis de drill. -#}
+{%- set marca_ativo = role_name in ("Category", "Rows", "Columns")
+                      or (role_name == "Values" and visual.visual_type == "slicer") %}
         "{{ role_name }}": {
           "projections": [
 {%- for proj in projections %}
@@ -62,16 +83,21 @@
               },
               "queryRef": "{{ proj.query_ref }}",
               "nativeQueryRef": "{{ proj.native_query_ref }}"
+{%- if marca_ativo %},
+              "active": {{ "true" if loop.first else "false" }}
+{%- endif %}
             }{% if not loop.last %},{% endif %}
 {%- endfor %}
           ]
         }{% if not loop.last %},{% endif %}
 {%- endfor %}
       },
-      "sortDefinition": {{ visual.sort_json | default('{"sort": [], "isDefaultSort": true}') }}
+      "sortDefinition": {{ visual.sort_json | default('{"isDefaultSort": true}') }}
     },
-    "objects": {{ visual.objects_json | default('{}') }},
-    "drillFilterOtherVisuals": true{% if visual.title %},
+{%- if visual.objects_json %}
+    "objects": {{ visual.objects_json }},
+{%- endif %}
+{%- if visual.title %}
     "visualContainerObjects": {
       "title": [
         {
@@ -81,8 +107,9 @@
           }
         }
       ]
-    }
+    },
 {%- endif %}
+    "drillFilterOtherVisuals": true
   }
 {%- if visual.filters %},
   "filterConfig": {

@@ -19,7 +19,9 @@ Detalhes em README.md (seção "Power BI Desktop (.pbip)").
 from __future__ import annotations
 
 import argparse
+import csv
 import json
+import re
 import shutil
 import sys
 import tempfile
@@ -41,7 +43,14 @@ TEMPLATES_DIR = Path(__file__).resolve().parent / "pbip_templates"
 LINEAGE_FILE = TEMPLATES_DIR / ".lineage.json"
 DEFAULT_OUTPUT = REPO_ROOT / "docs" / "pbip" / "capacitacao-ia"
 DEFAULT_CSV = REPO_ROOT / "docs" / "dashboard_base.csv"
+ALVO_CSV = REPO_ROOT / "scripts" / "cursos_alvo.csv"
+PROGRAMA_CSV = REPO_ROOT / "scripts" / "cursos_programa.csv"
 PROJECT_NAME = "capacitacao-ia"
+
+# Recorte do painel: o filtro de relatorio `categoria IN {IA, Dados}` e o mesmo
+# que os geradores de distribuicao aplicam. Manter as tres listas em sincronia.
+CATEGORIAS_PAINEL = {"IA", "Dados"}
+FORA_DE_PROGRAMA = "(fora de programa)"
 ENTITY = "dashboard_base"
 BRIDGE = "bridge_publico"
 DIMC = "dim_curso"
@@ -54,14 +63,14 @@ DISTP = "dist_programa"
 LINEAGE_KEYS: tuple[str, ...] = (
     "expression_csv_path",
     "table_dashboard_base",
-    "measure_matriculas",
-    "measure_matriculas_ia",
-    "measure_matriculas_dados",
+    "measure_conclusoes",
+    "measure_conclusoes_ia",
+    "measure_conclusoes_dados",
     "measure_pessoas_unicas",
     "measure_pessoas_unicas_ia",
     "measure_pessoas_unicas_dados",
-    "measure_pct_matriculas_ia",
-    "measure_pct_matriculas_dados",
+    "measure_pct_conclusoes_ia",
+    "measure_pct_conclusoes_dados",
     "column_ano_mes",
     "column_ano",
     "column_mes",
@@ -236,40 +245,34 @@ _LABELS_ON = json.dumps(
     {"labels": [{"properties": {"show": {"expr": {"Literal": {"Value": "true"}}}}}]}
 )
 
-# Item 2: ordenação decrescente por [Matriculas].
-_SORT_MATRICULAS_DESC = json.dumps({
-    "sort": [{
-        "field": {"Measure": {
-            "Expression": {"SourceRef": {"Entity": ENTITY}},
-            "Property": "Matriculas",
-        }},
-        "direction": "Descending",
-    }],
-    "isDefaultSort": False,
-})
+def sort_desc(entity: str, measure_name: str) -> str:
+    """Ordenação decrescente por uma medida — "barras ordenadas por tamanho"."""
+    return json.dumps({
+        "sort": [{
+            "field": {"Measure": {
+                "Expression": {"SourceRef": {"Entity": entity}},
+                "Property": measure_name,
+            }},
+            "direction": "Descending",
+        }],
+    })
 
-# Ordenação decrescente por [Pessoas Unicas] (página Público-alvo).
-_SORT_PESSOAS_DESC = json.dumps({
-    "sort": [{
-        "field": {"Measure": {
-            "Expression": {"SourceRef": {"Entity": ENTITY}},
-            "Property": "Pessoas Unicas",
-        }},
-        "direction": "Descending",
-    }],
-    "isDefaultSort": False,
-})
 
+# Item 2: ordenação decrescente por [Pessoas Unicas] (ranking das páginas de
+# público e de programa — cada barra é gente, não soma de conclusões).
+_SORT_PESSOAS_DESC = sort_desc(ENTITY, "Pessoas Unicas")
 # Ordenação decrescente por [Qtd Publicos] (cursos mais transversais).
-_SORT_QTD_PUBLICOS_DESC = json.dumps({
-    "sort": [{
-        "field": {"Measure": {
-            "Expression": {"SourceRef": {"Entity": BRIDGE}},
-            "Property": "Qtd Publicos",
-        }},
-        "direction": "Descending",
-    }],
-    "isDefaultSort": False,
+_SORT_QTD_PUBLICOS_DESC = sort_desc(BRIDGE, "Qtd Publicos")
+# Tabelas de resumo das páginas de distribuição, maior primeiro.
+_SORT_DIST_PESSOAS_DESC = sort_desc(DIST, "Qtd Pessoas")
+_SORT_DISTPROG_PESSOAS_DESC = sort_desc(DISTP, "Pessoas no Programa")
+
+# Tabela sem linha de "Total": somar as fatias contaria a mesma pessoa em cada
+# público/programa que contém um curso que ela concluiu. As medidas de
+# dist_publico/dist_programa já retornam BLANK fora do contexto de uma fatia
+# (ver os .tmdl); desligar o total aqui evita até a linha vazia.
+_TABLE_NO_TOTALS = json.dumps({
+    "total": [{"properties": {"totals": {"expr": {"Literal": {"Value": "false"}}}}}]
 })
 
 # Eixo X categórico (histograma): força barras discretas por nº de cursos em vez
@@ -286,8 +289,12 @@ _CAT_AXIS_LABELS = json.dumps({
 # Filtro de nível de relatório: o painel de capacitação conta apenas IA e Dados.
 # Cursos de Gestão/Outros seguem na tabela fato (auditáveis) mas são removidos de
 # todos os visuais/slicers ligados ao fato — é o que torna os indicadores "mais
-# precisos" sem apagar dados. Não afeta as páginas de Distribuição (tabelas
-# dist_publico/dist_programa, sem relação com o fato).
+# precisos" sem apagar dados. As páginas de Distribuição (tabelas
+# dist_publico/dist_programa) não têm relação com o fato e não são alcançadas
+# por este filtro: elas são pré-filtradas pelo mesmo recorte no gerador
+# (scripts/gerar_distribuicao_publico.py e scripts/gerar_programa.py), porque o
+# grão pré-agregado (fatia, k) não tem chave de curso onde o filtro pudesse
+# entrar sem mudar o k de cada pessoa.
 _REPORT_FILTER_IA_DADOS = json.dumps({
     "filters": [{
         "name": "filtro-categoria-painel",
@@ -313,6 +320,84 @@ _REPORT_FILTER_IA_DADOS = json.dumps({
 })
 
 
+# --- Fatias que não somam: nota e total de referência -----------------------
+#
+# Um curso pertence a vários públicos e a vários programas (m:n — "Ética em IA"
+# está em 8 dos 11 programas), então a mesma pessoa entra em cada fatia que
+# contenha um curso que ela concluiu. Somar as barras conta gente repetida.
+# O painel trata isso na apresentação, não na atribuição:
+#   - cada barra conta PESSOAS DISTINTAS ("concluíram ≥1 curso desta fatia");
+#   - nenhuma soma de fatias é exibida (sem total, sem % do total, sem pizza);
+#   - o número único de referência fica num cartão à parte, separado das barras.
+
+def total_referencia(x: int, y: int, width: int = 328, height: int = 64) -> dict[str, Any]:
+    """Cartão com o total verdadeiro do painel — em pessoas, não em fatias."""
+    return kpi_card(
+        "kpi-pessoas-painel",
+        "Pessoas distintas no painel (concluíram ≥1 curso de IA ou Dados)",
+        "Pessoas Unicas", x=x, y=y, width=width, height=height,
+    )
+
+
+def nota_fatias(fatia: str, x: int, y: int, width: int, height: int = 44) -> dict[str, Any]:
+    return textbox(
+        "nota-pagina",
+        f"Um curso pertence a vários {fatia}s, então a mesma pessoa é contada em "
+        f"cada {fatia} que contenha um curso que ela concluiu: as barras NÃO somam "
+        f"ao total do painel — somá-las conta gente repetida. O total verdadeiro "
+        f"está no cartão acima.",
+        x=x, y=y, width=width, height=height, font_size="11pt",
+    )
+
+
+def cursos_sem_programa() -> tuple[list[str], list[str]]:
+    """Cursos da meta que não pertencem a nenhum programa, separados por escopo.
+
+    Devolve (dentro do painel, fora do painel). Os de dentro viram a fatia
+    "(fora de programa)" nas tabelas de distribuição — o gerador delas não
+    descarta mais esse balde. Os de fora do painel não têm fatia (contá-los
+    quebraria o recorte de categoria), então são **nomeados na nota**: some do
+    painel em silêncio é exatamente o que se está corrigindo.
+    """
+    with open(ALVO_CSV, encoding="utf-8") as f:
+        alvo = {r["id_curso"]: (r["tx_nome_curso"], r["categoria"])
+                for r in csv.DictReader(f)}
+    with open(PROGRAMA_CSV, encoding="utf-8") as f:
+        com_programa = {r["id_curso"] for r in csv.DictReader(f)}
+    dentro, fora = [], []
+    for cid, (nome, categoria) in sorted(alvo.items(), key=lambda kv: kv[1][0]):
+        if cid in com_programa:
+            continue
+        (dentro if categoria in CATEGORIAS_PAINEL else fora).append(
+            nome if categoria in CATEGORIAS_PAINEL else f"{nome} ({categoria})"
+        )
+    return dentro, fora
+
+
+def nota_distribuicao(fatia: str, x: int, y: int, width: int,
+                      height: int = 78) -> dict[str, Any]:
+    dentro, fora = cursos_sem_programa()
+    if dentro:
+        avulso = (f"Curso da meta que não pertence a nenhum programa aparece na "
+                  f"fatia \"{FORA_DE_PROGRAMA}\": {', '.join(dentro)}. ")
+    elif fora:
+        avulso = (f"Nenhum curso de IA/Dados está fora de programa; fora do painel "
+                  f"há {', '.join(fora)}, sem programa e sem fatia aqui. ")
+    else:
+        avulso = ""
+    return textbox(
+        "nota-pagina",
+        f"Retrato sobre todo o histórico (todas as esferas); não responde aos "
+        f"filtros das outras páginas. Conta o mesmo conjunto de cursos que o resto "
+        f"do painel (categorias IA e Dados); cursos de Gestão e Outros ficam de fora. "
+        f"{avulso}"
+        f"Cada pessoa entra num único balde, pelo nº exato de cursos que concluiu. "
+        f"Uma pessoa pode aparecer em mais de um {fatia}: as barras NÃO somam ao "
+        f"total do painel, que está no cartão acima.",
+        x=x, y=y, width=width, height=height, font_size="11pt",
+    )
+
+
 # ---------------------------------------------------------------------------
 # PAGES_SPEC — fonte única de verdade do layout.
 # ---------------------------------------------------------------------------
@@ -328,19 +413,19 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "visuals": [
             textbox("titulo-pagina", "Visão Geral — Capacitação em IA e Dados",
                     x=16, y=10, width=984, height=50, font_size="22pt"),
-            kpi_card("kpi-matriculas-ia", "Matrículas IA", "Matriculas IA", x=16, y=64),
-            kpi_card("kpi-matriculas-dados", "Matrículas Dados", "Matriculas Dados", x=266, y=64),
+            kpi_card("kpi-conclusoes-ia", "Conclusões IA", "Conclusoes IA", x=16, y=64),
+            kpi_card("kpi-conclusoes-dados", "Conclusões Dados", "Conclusoes Dados", x=266, y=64),
             kpi_card("kpi-pessoas-ia", "Pessoas únicas IA", "Pessoas Unicas IA", x=516, y=64),
             kpi_card("kpi-pessoas-dados", "Pessoas únicas Dados", "Pessoas Unicas Dados", x=766, y=64),
             {
                 "name": "linha-temporal",
-                "title": "Matrículas por mês (IA vs Dados)",
+                "title": "Conclusões por mês (IA vs Dados)",
                 "visual_type": "lineChart",
                 "position": {"x": 16, "y": 196, "width": 984, "height": 502},
                 "projections": {
                     "Category": [column("ano_mes")],
                     "Series": [column("categoria")],
-                    "Y": [measure("Matriculas")],
+                    "Y": [measure("Conclusoes")],
                 },
                 # Item 1: rótulos de valores ligados.
                 "objects_json": _LABELS_ON,
@@ -362,9 +447,9 @@ PAGES_SPEC: list[dict[str, Any]] = [
                 "visual_type": "pivotTable",
                 "position": {"x": 16, "y": 64, "width": 984, "height": 634},
                 "projections": {
-                    "Rows": [column("esfera")],
                     "Columns": [column("poder")],
-                    "Values": [measure("Matriculas"), measure("Pessoas Unicas")],
+                    "Rows": [column("esfera")],
+                    "Values": [measure("Conclusoes"), measure("Pessoas Unicas")],
                 },
             },
             *filter_panel(),
@@ -389,7 +474,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                     "Values": [
                         column("nome_curso"),
                         column("categoria"),
-                        measure("Matriculas"),
+                        measure("Conclusoes"),
                         measure("Pessoas Unicas"),
                     ],
                 },
@@ -418,26 +503,16 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "height": 720,
         "visuals": [
             textbox("titulo-pagina", "Por Público-Alvo",
-                    x=16, y=10, width=984, height=50, font_size="22pt"),
-            # A — Ranking de matrículas por público.
-            {
-                "name": "barra-matriculas-publico",
-                "title": "Matrículas por público-alvo",
-                "visual_type": "barChart",
-                "position": {"x": 16, "y": 64, "width": 484, "height": 300},
-                "projections": {
-                    "Category": [column_of(BRIDGE, "publico_alvo")],
-                    "Y": [measure("Matriculas")],
-                },
-                "sort_json": _SORT_MATRICULAS_DESC,
-                "objects_json": _LABELS_ON,
-            },
-            # B — Pessoas únicas por público (alcance real).
+                    x=16, y=10, width=640, height=50, font_size="22pt"),
+            # Total de referência, separado das fatias.
+            total_referencia(x=672, y=10),
+            nota_fatias("público", x=16, y=78, width=984),
+            # A — Ranking por público: pessoas distintas, ordenado por tamanho.
             {
                 "name": "barra-pessoas-publico",
-                "title": "Pessoas únicas por público-alvo",
+                "title": "Pessoas por público-alvo (concluíram ≥1 curso do público)",
                 "visual_type": "barChart",
-                "position": {"x": 516, "y": 64, "width": 484, "height": 300},
+                "position": {"x": 16, "y": 128, "width": 984, "height": 280},
                 "projections": {
                     "Category": [column_of(BRIDGE, "publico_alvo")],
                     "Y": [measure("Pessoas Unicas")],
@@ -445,29 +520,30 @@ PAGES_SPEC: list[dict[str, Any]] = [
                 "sort_json": _SORT_PESSOAS_DESC,
                 "objects_json": _LABELS_ON,
             },
-            # C — Mix IA × Dados por público (100% empilhado).
+            # B — Mix IA × Dados dentro de cada público (% da própria fatia,
+            # nunca % do total do painel).
             {
                 "name": "barra-mix-ia-publico",
-                "title": "Mix IA × Dados por público (%)",
+                "title": "Mix IA × Dados dentro de cada público (% das conclusões do público)",
                 "visual_type": "hundredPercentStackedBarChart",
-                "position": {"x": 16, "y": 380, "width": 484, "height": 318},
+                "position": {"x": 16, "y": 420, "width": 484, "height": 278},
                 "projections": {
                     "Category": [column_of(BRIDGE, "publico_alvo")],
                     "Series": [column("categoria")],
-                    "Y": [measure("Matriculas")],
+                    "Y": [measure("Conclusoes")],
                 },
                 "objects_json": _LABELS_ON,
             },
-            # D — Evolução mensal de matrículas por público.
+            # C — Evolução mensal de conclusões por público.
             {
                 "name": "linha-publico-mes",
-                "title": "Matrículas por mês e público-alvo",
+                "title": "Conclusões por mês e público-alvo",
                 "visual_type": "lineChart",
-                "position": {"x": 516, "y": 380, "width": 484, "height": 318},
+                "position": {"x": 516, "y": 420, "width": 484, "height": 278},
                 "projections": {
                     "Category": [column("ano_mes")],
                     "Series": [column_of(BRIDGE, "publico_alvo")],
-                    "Y": [measure("Matriculas")],
+                    "Y": [measure("Conclusoes")],
                 },
                 "objects_json": _LABELS_ON,
             },
@@ -485,7 +561,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
             # E — Matriz Público → Trilha → Curso (drill-down).
             {
                 "name": "matriz-publico-curso",
-                "title": "Matrículas por público, trilha e curso",
+                "title": "Conclusões por público, trilha e curso",
                 "visual_type": "pivotTable",
                 "position": {"x": 16, "y": 64, "width": 600, "height": 634},
                 "projections": {
@@ -494,7 +570,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                         column_of(BRIDGE, "programa_trilha"),
                         column_of(BRIDGE, "nome_curso"),
                     ],
-                    "Values": [measure("Matriculas"), measure("Pessoas Unicas")],
+                    "Values": [measure("Conclusoes"), measure("Pessoas Unicas")],
                 },
             },
             # F — Cursos mais transversais (nº de públicos por curso).
@@ -513,13 +589,13 @@ PAGES_SPEC: list[dict[str, Any]] = [
             # G — Composição institucional: Público × Poder.
             {
                 "name": "matriz-publico-poder",
-                "title": "Matrículas por público e poder",
+                "title": "Conclusões por público e poder",
                 "visual_type": "pivotTable",
                 "position": {"x": 628, "y": 388, "width": 372, "height": 310},
                 "projections": {
-                    "Rows": [column_of(BRIDGE, "publico_alvo")],
                     "Columns": [column("poder")],
-                    "Values": [measure("Matriculas")],
+                    "Rows": [column_of(BRIDGE, "publico_alvo")],
+                    "Values": [measure("Conclusoes")],
                 },
             },
             *filter_panel(),
@@ -531,7 +607,8 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "width": 1280,
         "height": 720,
         # Página estática (tabela dist_publico sem relacionamentos): sem painel
-        # de filtros, pois não responde aos slicers.
+        # de filtros, pois não responde aos slicers. O recorte de categoria do
+        # painel é aplicado no gerador da tabela, não aqui.
         # Clicar num público na tabela de resumo FILTRA o histograma (mostra só
         # as barras daquele público) em vez de apenas destacá-las.
         "visual_interactions": [
@@ -540,18 +617,15 @@ PAGES_SPEC: list[dict[str, Any]] = [
         ],
         "visuals": [
             textbox("titulo-pagina", "Distribuição de cursos por pessoa, por público-alvo",
-                    x=16, y=10, width=1248, height=50, font_size="22pt"),
-            textbox("nota-pagina",
-                    "Retrato sobre todo o histórico (todas as esferas); não responde aos filtros das outras páginas. "
-                    "Cada pessoa entra em um único balde, pelo nº exato de cursos que concluiu (não é cumulativo). "
-                    "A última barra são os que concluíram todos os cursos do público.",
-                    x=16, y=62, width=1248, height=54, font_size="11pt"),
+                    x=16, y=10, width=880, height=50, font_size="22pt"),
+            total_referencia(x=912, y=10, width=352),
+            nota_distribuicao("público", x=16, y=78, width=1248),
             # Histograma: quantas pessoas concluíram quantos cursos de cada público.
             {
                 "name": "histograma-distribuicao",
                 "title": "Pessoas por nº de cursos concluídos (por público)",
                 "visual_type": "clusteredColumnChart",
-                "position": {"x": 16, "y": 120, "width": 820, "height": 578},
+                "position": {"x": 16, "y": 166, "width": 820, "height": 532},
                 "projections": {
                     "Category": [column_of(DIST, "qtd_cursos")],
                     "Series": [column_of(DIST, "publico_alvo")],
@@ -559,12 +633,13 @@ PAGES_SPEC: list[dict[str, Any]] = [
                 },
                 "objects_json": _CAT_AXIS_LABELS,
             },
-            # Tabela resumo: alcance vs conclusão integral por público.
+            # Tabela resumo: alcance vs conclusão integral por público. Sem linha
+            # de Total — a soma das fatias contaria a mesma pessoa várias vezes.
             {
                 "name": "tabela-resumo-publico",
-                "title": "Resumo por público",
+                "title": "Resumo por público (maior primeiro; as linhas não somam)",
                 "visual_type": "tableEx",
-                "position": {"x": 852, "y": 120, "width": 412, "height": 578},
+                "position": {"x": 852, "y": 166, "width": 412, "height": 532},
                 "projections": {
                     "Values": [
                         column_of(DIST, "publico_alvo"),
@@ -575,6 +650,8 @@ PAGES_SPEC: list[dict[str, Any]] = [
                         measure_of(DIST, "Media Cursos por Pessoa"),
                     ],
                 },
+                "sort_json": _SORT_DIST_PESSOAS_DESC,
+                "objects_json": _TABLE_NO_TOTALS,
             },
         ],
     },
@@ -585,24 +662,14 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "height": 720,
         "visuals": [
             textbox("titulo-pagina", "Por Programa",
-                    x=16, y=10, width=984, height=50, font_size="22pt"),
-            {
-                "name": "barra-matriculas-programa",
-                "title": "Matrículas por programa",
-                "visual_type": "barChart",
-                "position": {"x": 16, "y": 64, "width": 484, "height": 300},
-                "projections": {
-                    "Category": [column_of(PROG, "programa")],
-                    "Y": [measure("Matriculas")],
-                },
-                "sort_json": _SORT_MATRICULAS_DESC,
-                "objects_json": _LABELS_ON,
-            },
+                    x=16, y=10, width=640, height=50, font_size="22pt"),
+            total_referencia(x=672, y=10),
+            nota_fatias("programa", x=16, y=78, width=984),
             {
                 "name": "barra-pessoas-programa",
-                "title": "Pessoas únicas por programa",
+                "title": "Pessoas por programa (concluíram ≥1 curso do programa)",
                 "visual_type": "barChart",
-                "position": {"x": 516, "y": 64, "width": 484, "height": 300},
+                "position": {"x": 16, "y": 128, "width": 984, "height": 280},
                 "projections": {
                     "Category": [column_of(PROG, "programa")],
                     "Y": [measure("Pessoas Unicas")],
@@ -612,25 +679,25 @@ PAGES_SPEC: list[dict[str, Any]] = [
             },
             {
                 "name": "barra-mix-ia-programa",
-                "title": "Mix IA × Dados por programa (%)",
+                "title": "Mix IA × Dados dentro de cada programa (% das conclusões do programa)",
                 "visual_type": "hundredPercentStackedBarChart",
-                "position": {"x": 16, "y": 380, "width": 484, "height": 318},
+                "position": {"x": 16, "y": 420, "width": 484, "height": 278},
                 "projections": {
                     "Category": [column_of(PROG, "programa")],
                     "Series": [column("categoria")],
-                    "Y": [measure("Matriculas")],
+                    "Y": [measure("Conclusoes")],
                 },
                 "objects_json": _LABELS_ON,
             },
             {
                 "name": "linha-programa-mes",
-                "title": "Matrículas por mês e programa",
+                "title": "Conclusões por mês e programa",
                 "visual_type": "lineChart",
-                "position": {"x": 516, "y": 380, "width": 484, "height": 318},
+                "position": {"x": 516, "y": 420, "width": 484, "height": 278},
                 "projections": {
                     "Category": [column("ano_mes")],
                     "Series": [column_of(PROG, "programa")],
-                    "Y": [measure("Matriculas")],
+                    "Y": [measure("Conclusoes")],
                 },
                 "objects_json": _LABELS_ON,
             },
@@ -642,39 +709,26 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "display_name": "Distribuição por Programa",
         "width": 1280,
         "height": 720,
-        # Clicar num programa na tabela FILTRA o histograma e o KPI (mostra só as
-        # barras daquele programa) em vez de apenas destacar/esmaecer as demais.
+        # Clicar num programa na tabela FILTRA o histograma (mostra só as barras
+        # daquele programa) em vez de apenas destacar/esmaecer as demais.
         "visual_interactions": [
             {"source": "tabela-resumo-programa",
              "target": "histograma-distribuicao-programa", "type": "DataFilter"},
-            {"source": "tabela-resumo-programa",
-             "target": "kpi-todos-programa", "type": "DataFilter"},
         ],
         "visuals": [
             textbox("titulo-pagina", "Distribuição de cursos por pessoa, por programa",
-                    x=16, y=10, width=900, height=50, font_size="22pt"),
-            textbox("nota-pagina",
-                    "Retrato sobre todo o histórico (todas as esferas); não responde aos filtros das outras páginas. "
-                    "Cada pessoa entra em um único balde, pelo nº exato de cursos que concluiu (não é cumulativo). "
-                    "A última barra são os que concluíram o programa inteiro — por isso costuma formar um pico.",
-                    x=16, y=62, width=900, height=54, font_size="11pt"),
-            # KPI: pessoas que concluíram TODOS os cursos de um programa. Sem
-            # seleção = total (soma entre programas); selecionar um programa na
-            # tabela de resumo ao lado cross-filtra este card para aquele programa.
-            {
-                "name": "kpi-todos-programa",
-                "title": "Concluíram todos os cursos do programa",
-                "visual_type": "card",
-                "position": {"x": 928, "y": 10, "width": 336, "height": 74},
-                "projections": {
-                    "Values": [measure_of(DISTP, "Pessoas Todos do Programa")],
-                },
-            },
+                    x=16, y=10, width=880, height=50, font_size="22pt"),
+            # O cartão anterior somava "concluíram todos os cursos" entre os
+            # programas (mesma pessoa contada em cada programa). No lugar dele
+            # entra o total verdadeiro do painel; o "todos" fica por programa,
+            # na tabela ao lado, onde tem contexto de uma fatia só.
+            total_referencia(x=912, y=10, width=352),
+            nota_distribuicao("programa", x=16, y=78, width=1248),
             {
                 "name": "histograma-distribuicao-programa",
                 "title": "Pessoas por nº de cursos concluídos (por programa)",
                 "visual_type": "clusteredColumnChart",
-                "position": {"x": 16, "y": 120, "width": 760, "height": 578},
+                "position": {"x": 16, "y": 166, "width": 760, "height": 532},
                 "projections": {
                     "Category": [column_of(DISTP, "qtd_cursos")],
                     "Series": [column_of(DISTP, "programa")],
@@ -684,9 +738,9 @@ PAGES_SPEC: list[dict[str, Any]] = [
             },
             {
                 "name": "tabela-resumo-programa",
-                "title": "Resumo por programa: fizeram ≥1 vs todos os cursos",
+                "title": "Resumo por programa: fizeram ≥1 vs todos os cursos (as linhas não somam)",
                 "visual_type": "tableEx",
-                "position": {"x": 792, "y": 120, "width": 472, "height": 578},
+                "position": {"x": 792, "y": 166, "width": 472, "height": 532},
                 "projections": {
                     "Values": [
                         column_of(DISTP, "programa"),
@@ -697,6 +751,8 @@ PAGES_SPEC: list[dict[str, Any]] = [
                         measure_of(DISTP, "Media Cursos Programa"),
                     ],
                 },
+                "sort_json": _SORT_DISTPROG_PESSOAS_DESC,
+                "objects_json": _TABLE_NO_TOTALS,
             },
         ],
     },
@@ -738,12 +794,29 @@ def render(env: Environment, template_path: str, ctx: dict[str, Any]) -> str:
     return out
 
 
-def write_file(path: Path, content: str) -> None:
+def _write(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     # UTF-8 sem BOM, LF (Power BI Desktop aceita). `newline=""` em open()
     # impede tradução para CRLF em Windows.
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write(content)
+
+
+def write_json(path: Path, content: str) -> None:
+    """Grava JSON exatamente como o Power BI Desktop serializa.
+
+    O Desktop reescreve todo JSON do projeto como `json.dumps(indent=2,
+    ensure_ascii=False)` e **sem** newline final. Normalizar aqui faz o
+    gerador e o Desktop convergirem: reabrir e salvar o PBIP no Desktop deixa
+    de produzir diff (era o que o commit 52a8e1e teve de absorver). A ordem
+    das chaves vem dos templates — `json.loads` preserva a ordem de inserção.
+    """
+    _write(path, json.dumps(json.loads(content), indent=2, ensure_ascii=False))
+
+
+def write_tmdl(path: Path, content: str) -> None:
+    """Grava TMDL com a linha em branco final que o Desktop deixa no arquivo."""
+    _write(path, content.rstrip("\n") + "\n\n")
 
 
 def resolve_csv_path_literal(csv_path: Path, mode: str) -> str:
@@ -753,6 +826,12 @@ def resolve_csv_path_literal(csv_path: Path, mode: str) -> str:
     absolute: caminho absoluto resolvido em tempo de geração
     """
     if mode == "absolute":
+        texto = str(csv_path).replace("\\", "/")
+        # Caminho de Windows (`C:/...`) passado de uma máquina POSIX: usar como
+        # veio. `resolve()` o trataria como relativo e prefixaria o cwd — é o
+        # que impedia regenerar, fora do Windows, o PBIP que vai versionado.
+        if re.match(r"^[A-Za-z]:/", texto):
+            return texto
         # Em Windows, M precisa de backslashes escapados; aqui devolvemos
         # a forma POSIX (Power Query aceita "/" no Windows desde 2021).
         return str(csv_path.resolve()).replace("\\", "/")
@@ -770,29 +849,29 @@ def build_semantic_model(env: Environment, out_dir: Path, ctx: dict[str, Any]) -
     definition = sm_root / "definition"
     files_written = 0
 
-    write_file(sm_root / "definition.pbism",
+    write_json(sm_root / "definition.pbism",
                render(env, "semantic_model/definition.pbism.j2", ctx))
-    write_file(sm_root / ".platform",
+    write_json(sm_root / ".platform",
                render(env, "semantic_model/platform.json.j2", ctx))
-    write_file(definition / "database.tmdl",
+    write_tmdl(definition / "database.tmdl",
                render(env, "semantic_model/database.tmdl.j2", ctx))
-    write_file(definition / "model.tmdl",
+    write_tmdl(definition / "model.tmdl",
                render(env, "semantic_model/model.tmdl.j2", ctx))
-    write_file(definition / "expressions.tmdl",
+    write_tmdl(definition / "expressions.tmdl",
                render(env, "semantic_model/expressions.tmdl.j2", ctx))
-    write_file(definition / "relationships.tmdl",
+    write_tmdl(definition / "relationships.tmdl",
                render(env, "semantic_model/relationships.tmdl.j2", ctx))
-    write_file(definition / "tables" / "dashboard_base.tmdl",
+    write_tmdl(definition / "tables" / "dashboard_base.tmdl",
                render(env, "semantic_model/tables/dashboard_base.tmdl.j2", ctx))
-    write_file(definition / "tables" / "dim_curso.tmdl",
+    write_tmdl(definition / "tables" / "dim_curso.tmdl",
                render(env, "semantic_model/tables/dim_curso.tmdl.j2", ctx))
-    write_file(definition / "tables" / "bridge_publico.tmdl",
+    write_tmdl(definition / "tables" / "bridge_publico.tmdl",
                render(env, "semantic_model/tables/bridge_publico.tmdl.j2", ctx))
-    write_file(definition / "tables" / "dist_publico.tmdl",
+    write_tmdl(definition / "tables" / "dist_publico.tmdl",
                render(env, "semantic_model/tables/dist_publico.tmdl.j2", ctx))
-    write_file(definition / "tables" / "bridge_programa.tmdl",
+    write_tmdl(definition / "tables" / "bridge_programa.tmdl",
                render(env, "semantic_model/tables/bridge_programa.tmdl.j2", ctx))
-    write_file(definition / "tables" / "dist_programa.tmdl",
+    write_tmdl(definition / "tables" / "dist_programa.tmdl",
                render(env, "semantic_model/tables/dist_programa.tmdl.j2", ctx))
     files_written += 12
     return files_written
@@ -807,26 +886,26 @@ def build_report(env: Environment, out_dir: Path, ctx: dict[str, Any]) -> int:
     definition = report_root / "definition"
     files_written = 0
 
-    write_file(report_root / "definition.pbir",
+    write_json(report_root / "definition.pbir",
                render(env, "report/definition.pbir.j2", ctx))
-    write_file(report_root / ".platform",
+    write_json(report_root / ".platform",
                render(env, "report/platform.json.j2", ctx))
-    write_file(definition / "version.json",
+    write_json(definition / "version.json",
                render(env, "report/version.json.j2", ctx))
-    write_file(definition / "report.json",
+    write_json(definition / "report.json",
                render(env, "report/report.json.j2", ctx))
-    write_file(definition / "pages" / "pages.json",
+    write_json(definition / "pages" / "pages.json",
                render(env, "report/pages.json.j2", ctx))
     files_written += 5
 
     for page in PAGES_SPEC:
         page_dir = definition / "pages" / page["name"]
-        write_file(page_dir / "page.json",
+        write_json(page_dir / "page.json",
                    render(env, "report/page.json.j2", {**ctx, "page": page}))
         files_written += 1
         for visual in page["visuals"]:
             v_dir = page_dir / "visuals" / visual["name"]
-            write_file(v_dir / "visual.json",
+            write_json(v_dir / "visual.json",
                        render(env, "report/visual.json.j2", {**ctx, "visual": visual}))
             files_written += 1
     return files_written
@@ -921,7 +1000,7 @@ def main() -> int:
     }
 
     # Launcher .pbip
-    write_file(out_dir / f"{PROJECT_NAME}.pbip",
+    write_json(out_dir / f"{PROJECT_NAME}.pbip",
                render(env, "pbip.json.j2", ctx))
 
     n_sm = build_semantic_model(env, out_dir, ctx)

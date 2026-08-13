@@ -2,15 +2,22 @@
 /// scripts/gerar_distribuicao_publico.py). Grao: (publico, k) onde k = nº de
 /// cursos distintos do publico concluidos; qtd_pessoas = pessoas com aquele k.
 /// Tabela autonoma (sem relacionamentos): retrato estatico sobre todo o
-/// historico — NAO responde aos slicers de esfera/ano/IA.
+/// historico — NAO responde aos slicers de esfera/ano.
+/// O recorte de categoria do painel (IA/Dados) ja vem aplicado do gerador: o
+/// grao pre-agregado nao tem chave de curso, entao o filtro de relatorio nao
+/// teria por onde entrar sem mudar o k de cada pessoa.
+/// As medidas retornam BLANK fora do contexto de UM publico: somar as fatias
+/// contaria a mesma pessoa em cada publico que contem um curso que ela
+/// concluiu (um curso pertence a varios publicos), e o painel nunca exibe
+/// numero maior do que a realidade.
 table dist_publico
 	lineageTag: {{ lineage.table_dist_publico }}
 
-	measure 'Qtd Pessoas' = SUM(dist_publico[qtd_pessoas])
+	measure 'Qtd Pessoas' = IF(HASONEVALUE(dist_publico[publico_alvo]), SUM(dist_publico[qtd_pessoas]))
 		formatString: #,0
 		lineageTag: {{ lineage.measure_dist_qtd_pessoas }}
 
-	measure 'Pessoas com Todos os Cursos' = SUMX(FILTER(dist_publico, dist_publico[qtd_cursos] = dist_publico[n_cursos_publico]), dist_publico[qtd_pessoas])
+	measure 'Pessoas com Todos os Cursos' = IF(HASONEVALUE(dist_publico[publico_alvo]), SUMX(FILTER(dist_publico, dist_publico[qtd_cursos] = dist_publico[n_cursos_publico]), dist_publico[qtd_pessoas]))
 		formatString: #,0
 		lineageTag: {{ lineage.measure_dist_pessoas_todos }}
 
@@ -22,37 +29,37 @@ table dist_publico
 		formatString: 0.00
 		lineageTag: {{ lineage.measure_dist_media }}
 
-	measure 'Qtd Cursos no Publico' = MAX(dist_publico[n_cursos_publico])
+	measure 'Qtd Cursos no Publico' = IF(HASONEVALUE(dist_publico[publico_alvo]), MAX(dist_publico[n_cursos_publico]))
 		formatString: 0
 		lineageTag: {{ lineage.measure_dist_cursos_no_publico }}
 
 	column publico_alvo
 		dataType: string
-		sourceColumn: publico_alvo
-		summarizeBy: none
 		lineageTag: {{ lineage.column_dist_publico_alvo }}
+		summarizeBy: none
+		sourceColumn: publico_alvo
 
 	column qtd_cursos
 		dataType: int64
-		sourceColumn: qtd_cursos
 		formatString: 0
-		summarizeBy: none
 		lineageTag: {{ lineage.column_dist_qtd_cursos }}
+		summarizeBy: none
+		sourceColumn: qtd_cursos
 
 	column qtd_pessoas
 		dataType: int64
-		sourceColumn: qtd_pessoas
 		formatString: 0
-		summarizeBy: none
 		lineageTag: {{ lineage.column_dist_qtd_pessoas }}
+		summarizeBy: none
+		sourceColumn: qtd_pessoas
 
 	column n_cursos_publico
 		dataType: int64
-		sourceColumn: n_cursos_publico
-		formatString: 0
 		isHidden
-		summarizeBy: none
+		formatString: 0
 		lineageTag: {{ lineage.column_dist_n_cursos }}
+		summarizeBy: none
+		sourceColumn: n_cursos_publico
 
 	partition dist_publico = m
 		mode: import

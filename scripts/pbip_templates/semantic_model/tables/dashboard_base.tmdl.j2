@@ -4,19 +4,19 @@ table dashboard_base
 	lineageTag: {{ lineage.table_dashboard_base }}
 
 	/// O relatorio aplica um filtro de nivel de relatorio categoria IN {"IA","Dados"},
-	/// entao [Matriculas]/[Pessoas Unicas] "totais" ja excluem Gestao/Outros: sao o
+	/// entao [Conclusoes]/[Pessoas Unicas] "totais" ja excluem Gestao/Outros: sao o
 	/// universo do painel de capacitacao em IA e Dados.
-	measure 'Matriculas' = COUNTROWS(dashboard_base)
+	measure Conclusoes = COUNTROWS(dashboard_base)
 		formatString: #,0
-		lineageTag: {{ lineage.measure_matriculas }}
+		lineageTag: {{ lineage.measure_conclusoes }}
 
-	measure 'Matriculas IA' = CALCULATE([Matriculas], dashboard_base[categoria] = "IA")
+	measure 'Conclusoes IA' = CALCULATE([Conclusoes], dashboard_base[categoria] = "IA")
 		formatString: #,0
-		lineageTag: {{ lineage.measure_matriculas_ia }}
+		lineageTag: {{ lineage.measure_conclusoes_ia }}
 
-	measure 'Matriculas Dados' = CALCULATE([Matriculas], dashboard_base[categoria] = "Dados")
+	measure 'Conclusoes Dados' = CALCULATE([Conclusoes], dashboard_base[categoria] = "Dados")
 		formatString: #,0
-		lineageTag: {{ lineage.measure_matriculas_dados }}
+		lineageTag: {{ lineage.measure_conclusoes_dados }}
 
 	measure 'Pessoas Unicas' = DISTINCTCOUNT(dashboard_base[codigo_pessoa])
 		formatString: #,0
@@ -30,88 +30,88 @@ table dashboard_base
 		formatString: #,0
 		lineageTag: {{ lineage.measure_pessoas_unicas_dados }}
 
-	measure '% Matriculas IA' = DIVIDE([Matriculas IA], [Matriculas])
+	measure '% Conclusoes IA' = DIVIDE([Conclusoes IA], [Conclusoes])
 		formatString: 0.0%
-		lineageTag: {{ lineage.measure_pct_matriculas_ia }}
+		lineageTag: {{ lineage.measure_pct_conclusoes_ia }}
 
-	measure '% Matriculas Dados' = DIVIDE([Matriculas Dados], [Matriculas])
+	measure '% Conclusoes Dados' = DIVIDE([Conclusoes Dados], [Conclusoes])
 		formatString: 0.0%
-		lineageTag: {{ lineage.measure_pct_matriculas_dados }}
+		lineageTag: {{ lineage.measure_pct_conclusoes_dados }}
 
 	column ano_mes
 		dataType: string
+		lineageTag: {{ lineage.column_ano_mes }}
+		summarizeBy: none
 		sourceColumn: ano_mes
 		sortByColumn: ano_mes_sort
-		summarizeBy: none
-		lineageTag: {{ lineage.column_ano_mes }}
 
 	column ano
 		dataType: int64
-		sourceColumn: ano
 		formatString: 0
-		summarizeBy: none
 		lineageTag: {{ lineage.column_ano }}
+		summarizeBy: none
+		sourceColumn: ano
 
 	column mes
 		dataType: int64
-		sourceColumn: mes
 		formatString: 0
-		summarizeBy: none
 		lineageTag: {{ lineage.column_mes }}
+		summarizeBy: none
+		sourceColumn: mes
 
 	column id_curso
 		dataType: int64
-		sourceColumn: id_curso
 		formatString: 0
-		summarizeBy: none
 		lineageTag: {{ lineage.column_id_curso }}
+		summarizeBy: none
+		sourceColumn: id_curso
 
 	column nome_curso
 		dataType: string
-		sourceColumn: nome_curso
-		summarizeBy: none
 		lineageTag: {{ lineage.column_nome_curso }}
+		summarizeBy: none
+		sourceColumn: nome_curso
 
 	/// Categoria do curso: IA / Dados / Gestão / Outros. O painel conta IA+Dados;
 	/// Gestão e Outros ficam na base (auditaveis) mas fora dos indicadores.
 	column categoria
 		dataType: string
-		sourceColumn: categoria
-		summarizeBy: none
 		lineageTag: {{ lineage.column_categoria }}
+		summarizeBy: none
+		sourceColumn: categoria
 
 	column esfera
 		dataType: string
-		sourceColumn: esfera
-		summarizeBy: none
 		lineageTag: {{ lineage.column_esfera }}
+		summarizeBy: none
+		sourceColumn: esfera
 
 	column setor
 		dataType: string
-		sourceColumn: setor
-		summarizeBy: none
 		lineageTag: {{ lineage.column_setor }}
+		summarizeBy: none
+		sourceColumn: setor
 
 	column poder
 		dataType: string
-		sourceColumn: poder
-		summarizeBy: none
 		lineageTag: {{ lineage.column_poder }}
+		summarizeBy: none
+		sourceColumn: poder
 
 	column codigo_pessoa
 		dataType: string
-		sourceColumn: codigo_pessoa
 		isHidden
-		summarizeBy: none
 		lineageTag: {{ lineage.column_codigo_pessoa }}
+		summarizeBy: none
+		sourceColumn: codigo_pessoa
 
 	/// Coluna calculada para ordenacao cronologica do eixo de linha temporal.
 	column ano_mes_sort = ([ano] * 100) + [mes]
 		dataType: int64
-		formatString: 0
 		isHidden
-		summarizeBy: none
+		formatString: 0
 		lineageTag: {{ lineage.column_ano_mes_sort }}
+		summarizeBy: none
 
 	partition dashboard_base = m
 		mode: import

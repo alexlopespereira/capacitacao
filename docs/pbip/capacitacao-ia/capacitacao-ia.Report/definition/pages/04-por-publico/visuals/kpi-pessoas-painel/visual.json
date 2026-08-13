@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "kpi-matriculas-dados",
+  "name": "kpi-pessoas-painel",
   "position": {
-    "x": 266,
-    "y": 64,
+    "x": 672,
+    "y": 10,
     "z": 0,
-    "height": 116,
-    "width": 234,
+    "height": 64,
+    "width": 328,
     "tabOrder": 0
   },
   "visual": {
@@ -23,11 +23,11 @@
                       "Entity": "dashboard_base"
                     }
                   },
-                  "Property": "Matriculas Dados"
+                  "Property": "Pessoas Unicas"
                 }
               },
-              "queryRef": "Matriculas Dados",
-              "nativeQueryRef": "Matriculas Dados"
+              "queryRef": "Pessoas Unicas",
+              "nativeQueryRef": "Pessoas Unicas"
             }
           ]
         }
@@ -50,7 +50,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Matrículas Dados'"
+                  "Value": "'Pessoas distintas no painel (concluíram ≥1 curso de IA ou Dados)'"
                 }
               }
             }

@@ -10,11 +10,6 @@
       "source": "tabela-resumo-programa",
       "target": "histograma-distribuicao-programa",
       "type": "DataFilter"
-    },
-    {
-      "source": "tabela-resumo-programa",
-      "target": "kpi-todos-programa",
-      "type": "DataFilter"
     }
   ]
 }

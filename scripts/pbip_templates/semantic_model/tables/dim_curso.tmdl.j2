@@ -8,22 +8,22 @@ table dim_curso
 	column id_curso
 		dataType: int64
 		isKey
-		sourceColumn: id_curso
 		formatString: 0
-		summarizeBy: none
 		lineageTag: {{ lineage.column_dimc_id_curso }}
+		summarizeBy: none
+		sourceColumn: id_curso
 
 	column nome_curso
 		dataType: string
-		sourceColumn: nome_curso
-		summarizeBy: none
 		lineageTag: {{ lineage.column_dimc_nome_curso }}
+		summarizeBy: none
+		sourceColumn: nome_curso
 
 	column categoria
 		dataType: string
-		sourceColumn: categoria
-		summarizeBy: none
 		lineageTag: {{ lineage.column_dimc_categoria }}
+		summarizeBy: none
+		sourceColumn: categoria
 
 	partition dim_curso = m
 		mode: import

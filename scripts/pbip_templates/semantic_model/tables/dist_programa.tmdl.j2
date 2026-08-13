@@ -2,15 +2,22 @@
 /// scripts/gerar_programa.py). Grao: (programa, k) onde k = nº de cursos
 /// distintos do programa concluidos; qtd_pessoas = pessoas com aquele k.
 /// Tabela autonoma (sem relacionamentos): retrato estatico, nao responde aos
-/// slicers de esfera/ano/IA.
+/// slicers de esfera/ano.
+/// O recorte de categoria do painel (IA/Dados) ja vem aplicado do gerador: o
+/// grao pre-agregado nao tem chave de curso, entao o filtro de relatorio nao
+/// teria por onde entrar sem mudar o k de cada pessoa.
+/// As medidas retornam BLANK fora do contexto de UM programa: somar as fatias
+/// contaria a mesma pessoa em cada programa que contem um curso que ela
+/// concluiu ("Etica em IA" esta em 8 dos 11 programas), e o painel nunca
+/// exibe numero maior do que a realidade.
 table dist_programa
 	lineageTag: {{ lineage.table_dist_programa }}
 
-	measure 'Pessoas no Programa' = SUM(dist_programa[qtd_pessoas])
+	measure 'Pessoas no Programa' = IF(HASONEVALUE(dist_programa[programa]), SUM(dist_programa[qtd_pessoas]))
 		formatString: #,0
 		lineageTag: {{ lineage.measure_distprog_pessoas }}
 
-	measure 'Pessoas Todos do Programa' = SUMX(FILTER(dist_programa, dist_programa[qtd_cursos] = dist_programa[n_cursos_programa]), dist_programa[qtd_pessoas])
+	measure 'Pessoas Todos do Programa' = IF(HASONEVALUE(dist_programa[programa]), SUMX(FILTER(dist_programa, dist_programa[qtd_cursos] = dist_programa[n_cursos_programa]), dist_programa[qtd_pessoas]))
 		formatString: #,0
 		lineageTag: {{ lineage.measure_distprog_todos }}
 
@@ -22,37 +29,37 @@ table dist_programa
 		formatString: 0.00
 		lineageTag: {{ lineage.measure_distprog_media }}
 
-	measure 'Qtd Cursos no Programa' = MAX(dist_programa[n_cursos_programa])
+	measure 'Qtd Cursos no Programa' = IF(HASONEVALUE(dist_programa[programa]), MAX(dist_programa[n_cursos_programa]))
 		formatString: 0
 		lineageTag: {{ lineage.measure_distprog_cursos }}
 
 	column programa
 		dataType: string
-		sourceColumn: programa
-		summarizeBy: none
 		lineageTag: {{ lineage.column_distprog_programa }}
+		summarizeBy: none
+		sourceColumn: programa
 
 	column qtd_cursos
 		dataType: int64
-		sourceColumn: qtd_cursos
 		formatString: 0
-		summarizeBy: none
 		lineageTag: {{ lineage.column_distprog_qtd_cursos }}
+		summarizeBy: none
+		sourceColumn: qtd_cursos
 
 	column qtd_pessoas
 		dataType: int64
-		sourceColumn: qtd_pessoas
 		formatString: 0
-		summarizeBy: none
 		lineageTag: {{ lineage.column_distprog_qtd_pessoas }}
+		summarizeBy: none
+		sourceColumn: qtd_pessoas
 
 	column n_cursos_programa
 		dataType: int64
-		sourceColumn: n_cursos_programa
-		formatString: 0
 		isHidden
-		summarizeBy: none
+		formatString: 0
 		lineageTag: {{ lineage.column_distprog_n_cursos }}
+		summarizeBy: none
+		sourceColumn: n_cursos_programa
 
 	partition dist_programa = m
 		mode: import

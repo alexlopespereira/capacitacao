@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "kpi-matriculas-ia",
+  "name": "kpi-conclusoes-ia",
   "position": {
     "x": 16,
     "y": 64,
@@ -23,11 +23,11 @@
                       "Entity": "dashboard_base"
                     }
                   },
-                  "Property": "Matriculas IA"
+                  "Property": "Conclusoes IA"
                 }
               },
-              "queryRef": "Matriculas IA",
-              "nativeQueryRef": "Matriculas IA"
+              "queryRef": "Conclusoes IA",
+              "nativeQueryRef": "Conclusoes IA"
             }
           ]
         }
@@ -50,7 +50,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Matrículas IA'"
+                  "Value": "'Conclusões IA'"
                 }
               }
             }

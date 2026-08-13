@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "barra-pessoas-publico",
   "position": {
-    "x": 516,
-    "y": 64,
+    "x": 16,
+    "y": 128,
     "z": 0,
-    "height": 300,
-    "width": 484,
+    "height": 280,
+    "width": 984,
     "tabOrder": 0
   },
   "visual": {
@@ -98,7 +98,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Pessoas únicas por público-alvo'"
+                  "Value": "'Pessoas por público-alvo (concluíram ≥1 curso do público)'"
                 }
               }
             }
