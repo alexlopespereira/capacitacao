@@ -1,5 +1,11 @@
 name: Atualizar contagem mensal de matriculas
 
+# Este workflow ja teve um step de envio mensal por e-mail. Ele nunca disparou
+# pelo cron (a condicao exigia workflow_dispatch — issue #1) e em 2026-08-13
+# foi DESATIVADO em definitivo, por decisao de produto: o canal de aviso e a
+# pagina publica, nao e-mail. Nao reintroduzir sem decisao explicita; os
+# secrets MAIL_USERNAME/MAIL_PASSWORD/MAIL_TO deixaram de ser usados.
+
 on:
   schedule:
     # Dia 1 de cada mes, 09:00 UTC (06:00 Brasilia)
@@ -10,18 +16,6 @@ on:
         description: "Ultimo ano-mes a processar (YYYY-MM). Vazio = mes anterior ao atual."
         required: false
         default: ""
-      test_email:
-        description: "Email de teste (override do MAIL_TO). Se preenchido, forca envio para este email apenas."
-        required: false
-        default: ""
-      forcar_envio:
-        description: "Forcar envio de e-mail mesmo sem mudancas (true/false)."
-        required: false
-        default: "false"
-        type: choice
-        options:
-          - "false"
-          - "true"
 
 permissions:
   contents: write
@@ -81,113 +75,13 @@ jobs:
           python scripts/gerar_programa.py
 
       - name: Commit & push se houver mudancas
-        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/
           if git diff --staged --quiet; then
-            echo "mudou=false" >> "$GITHUB_OUTPUT"
             echo "Sem mudancas para commitar."
           else
             git commit -m "chore(historico): atualizacao automatica $(date -u +%Y-%m-%d)"
             git push
-            echo "mudou=true" >> "$GITHUB_OUTPUT"
           fi
-
-      - name: Calcular metricas para e-mail
-        id: metricas
-        run: |
-          python <<'PY' >> "$GITHUB_OUTPUT"
-          import pandas as pd
-          df = pd.read_csv("docs/contagem_mensal.csv")
-          ultimo = df["ano_mes"].max()
-          primeiro = df["ano_mes"].min()
-          total_mes = int(df[df["ano_mes"] == ultimo]["count"].sum())
-          total_acum = int(df["count"].sum())
-          n_meses = df["ano_mes"].nunique()
-
-          # Pessoas unicas
-          try:
-              p = pd.read_csv("docs/pessoas_por_mes.csv", dtype={"codigo_pessoa": str})
-              pessoas_unicas = int(p["codigo_pessoa"].nunique())
-              novas_no_mes = int(
-                  p[p["ano_mes"] == ultimo]
-                  .loc[~p["codigo_pessoa"].isin(p[p["ano_mes"] < ultimo]["codigo_pessoa"]), "codigo_pessoa"]
-                  .nunique()
-              )
-          except FileNotFoundError:
-              pessoas_unicas = 0
-              novas_no_mes = 0
-
-          # Top 5 cursos
-          top = (
-              df.groupby("tx_nome_curso")["count"].sum()
-                .sort_values(ascending=False)
-                .head(5)
-          )
-          top_str = "\n".join(f"  - {n} ({v:,})" for n, v in top.items())
-          print(f"ultimo_mes={ultimo}")
-          print(f"primeiro_mes={primeiro}")
-          print(f"total_mes={total_mes:,}")
-          print(f"total_acum={total_acum:,}")
-          print(f"pessoas_unicas={pessoas_unicas:,}")
-          print(f"novas_no_mes={novas_no_mes:,}")
-          print(f"n_meses={n_meses}")
-          print("top5<<EOF")
-          print(top_str)
-          print("EOF")
-          PY
-
-      - name: Definir destinatarios
-        id: destino
-        run: |
-          if [ -n "${{ inputs.test_email }}" ]; then
-            echo "to=${{ inputs.test_email }}" >> "$GITHUB_OUTPUT"
-            echo "modo=TESTE" >> "$GITHUB_OUTPUT"
-          else
-            echo "to=${{ secrets.MAIL_TO }}" >> "$GITHUB_OUTPUT"
-            echo "modo=PRODUCAO" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Enviar e-mail
-        # Envio em producao desabilitado ate estabilizar a versao.
-        # Para enviar: dispare manualmente com forcar_envio=true ou test_email preenchido.
-        if: github.event_name == 'workflow_dispatch' && (inputs.forcar_envio == 'true' || inputs.test_email != '')
-        uses: dawidd6/action-send-mail@v6
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          secure: true
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
-          from: "ENAP Matriculas (GitHub Actions) <${{ secrets.MAIL_USERNAME }}>"
-          to: ${{ secrets.MAIL_USERNAME }}
-          cc: ${{ steps.destino.outputs.to }}
-          subject: "[ENAP][${{ steps.destino.outputs.modo }}] Matriculas concluidas (servidores federais) — ${{ steps.metricas.outputs.primeiro_mes }} a ${{ steps.metricas.outputs.ultimo_mes }}"
-          body: |
-            Olá,
-
-            Relatório mensal de matrículas concluídas (35 cursos da meta de capacitação) na Escola Virtual da ENAP.
-
-            Filtros aplicados:
-            - sit_matricula = 'Concluida'
-            - esfera = 'Federal' (descarta Estadual, Municipal e não-servidores)
-
-            Janela coberta: ${{ steps.metricas.outputs.primeiro_mes }} a ${{ steps.metricas.outputs.ultimo_mes }} (${{ steps.metricas.outputs.n_meses }} meses)
-
-            ► Total acumulado da meta: ${{ steps.metricas.outputs.total_acum }} matrículas concluídas (servidores federais)
-            ► Servidores federais únicos no acumulado (≥1 curso da meta): ${{ steps.metricas.outputs.pessoas_unicas }}
-            ► Total no mês mais recente (${{ steps.metricas.outputs.ultimo_mes }}): ${{ steps.metricas.outputs.total_mes }} matrículas / ${{ steps.metricas.outputs.novas_no_mes }} pessoas novas no mês
-
-            Top 5 cursos no acumulado:
-            ${{ steps.metricas.outputs.top5 }}
-
-            Página pública: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
-            CSV completo: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/contagem_mensal.csv
-
-            Execução: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-
-            ---
-            Modo desta execução: ${{ steps.destino.outputs.modo }}
-            (Mensagem automática enviada apenas quando há mês novo, ou em testes manuais.)
