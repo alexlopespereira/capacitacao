@@ -3,9 +3,9 @@
   "name": "linha-programa-mes",
   "position": {
     "x": 516,
-    "y": 380,
+    "y": 420,
     "z": 0,
-    "height": 318,
+    "height": 278,
     "width": 484,
     "tabOrder": 0
   },
@@ -60,11 +60,11 @@
                       "Entity": "dashboard_base"
                     }
                   },
-                  "Property": "Matriculas"
+                  "Property": "Conclusoes"
                 }
               },
-              "queryRef": "Matriculas",
-              "nativeQueryRef": "Matriculas"
+              "queryRef": "Conclusoes",
+              "nativeQueryRef": "Conclusoes"
             }
           ]
         }
@@ -102,7 +102,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Matrículas por mês e programa'"
+                  "Value": "'Conclusões por mês e programa'"
                 }
               }
             }

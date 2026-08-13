@@ -60,11 +60,11 @@
                       "Entity": "dashboard_base"
                     }
                   },
-                  "Property": "Matriculas"
+                  "Property": "Conclusoes"
                 }
               },
-              "queryRef": "Matriculas",
-              "nativeQueryRef": "Matriculas"
+              "queryRef": "Conclusoes",
+              "nativeQueryRef": "Conclusoes"
             }
           ]
         }
@@ -102,7 +102,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Matrículas por mês (IA vs Dados)'"
+                  "Value": "'Conclusões por mês (IA vs Dados)'"
                 }
               }
             }

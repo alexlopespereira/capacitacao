@@ -2,15 +2,22 @@
 /// scripts/gerar_distribuicao_publico.py). Grao: (publico, k) onde k = nº de
 /// cursos distintos do publico concluidos; qtd_pessoas = pessoas com aquele k.
 /// Tabela autonoma (sem relacionamentos): retrato estatico sobre todo o
-/// historico — NAO responde aos slicers de esfera/ano/IA.
+/// historico — NAO responde aos slicers de esfera/ano.
+/// O recorte de categoria do painel (IA/Dados) ja vem aplicado do gerador: o
+/// grao pre-agregado nao tem chave de curso, entao o filtro de relatorio nao
+/// teria por onde entrar sem mudar o k de cada pessoa.
+/// As medidas retornam BLANK fora do contexto de UM publico: somar as fatias
+/// contaria a mesma pessoa em cada publico que contem um curso que ela
+/// concluiu (um curso pertence a varios publicos), e o painel nunca exibe
+/// numero maior do que a realidade.
 table dist_publico
 	lineageTag: 046cce0d-04df-491a-9dbb-16076bb39397
 
-	measure 'Qtd Pessoas' = SUM(dist_publico[qtd_pessoas])
+	measure 'Qtd Pessoas' = IF(HASONEVALUE(dist_publico[publico_alvo]), SUM(dist_publico[qtd_pessoas]))
 		formatString: #,0
 		lineageTag: ac6a535c-fae0-4bed-82b4-deca8a4759e0
 
-	measure 'Pessoas com Todos os Cursos' = SUMX(FILTER(dist_publico, dist_publico[qtd_cursos] = dist_publico[n_cursos_publico]), dist_publico[qtd_pessoas])
+	measure 'Pessoas com Todos os Cursos' = IF(HASONEVALUE(dist_publico[publico_alvo]), SUMX(FILTER(dist_publico, dist_publico[qtd_cursos] = dist_publico[n_cursos_publico]), dist_publico[qtd_pessoas]))
 		formatString: #,0
 		lineageTag: 95370c5e-34ee-4668-aa44-bacd83aea2cf
 
@@ -22,7 +29,7 @@ table dist_publico
 		formatString: 0.00
 		lineageTag: 97903686-75c0-446c-9810-a5ad6c69cb41
 
-	measure 'Qtd Cursos no Publico' = MAX(dist_publico[n_cursos_publico])
+	measure 'Qtd Cursos no Publico' = IF(HASONEVALUE(dist_publico[publico_alvo]), MAX(dist_publico[n_cursos_publico]))
 		formatString: 0
 		lineageTag: a49a7e61-77cb-4a84-89e3-3e97bb567818
 

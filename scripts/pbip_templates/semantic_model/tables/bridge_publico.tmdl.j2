@@ -11,28 +11,28 @@ table bridge_publico
 
 	column id_curso
 		dataType: int64
-		sourceColumn: id_curso
 		formatString: 0
-		summarizeBy: none
 		lineageTag: {{ lineage.column_bridge_id_curso }}
+		summarizeBy: none
+		sourceColumn: id_curso
 
 	column nome_curso
 		dataType: string
-		sourceColumn: nome_curso
-		summarizeBy: none
 		lineageTag: {{ lineage.column_bridge_nome_curso }}
+		summarizeBy: none
+		sourceColumn: nome_curso
 
 	column publico_alvo
 		dataType: string
-		sourceColumn: publico_alvo
-		summarizeBy: none
 		lineageTag: {{ lineage.column_bridge_publico_alvo }}
+		summarizeBy: none
+		sourceColumn: publico_alvo
 
 	column programa_trilha
 		dataType: string
-		sourceColumn: programa_trilha
-		summarizeBy: none
 		lineageTag: {{ lineage.column_bridge_programa_trilha }}
+		summarizeBy: none
+		sourceColumn: programa_trilha
 
 	partition bridge_publico = m
 		mode: import

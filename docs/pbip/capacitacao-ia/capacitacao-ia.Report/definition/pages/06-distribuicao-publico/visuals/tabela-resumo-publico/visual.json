@@ -3,9 +3,9 @@
   "name": "tabela-resumo-publico",
   "position": {
     "x": 852,
-    "y": 120,
+    "y": 166,
     "z": 0,
-    "height": 578,
+    "height": 532,
     "width": 412,
     "tabOrder": 0
   },
@@ -103,8 +103,37 @@
         }
       },
       "sortDefinition": {
-        "isDefaultSort": true
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dist_publico"
+                  }
+                },
+                "Property": "Qtd Pessoas"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
       }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "visualContainerObjects": {
       "title": [
@@ -120,7 +149,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Resumo por público'"
+                  "Value": "'Resumo por público (maior primeiro; as linhas não somam)'"
                 }
               }
             }

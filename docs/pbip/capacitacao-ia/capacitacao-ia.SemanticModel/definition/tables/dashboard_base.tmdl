@@ -4,17 +4,17 @@ table dashboard_base
 	lineageTag: 45024c93-3e9a-449d-a9b4-1bc451368289
 
 	/// O relatorio aplica um filtro de nivel de relatorio categoria IN {"IA","Dados"},
-	/// entao [Matriculas]/[Pessoas Unicas] "totais" ja excluem Gestao/Outros: sao o
+	/// entao [Conclusoes]/[Pessoas Unicas] "totais" ja excluem Gestao/Outros: sao o
 	/// universo do painel de capacitacao em IA e Dados.
-	measure Matriculas = COUNTROWS(dashboard_base)
+	measure Conclusoes = COUNTROWS(dashboard_base)
 		formatString: #,0
 		lineageTag: aaec4cc1-1333-4265-859a-8a9291b074c2
 
-	measure 'Matriculas IA' = CALCULATE([Matriculas], dashboard_base[categoria] = "IA")
+	measure 'Conclusoes IA' = CALCULATE([Conclusoes], dashboard_base[categoria] = "IA")
 		formatString: #,0
 		lineageTag: a27fb1fa-c40b-42fd-ba01-674dab67b6c4
 
-	measure 'Matriculas Dados' = CALCULATE([Matriculas], dashboard_base[categoria] = "Dados")
+	measure 'Conclusoes Dados' = CALCULATE([Conclusoes], dashboard_base[categoria] = "Dados")
 		formatString: #,0
 		lineageTag: 80a2c624-58dd-45b5-bcdd-3a1afd7630d5
 
@@ -30,11 +30,11 @@ table dashboard_base
 		formatString: #,0
 		lineageTag: c8b2d332-6410-4298-a0fb-5ee5fe0a8408
 
-	measure '% Matriculas IA' = DIVIDE([Matriculas IA], [Matriculas])
+	measure '% Conclusoes IA' = DIVIDE([Conclusoes IA], [Conclusoes])
 		formatString: 0.0%
 		lineageTag: efbd6d9d-d1cc-4a65-8729-51ffe9f34d0b
 
-	measure '% Matriculas Dados' = DIVIDE([Matriculas Dados], [Matriculas])
+	measure '% Conclusoes Dados' = DIVIDE([Conclusoes Dados], [Conclusoes])
 		formatString: 0.0%
 		lineageTag: da67c9a9-aa17-469d-8d0e-cd71fc69f77b
 

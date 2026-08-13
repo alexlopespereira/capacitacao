@@ -61,11 +61,11 @@
                       "Entity": "dashboard_base"
                     }
                   },
-                  "Property": "Matriculas"
+                  "Property": "Conclusoes"
                 }
               },
-              "queryRef": "Matriculas",
-              "nativeQueryRef": "Matriculas"
+              "queryRef": "Conclusoes",
+              "nativeQueryRef": "Conclusoes"
             }
           ]
         }
@@ -88,7 +88,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Matrículas por público e poder'"
+                  "Value": "'Conclusões por público e poder'"
                 }
               }
             }

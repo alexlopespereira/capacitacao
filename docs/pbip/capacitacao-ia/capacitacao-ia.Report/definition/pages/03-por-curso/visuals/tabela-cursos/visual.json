@@ -51,11 +51,11 @@
                       "Entity": "dashboard_base"
                     }
                   },
-                  "Property": "Matriculas"
+                  "Property": "Conclusoes"
                 }
               },
-              "queryRef": "Matriculas",
-              "nativeQueryRef": "Matriculas"
+              "queryRef": "Conclusoes",
+              "nativeQueryRef": "Conclusoes"
             },
             {
               "field": {

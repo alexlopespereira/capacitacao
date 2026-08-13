@@ -6,8 +6,15 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["dashboard_base", "dim_curso", "bridge_publico", "dist_publico", "bridge_programa", "dist_programa"]
+annotation PBI_QueryOrder = ["dashboard_base","dim_curso","bridge_publico","dist_publico","bridge_programa","dist_programa","CsvPath"]
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["DevMode"]
+
+ref table bridge_programa
+ref table bridge_publico
+ref table dashboard_base
+ref table dim_curso
+ref table dist_programa
+ref table dist_publico

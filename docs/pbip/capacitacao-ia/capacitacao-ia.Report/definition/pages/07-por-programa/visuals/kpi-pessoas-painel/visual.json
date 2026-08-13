@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "kpi-todos-programa",
+  "name": "kpi-pessoas-painel",
   "position": {
-    "x": 928,
+    "x": 672,
     "y": 10,
     "z": 0,
-    "height": 74,
-    "width": 336,
+    "height": 64,
+    "width": 328,
     "tabOrder": 0
   },
   "visual": {
@@ -20,14 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dist_programa"
+                      "Entity": "dashboard_base"
                     }
                   },
-                  "Property": "Pessoas Todos do Programa"
+                  "Property": "Pessoas Unicas"
                 }
               },
-              "queryRef": "Pessoas Todos do Programa",
-              "nativeQueryRef": "Pessoas Todos do Programa"
+              "queryRef": "Pessoas Unicas",
+              "nativeQueryRef": "Pessoas Unicas"
             }
           ]
         }
@@ -50,7 +50,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Concluíram todos os cursos do programa'"
+                  "Value": "'Pessoas distintas no painel (concluíram ≥1 curso de IA ou Dados)'"
                 }
               }
             }

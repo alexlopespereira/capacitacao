@@ -3,11 +3,11 @@ relationship {{ lineage.rel_fact_curso }}
 	toColumn: dim_curso.id_curso
 
 relationship {{ lineage.rel_bridge_curso }}
+	crossFilteringBehavior: bothDirections
 	fromColumn: bridge_publico.id_curso
 	toColumn: dim_curso.id_curso
-	crossFilteringBehavior: bothDirections
 
 relationship {{ lineage.rel_progbridge_curso }}
+	crossFilteringBehavior: bothDirections
 	fromColumn: bridge_programa.id_curso
 	toColumn: dim_curso.id_curso
-	crossFilteringBehavior: bothDirections
