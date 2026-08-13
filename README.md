@@ -1,15 +1,27 @@
 # Capacitação — monitoramento mensal de matrículas concluídas (ENAP)
 
 Pipeline automatizado que coleta o dump público da Escola Virtual.Gov da
-[ENAP](https://dadosaberto.evg.gov.br/), agrega o número mensal de
-**matrículas concluídas por servidores públicos federais** para uma lista
-de **35 cursos da meta de capacitação** e publica o histórico como página
-estática.
+[ENAP](https://dadosaberto.evg.gov.br/) e acompanha as **matrículas
+concluídas** de uma lista de **35 cursos da meta de capacitação**. O foco do
+produto é o **governo federal**, mas os dois artefatos cobrem recortes
+diferentes — cada número diz o que cobre:
 
-Filtros aplicados ao dataset bruto:
-- `sit_matricula = 'Concluida'`
-- `esfera = 'Federal'` (descarta Estadual, Municipal e registros sem
-  vínculo público — terceiros, sociedade civil, etc.)
+- **Histórico público** (página estática + `contagem_mensal.csv` /
+  `pessoas_por_mes.csv`): **só servidores públicos federais**
+  (`esfera = 'Federal'`). Estadual, Municipal e não-servidores ficam de fora.
+- **Base do dashboard** (`dashboard_base.csv` + painel Power BI): carrega
+  **todas as esferas** — Federal, Estadual, Municipal e sem vínculo público
+  (privado/não-servidor). O painel **abre com o filtro padrão
+  `esfera = 'Federal'`**, o foco declarado; o leitor pode ampliar o recorte
+  no painel Filtros, e as páginas de distribuição (retratos pré-agregados)
+  ficam fixas no recorte padrão.
+
+Para dimensionar a diferença: das 314.783 conclusões de IA/Dados na base
+completa, só 89.829 (29%) são da esfera Federal — por isso nenhum número deve
+ser apresentado como "de servidores federais" sem o recorte dizer isso.
+
+Filtro comum aos dois artefatos: `sit_matricula = 'Concluida'` — toda
+contagem é de **conclusões**, não de inscrições.
 
 > Página pública: https://alexlopespereira.github.io/capacitacao/
 
@@ -20,32 +32,47 @@ Filtros aplicados ao dataset bruto:
 │  GitHub Actions (cron)   │  ───────────────────────────┐
 └──────────────────────────┘                              │
                                                           ▼
-            ┌────────────────────────────────────────────────────────┐
-            │ 1. Baixa tar.gz de "últimos 12 meses" do portal ENAP   │
-            │ 2. Extrai cada CSV mensal (separator '|')              │
-            │ 3. Filtra sit_matricula='Concluida' AND esfera='Federal' │
-            │ 4. Filtra os 35 cursos alvo (match por nome_curso)     │
-            │ 5. Agrega por (ano_mes, id_curso) → count              │
-            │ 6. Merge idempotente em docs/contagem_mensal.csv       │
-            │ 7. Regenera docs/index.html (tabela pivot)             │
-            │ 8. Commita docs/ se houver novidade                    │
-            │ 9. Envia e-mail aos destinatários cadastrados          │
-            └────────────────────────────────────────────────────────┘
+            ┌──────────────────────────────────────────────────────────┐
+            │ 1. Baixa tar.gz de "últimos 12 meses" do portal ENAP     │
+            │ 2. Extrai cada CSV mensal (separador '|')                │
+            │ 3. Histórico público (atualizar_historico.py):           │
+            │    Concluida AND esfera='Federal' AND 35 cursos alvo     │
+            │    → contagem_mensal.csv, pessoas_por_mes.csv, index.html│
+            │ 4. Base do dashboard (gerar_base_dashboard.py):          │
+            │    Concluida AND 35 cursos alvo, TODAS as esferas        │
+            │    → dashboard_base.csv + agregado + relatório HTML/XLSX │
+            │ 5. Derivados do painel (público, programa, distribuições;│
+            │    distribuições fixas no recorte padrão do painel:      │
+            │    IA/Dados + esfera Federal)                            │
+            │ 6. Commita docs/ se houver novidade; Pages republica     │
+            └──────────────────────────────────────────────────────────┘
 ```
+
+> O workflow já teve um passo final de envio mensal por e-mail. Ele nunca
+> disparou pelo cron (issue #1) e foi **desativado em definitivo em
+> agosto/2026**, por decisão de produto: o canal de comunicação é a página
+> pública. Os secrets `MAIL_*` não são mais usados.
 
 ## Estrutura
 
 ```
 .
-├── .github/workflows/atualizar-mensal.yml   # cron + envio de e-mail
+├── .github/workflows/atualizar-mensal.yml   # cron mensal
 ├── scripts/
-│   ├── atualizar_historico.py               # job principal
+│   ├── atualizar_historico.py               # histórico público (só Federal)
+│   ├── gerar_base_dashboard.py              # base fato do painel (todas as esferas)
+│   ├── gerar_publico_alvo.py                # ponte curso↔público
+│   ├── gerar_programa.py                    # ponte curso↔programa + distribuição
+│   ├── gerar_distribuicao_publico.py        # distribuição cursos-por-pessoa
+│   ├── gerar_pbip.py                        # projeto Power BI (PBIP)
 │   ├── cursos_alvo.csv                      # 35 cursos (id_curso, tx_nome_curso, categoria: IA/Dados/Gestão/Outros)
-│   └── requirements.txt                     # pandas
+│   └── requirements.txt                     # pandas, jinja2
 ├── docs/                                    # GitHub Pages (raiz pública)
-│   ├── index.html                           # tabela pivot + curva de pessoas
-│   ├── contagem_mensal.csv                  # matrículas por mês × curso
-│   └── pessoas_por_mes.csv                  # (ano_mes, codigo_pessoa) — long format
+│   ├── index.html                           # tabela pivot + curva de pessoas (Federal)
+│   ├── contagem_mensal.csv                  # matrículas concluídas por mês × curso (Federal)
+│   ├── pessoas_por_mes.csv                  # (ano_mes, codigo_pessoa) — long format (Federal)
+│   ├── dashboard_base.csv                   # tabela fato do painel (todas as esferas)
+│   └── pbip/capacitacao-ia/                 # painel Power BI (abre focado em Federal)
 └── README.md
 ```
 
@@ -76,29 +103,19 @@ A equivalência foi validada por comparação curso-a-curso para o ano de 2025:
 ambas as fontes produzem **258.582** matrículas, com diferença zero em todos
 os 35 cursos. Detalhes da validação ficam no repositório privado de análise.
 
-## Configuração (GitHub Secrets necessários)
-
-| Secret | Descrição |
-|---|---|
-| `MAIL_USERNAME` | E-mail do remetente (Gmail) |
-| `MAIL_PASSWORD` | App Password de 16 caracteres do Gmail |
-| `MAIL_TO` | Lista de destinatários separados por vírgula |
-
-> `MAIL_TO` é guardado como **secret** (não variable) para evitar exposição
-> dos endereços nos logs públicos do repositório.
-
-Configuração adicional necessária no repositório:
+## Configuração do repositório
 
 - **Settings → Actions → General → Workflow permissions:** "Read and write"
 - **Settings → Pages:** Source = branch `main`, folder `/docs`
 
+Nenhum secret é necessário. (Os secrets `MAIL_*` eram do envio mensal por
+e-mail, desativado em definitivo — ver issue #1.)
+
 ## Dispositivos de teste
 
-O workflow aceita disparo manual (`workflow_dispatch`) com 3 inputs:
+O workflow aceita disparo manual (`workflow_dispatch`) com 1 input:
 
 - `ate` — último ano-mes a processar (formato `YYYY-MM`); vazio = mês anterior
-- `test_email` — se preenchido, envia apenas para esse endereço (não usa `MAIL_TO`)
-- `forcar_envio` — `true` para enviar e-mail mesmo sem mês novo
 
 ## Limitações conhecidas
 
@@ -126,11 +143,20 @@ python scripts/gerar_programa.py              # produz docs/dashboard_programa.c
 python scripts/gerar_pbip.py --validate       # produz docs/pbip/capacitacao-ia/
 ```
 
+> **Recorte padrão do painel:** `categoria IN {IA, Dados}` e `esfera =
+> 'Federal'`, como filtros de nível de relatório — o painel abre no foco
+> federal e o leitor pode ampliar o recorte no painel Filtros. As páginas de
+> distribuição (06 e 08) são retratos pré-agregados **fixos no recorte
+> padrão** (o grão delas não tem chave de curso nem de esfera para responder
+> a filtro).
+
 > A dimensão **Público-alvo** é carregada de `docs/dashboard_publico_alvo.csv`
 > (tabela-ponte curso↔público, relação muitos-para-muitos). A fonte curada do
-> mapeamento é `scripts/cursos_publico_alvo.csv`. Como um curso pode pertencer a
-> vários públicos, **a soma de matrículas por público excede o total geral**
-> (dupla contagem esperada); os KPIs sem o filtro de público permanecem corretos.
+> mapeamento é `scripts/cursos_publico_alvo.csv`. Como um curso pode pertencer
+> a vários públicos e programas, **a mesma pessoa entra em mais de uma fatia**:
+> as barras por público/programa não somam ao total do painel. Por isso essas
+> páginas contam pessoas distintas por fatia, não exibem soma nem % do total,
+> e o total verdadeiro fica no cartão "Pessoas distintas no painel".
 
 Flags úteis de `gerar_pbip.py`:
 
@@ -153,7 +179,7 @@ Flags úteis de `gerar_pbip.py`:
    (.pbip)"** e **"Pasta PBIR para relatórios"** → OK → reiniciar.
 3. **Abrir:** duplo-clique em `docs/pbip/capacitacao-ia/capacitacao-ia.pbip`.
 4. Com o padrão `--csv-path-mode absolute`, o `CsvPath` já vem com o caminho
-   absoluto resolvido — a carga acontece direto (~5–15s para 385k linhas). Se
+   absoluto resolvido — a carga acontece direto (~5–15s para 420k linhas). Se
    o repositório **não** estiver em `C:/Projects/capacitacao`, regenere com o
    caminho da sua máquina: `python scripts/gerar_pbip.py --force`
    (ou `--csv-path <caminho>/docs/dashboard_base.csv`). Só use
@@ -165,14 +191,14 @@ Flags úteis de `gerar_pbip.py`:
 
 | Página | Conteúdo |
 |---|---|
-| **1 — Visão Geral** | 4 KPIs (Matrículas IA, Matrículas Dados, Pessoas únicas IA, Pessoas únicas Dados) + linha temporal IA vs Dados + slicers de período e categoria |
-| **2 — Por Grupo** | Matriz Esfera × Poder com Matrículas e Pessoas únicas + slicers de ano, setor, categoria |
+| **1 — Visão Geral** | Nota de escopo (foco Federal por padrão) + 4 KPIs (Conclusões IA, Conclusões Dados, Pessoas únicas IA, Pessoas únicas Dados) + linha temporal IA vs Dados + slicers de período e categoria |
+| **2 — Por Grupo** | Matriz Esfera × Poder com Conclusões e Pessoas únicas — com o filtro padrão só a linha Federal aparece; ampliar o filtro Esfera traz as demais esferas para comparação |
 | **3 — Por Curso** | Tabela detalhada dos cursos (com categoria, meia altura) + gráfico de linha de pessoas concluintes ao longo do tempo — selecionar um curso na tabela cross-filtra a linha (histórico do curso) + slicer de categoria |
-| **4 — Por Público-Alvo** | Ranking de matrículas e de pessoas únicas por público + mix IA×Dados (100%) + evolução mensal por público |
+| **4 — Por Público-Alvo** | Ranking de pessoas distintas por público + mix IA×Dados (100%) + evolução mensal por público + cartão com o total verdadeiro do painel |
 | **5 — Público × Curso** | Matriz com drill Público→Trilha→Curso + cursos mais transversais (nº de públicos) + matriz Público × Poder |
-| **6 — Distribuição por Público** | Histograma de pessoas por nº de cursos concluídos + tabela resumo (fizeram ≥1, fizeram todos, % e média). Retrato estático — não responde aos slicers |
-| **7 — Por Programa** | Ranking de matrículas e pessoas únicas por programa + mix IA×Dados + evolução mensal (a dimensão Programa é o nível Trilha, curso↔programa m:n) |
-| **8 — Distribuição por Programa** | KPI de pessoas que concluíram **todos** os cursos do programa + histograma de pessoas por nº de cursos do programa + tabela resumo (fizeram ≥1, fizeram todos, % e média). Retrato estático |
+| **6 — Distribuição por Público** | Histograma de pessoas por nº de cursos concluídos + tabela resumo (fizeram ≥1, fizeram todos, % e média). Retrato estático fixo no recorte padrão (Federal, IA/Dados) — não responde aos slicers |
+| **7 — Por Programa** | Ranking de pessoas distintas por programa + mix IA×Dados + evolução mensal (a dimensão Programa é o nível Trilha, curso↔programa m:n) |
+| **8 — Distribuição por Programa** | Histograma de pessoas por nº de cursos do programa + tabela resumo (fizeram ≥1, fizeram todos, % e média). Retrato estático fixo no recorte padrão (Federal, IA/Dados) |
 
 > Todas as páginas ganham um slicer de **Público-alvo** no painel de filtros,
 > que cruza com qualquer visual.

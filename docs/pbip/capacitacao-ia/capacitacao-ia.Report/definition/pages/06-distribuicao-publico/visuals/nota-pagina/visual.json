@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Retrato sobre todo o histórico (todas as esferas); não responde aos filtros das outras páginas. Conta o mesmo conjunto de cursos que o resto do painel (categorias IA e Dados); cursos de Gestão e Outros ficam de fora. Nenhum curso de IA/Dados está fora de programa; fora do painel há Gestão de Riscos em Projetos de Transformação Digital (Gestão), sem programa e sem fatia aqui. Cada pessoa entra num único balde, pelo nº exato de cursos que concluiu. Uma pessoa pode aparecer em mais de um público: as barras NÃO somam ao total do painel, que está no cartão acima.",
+                    "value": "Retrato sobre todo o histórico, fixo no recorte padrão do painel: esfera Federal e categorias IA e Dados (Gestão e Outros ficam de fora); não responde aos filtros das outras páginas. Nenhum curso de IA/Dados está fora de programa; fora do painel há Gestão de Riscos em Projetos de Transformação Digital (Gestão), sem programa e sem fatia aqui. Cada pessoa entra num único balde, pelo nº exato de cursos que concluiu. Uma pessoa pode aparecer em mais de um público: as barras NÃO somam ao total do painel, que está no cartão acima.",
                     "textStyle": {
                       "fontSize": "11pt",
                       "fontWeight": "bold",

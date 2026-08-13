@@ -28,15 +28,27 @@ ficam em `scripts/pbip_templates/.lineage.json` para que os diffs sejam estávei
 
 ## Recorte e contagem do painel
 
-O painel conta apenas `categoria IN {IA, Dados}`. Esse recorte está em três lugares
-que precisam andar juntos: o filtro de nível de relatório do PBIP, `CATEGORIAS_PAINEL`
-em `gerar_base_dashboard.py`, e o mesmo nome em `gerar_programa.py` /
-`gerar_distribuicao_publico.py`.
+O recorte padrão do painel é `categoria IN {IA, Dados}` **e `esfera = 'Federal'`**
+(o foco declarado do produto). Cada metade do recorte vive em lugares que precisam
+andar juntos:
+
+- categoria: filtro de relatório `filtro-categoria-painel` no PBIP,
+  `CATEGORIAS_PAINEL` em `gerar_base_dashboard.py`, e o mesmo nome em
+  `gerar_programa.py` / `gerar_distribuicao_publico.py`;
+- esfera: filtro de relatório `filtro-esfera-painel` (padrão **editável** no painel
+  Filtros — o leitor pode ampliar para as demais esferas) e `ESFERA_PAINEL` em
+  `gerar_pbip.py`, `gerar_programa.py` e `gerar_distribuicao_publico.py`.
+
+A base (`dashboard_base.csv`) carrega **todas** as esferas — o recorte é de
+apresentação, nunca de carga. Já o histórico da página pública
+(`atualizar_historico.py` → `contagem_mensal.csv`) filtra `esfera='Federal'` na
+ingestão: as duas séries só são comparáveis no recorte padrão do painel.
 
 As tabelas `dist_publico` / `dist_programa` são pré-agregadas no grão `(fatia, k)` e
-não têm chave de curso: nenhum relacionamento empurra o filtro de categoria para
-dentro delas sem mudar o `k` de cada pessoa. O recorte tem que ser aplicado no
-gerador, onde o `k` é calculado.
+não têm chave de curso nem de esfera: nenhum relacionamento empurra os filtros do
+relatório para dentro delas sem mudar o `k` de cada pessoa. O recorte tem que ser
+aplicado no gerador, onde o `k` é calculado — e nelas ele é **fixo** no padrão
+(retrato), enquanto no resto do painel é padrão editável.
 
 Um curso pertence a vários públicos e a vários programas, então a mesma pessoa entra
 em várias fatias: **as barras por público/programa não somam ao total do painel** (a
@@ -46,3 +58,11 @@ O total verdadeiro aparece só no cartão `Pessoas distintas no painel`.
 
 `dashboard_base.csv` já vem filtrado para matrículas concluídas: `[Conclusoes]` conta
 conclusões, não matrículas.
+
+## Envio mensal por e-mail: desativado de propósito
+
+O step de e-mail do cron nunca disparou (condição exigia `workflow_dispatch` —
+issue #1) e foi removido em definitivo em 2026-08-13, por decisão de produto: o
+canal de comunicação é a página pública. Não é regressão e não deve ser
+"consertado"; reintroduzir exige decisão explícita de produto. Os secrets
+`MAIL_*` do repositório deixaram de ser usados.

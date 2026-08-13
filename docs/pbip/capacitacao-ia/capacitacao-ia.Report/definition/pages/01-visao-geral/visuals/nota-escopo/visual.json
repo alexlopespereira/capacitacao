@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
-  "name": "nota-pagina",
+  "name": "nota-escopo",
   "position": {
     "x": 16,
-    "y": 78,
+    "y": 64,
     "z": 0,
-    "width": 1248,
-    "height": 78,
+    "width": 984,
+    "height": 44,
     "tabOrder": 0
   },
   "visual": {
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Retrato sobre todo o histórico, fixo no recorte padrão do painel: esfera Federal e categorias IA e Dados (Gestão e Outros ficam de fora); não responde aos filtros das outras páginas. Nenhum curso de IA/Dados está fora de programa; fora do painel há Gestão de Riscos em Projetos de Transformação Digital (Gestão), sem programa e sem fatia aqui. Cada pessoa entra num único balde, pelo nº exato de cursos que concluiu. Uma pessoa pode aparecer em mais de um programa: as barras NÃO somam ao total do painel, que está no cartão acima.",
+                    "value": "O painel abre no foco do produto: esfera Federal (filtro padrão do relatório, editável no painel Filtros). A base carrega todas as esferas — Estadual, Municipal e não-servidores incluídos; o histórico da página pública cobre apenas a Federal.",
                     "textStyle": {
                       "fontSize": "11pt",
                       "fontWeight": "bold",
