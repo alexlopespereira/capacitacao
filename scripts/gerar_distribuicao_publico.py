@@ -22,12 +22,13 @@ Derivacoes no modelo (medidas DAX sobre esta tabela):
   - media de cursos/pessoa, % concluiu tudo, etc.
 
 ESCOPO — a tabela e pre-agregada no grao (publico, k) e nao tem chave de
-curso, entao nenhum relacionamento consegue empurrar o filtro de categoria do
-relatorio para dentro dela sem mudar o k de cada pessoa. O recorte tem que ser
-aplicado aqui, onde o k e calculado: contamos apenas os cursos das categorias
-do painel (IA e Dados), o mesmo conjunto que o resto do painel conta. Sem
-isso, a pagina de distribuicao contaria sobre os 35 cursos da meta enquanto as
-demais paginas contam sobre os cursos de IA/Dados.
+curso nem de esfera, entao nenhum relacionamento consegue empurrar os filtros
+do relatorio para dentro dela sem mudar o k de cada pessoa. O recorte tem que
+ser aplicado aqui, onde o k e calculado, e e o recorte PADRAO do painel:
+categorias IA e Dados + esfera Federal (o foco declarado do produto — o
+filtro de esfera do relatorio abre em Federal). O retrato e estatico: se o
+leitor ampliar o filtro de esfera nas outras paginas, esta pagina segue
+retratando o recorte padrao, e a nota da pagina avisa.
 
 O balde "(fora de programa)" (curso da meta que nao pertence a nenhum
 programa, e portanto a nenhum publico) e mantido: se um curso do painel ficar
@@ -52,9 +53,11 @@ PONTE_CSV = REPO_ROOT / "docs" / "dashboard_publico_alvo.csv"
 SRC_ALVO = Path(__file__).resolve().parent / "cursos_alvo.csv"
 OUT_CSV = REPO_ROOT / "docs" / "dashboard_dist_publico.csv"
 
-# Mesmo recorte de gerar_base_dashboard.CATEGORIAS_PAINEL e do filtro de nivel
-# de relatorio do PBIP (categoria IN {"IA","Dados"}).
+# Mesmo recorte de gerar_base_dashboard.CATEGORIAS_PAINEL e dos filtros de
+# nivel de relatorio do PBIP (categoria IN {"IA","Dados"}; esfera = Federal,
+# ver ESFERA_PAINEL em gerar_pbip.py).
 CATEGORIAS_PAINEL = {"IA", "Dados"}
+ESFERA_PAINEL = "Federal"
 FORA_DE_PROGRAMA = "(fora de programa)"
 
 
@@ -78,9 +81,14 @@ def main() -> int:
     # e o que faz esta pagina passar a bater com as demais.
     pub_cursos = {p: S for p, S in pub_cursos.items() if S}
 
-    # Fato -> pessoa: conjunto de cursos distintos concluidos (dentro do painel).
-    fato = pd.read_csv(FATO_CSV, usecols=["id_curso", "codigo_pessoa", "categoria"])
-    fato = fato[fato["categoria"].isin(CATEGORIAS_PAINEL)]
+    # Fato -> pessoa: conjunto de cursos distintos concluidos, no recorte
+    # padrao do painel (categorias IA/Dados + esfera Federal).
+    fato = pd.read_csv(
+        FATO_CSV, usecols=["id_curso", "codigo_pessoa", "categoria", "esfera"]
+    )
+    fato = fato[
+        fato["categoria"].isin(CATEGORIAS_PAINEL) & (fato["esfera"] == ESFERA_PAINEL)
+    ]
     pares = fato.drop_duplicates(["codigo_pessoa", "id_curso"])
     pessoa_cursos = pares.groupby("codigo_pessoa")["id_curso"].apply(set)
 
@@ -110,7 +118,8 @@ def main() -> int:
         w.writerows(linhas)
 
     print(f"Escrito {OUT_CSV.relative_to(REPO_ROOT)}")
-    print(f"  · escopo do painel: {len(cursos_painel)} cursos de {sorted(CATEGORIAS_PAINEL)}")
+    print(f"  · escopo do painel: {len(cursos_painel)} cursos de "
+          f"{sorted(CATEGORIAS_PAINEL)}, esfera {ESFERA_PAINEL}")
     print(f"  · {len(linhas)} linhas (publico x k), {len(pub_cursos)} publicos")
     for publico, S in pub_cursos.items():
         ge1 = sum(r["qtd_pessoas"] for r in linhas if r["publico_alvo"] == publico)

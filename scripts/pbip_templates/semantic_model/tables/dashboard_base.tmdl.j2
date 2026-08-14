@@ -1,11 +1,13 @@
 /// Tabela fato unica gerada por scripts/gerar_base_dashboard.py
-/// 385k linhas — schema flat (sem dimensoes separadas).
+/// ~420k linhas — schema flat (sem dimensoes separadas).
 table dashboard_base
 	lineageTag: {{ lineage.table_dashboard_base }}
 
-	/// O relatorio aplica um filtro de nivel de relatorio categoria IN {"IA","Dados"},
-	/// entao [Conclusoes]/[Pessoas Unicas] "totais" ja excluem Gestao/Outros: sao o
-	/// universo do painel de capacitacao em IA e Dados.
+	/// O relatorio aplica filtros de nivel de relatorio categoria IN {"IA","Dados"}
+	/// e esfera = "Federal" (o foco declarado do painel; editavel no painel
+	/// Filtros), entao [Conclusoes]/[Pessoas Unicas] "totais" ja excluem
+	/// Gestao/Outros e, por padrao, as demais esferas. A tabela carrega todas as
+	/// esferas — nada e truncado na carga.
 	measure Conclusoes = COUNTROWS(dashboard_base)
 		formatString: #,0
 		lineageTag: {{ lineage.measure_conclusoes }}

@@ -50,6 +50,12 @@ PROJECT_NAME = "capacitacao-ia"
 # Recorte do painel: o filtro de relatorio `categoria IN {IA, Dados}` e o mesmo
 # que os geradores de distribuicao aplicam. Manter as tres listas em sincronia.
 CATEGORIAS_PAINEL = {"IA", "Dados"}
+# Foco declarado do painel: esfera Federal. A base carrega todas as esferas
+# (nada e truncado na carga); o relatorio abre com o filtro de esfera em
+# Federal, editavel no painel Filtros. Mesmo nome em
+# gerar_distribuicao_publico.py / gerar_programa.py, onde o recorte e fixo
+# (retrato pre-agregado nao responde a filtro).
+ESFERA_PAINEL = "Federal"
 FORA_DE_PROGRAMA = "(fora de programa)"
 ENTITY = "dashboard_base"
 BRIDGE = "bridge_publico"
@@ -214,9 +220,11 @@ def textbox(name: str, text: str, x: int, y: int,
 # abas (esfera, setor, poder, categoria, ano), empilhados na coluna direita.
 FILTER_PANEL_X = 1016
 FILTER_PANEL_W = 248
-# Slicers comuns (do fato), idênticos em todas as páginas.
+# Slicers comuns (do fato), idênticos em todas as páginas. O slicer de esfera
+# declara o foco no título: com o filtro padrão do relatório ele só oferece
+# Federal; ampliado o filtro no painel Filtros, as demais esferas aparecem.
 _COMMON_FILTERS = (
-    ("slicer-esfera", "Esfera", "esfera", ENTITY),
+    ("slicer-esfera", f"Esfera (padrão: {ESFERA_PAINEL})", "esfera", ENTITY),
     ("slicer-setor", "Setor", "setor", ENTITY),
     ("slicer-poder", "Poder", "poder", ENTITY),
     ("slicer-categoria", "Categoria (IA / Dados)", "categoria", ENTITY),
@@ -286,20 +294,27 @@ _CAT_AXIS_LABELS = json.dumps({
     ],
 })
 
-# Filtro de nível de relatório: o painel de capacitação conta apenas IA e Dados.
-# Cursos de Gestão/Outros seguem na tabela fato (auditáveis) mas são removidos de
-# todos os visuais/slicers ligados ao fato — é o que torna os indicadores "mais
-# precisos" sem apagar dados. As páginas de Distribuição (tabelas
-# dist_publico/dist_programa) não têm relação com o fato e não são alcançadas
-# por este filtro: elas são pré-filtradas pelo mesmo recorte no gerador
+# Filtros de nível de relatório — o recorte padrão do painel.
+#   - categoria IN {IA, Dados}: o painel de capacitação conta apenas IA e Dados.
+#     Cursos de Gestão/Outros seguem na tabela fato (auditáveis) mas são
+#     removidos de todos os visuais/slicers ligados ao fato.
+#   - esfera = Federal: o foco declarado do painel. A base carrega todas as
+#     esferas; quem quiser Estadual/Municipal/não-servidores amplia este filtro
+#     no painel Filtros — nenhum número deve ser lido como federal sem que o
+#     recorte diga isso.
+# As páginas de Distribuição (tabelas dist_publico/dist_programa) não têm
+# relação com o fato e não são alcançadas por estes filtros: elas são
+# pré-filtradas pelo mesmo recorte no gerador
 # (scripts/gerar_distribuicao_publico.py e scripts/gerar_programa.py), porque o
 # grão pré-agregado (fatia, k) não tem chave de curso onde o filtro pudesse
 # entrar sem mudar o k de cada pessoa.
-_REPORT_FILTER_IA_DADOS = json.dumps({
-    "filters": [{
-        "name": "filtro-categoria-painel",
+
+def _filtro_in(name: str, prop: str, valores: tuple[str, ...]) -> dict[str, Any]:
+    """Filtro categórico de relatório, na serialização que o Desktop grava."""
+    return {
+        "name": name,
         "field": {"Column": {
-            "Expression": {"SourceRef": {"Entity": ENTITY}}, "Property": "categoria",
+            "Expression": {"SourceRef": {"Entity": ENTITY}}, "Property": prop,
         }},
         "type": "Categorical",
         "filter": {
@@ -308,15 +323,19 @@ _REPORT_FILTER_IA_DADOS = json.dumps({
             "Where": [{"Condition": {"In": {
                 "Expressions": [{"Column": {
                     "Expression": {"SourceRef": {"Source": "d"}},
-                    "Property": "categoria",
+                    "Property": prop,
                 }}],
-                "Values": [
-                    [{"Literal": {"Value": "'IA'"}}],
-                    [{"Literal": {"Value": "'Dados'"}}],
-                ],
+                "Values": [[{"Literal": {"Value": f"'{v}'"}}] for v in valores],
             }}}],
         },
-    }],
+    }
+
+
+_REPORT_FILTERS_PAINEL = json.dumps({
+    "filters": [
+        _filtro_in("filtro-categoria-painel", "categoria", ("IA", "Dados")),
+        _filtro_in("filtro-esfera-painel", "esfera", (ESFERA_PAINEL,)),
+    ],
 })
 
 
@@ -387,9 +406,9 @@ def nota_distribuicao(fatia: str, x: int, y: int, width: int,
         avulso = ""
     return textbox(
         "nota-pagina",
-        f"Retrato sobre todo o histórico (todas as esferas); não responde aos "
-        f"filtros das outras páginas. Conta o mesmo conjunto de cursos que o resto "
-        f"do painel (categorias IA e Dados); cursos de Gestão e Outros ficam de fora. "
+        f"Retrato sobre todo o histórico, fixo no recorte padrão do painel: "
+        f"esfera {ESFERA_PAINEL} e categorias IA e Dados (Gestão e Outros ficam "
+        f"de fora); não responde aos filtros das outras páginas. "
         f"{avulso}"
         f"Cada pessoa entra num único balde, pelo nº exato de cursos que concluiu. "
         f"Uma pessoa pode aparecer em mais de um {fatia}: as barras NÃO somam ao "
@@ -413,15 +432,24 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "visuals": [
             textbox("titulo-pagina", "Visão Geral — Capacitação em IA e Dados",
                     x=16, y=10, width=984, height=50, font_size="22pt"),
-            kpi_card("kpi-conclusoes-ia", "Conclusões IA", "Conclusoes IA", x=16, y=64),
-            kpi_card("kpi-conclusoes-dados", "Conclusões Dados", "Conclusoes Dados", x=266, y=64),
-            kpi_card("kpi-pessoas-ia", "Pessoas únicas IA", "Pessoas Unicas IA", x=516, y=64),
-            kpi_card("kpi-pessoas-dados", "Pessoas únicas Dados", "Pessoas Unicas Dados", x=766, y=64),
+            # Recorte explícito: o leitor precisa saber o que os números cobrem
+            # antes de ler o primeiro KPI.
+            textbox("nota-escopo",
+                    "O painel abre no foco do produto: esfera Federal (filtro "
+                    "padrão do relatório, editável no painel Filtros). A base "
+                    "carrega todas as esferas — Estadual, Municipal e "
+                    "não-servidores incluídos; o histórico da página pública "
+                    "cobre apenas a Federal.",
+                    x=16, y=64, width=984, height=44, font_size="11pt"),
+            kpi_card("kpi-conclusoes-ia", "Conclusões IA", "Conclusoes IA", x=16, y=112),
+            kpi_card("kpi-conclusoes-dados", "Conclusões Dados", "Conclusoes Dados", x=266, y=112),
+            kpi_card("kpi-pessoas-ia", "Pessoas únicas IA", "Pessoas Unicas IA", x=516, y=112),
+            kpi_card("kpi-pessoas-dados", "Pessoas únicas Dados", "Pessoas Unicas Dados", x=766, y=112),
             {
                 "name": "linha-temporal",
                 "title": "Conclusões por mês (IA vs Dados)",
                 "visual_type": "lineChart",
-                "position": {"x": 16, "y": 196, "width": 984, "height": 502},
+                "position": {"x": 16, "y": 240, "width": 984, "height": 458},
                 "projections": {
                     "Category": [column("ano_mes")],
                     "Series": [column("categoria")],
@@ -441,11 +469,20 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "visuals": [
             textbox("titulo-pagina", "Por Grupo — Esfera × Poder",
                     x=16, y=10, width=984, height=50, font_size="22pt"),
+            # Esta é a página onde as esferas se comparam: com o filtro padrão
+            # só a linha Federal aparece; ampliá-lo traz as demais, cada número
+            # rotulado pela linha da própria esfera.
+            textbox("nota-escopo",
+                    "Com o filtro padrão do painel a matriz mostra só a esfera "
+                    "Federal. Para comparar esferas, amplie o filtro Esfera no "
+                    "painel Filtros — cada linha da matriz é rotulada pela "
+                    "própria esfera.",
+                    x=16, y=64, width=984, height=44, font_size="11pt"),
             {
                 "name": "matriz-esfera-poder",
                 "title": "Esfera × Poder",
                 "visual_type": "pivotTable",
-                "position": {"x": 16, "y": 64, "width": 984, "height": 634},
+                "position": {"x": 16, "y": 112, "width": 984, "height": 586},
                 "projections": {
                     "Columns": [column("poder")],
                     "Rows": [column("esfera")],
@@ -996,7 +1033,7 @@ def main() -> int:
         "lineage": lineage,
         "csv_path_m_literal": csv_literal,
         "pages": PAGES_SPEC,
-        "report_filter_config": _REPORT_FILTER_IA_DADOS,
+        "report_filter_config": _REPORT_FILTERS_PAINEL,
     }
 
     # Launcher .pbip
