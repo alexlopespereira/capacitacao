@@ -28,27 +28,27 @@ ficam em `scripts/pbip_templates/.lineage.json` para que os diffs sejam estávei
 
 ## Recorte e contagem do painel
 
-O recorte padrão do painel é `categoria IN {IA, Dados}` **e `esfera = 'Federal'`**
-(o foco declarado do produto). Cada metade do recorte vive em lugares que precisam
-andar juntos:
+O recorte do painel é `categoria IN {IA, Dados}` e mais nada. Ele vive em três
+lugares que precisam andar juntos: filtro de relatório `filtro-categoria-painel`
+no PBIP, `CATEGORIAS_PAINEL` em `gerar_base_dashboard.py`, e o mesmo nome em
+`gerar_programa.py` / `gerar_distribuicao_publico.py`.
 
-- categoria: filtro de relatório `filtro-categoria-painel` no PBIP,
-  `CATEGORIAS_PAINEL` em `gerar_base_dashboard.py`, e o mesmo nome em
-  `gerar_programa.py` / `gerar_distribuicao_publico.py`;
-- esfera: filtro de relatório `filtro-esfera-painel` (padrão **editável** no painel
-  Filtros — o leitor pode ampliar para as demais esferas) e `ESFERA_PAINEL` em
-  `gerar_pbip.py`, `gerar_programa.py` e `gerar_distribuicao_publico.py`.
+**Esfera não recorta o painel** — decisão de produto de 2026-09-01, revertendo o
+foco federal de #17. O painel cobre as quatro esferas da base (Federal, Estadual,
+Municipal, `(sem esfera)`) e o slicer *Esfera*, presente em todas as páginas, é o
+único lugar onde o leitor recorta. Não reintroduza `ESFERA_PAINEL` nem
+`filtro-esfera-painel` sem decisão explícita.
 
-A base (`dashboard_base.csv`) carrega **todas** as esferas — o recorte é de
-apresentação, nunca de carga. Já o histórico da página pública
-(`atualizar_historico.py` → `contagem_mensal.csv`) filtra `esfera='Federal'` na
-ingestão: as duas séries só são comparáveis no recorte padrão do painel.
+Já o histórico da página pública (`atualizar_historico.py` → `contagem_mensal.csv`)
+continua filtrando `esfera='Federal'` na ingestão, de propósito: **as duas séries
+não são diretamente comparáveis** (332.003 conclusões de IA/Dados no painel contra
+96.558 federais; 212.381 contra 53.920 pessoas distintas — posição de 2026-09-01). A nota de escopo da
+página 1 e o README dizem isso; se um dos lados mudar, os dois textos mudam junto.
 
 As tabelas `dist_publico` / `dist_programa` são pré-agregadas no grão `(fatia, k)` e
-não têm chave de curso nem de esfera: nenhum relacionamento empurra os filtros do
+não têm chave de curso: nenhum relacionamento empurra o filtro de categoria do
 relatório para dentro delas sem mudar o `k` de cada pessoa. O recorte tem que ser
-aplicado no gerador, onde o `k` é calculado — e nelas ele é **fixo** no padrão
-(retrato), enquanto no resto do painel é padrão editável.
+aplicado no gerador, onde o `k` é calculado.
 
 Um curso pertence a vários públicos e a vários programas, então a mesma pessoa entra
 em várias fatias: **as barras por público/programa não somam ao total do painel** (a

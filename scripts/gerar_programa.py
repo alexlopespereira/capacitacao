@@ -16,15 +16,14 @@ Saidas:
 
 ESCOPO da distribuicao — a ponte cobre os 35 cursos da meta (o filtro de
 categoria do relatorio a alcanca via dim_curso), mas dashboard_dist_programa
-e pre-agregada no grao (programa, k), sem chave de curso nem de esfera:
-nenhum relacionamento consegue empurrar os filtros do relatorio para dentro
-dela sem mudar o k de cada pessoa. Por isso o recorte e aplicado aqui, onde o
-k e calculado, e e o recorte PADRAO do painel: categorias IA e Dados + esfera
-Federal (o foco declarado do produto — o filtro de esfera do relatorio abre
-em Federal). O retrato e estatico: ampliar o filtro de esfera nas outras
-paginas nao muda esta pagina, e a nota dela avisa. Efeito colateral desejado
-do recorte de categoria: programa cujos cursos sao todos de outra categoria
-deixa de aparecer numa pagina e faltar na outra.
+e pre-agregada no grao (programa, k), sem chave de curso: nenhum
+relacionamento consegue empurrar aquele filtro para dentro dela sem mudar o k
+de cada pessoa. Por isso o recorte e aplicado aqui, onde o k e calculado — so
+os cursos das categorias do painel (IA e Dados) contam, o mesmo conjunto que
+o resto do painel. Esfera nao recorta nada aqui: o retrato cobre todas as
+esferas, como o resto do painel. Efeito colateral desejado: programa cujos
+cursos sao todos de outra categoria deixa de aparecer numa pagina e faltar na
+outra.
 
 O balde "(fora de programa)" (curso da meta que nao pertence a nenhum
 programa) entra tanto na ponte quanto na distribuicao: se um curso do painel
@@ -50,11 +49,9 @@ FATO_CSV = REPO_ROOT / "docs" / "dashboard_base.csv"
 OUT_BRIDGE = REPO_ROOT / "docs" / "dashboard_programa.csv"
 OUT_DIST = REPO_ROOT / "docs" / "dashboard_dist_programa.csv"
 
-# Mesmo recorte de gerar_base_dashboard.CATEGORIAS_PAINEL e dos filtros de
-# nivel de relatorio do PBIP (categoria IN {"IA","Dados"}; esfera = Federal,
-# ver ESFERA_PAINEL em gerar_pbip.py).
+# Mesmo recorte de gerar_base_dashboard.CATEGORIAS_PAINEL e do filtro de nivel
+# de relatorio do PBIP (categoria IN {"IA","Dados"}).
 CATEGORIAS_PAINEL = {"IA", "Dados"}
-ESFERA_PAINEL = "Federal"
 FORA_DE_PROGRAMA = "(fora de programa)"
 
 
@@ -104,12 +101,8 @@ def main() -> int:
     vazios = sorted(p for p, S in prog_cursos.items() if not S)
     prog_cursos = {p: S for p, S in prog_cursos.items() if S}
 
-    fato = pd.read_csv(
-        FATO_CSV, usecols=["id_curso", "codigo_pessoa", "categoria", "esfera"]
-    )
-    fato = fato[
-        fato["categoria"].isin(CATEGORIAS_PAINEL) & (fato["esfera"] == ESFERA_PAINEL)
-    ]
+    fato = pd.read_csv(FATO_CSV, usecols=["id_curso", "codigo_pessoa", "categoria"])
+    fato = fato[fato["categoria"].isin(CATEGORIAS_PAINEL)]
     pares = fato.drop_duplicates(["codigo_pessoa", "id_curso"])
     pessoa_cursos = pares.groupby("codigo_pessoa")["id_curso"].apply(set)
 
@@ -139,8 +132,7 @@ def main() -> int:
 
     print(f"Escrito {OUT_BRIDGE.relative_to(REPO_ROOT)} ({len(bridge)} linhas)")
     print(f"Escrito {OUT_DIST.relative_to(REPO_ROOT)} ({len(dist_rows)} linhas)")
-    print(f"  · escopo do painel: {len(cursos_painel)} cursos de "
-          f"{sorted(CATEGORIAS_PAINEL)}, esfera {ESFERA_PAINEL}")
+    print(f"  · escopo do painel: {len(cursos_painel)} cursos de {sorted(CATEGORIAS_PAINEL)}")
     print(f"  · {len(prog_cursos)} programas na distribuicao")
     for programa, S in sorted(prog_cursos.items()):
         ge1 = sum(r["qtd_pessoas"] for r in dist_rows if r["programa"] == programa)

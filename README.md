@@ -2,23 +2,23 @@
 
 Pipeline automatizado que coleta o dump público da Escola Virtual.Gov da
 [ENAP](https://dadosaberto.evg.gov.br/) e acompanha as **matrículas
-concluídas** de uma lista de **35 cursos da meta de capacitação**. O foco do
-produto é o **governo federal**, mas os dois artefatos cobrem recortes
-diferentes — cada número diz o que cobre:
+concluídas** de uma lista de **35 cursos da meta de capacitação**. Os dois
+artefatos cobrem recortes **diferentes** — cada número diz o que cobre:
 
 - **Histórico público** (página estática + `contagem_mensal.csv` /
   `pessoas_por_mes.csv`): **só servidores públicos federais**
   (`esfera = 'Federal'`). Estadual, Municipal e não-servidores ficam de fora.
-- **Base do dashboard** (`dashboard_base.csv` + painel Power BI): carrega
-  **todas as esferas** — Federal, Estadual, Municipal e sem vínculo público
-  (privado/não-servidor). O painel **abre com o filtro padrão
-  `esfera = 'Federal'`**, o foco declarado; o leitor pode ampliar o recorte
-  no painel Filtros, e as páginas de distribuição (retratos pré-agregados)
-  ficam fixas no recorte padrão.
+- **Base do dashboard** (`dashboard_base.csv` + painel Power BI): **todas as
+  esferas** — Federal, Estadual, Municipal e sem vínculo público
+  (privado/não-servidor). O painel **não filtra esfera**: cobre as quatro e
+  oferece o slicer *Esfera* para quem quiser recortar. As páginas de
+  distribuição (retratos pré-agregados) também cobrem todas as esferas.
 
-Para dimensionar a diferença: das 314.783 conclusões de IA/Dados na base
-completa, só 89.829 (29%) são da esfera Federal — por isso nenhum número deve
-ser apresentado como "de servidores federais" sem o recorte dizer isso.
+Para dimensionar a diferença: das 332.003 conclusões de IA/Dados do painel
+(212.381 pessoas distintas), 96.558 (29%) são da esfera Federal (53.920
+pessoas) — o número que o histórico público acompanha. Por isso as duas séries
+**não são diretamente comparáveis**, e nenhum número do painel deve ser
+apresentado como "de servidores federais" sem o slicer Esfera dizer isso.
 
 Filtro comum aos dois artefatos: `sit_matricula = 'Concluida'` — toda
 contagem é de **conclusões**, não de inscrições.
@@ -42,8 +42,8 @@ contagem é de **conclusões**, não de inscrições.
             │    Concluida AND 35 cursos alvo, TODAS as esferas        │
             │    → dashboard_base.csv + agregado + relatório HTML/XLSX │
             │ 5. Derivados do painel (público, programa, distribuições;│
-            │    distribuições fixas no recorte padrão do painel:      │
-            │    IA/Dados + esfera Federal)                            │
+            │    distribuições fixas no recorte do painel: IA/Dados,   │
+            │    todas as esferas)                                     │
             │ 6. Commita docs/ se houver novidade; Pages republica     │
             └──────────────────────────────────────────────────────────┘
 ```
@@ -72,7 +72,7 @@ contagem é de **conclusões**, não de inscrições.
 │   ├── contagem_mensal.csv                  # matrículas concluídas por mês × curso (Federal)
 │   ├── pessoas_por_mes.csv                  # (ano_mes, codigo_pessoa) — long format (Federal)
 │   ├── dashboard_base.csv                   # tabela fato do painel (todas as esferas)
-│   └── pbip/capacitacao-ia/                 # painel Power BI (abre focado em Federal)
+│   └── pbip/capacitacao-ia/                 # painel Power BI (todas as esferas)
 └── README.md
 ```
 
@@ -143,11 +143,11 @@ python scripts/gerar_programa.py              # produz docs/dashboard_programa.c
 python scripts/gerar_pbip.py --validate       # produz docs/pbip/capacitacao-ia/
 ```
 
-> **Recorte padrão do painel:** `categoria IN {IA, Dados}` e `esfera =
-> 'Federal'`, como filtros de nível de relatório — o painel abre no foco
-> federal e o leitor pode ampliar o recorte no painel Filtros. As páginas de
-> distribuição (06 e 08) são retratos pré-agregados **fixos no recorte
-> padrão** (o grão delas não tem chave de curso nem de esfera para responder
+> **Recorte do painel:** `categoria IN {IA, Dados}`, como filtro de nível de
+> relatório. **Esfera não recorta**: o painel cobre Federal, Estadual,
+> Municipal e "(sem esfera)", e o slicer *Esfera* fica disponível em todas as
+> páginas. As páginas de distribuição (06 e 08) são retratos pré-agregados
+> **fixos nesse recorte** (o grão delas não tem chave de curso para responder
 > a filtro).
 
 > A dimensão **Público-alvo** é carregada de `docs/dashboard_publico_alvo.csv`
@@ -191,14 +191,14 @@ Flags úteis de `gerar_pbip.py`:
 
 | Página | Conteúdo |
 |---|---|
-| **1 — Visão Geral** | Nota de escopo (foco Federal por padrão) + 4 KPIs (Conclusões IA, Conclusões Dados, Pessoas únicas IA, Pessoas únicas Dados) + linha temporal IA vs Dados + slicers de período e categoria |
-| **2 — Por Grupo** | Matriz Esfera × Poder com Conclusões e Pessoas únicas — com o filtro padrão só a linha Federal aparece; ampliar o filtro Esfera traz as demais esferas para comparação |
+| **1 — Visão Geral** | Nota de escopo (todas as esferas; histórico público é só Federal) + 4 KPIs (Conclusões IA, Conclusões Dados, Pessoas únicas IA, Pessoas únicas Dados) + linha temporal IA vs Dados + slicers de período e categoria |
+| **2 — Por Grupo** | Matriz Esfera × Poder com Conclusões e Pessoas únicas — as quatro esferas aparecem lado a lado, cada linha rotulada pela própria esfera |
 | **3 — Por Curso** | Tabela detalhada dos cursos (com categoria, meia altura) + gráfico de linha de pessoas concluintes ao longo do tempo — selecionar um curso na tabela cross-filtra a linha (histórico do curso) + slicer de categoria |
 | **4 — Por Público-Alvo** | Ranking de pessoas distintas por público + mix IA×Dados (100%) + evolução mensal por público + cartão com o total verdadeiro do painel |
 | **5 — Público × Curso** | Matriz com drill Público→Trilha→Curso + cursos mais transversais (nº de públicos) + matriz Público × Poder |
-| **6 — Distribuição por Público** | Histograma de pessoas por nº de cursos concluídos + tabela resumo (fizeram ≥1, fizeram todos, % e média). Retrato estático fixo no recorte padrão (Federal, IA/Dados) — não responde aos slicers |
+| **6 — Distribuição por Público** | Histograma de pessoas por nº de cursos concluídos + tabela resumo (fizeram ≥1, fizeram todos, % e média). Retrato estático fixo no recorte do painel (IA/Dados, todas as esferas) — não responde aos slicers |
 | **7 — Por Programa** | Ranking de pessoas distintas por programa + mix IA×Dados + evolução mensal (a dimensão Programa é o nível Trilha, curso↔programa m:n) |
-| **8 — Distribuição por Programa** | Histograma de pessoas por nº de cursos do programa + tabela resumo (fizeram ≥1, fizeram todos, % e média). Retrato estático fixo no recorte padrão (Federal, IA/Dados) |
+| **8 — Distribuição por Programa** | Histograma de pessoas por nº de cursos do programa + tabela resumo (fizeram ≥1, fizeram todos, % e média). Retrato estático fixo no recorte do painel (IA/Dados, todas as esferas) |
 
 > Todas as páginas ganham um slicer de **Público-alvo** no painel de filtros,
 > que cruza com qualquer visual.

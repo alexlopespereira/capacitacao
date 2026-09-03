@@ -1,11 +1,11 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "kpi-pessoas-dados",
   "position": {
     "x": 766,
     "y": 112,
     "z": 0,
-    "height": 116,
+    "height": 120,
     "width": 234,
     "tabOrder": 0
   },

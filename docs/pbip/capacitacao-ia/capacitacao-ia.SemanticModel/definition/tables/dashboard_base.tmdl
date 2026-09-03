@@ -3,11 +3,10 @@
 table dashboard_base
 	lineageTag: 45024c93-3e9a-449d-a9b4-1bc451368289
 
-	/// O relatorio aplica filtros de nivel de relatorio categoria IN {"IA","Dados"}
-	/// e esfera = "Federal" (o foco declarado do painel; editavel no painel
-	/// Filtros), entao [Conclusoes]/[Pessoas Unicas] "totais" ja excluem
-	/// Gestao/Outros e, por padrao, as demais esferas. A tabela carrega todas as
-	/// esferas — nada e truncado na carga.
+	/// O relatorio aplica um filtro de nivel de relatorio, categoria IN
+	/// {"IA","Dados"}, entao [Conclusoes]/[Pessoas Unicas] "totais" ja excluem
+	/// Gestao/Outros. Esfera NAO e filtrada: os totais cobrem Federal, Estadual,
+	/// Municipal e "(sem esfera)" — o slicer Esfera recorta sob demanda.
 	measure Conclusoes = COUNTROWS(dashboard_base)
 		formatString: #,0
 		lineageTag: aaec4cc1-1333-4265-859a-8a9291b074c2

@@ -1,11 +1,11 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "tabela-resumo-programa",
   "position": {
     "x": 792,
-    "y": 166,
+    "y": 275,
     "z": 0,
-    "height": 532,
+    "height": 423,
     "width": 472,
     "tabOrder": 0
   },

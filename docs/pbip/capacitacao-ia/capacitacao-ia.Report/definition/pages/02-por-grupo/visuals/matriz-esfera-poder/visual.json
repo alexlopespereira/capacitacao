@@ -1,11 +1,11 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "matriz-esfera-poder",
   "position": {
     "x": 16,
-    "y": 112,
+    "y": 64,
     "z": 0,
-    "height": 586,
+    "height": 634,
     "width": 984,
     "tabOrder": 0
   },
