@@ -41,8 +41,9 @@ Municipal, `(sem esfera)`) e o slicer *Esfera*, presente em todas as páginas, �
 
 Já o histórico da página pública (`atualizar_historico.py` → `contagem_mensal.csv`)
 continua filtrando `esfera='Federal'` na ingestão, de propósito: **as duas séries
-não são diretamente comparáveis** (332.003 conclusões de IA/Dados no painel contra
-96.558 federais; 212.381 contra 53.920 pessoas distintas — posição de 2026-09-01). A nota de escopo da
+não são diretamente comparáveis** (370.967 conclusões de IA/Dados no painel contra
+113.557 federais; 236.529 contra 62.117 pessoas distintas — posição de 2026-10-16,
+dados até 2026-09). A nota de escopo da
 página 1 e o README dizem isso; se um dos lados mudar, os dois textos mudam junto.
 
 As tabelas `dist_publico` / `dist_programa` são pré-agregadas no grão `(fatia, k)` e

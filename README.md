@@ -14,8 +14,8 @@ artefatos cobrem recortes **diferentes** — cada número diz o que cobre:
   oferece o slicer *Esfera* para quem quiser recortar. As páginas de
   distribuição (retratos pré-agregados) também cobrem todas as esferas.
 
-Para dimensionar a diferença: das 332.003 conclusões de IA/Dados do painel
-(212.381 pessoas distintas), 96.558 (29%) são da esfera Federal (53.920
+Para dimensionar a diferença: das 370.967 conclusões de IA/Dados do painel
+(236.529 pessoas distintas), 113.557 (31%) são da esfera Federal (62.117
 pessoas) — o número que o histórico público acompanha. Por isso as duas séries
 **não são diretamente comparáveis**, e nenhum número do painel deve ser
 apresentado como "de servidores federais" sem o slicer Esfera dizer isso.
