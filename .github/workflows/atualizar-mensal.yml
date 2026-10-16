@@ -28,6 +28,12 @@ jobs:
   atualizar:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      # Caminho do CSV fato na maquina Windows onde o painel e ABERTO -- nao no
+      # runner. O Power Query exige caminho absoluto em File.Contents, entao o
+      # parametro CsvPath do modelo guarda este valor. Se a pasta do projeto
+      # mudar de lugar, muda aqui (ver AGENTS.md).
+      PBIP_CSV_PATH: "C:/Projects/capacitacao/docs/dashboard_base.csv"
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -73,6 +79,26 @@ jobs:
           python scripts/gerar_publico_alvo.py
           python scripts/gerar_distribuicao_publico.py
           python scripts/gerar_programa.py
+
+      # O PBIP e saida de gerar_pbip.py, nunca editado a mao (AGENTS.md). Ele
+      # NAO carrega dados -- o modelo le docs/dashboard_base.csv no refresh --
+      # entao o normal aqui e sair sem diff. O passo existe para pegar
+      # divergencia entre a definicao commitada e scripts/pbip_templates/.
+      #
+      # O --csv-path e OBRIGATORIO: sem ele o default e o caminho do runner
+      # (/home/runner/work/...), que iria para o CsvPath commitado e quebraria
+      # o painel ao ser aberto no Desktop.
+      - name: Regenerar PBIP do painel
+        run: |
+          python scripts/gerar_pbip.py --force --validate \
+            --output docs/pbip/capacitacao-ia \
+            --csv-path "$PBIP_CSV_PATH" --csv-path-mode absolute
+          if git diff --quiet -- docs/pbip/; then
+            echo "PBIP sem diff: definicao commitada bate com os templates."
+          else
+            echo "::warning::PBIP regenerado com diferencas -- a definicao commitada estava fora de sincronia com scripts/pbip_templates/."
+            git diff --stat -- docs/pbip/
+          fi
 
       - name: Commit & push se houver mudancas
         run: |

@@ -44,7 +44,10 @@ contagem é de **conclusões**, não de inscrições.
             │ 5. Derivados do painel (público, programa, distribuições;│
             │    distribuições fixas no recorte do painel: IA/Dados,   │
             │    todas as esferas)                                     │
-            │ 6. Commita docs/ se houver novidade; Pages republica     │
+            │ 6. Regenera o PBIP (gerar_pbip.py) com o CsvPath fixo;   │
+            │    normalmente sai sem diff — serve de guarda contra     │
+            │    edição manual do painel                               │
+            │ 7. Commita docs/ se houver novidade; Pages republica     │
             └──────────────────────────────────────────────────────────┘
 ```
 

@@ -20,6 +20,17 @@ python scripts/gerar_pbip.py --dry-run    # valida sem escrever
 O `--csv-path` acima é o caminho da máquina Windows onde o painel é aberto; sem ele
 a regeneração troca o `CsvPath` do modelo pelo caminho local e suja o diff.
 
+O cron também regenera o PBIP (step *Regenerar PBIP do painel*), e lá o
+`--csv-path` vem do env `PBIP_CSV_PATH` do job — **não é opcional**: o default do
+gerador é a raiz do checkout, e no runner isso gravaria
+`/home/runner/work/capacitacao/capacitacao/docs/dashboard_base.csv` no `CsvPath`
+commitado, quebrando o painel para quem o abre no Desktop. Se a pasta do projeto
+mudar de lugar na máquina do analista, o valor muda nos dois lugares (o comando
+acima e o env do workflow). Como o PBIP não carrega dados — o modelo lê o CSV no
+refresh — esse step normalmente sai **sem diff**; quando sai com diff, o log emite
+um `::warning::` e o commit automático leva a correção, o que significa que a
+definição commitada estava fora de sincronia com `scripts/pbip_templates/`.
+
 A saída bate byte a byte com o que o Power BI Desktop grava ao salvar o projeto —
 JSON como `json.dumps(indent=2, ensure_ascii=False)`, TMDL terminando em linha em
 branco, mais a ordem de chaves que o Desktop usa. Um "salvar" no Desktop não deve
