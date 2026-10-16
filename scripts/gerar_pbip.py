@@ -50,12 +50,6 @@ PROJECT_NAME = "capacitacao-ia"
 # Recorte do painel: o filtro de relatorio `categoria IN {IA, Dados}` e o mesmo
 # que os geradores de distribuicao aplicam. Manter as tres listas em sincronia.
 CATEGORIAS_PAINEL = {"IA", "Dados"}
-# Foco declarado do painel: esfera Federal. A base carrega todas as esferas
-# (nada e truncado na carga); o relatorio abre com o filtro de esfera em
-# Federal, editavel no painel Filtros. Mesmo nome em
-# gerar_distribuicao_publico.py / gerar_programa.py, onde o recorte e fixo
-# (retrato pre-agregado nao responde a filtro).
-ESFERA_PAINEL = "Federal"
 FORA_DE_PROGRAMA = "(fora de programa)"
 ENTITY = "dashboard_base"
 BRIDGE = "bridge_publico"
@@ -173,7 +167,7 @@ def column_of(entity: str, name: str) -> dict[str, Any]:
 
 
 def kpi_card(name: str, title: str, measure_name: str, x: int, y: int,
-             width: int = 234, height: int = 116) -> dict[str, Any]:
+             width: int = 234, height: int = 120) -> dict[str, Any]:
     return {
         "name": name,
         "title": title,
@@ -221,10 +215,10 @@ def textbox(name: str, text: str, x: int, y: int,
 FILTER_PANEL_X = 1016
 FILTER_PANEL_W = 248
 # Slicers comuns (do fato), idênticos em todas as páginas. O slicer de esfera
-# declara o foco no título: com o filtro padrão do relatório ele só oferece
-# Federal; ampliado o filtro no painel Filtros, as demais esferas aparecem.
+# recorta sob demanda: o painel não tem filtro de esfera no nível de relatório,
+# então ele abre oferecendo Federal, Estadual, Municipal e "(sem esfera)".
 _COMMON_FILTERS = (
-    ("slicer-esfera", f"Esfera (padrão: {ESFERA_PAINEL})", "esfera", ENTITY),
+    ("slicer-esfera", "Esfera", "esfera", ENTITY),
     ("slicer-setor", "Setor", "setor", ENTITY),
     ("slicer-poder", "Poder", "poder", ENTITY),
     ("slicer-categoria", "Categoria (IA / Dados)", "categoria", ENTITY),
@@ -294,16 +288,16 @@ _CAT_AXIS_LABELS = json.dumps({
     ],
 })
 
-# Filtros de nível de relatório — o recorte padrão do painel.
-#   - categoria IN {IA, Dados}: o painel de capacitação conta apenas IA e Dados.
-#     Cursos de Gestão/Outros seguem na tabela fato (auditáveis) mas são
-#     removidos de todos os visuais/slicers ligados ao fato.
-#   - esfera = Federal: o foco declarado do painel. A base carrega todas as
-#     esferas; quem quiser Estadual/Municipal/não-servidores amplia este filtro
-#     no painel Filtros — nenhum número deve ser lido como federal sem que o
-#     recorte diga isso.
+# Filtro de nível de relatório — o recorte padrão do painel é só a categoria:
+# `categoria IN {IA, Dados}`, porque o painel de capacitação conta apenas IA e
+# Dados. Cursos de Gestão/Outros seguem na tabela fato (auditáveis) mas são
+# removidos de todos os visuais/slicers ligados ao fato.
+# Esfera NÃO entra aqui: o painel cobre as quatro esferas da base (Federal,
+# Estadual, Municipal e "(sem esfera)") e quem quiser uma delas usa o slicer
+# Esfera. O histórico da página pública, esse sim, é só Federal — as duas
+# séries não são diretamente comparáveis, e a nota da página 1 avisa.
 # As páginas de Distribuição (tabelas dist_publico/dist_programa) não têm
-# relação com o fato e não são alcançadas por estes filtros: elas são
+# relação com o fato e não são alcançadas por este filtro: elas são
 # pré-filtradas pelo mesmo recorte no gerador
 # (scripts/gerar_distribuicao_publico.py e scripts/gerar_programa.py), porque o
 # grão pré-agregado (fatia, k) não tem chave de curso onde o filtro pudesse
@@ -334,7 +328,6 @@ def _filtro_in(name: str, prop: str, valores: tuple[str, ...]) -> dict[str, Any]
 _REPORT_FILTERS_PAINEL = json.dumps({
     "filters": [
         _filtro_in("filtro-categoria-painel", "categoria", ("IA", "Dados")),
-        _filtro_in("filtro-esfera-painel", "esfera", (ESFERA_PAINEL,)),
     ],
 })
 
@@ -406,9 +399,9 @@ def nota_distribuicao(fatia: str, x: int, y: int, width: int,
         avulso = ""
     return textbox(
         "nota-pagina",
-        f"Retrato sobre todo o histórico, fixo no recorte padrão do painel: "
-        f"esfera {ESFERA_PAINEL} e categorias IA e Dados (Gestão e Outros ficam "
-        f"de fora); não responde aos filtros das outras páginas. "
+        f"Retrato sobre todo o histórico (todas as esferas), fixo nas "
+        f"categorias IA e Dados (Gestão e Outros ficam de fora); não responde "
+        f"aos filtros das outras páginas. "
         f"{avulso}"
         f"Cada pessoa entra num único balde, pelo nº exato de cursos que concluiu. "
         f"Uma pessoa pode aparecer em mais de um {fatia}: as barras NÃO somam ao "
@@ -421,8 +414,18 @@ def nota_distribuicao(fatia: str, x: int, y: int, width: int,
 # PAGES_SPEC — fonte única de verdade do layout.
 # ---------------------------------------------------------------------------
 
-# Layout comum: título no topo (y=16), conteúdo a partir de y=64, painel de
-# filtros na coluna direita (x=1016). Área de conteúdo: x=16..1000 (largura 984).
+# Layout comum: título no topo (y=10), painel de filtros na coluna direita
+# (x=1016). Área de conteúdo: x=16..1000 (largura 984).
+#
+# Alturas das notas e dos cartões de referência, e o y do conteúdo abaixo delas,
+# vieram de ajuste manual no Power BI Desktop (2026-08-17): o texto das notas
+# estava sendo cortado. O Desktop grava coordenadas em float — aqui elas entram
+# arredondadas para inteiro, com a altura derivada da borda inferior para não
+# desalinhar (histograma da 06: y=263 + h=435 = 698, a mesma borda de antes).
+# Exceção: a altura das NOTAS arredonda para cima. É ela que decide se o texto
+# cabe, e arredondar 88.6 para baixo cortava de volta a 4ª linha na página 06 —
+# desfazendo em silêncio o motivo do ajuste. Ao reajustar no Desktop, arredonde
+# de novo em vez de colar o float cru: para cima nas notas, pela borda no resto.
 PAGES_SPEC: list[dict[str, Any]] = [
     {
         "name": "01-visao-geral",
@@ -435,12 +438,12 @@ PAGES_SPEC: list[dict[str, Any]] = [
             # Recorte explícito: o leitor precisa saber o que os números cobrem
             # antes de ler o primeiro KPI.
             textbox("nota-escopo",
-                    "O painel abre no foco do produto: esfera Federal (filtro "
-                    "padrão do relatório, editável no painel Filtros). A base "
-                    "carrega todas as esferas — Estadual, Municipal e "
-                    "não-servidores incluídos; o histórico da página pública "
-                    "cobre apenas a Federal.",
-                    x=16, y=64, width=984, height=44, font_size="11pt"),
+                    "O painel cobre todas as esferas — Federal, Estadual, "
+                    "Municipal e não-servidores — nas categorias IA e Dados. O "
+                    "histórico da página pública cobre só a Federal: as duas "
+                    "séries não são comparáveis direto. Use o slicer Esfera "
+                    "para recortar.",
+                    x=16, y=60, width=984, height=49, font_size="11pt"),
             kpi_card("kpi-conclusoes-ia", "Conclusões IA", "Conclusoes IA", x=16, y=112),
             kpi_card("kpi-conclusoes-dados", "Conclusões Dados", "Conclusoes Dados", x=266, y=112),
             kpi_card("kpi-pessoas-ia", "Pessoas únicas IA", "Pessoas Unicas IA", x=516, y=112),
@@ -469,20 +472,13 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "visuals": [
             textbox("titulo-pagina", "Por Grupo — Esfera × Poder",
                     x=16, y=10, width=984, height=50, font_size="22pt"),
-            # Esta é a página onde as esferas se comparam: com o filtro padrão
-            # só a linha Federal aparece; ampliá-lo traz as demais, cada número
-            # rotulado pela linha da própria esfera.
-            textbox("nota-escopo",
-                    "Com o filtro padrão do painel a matriz mostra só a esfera "
-                    "Federal. Para comparar esferas, amplie o filtro Esfera no "
-                    "painel Filtros — cada linha da matriz é rotulada pela "
-                    "própria esfera.",
-                    x=16, y=64, width=984, height=44, font_size="11pt"),
+            # Esta é a página onde as esferas se comparam: a matriz traz as
+            # quatro, cada número rotulado pela linha da própria esfera.
             {
                 "name": "matriz-esfera-poder",
                 "title": "Esfera × Poder",
                 "visual_type": "pivotTable",
-                "position": {"x": 16, "y": 112, "width": 984, "height": 586},
+                "position": {"x": 16, "y": 64, "width": 984, "height": 634},
                 "projections": {
                     "Columns": [column("poder")],
                     "Rows": [column("esfera")],
@@ -542,14 +538,14 @@ PAGES_SPEC: list[dict[str, Any]] = [
             textbox("titulo-pagina", "Por Público-Alvo",
                     x=16, y=10, width=640, height=50, font_size="22pt"),
             # Total de referência, separado das fatias.
-            total_referencia(x=672, y=10),
-            nota_fatias("público", x=16, y=78, width=984),
+            total_referencia(x=672, y=10, height=99),
+            nota_fatias("público", x=16, y=109, width=984, height=59),
             # A — Ranking por público: pessoas distintas, ordenado por tamanho.
             {
                 "name": "barra-pessoas-publico",
                 "title": "Pessoas por público-alvo (concluíram ≥1 curso do público)",
                 "visual_type": "barChart",
-                "position": {"x": 16, "y": 128, "width": 984, "height": 280},
+                "position": {"x": 16, "y": 174, "width": 984, "height": 234},
                 "projections": {
                     "Category": [column_of(BRIDGE, "publico_alvo")],
                     "Y": [measure("Pessoas Unicas")],
@@ -655,14 +651,14 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "visuals": [
             textbox("titulo-pagina", "Distribuição de cursos por pessoa, por público-alvo",
                     x=16, y=10, width=880, height=50, font_size="22pt"),
-            total_referencia(x=912, y=10, width=352),
-            nota_distribuicao("público", x=16, y=78, width=1248),
+            total_referencia(x=912, y=10, width=352, height=111),
+            nota_distribuicao("público", x=16, y=152, width=1248, height=89),
             # Histograma: quantas pessoas concluíram quantos cursos de cada público.
             {
                 "name": "histograma-distribuicao",
                 "title": "Pessoas por nº de cursos concluídos (por público)",
                 "visual_type": "clusteredColumnChart",
-                "position": {"x": 16, "y": 166, "width": 820, "height": 532},
+                "position": {"x": 16, "y": 263, "width": 820, "height": 435},
                 "projections": {
                     "Category": [column_of(DIST, "qtd_cursos")],
                     "Series": [column_of(DIST, "publico_alvo")],
@@ -676,7 +672,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                 "name": "tabela-resumo-publico",
                 "title": "Resumo por público (maior primeiro; as linhas não somam)",
                 "visual_type": "tableEx",
-                "position": {"x": 852, "y": 166, "width": 412, "height": 532},
+                "position": {"x": 852, "y": 263, "width": 412, "height": 435},
                 "projections": {
                     "Values": [
                         column_of(DIST, "publico_alvo"),
@@ -700,13 +696,13 @@ PAGES_SPEC: list[dict[str, Any]] = [
         "visuals": [
             textbox("titulo-pagina", "Por Programa",
                     x=16, y=10, width=640, height=50, font_size="22pt"),
-            total_referencia(x=672, y=10),
-            nota_fatias("programa", x=16, y=78, width=984),
+            total_referencia(x=672, y=10, height=98),
+            nota_fatias("programa", x=16, y=108, width=984, height=60),
             {
                 "name": "barra-pessoas-programa",
                 "title": "Pessoas por programa (concluíram ≥1 curso do programa)",
                 "visual_type": "barChart",
-                "position": {"x": 16, "y": 128, "width": 984, "height": 280},
+                "position": {"x": 16, "y": 180, "width": 984, "height": 228},
                 "projections": {
                     "Category": [column_of(PROG, "programa")],
                     "Y": [measure("Pessoas Unicas")],
@@ -759,13 +755,13 @@ PAGES_SPEC: list[dict[str, Any]] = [
             # programas (mesma pessoa contada em cada programa). No lugar dele
             # entra o total verdadeiro do painel; o "todos" fica por programa,
             # na tabela ao lado, onde tem contexto de uma fatia só.
-            total_referencia(x=912, y=10, width=352),
-            nota_distribuicao("programa", x=16, y=78, width=1248),
+            total_referencia(x=912, y=10, width=352, height=111),
+            nota_distribuicao("programa", x=16, y=146, width=1248, height=93),
             {
                 "name": "histograma-distribuicao-programa",
                 "title": "Pessoas por nº de cursos concluídos (por programa)",
                 "visual_type": "clusteredColumnChart",
-                "position": {"x": 16, "y": 166, "width": 760, "height": 532},
+                "position": {"x": 16, "y": 275, "width": 760, "height": 423},
                 "projections": {
                     "Category": [column_of(DISTP, "qtd_cursos")],
                     "Series": [column_of(DISTP, "programa")],
@@ -777,7 +773,7 @@ PAGES_SPEC: list[dict[str, Any]] = [
                 "name": "tabela-resumo-programa",
                 "title": "Resumo por programa: fizeram ≥1 vs todos os cursos (as linhas não somam)",
                 "visual_type": "tableEx",
-                "position": {"x": 792, "y": 166, "width": 472, "height": 532},
+                "position": {"x": 792, "y": 275, "width": 472, "height": 423},
                 "projections": {
                     "Values": [
                         column_of(DISTP, "programa"),

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "nota-escopo",
   "position": {
     "x": 16,
-    "y": 64,
+    "y": 60,
     "z": 0,
+    "height": 49,
     "width": 984,
-    "height": 44,
     "tabOrder": 0
   },
   "visual": {
@@ -19,11 +19,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "O painel abre no foco do produto: esfera Federal (filtro padrão do relatório, editável no painel Filtros). A base carrega todas as esferas — Estadual, Municipal e não-servidores incluídos; o histórico da página pública cobre apenas a Federal.",
+                    "value": "O painel cobre todas as esferas — Federal, Estadual, Municipal e não-servidores — nas categorias IA e Dados. O histórico da página pública cobre só a Federal: as duas séries não são comparáveis direto. Use o slicer Esfera para recortar.",
                     "textStyle": {
-                      "fontSize": "11pt",
                       "fontWeight": "bold",
-                      "color": "#1F3864"
+                      "fontSize": "11pt",
+                      "color": "#1f3864"
                     }
                   }
                 ]

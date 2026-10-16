@@ -1,17 +1,19 @@
 {#- Ordem de chaves e campos ("active", sortDefinition, drillFilterOtherVisuals
     depois de visualContainerObjects) seguem o que o Power BI Desktop grava, para
     que regenerar o PBIP nao produza diff sobre um projeto salvo pelo Desktop.
-    Textbox nao tem query: o Desktop nao o reserializa e ele fica no schema 1.0.0. -#}
+    Textbox JA foi reserializado pelo Desktop (2026-08-17): saiu do schema 1.0.0
+    para 2.11.0, passou a gravar height antes de width e reordenou textStyle para
+    fontWeight/fontSize/color com o hex em minusculas. -#}
 {%- if visual.visual_type == "textbox" %}
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "{{ visual.name }}",
   "position": {
     "x": {{ visual.position.x }},
     "y": {{ visual.position.y }},
     "z": {{ visual.position.z | default(0) }},
-    "width": {{ visual.position.width }},
     "height": {{ visual.position.height }},
+    "width": {{ visual.position.width }},
     "tabOrder": {{ visual.tab_order | default(0) }}
   },
   "visual": {
@@ -28,9 +30,9 @@
                         partir dos CSVs curados, entao o conteudo varia. -#}
                     "value": {{ visual.text | tojson }},
                     "textStyle": {
-                      "fontSize": "{{ visual.font_size | default('20pt') }}",
                       "fontWeight": "bold",
-                      "color": "#1F3864"
+                      "fontSize": "{{ visual.font_size | default('20pt') }}",
+                      "color": "#1f3864"
                     }
                   }
                 ]
@@ -45,7 +47,7 @@
 }
 {%- else %}
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "{{ visual.name }}",
   "position": {
     "x": {{ visual.position.x }},
